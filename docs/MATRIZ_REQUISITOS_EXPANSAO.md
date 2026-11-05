@@ -16,7 +16,7 @@ IDs de carrinho/pedido/pagamento são retornados pela API e encadeados, nunca pr
 
 ## Contratos adicionais a preparar
 
-Todas as rotas abaixo exigem Bearer token válido e JSON quando há body. Campos adicionais não especificados não são exigidos nem usados para diferenciar arquiteturas. Listas têm ordem estável por id. Rotas antigas e credenciais mantêm contrato de [docs/contratos.md](docs/contratos.md).
+Todas as rotas abaixo exigem Bearer token válido e JSON quando há body. Campos adicionais não especificados não são exigidos nem usados para diferenciar arquiteturas. Listas têm ordem estável por id. Rotas antigas e credenciais mantêm contrato de [docs/contratos.md](contratos.md).
 
 | Etapa | Método e rota | Entrada | Status e corpo de sucesso relevante |
 |---|---|---|---|

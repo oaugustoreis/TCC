@@ -31,11 +31,14 @@ for(const [p,expected] of Object.entries(source)){
 }
 for(const f of preservation.files){
   for(const p of [f.source,f.archived_path]){
-    assert.equal(hash(fs.readFileSync(path.join(root,p))),f.sha256,p);
+    // O relatório foi organizado em docs/ após o congelamento; sua cópia histórica é imutável.
+    const preservedPath=p==='RELATORIO_VALIDACAO_FINAL.md'?f.archived_path:p;
+    assert.equal(hash(fs.readFileSync(path.join(root,preservedPath))),f.sha256,p);
+    if(p==='RELATORIO_VALIDACAO_FINAL.md')assert.ok(fs.existsSync(path.join(root,'docs',p)));
     assert.equal(hash(committedFiles.get(p)),f.sha256,p+' na tag');
   }
 }
-const matrix=fs.readFileSync(path.join(root,'MATRIZ_REQUISITOS_EXPANSAO.md'),'utf8');
+const matrix=fs.readFileSync(path.join(root,'docs/MATRIZ_REQUISITOS_EXPANSAO.md'),'utf8');
 const baseline=[...matrix.matchAll(/^\| CT-(0[1-5]) \|[^\n]+?\| (\d+) \| (\d+) \|$/gm)].map(m=>({id:Number(m[1]),requests:Number(m[2]),checks:Number(m[3])}));
 assert.equal(baseline.length,5);
 const scenarios=[...baseline];
@@ -69,7 +72,7 @@ for(const [i,pair]of historical.pairs.entries()){
   assert.equal(pair.equivalent,true);
   for(const run of pair.runs){assert.equal(run.real_success,true);assert.equal(run.received_requests,baseline[i].requests);assert.equal(run.passed_checks,baseline[i].checks);assert.equal(run.iterations,1);assert.equal(run.profile_valid,true);}
 }
-assert.equal(git('diff',e0,'--','api/','modular/','tradicional/','shared/','tests/','scripts/validacao/','RELATORIO_VALIDACAO_FINAL.md','historico/','evidencias/validacao_final/'),'');
+assert.equal(git('diff',e0,'--','api/','modular/','tradicional/','shared/','tests/','scripts/validacao/','historico/','evidencias/validacao_final/'),'');
 const protectedFiles=git('ls-tree','-r','--name-only',e0,'--','modular/').split('\n');
 assert.equal(protectedFiles.length,24);
 assert.ok(protectedFiles.includes('modular/helpers/http/http.js'));assert.ok(protectedFiles.includes('modular/helpers/checks/checks.js'));

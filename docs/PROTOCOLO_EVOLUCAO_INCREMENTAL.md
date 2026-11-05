@@ -16,7 +16,7 @@ Estudo de caso longitudinal, pareado por etapa e cumulativo. Unidade medida: o l
 | E3 | CT-11 e CT-12: pedidos | 12 | 24 | Tradicional → modular |
 | E4 | CT-13 a CT-15: pagamentos e compra completa | 15 | 30 | Modular → tradicional |
 
-Os requisitos e critérios comuns estão em [MATRIZ_REQUISITOS_EXPANSAO.md](MATRIZ_REQUISITOS_EXPANSAO.md). A coleta está definida em [PLANO_MEDICAO_ESFORCO.md](PLANO_MEDICAO_ESFORCO.md). Para o novo estudo, este desenho substitui as tarefas independentes M1–M3/R1–R2 de [docs/protocolo.md](docs/protocolo.md), mantido como histórico. Suas tarefas não serão executadas nesta preparação.
+Os requisitos e critérios comuns estão em [MATRIZ_REQUISITOS_EXPANSAO.md](MATRIZ_REQUISITOS_EXPANSAO.md). A coleta está definida em [PLANO_MEDICAO_ESFORCO.md](PLANO_MEDICAO_ESFORCO.md). Para o novo estudo, este desenho substitui as tarefas independentes M1–M3/R1–R2 de [docs/protocolo.md](protocolo.md), mantido como histórico. Suas tarefas não serão executadas nesta preparação.
 
 ## E0 e acervo anterior
 
@@ -24,7 +24,7 @@ A baseline está identificada em [BASELINE_E0.md](BASELINE_E0.md), pelo commit i
 
 A coleta histórica registra 10 execuções HTTP reais bem-sucedidas, 28 requisições e 60 checks, com 1 VU/1 iteração por execução. Essa evidência não constitui nova medição nem revela esforço retrospectivo de construir E0.
 
-O relatório original e `evidencias/validacao_final/` permanecem nos caminhos anteriores. Uma cópia separada está em [historico/validacao-e0/](historico/validacao-e0/LEIA-ME.md), com toda a árvore, logs, tentativas malsucedidas e manifesto SHA-256. Não sobrescrever os resultados históricos. Novos registros usarão `evidencias/evolucao/E<n>/<arquitetura>/<unidade>/<tentativa>/`.
+O relatório original e `evidencias/validacao_final/` permanecem nos caminhos anteriores. Uma cópia separada está em [historico/validacao-e0/](../historico/validacao-e0/LEIA-ME.md), com toda a árvore, logs, tentativas malsucedidas e manifesto SHA-256. Não sobrescrever os resultados históricos. Novos registros usarão `evidencias/evolucao/E<n>/<arquitetura>/<unidade>/<tentativa>/`.
 
 ## Congelamento e gates
 

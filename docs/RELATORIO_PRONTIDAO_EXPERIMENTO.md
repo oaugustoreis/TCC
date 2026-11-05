@@ -10,7 +10,7 @@ Foram conferidos [protocolo](PROTOCOLO_EVOLUCAO_INCREMENTAL.md), [matriz](MATRIZ
 
 ## Coletor implementado e validado
 
-Código comum em [scripts/medicao/coletor.mjs](scripts/medicao/coletor.mjs), operação em [manual](scripts/medicao/README.md), [piloto](scripts/medicao/piloto.mjs) e [testes](scripts/medicao/coletor.test.mjs).
+Código comum em [scripts/medicao/coletor.mjs](../scripts/medicao/coletor.mjs), operação em [manual](../scripts/medicao/README.md), [piloto](../scripts/medicao/piloto.mjs) e [testes](../scripts/medicao/coletor.test.mjs).
 
 - JSONL append-only por processo, UUID de sessão e evento, UTC, offset, nanossegundos de `process.hrtime.bigint` e representação em ms.
 - Persistência com `writeSync`/`fsyncSync` antes do ACK e antes da atividade. Não reescrever registros existentes.
@@ -21,7 +21,7 @@ Código comum em [scripts/medicao/coletor.mjs](scripts/medicao/coletor.mjs), ope
 
 **5/5 testes passaram na versão final**, código de saída 0: persistência/exclusividade/referências; pausa/retomada/sobreposição sem dupla contagem; queda de processo e recuperação; detecção de truncamento; rejeição de término associado a outro relógio. Categorias humanas/Codex usadas nos testes são explicitamente simuladas e não entram em resultados de esforço.
 
-Evidências: [comando dos testes](evidencias/prontidao/2026-11-05T17-36-24-859Z/testes-v1.command.json), [stdout](evidencias/prontidao/2026-11-05T17-36-24-859Z/testes-v1.stdout.log), [stderr](evidencias/prontidao/2026-11-05T17-36-24-859Z/testes-v1.stderr.log), [resumo da recuperação](evidencias/prontidao/2026-11-05T17-36-24-859Z/testes-coletor-v1/queda/resumo-recuperacao.json).
+Evidências: [comando dos testes](../evidencias/prontidao/2026-11-05T17-36-24-859Z/testes-v1.command.json), [stdout](../evidencias/prontidao/2026-11-05T17-36-24-859Z/testes-v1.stdout.log), [stderr](../evidencias/prontidao/2026-11-05T17-36-24-859Z/testes-v1.stderr.log), [resumo da recuperação](../evidencias/prontidao/2026-11-05T17-36-24-859Z/testes-coletor-v1/queda/resumo-recuperacao.json).
 
 ## Piloto neutro real
 
@@ -31,7 +31,7 @@ A execução final gerou **8 eventos, uma sessão, três intervalos encerrados e
 
 Esses números validam a instrumentação da tarefa neutra. **Não são tempo humano, duração integral deste turno Codex ou esforço de E1**; esses campos são null no piloto. O controlador/operador precisa iniciar o intervalo do turno antes de entregar o prompt e encerrá-lo ao receber a resposta final. O coletor não detecta atividade humana nem impõe sozinho o limite de 120 minutos; a supervisão externa do plano permanece obrigatória.
 
-Evidências: [resultado](evidencias/prontidao/2026-11-05T17-36-24-859Z/piloto-neutro-v1/resultado-piloto.json), [palavras](evidencias/prontidao/2026-11-05T17-36-24-859Z/piloto-neutro-v1/palavras.json), [soma](evidencias/prontidao/2026-11-05T17-36-24-859Z/piloto-neutro-v1/soma.json), [comando](evidencias/prontidao/2026-11-05T17-36-24-859Z/piloto-v1.command.json). Os eventos brutos estão em `evidencias/prontidao/2026-11-05T17-36-24-859Z/piloto-neutro-v1/eventos/`.
+Evidências: [resultado](../evidencias/prontidao/2026-11-05T17-36-24-859Z/piloto-neutro-v1/resultado-piloto.json), [palavras](../evidencias/prontidao/2026-11-05T17-36-24-859Z/piloto-neutro-v1/palavras.json), [soma](../evidencias/prontidao/2026-11-05T17-36-24-859Z/piloto-neutro-v1/soma.json), [comando](../evidencias/prontidao/2026-11-05T17-36-24-859Z/piloto-v1.command.json). Os eventos brutos estão em `evidencias/prontidao/2026-11-05T17-36-24-859Z/piloto-neutro-v1/eventos/`.
 
 As execuções preliminares também foram preservadas. Após a primeira execução aprovada, os resumos foram refinados para diferenciar ausência de observação de zero e expor lacunas entre sessões; testes e piloto foram repetidos para a versão final. Não são repetições experimentais independentes.
 
@@ -50,7 +50,7 @@ As execuções preliminares também foram preservadas. Após a primeira execuç�
 | Snapshot interno do alias | null: não exposto; não se presume imutabilidade do alias |
 | Versão da interface gráfica | null: não exposta; o cliente/backend verificável está registrado acima |
 
-Captura: [codex-efetivo.json](evidencias/prontidao/2026-11-05T17-36-24-859Z/codex-efetivo.json), [contexto selecionado](evidencias/prontidao/2026-11-05T17-36-24-859Z/contexto-turno-selecionado.json), [ferramentas](evidencias/prontidao/2026-11-05T17-36-24-859Z/ferramentas-disponiveis.json). Foram selecionados apenas campos de configuração da sessão atual; não foram copiados credenciais nem históricos de outras sessões. O arquivo global não forneceu esses valores e não foi tratado como comprovação efetiva.
+Captura: [codex-efetivo.json](../evidencias/prontidao/2026-11-05T17-36-24-859Z/codex-efetivo.json), [contexto selecionado](../evidencias/prontidao/2026-11-05T17-36-24-859Z/contexto-turno-selecionado.json), [ferramentas](../evidencias/prontidao/2026-11-05T17-36-24-859Z/ferramentas-disponiveis.json). Foram selecionados apenas campos de configuração da sessão atual; não foram copiados credenciais nem históricos de outras sessões. O arquivo global não forneceu esses valores e não foi tratado como comprovação efetiva.
 
 O perfil comum da versão 1.0 é o observado acima, aplicado aos dois braços. Recapturar modelo, effort, cliente, permissões e inventário antes de cada condição; divergência bloqueia o par até decisão prospectiva. As ferramentas estarem disponíveis não autoriza ações externas nem altera a proibição de delegação. A skill OpenAI Docs foi usada para orientação da captura; referência oficial consultada: [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference). A prova dos valores é local, não a documentação.
 
@@ -64,7 +64,7 @@ Commit confirmado: `e93c3fcf8e954dc1a1e8a05d621c9f23b8ccdc87`. Tag `e0-baseline-
 - A validação anterior continua registrando 10 execuções bem-sucedidas, 28 requisições e 60 checks. Este relatório não apresenta nova execução HTTP.
 - Diff dos caminhos protegidos (API, suítes, shared, testes E0, validador anterior, relatório e acervo históricos) contra E0: vazio.
 
-Auditoria repetível: [scripts/prontidao/auditar.mjs](scripts/prontidao/auditar.mjs). Evidências: [auditoria](evidencias/prontidao/2026-11-05T17-36-24-859Z/auditoria-e0-matriz.json), [comando final](evidencias/prontidao/2026-11-05T17-36-24-859Z/auditoria-v1.command.json), [stdout](evidencias/prontidao/2026-11-05T17-36-24-859Z/auditoria-v1.stdout.log).
+Auditoria repetível: [scripts/prontidao/auditar.mjs](../scripts/prontidao/auditar.mjs). Evidências: [auditoria](../evidencias/prontidao/2026-11-05T17-36-24-859Z/auditoria-e0-matriz.json), [comando final](../evidencias/prontidao/2026-11-05T17-36-24-859Z/auditoria-v1.command.json), [stdout](../evidencias/prontidao/2026-11-05T17-36-24-859Z/auditoria-v1.stdout.log).
 
 ## Critérios e totais da matriz
 
@@ -97,7 +97,7 @@ O auditor contou as operações (inclusive ranges), conferiu sua sequência, os 
 | PowerShell | 5.1.26100.9711 |
 | Codex CLI/backend | 0.166.0 |
 
-[Comandos, saídas e ambiente completos](evidencias/prontidao/2026-11-05T17-36-24-859Z/ambiente-versoes.json). Foram executados comandos de versão de todas as ferramentas acima. O coletor não depende de Python.
+[Comandos, saídas e ambiente completos](../evidencias/prontidao/2026-11-05T17-36-24-859Z/ambiente-versoes.json). Foram executados comandos de versão de todas as ferramentas acima. O coletor não depende de Python.
 
 Comandos reproduzíveis da verificação (usar pasta nova para cada repetição):
 
@@ -122,6 +122,6 @@ git -c safe.directory=D:/TCC rev-parse 'protocolo-evolucao-v1.0^{commit}'
 
 Os critérios de preparação para congelar o desenho v1.0 foram satisfeitos: documentação revisada, coletor persistente/monotônico testado, piloto neutro aprovado, configuração obrigatória capturada, E0/acervo íntegros, matriz consistente e ambiente registrado. **Não há bloqueio metodológico para a tag.**
 
-[Decisão estruturada](evidencias/prontidao/2026-11-05T17-36-24-859Z/decisao-prontidao.json). A tag anotada `protocolo-evolucao-v1.0` é criada no commit que contém estes documentos, o coletor e estas evidências. A tag E0 não é movida. Conferir o SHA com o comando acima; o próprio relatório não incorpora seu hash para evitar autorreferência.
+[Decisão estruturada](../evidencias/prontidao/2026-11-05T17-36-24-859Z/decisao-prontidao.json). A tag anotada `protocolo-evolucao-v1.0` é criada no commit que contém estes documentos, o coletor e estas evidências. A tag E0 não é movida. Conferir o SHA com o comando acima; o próprio relatório não incorpora seu hash para evitar autorreferência.
 
 Congelar o protocolo não declara equivalência dos cenários futuros, não inicia E1 e não elimina o gate funcional pendente.

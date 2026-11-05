@@ -8,11 +8,11 @@ Essa conclusão limita-se às cinco jornadas baseline, aos dados usados e à exe
 
 Execução completa iniciada em `2026-11-05T17:07:25.732Z` (13:07:25 em Manaus):
 
-- [Resultado consolidado](evidencias/validacao_final/2026-11-05T17-07-25-732Z/result.json): `complete_functional_equivalence: true`, `architecture_preserved: true`.
-- [Ambiente e versões](evidencias/validacao_final/2026-11-05T17-07-25-732Z/environment.json).
-- [Manifesto anterior](evidencias/validacao_final/2026-11-05T17-07-25-732Z/source-manifest-before.json) e [posterior](evidencias/validacao_final/2026-11-05T17-07-25-732Z/source-manifest-after.json), com SHA-256 dos arquivos JS de `modular/`, `tradicional/`, `shared/` e `api/`.
-- [Escopo das métricas de código](evidencias/validacao_final/2026-11-05T17-07-25-732Z/code-accounting.json).
-- [Auditoria final](evidencias/validacao_final/2026-11-05T17-07-25-732Z/auditoria-final.json): zero diferenças nos hashes atuais, 24 arquivos modulares, 10 execuções bem-sucedidas e taxa de falha HTTP zero nos dez summaries. A sintaxe do orquestrador foi verificada com `node --check scripts/validacao/validar.mjs`.
+- [Resultado consolidado](../evidencias/validacao_final/2026-11-05T17-07-25-732Z/result.json): `complete_functional_equivalence: true`, `architecture_preserved: true`.
+- [Ambiente e versões](../evidencias/validacao_final/2026-11-05T17-07-25-732Z/environment.json).
+- [Manifesto anterior](../evidencias/validacao_final/2026-11-05T17-07-25-732Z/source-manifest-before.json) e [posterior](../evidencias/validacao_final/2026-11-05T17-07-25-732Z/source-manifest-after.json), com SHA-256 dos arquivos JS de `modular/`, `tradicional/`, `shared/` e `api/`.
+- [Escopo das métricas de código](../evidencias/validacao_final/2026-11-05T17-07-25-732Z/code-accounting.json).
+- [Auditoria final](../evidencias/validacao_final/2026-11-05T17-07-25-732Z/auditoria-final.json): zero diferenças nos hashes atuais, 24 arquivos modulares, 10 execuções bem-sucedidas e taxa de falha HTTP zero nos dez summaries. A sintaxe do orquestrador foi verificada com `node --check scripts/validacao/validar.mjs`.
 
 | Ferramenta | Versão observada |
 |---|---|
@@ -27,7 +27,7 @@ Execução completa iniciada em `2026-11-05T17:07:25.732Z` (13:07:25 em Manaus):
 
 Foram lidos o README, contratos/matriz de equivalência, protocolo, documentação modular, código da API, configuração comum, cenários e helpers, além de `scripts/validacao/validar.py` e sua instrumentação `api-observada.mjs`.
 
-O validador Python foi inspecionado, mas não executado, pois não havia interpretador disponível. Foi criada a alternativa [scripts/validacao/validar.mjs](scripts/validacao/validar.mjs), com os mesmos dez cenários, contagens esperadas, nomes de checks e critérios de comparação. Ela normaliza os separadores do inventário para `/`, evitando que os caminhos Windows impeçam a identificação dos 24 arquivos modulares. O arquivo Python foi preservado.
+O validador Python foi inspecionado, mas não executado, pois não havia interpretador disponível. Foi criada a alternativa [scripts/validacao/validar.mjs](../scripts/validacao/validar.mjs), com os mesmos dez cenários, contagens esperadas, nomes de checks e critérios de comparação. Ela normaliza os separadores do inventário para `/`, evitando que os caminhos Windows impeçam a identificação dos 24 arquivos modulares. O arquivo Python foi preservado.
 
 Comandos efetivamente utilizados:
 
@@ -45,7 +45,7 @@ node --experimental-vm-modules tests/checks-helper.test.js
 node scripts/validacao/validar.mjs
 ```
 
-`npm.cmd` é a entrada do npm usada no Windows. A primeira inicialização de `npm run api` exibiu `API: http://127.0.0.1:3333`; a sondagem real `GET /health` retornou **200**, corpo `{"status":"ok"}`. Evidências: [comando](evidencias/validacao_final/2026-11-05T17-06-36-981Z/npm-api.command.json), [stdout](evidencias/validacao_final/2026-11-05T17-06-36-981Z/npm-api.stdout.log) e [resposta](evidencias/validacao_final/2026-11-05T17-06-36-981Z/npm-api-health.json).
+`npm.cmd` é a entrada do npm usada no Windows. A primeira inicialização de `npm run api` exibiu `API: http://127.0.0.1:3333`; a sondagem real `GET /health` retornou **200**, corpo `{"status":"ok"}`. Evidências: [comando](../evidencias/validacao_final/2026-11-05T17-06-36-981Z/npm-api.command.json), [stdout](../evidencias/validacao_final/2026-11-05T17-06-36-981Z/npm-api.stdout.log) e [resposta](../evidencias/validacao_final/2026-11-05T17-06-36-981Z/npm-api-health.json).
 
 Para cada script, o validador executou `k6 inspect`, iniciou um processo novo de `node scripts/validacao/api-observada.mjs` e aguardou seu arquivo de prontidão. A instrumentação usa `createServer` da API real e registra as requisições recebidas e o status ao concluir a resposta; não simula respostas. Cada processo foi encerrado após seu cenário. A porta dessas dez instâncias foi **3334**, com `BASE_URL` explícita, isolando a validação da tentativa de inicialização por npm na porta 3333. O reinício faz os pedidos começarem em `o1` em cada execução.
 
@@ -110,16 +110,16 @@ Payloads recebidos: login `{"username":"pesquisador","password":"teste123"}`; cr
 
 Foram comparados método, caminho, todos os headers recebidos e payload literal, preservando a ordem das requisições. A ordem das chaves do objeto de headers foi normalizada; a ordem física dos headers não integra o critério e permanece disponível em `rawHeaders`. Status HTTP foram comparados separadamente. Checks foram comparados por sequência de nome e valor, excluindo timestamps. Não foi feita comparação integral dos corpos das respostas; os checks exercitam os campos definidos na matriz (token, produtos, id e status do pedido).
 
-Comparações dos pares: [CT-01](evidencias/validacao_final/2026-11-05T17-07-25-732Z/ct01-comparison.json), [CT-02](evidencias/validacao_final/2026-11-05T17-07-25-732Z/ct02-comparison.json), [CT-03](evidencias/validacao_final/2026-11-05T17-07-25-732Z/ct03-comparison.json), [CT-04](evidencias/validacao_final/2026-11-05T17-07-25-732Z/ct04-comparison.json), [CT-05](evidencias/validacao_final/2026-11-05T17-07-25-732Z/ct05-comparison.json). Todos registram `requests_equal`, `checks_equal`, `response_statuses_equal` e `equivalent` como `true`.
+Comparações dos pares: [CT-01](../evidencias/validacao_final/2026-11-05T17-07-25-732Z/ct01-comparison.json), [CT-02](../evidencias/validacao_final/2026-11-05T17-07-25-732Z/ct02-comparison.json), [CT-03](../evidencias/validacao_final/2026-11-05T17-07-25-732Z/ct03-comparison.json), [CT-04](../evidencias/validacao_final/2026-11-05T17-07-25-732Z/ct04-comparison.json), [CT-05](../evidencias/validacao_final/2026-11-05T17-07-25-732Z/ct05-comparison.json). Todos registram `requests_equal`, `checks_equal`, `response_statuses_equal` e `equivalent` como `true`.
 
-Cada pasta `tradicional_ct01` a `tradicional_ct05` e `modular_ct01` a `modular_ct05`, dentro da pasta da execução, contém: comandos e stdout/stderr de inspect/run, opções efetivas, prontidão e logs da API, `server-requests.jsonl`, `http-debug.jsonl`, `metrics.jsonl`, `summary.json`, `checks.json`, `http-request-metrics.json` e `result.json`. Exemplo completo: [requisições CT-05 tradicional](evidencias/validacao_final/2026-11-05T17-07-25-732Z/tradicional_ct05/server-requests.jsonl), [modular](evidencias/validacao_final/2026-11-05T17-07-25-732Z/modular_ct05/server-requests.jsonl), [checks modulares](evidencias/validacao_final/2026-11-05T17-07-25-732Z/modular_ct05/checks.json).
+Cada pasta `tradicional_ct01` a `tradicional_ct05` e `modular_ct01` a `modular_ct05`, dentro da pasta da execução, contém: comandos e stdout/stderr de inspect/run, opções efetivas, prontidão e logs da API, `server-requests.jsonl`, `http-debug.jsonl`, `metrics.jsonl`, `summary.json`, `checks.json`, `http-request-metrics.json` e `result.json`. Exemplo completo: [requisições CT-05 tradicional](../evidencias/validacao_final/2026-11-05T17-07-25-732Z/tradicional_ct05/server-requests.jsonl), [modular](../evidencias/validacao_final/2026-11-05T17-07-25-732Z/modular_ct05/server-requests.jsonl), [checks modulares](../evidencias/validacao_final/2026-11-05T17-07-25-732Z/modular_ct05/checks.json).
 
 ## Divergências, limitações e preservação
 
 - Não houve divergência funcional observada nos cinco pares executados.
 - Documentos históricos mencionavam `listen EPERM` e validação pendente. Nesta sessão houve inicialização e tráfego reais bem-sucedidos; os registros anteriores não foram sobrescritos.
-- Uma segunda tentativa npm na porta 3333 falhou com `EADDRINUSE`, e sua sondagem falhou. Evidência: [stderr](evidencias/validacao_final/2026-11-05T17-07-25-732Z/npm-api.stderr.log). Ela não foi contada como sucesso. A validação dos dez cenários utilizou processos novos e observados na porta 3334, todos com prontidão confirmada.
-- A tentativa de encerrar a árvore npm com `taskkill` retornou acesso negado. Evidência: [log](evidencias/validacao_final/2026-11-05T17-06-36-981Z/npm-api-stop.stderr.log). Os processos instrumentados dos cenários foram encerrados diretamente pelo orquestrador. Não se afirma encerramento confirmado de toda a árvore npm inicial.
+- Uma segunda tentativa npm na porta 3333 falhou com `EADDRINUSE`, e sua sondagem falhou. Evidência: [stderr](../evidencias/validacao_final/2026-11-05T17-07-25-732Z/npm-api.stderr.log). Ela não foi contada como sucesso. A validação dos dez cenários utilizou processos novos e observados na porta 3334, todos com prontidão confirmada.
+- A tentativa de encerrar a árvore npm com `taskkill` retornou acesso negado. Evidência: [log](../evidencias/validacao_final/2026-11-05T17-06-36-981Z/npm-api-stop.stderr.log). Os processos instrumentados dos cenários foram encerrados diretamente pelo orquestrador. Não se afirma encerramento confirmado de toda a árvore npm inicial.
 - O ambiente e as versões diferem dos relatos históricos; valem as versões registradas nesta coleta. Sem Git disponível para este diretório, a identidade dos fontes é documentada por hashes, sem atribuir commit inexistente.
 - Os **24 arquivos modulares foram preservados**, assim como os demais fontes presentes nos manifestos. A composição é 5 scenarios, 6 profiles, 5 flows, 6 use cases e 2 helpers. `modular/helpers/http/http.js` e `modular/helpers/checks/checks.js` estão incluídos integralmente no inventário das métricas de código, sem desconto ou externalização.
 - O inventário define o conjunto para futuras métricas: todos os 24 arquivos de `modular/`; no tradicional, seus cinco scripts. `shared/`, `api/`, `tests/`, `scripts/`, `evidencias/`, dependências e gerados ficam fora desse conjunto arquitetural. Os hashes desses diretórios de suporte servem apenas à preservação quando presentes no manifesto.

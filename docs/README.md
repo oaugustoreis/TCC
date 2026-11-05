@@ -40,9 +40,9 @@ A suíte modular **não depende do pacote Pulse**: implementa somente a arquitet
 
 A API e seus testes automatizados foram verificados com Node.js. A execução k6 depende de instalação local e ainda precisa ser verificada antes de declarar equivalência funcional.
 
-A revisão das cinco camadas e as adaptações em relação ao Pulse estão em [docs/arquitetura-pulse.md](docs/arquitetura-pulse.md).
+A revisão das cinco camadas e as adaptações em relação ao Pulse estão em [docs/arquitetura-pulse.md](arquitetura-pulse.md).
 
-O estado atual da suíte, a estrutura por domínio e os exemplos de uso estão no [relatório modular](docs/RELATORIO_MODULAR_ATUAL.md).
+O estado atual da suíte, a estrutura por domínio e os exemplos de uso estão no [relatório modular](RELATORIO_MODULAR_ATUAL.md).
 
 A validação funcional real e suas limitações estão em [RELATORIO_VALIDACAO_FINAL.md](RELATORIO_VALIDACAO_FINAL.md). Procedimento reproduzível: `python3 scripts/validacao/validar.py`. Os 24 arquivos modulares, incluindo os dois helpers, integram integralmente o conjunto das futuras métricas de código.
 

@@ -114,7 +114,7 @@ export const smokeProfile = {
 
 Em `shared-iterations`, as iterações são compartilhadas entre os VUs. O CT-05 atual herda `{ ...smokeProfile }`, sem sobrescrever VUs ou iterações. Todos os cinco cenários possuem 1 VU e 1 iteração, como a suíte tradicional.
 
-A versão anterior deste relatório descrevia CT-05 com 5 VUs e 10 iterações. Essa informação foi atualizada na validação final: a implementação encontrada já estava com a sobrescrita removida. Isso restabelece os parâmetros de carga esperados, mas não comprova equivalência funcional sem execução real bem-sucedida. Ver [relatório de validação final](../RELATORIO_VALIDACAO_FINAL.md).
+A versão anterior deste relatório descrevia CT-05 com 5 VUs e 10 iterações. Essa informação foi atualizada na validação final: a implementação encontrada já estava com a sobrescrita removida. Isso restabelece os parâmetros de carga esperados, mas não comprova equivalência funcional sem execução real bem-sucedida. Ver [relatório de validação final](RELATORIO_VALIDACAO_FINAL.md).
 
 ## 6. Helper HTTP
 
