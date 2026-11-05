@@ -13,11 +13,33 @@ server.prependListener('request', (req, res) => {
         rawHeaders: req.rawHeaders,
         payload: '',
     };
+    const responseChunks = [];
+    const explicitHeaders = {};
+    const originalWriteHead = res.writeHead;
+    res.writeHead = function (statusCode, statusMessage, headers) {
+        const values = typeof statusMessage === 'object' ? statusMessage : headers;
+        if (Array.isArray(values)) {
+            for (let i = 0; i < values.length; i += 2) explicitHeaders[String(values[i]).toLowerCase()] = values[i + 1];
+        } else if (values) {
+            for (const [key, value] of Object.entries(values)) explicitHeaders[key.toLowerCase()] = value;
+        }
+        return originalWriteHead.apply(this, arguments);
+    };
+    const capture = (chunk, encoding) => {
+        if (chunk !== undefined && chunk !== null && typeof chunk !== 'function')
+            responseChunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk, typeof encoding === 'string' ? encoding : undefined));
+    };
+    const originalWrite = res.write;
+    const originalEnd = res.end;
+    res.write = function (chunk, encoding, callback) { capture(chunk, encoding); return originalWrite.call(this, chunk, encoding, callback); };
+    res.end = function (chunk, encoding, callback) { capture(chunk, encoding); return originalEnd.call(this, chunk, encoding, callback); };
     const chunks = [];
     req.on('data', chunk => chunks.push(chunk));
     req.on('end', () => { entry.payload = Buffer.concat(chunks).toString('utf8'); });
     res.on('finish', () => {
         entry.status = res.statusCode;
+        entry.responseHeaders = { ...res.getHeaders(), ...explicitHeaders };
+        entry.responseBody = Buffer.concat(responseChunks).toString('utf8');
         fs.appendFileSync(process.env.TRACE_FILE, `${JSON.stringify(entry)}\n`);
     });
 });

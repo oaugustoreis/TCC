@@ -10,3 +10,6 @@ __pycache__/
 
 # Logs brutos dos pilotos e verificações de prontidão.
 !evidencias/prontidao/**/*.log
+
+# Evidências de preparação funcional comum de E1.
+!evidencias/preparacao_e1/**/*.log
