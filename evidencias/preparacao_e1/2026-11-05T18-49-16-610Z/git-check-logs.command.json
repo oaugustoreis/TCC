@@ -1,0 +1,10 @@
+{
+  "command": [
+    "git",
+    "diff",
+    "--cached",
+    "--check"
+  ],
+  "exit_code": 2,
+  "note": "Avisos apenas em logs brutos preservados; não remover whitespace das evidências"
+}

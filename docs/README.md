@@ -49,3 +49,7 @@ A validação funcional real e suas limitações estão em [RELATORIO_VALIDACAO_
 ## Estudo de evolução incremental — preparação
 
 E0 está identificada em [BASELINE_E0.md](BASELINE_E0.md), com commit e tag locais. A expansão planejada segue 5 → 7 → 10 → 12 → 15 cenários por arquitetura. Ver [protocolo](PROTOCOLO_EVOLUCAO_INCREMENTAL.md), [matriz de requisitos](MATRIZ_REQUISITOS_EXPANSAO.md) e [plano de medição](PLANO_MEDICAO_ESFORCO.md). E1–E4 não foram implementados; nenhuma medição definitiva foi iniciada. O protocolo antigo em docs/protocolo.md permanece histórico.
+
+## Preparação funcional de E1
+
+API de catálogo/estoque e validador comum preparados, sem implementação dos cenários novos. Decisão e evidências em [RELATORIO_PRONTIDAO_E1.md](RELATORIO_PRONTIDAO_E1.md). Operação do validador: [scripts/validacao/README.md](../scripts/validacao/README.md).

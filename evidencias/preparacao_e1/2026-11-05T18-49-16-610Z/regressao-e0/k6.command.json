@@ -1,0 +1,11 @@
+{
+  "command": [
+    "k6",
+    "version"
+  ],
+  "cwd": "D:\\TCC",
+  "started_utc": "2026-11-05T18:54:51.926Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

@@ -1,0 +1,8 @@
+{
+  "state": "E1",
+  "suite": "both",
+  "preflight_passed": false,
+  "validation_passed": false,
+  "complete_functional_equivalence": false,
+  "error": "E1 exige --manifest com os caminhos dos cenários reais; o validador não cria entradas CT-06/07"
+}

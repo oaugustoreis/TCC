@@ -1,0 +1,30 @@
+{
+  "recorded_utc": "2026-11-05T18:58:57.667Z",
+  "items": [
+    {
+      "type": "instrumentation_defect",
+      "evidence": "oraculo-http/result.json",
+      "correction": "Capturar headers explícitos de writeHead",
+      "retest": "oraculo-http-corrigido/result.json",
+      "resolved": true
+    },
+    {
+      "type": "administrative_staging_error",
+      "message": "fatal: pathspec 'gravar-arquivo-inexistente' did not match any files",
+      "effect": "Sem commit ou alteração de fontes; staging corrigido",
+      "resolved": true
+    },
+    {
+      "type": "expected_negative_test",
+      "command": "validar.mjs --state E1 sem manifesto",
+      "exit_code": 1,
+      "evidence": "preflight-e1-sem-cenarios/result.json"
+    },
+    {
+      "type": "git_identity_missing_on_final_commit",
+      "message": "Author identity unknown",
+      "correction": "Reutilizar identidade do commit do validador via opções pontuais -c user.name / -c user.email, sem alterar configuração global",
+      "resolved": true
+    }
+  ]
+}

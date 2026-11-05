@@ -1,0 +1,12 @@
+{
+  "command": [
+    "k6",
+    "inspect",
+    "modular/scenarios/autenticacao/autenticacao.scenario.js"
+  ],
+  "cwd": "D:\\TCC",
+  "started_utc": "2026-11-05T18:54:53.481Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

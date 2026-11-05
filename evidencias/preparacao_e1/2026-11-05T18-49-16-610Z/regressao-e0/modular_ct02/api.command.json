@@ -1,0 +1,12 @@
+{
+  "command": [
+    "node",
+    "scripts/validacao/api-observada.mjs"
+  ],
+  "cwd": "D:\\TCC",
+  "environment": {
+    "PORT": "0",
+    "TRACE_FILE": "D:\\TCC\\evidencias\\preparacao_e1\\2026-11-05T18-49-16-610Z\\regressao-e0\\modular_ct02\\server-requests.jsonl",
+    "READY_FILE": "D:\\TCC\\evidencias\\preparacao_e1\\2026-11-05T18-49-16-610Z\\regressao-e0\\modular_ct02\\api-ready.json"
+  }
+}

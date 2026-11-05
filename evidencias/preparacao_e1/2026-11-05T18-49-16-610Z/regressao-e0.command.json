@@ -1,0 +1,14 @@
+{
+  "command": [
+    "node",
+    "scripts/validacao/validar.mjs",
+    "--state",
+    "E0",
+    "--out",
+    "D:/TCC/evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0"
+  ],
+  "cwd": "D:/TCC",
+  "started_utc": "2026-11-05T18:54:51.835Z",
+  "exit_code": 0,
+  "error": null
+}

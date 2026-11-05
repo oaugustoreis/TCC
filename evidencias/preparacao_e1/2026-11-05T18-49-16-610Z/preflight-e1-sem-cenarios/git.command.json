@@ -1,0 +1,14 @@
+{
+  "command": [
+    "git",
+    "-c",
+    "safe.directory=D:/TCC",
+    "rev-parse",
+    "HEAD"
+  ],
+  "cwd": "D:\\TCC",
+  "started_utc": "2026-11-05T18:55:57.945Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

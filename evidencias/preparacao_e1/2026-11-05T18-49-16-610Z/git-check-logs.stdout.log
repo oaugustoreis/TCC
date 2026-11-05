@@ -1,0 +1,92 @@
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/preflight-e1-sem-cenarios/node.stdout.log:1: trailing whitespace.
++v24.10.0
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct01/k6-run.stdout.log:3: trailing whitespace.
++  █ THRESHOLDS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct01/k6-run.stdout.log:9: trailing whitespace.
++  █ TOTAL RESULTS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct01/k6-run.stdout.log:19: trailing whitespace.
++    http_req_duration..............: avg=6.05ms  min=6.05ms  med=6.05ms  max=6.05ms  p(90)=6.05ms  p(95)=6.05ms 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct01/k6-run.stdout.log:20: trailing whitespace.
++      { expected_response:true }...: avg=6.05ms  min=6.05ms  med=6.05ms  max=6.05ms  p(90)=6.05ms  p(95)=6.05ms 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct01/k6-run.stdout.log:31: new blank line at EOF.
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct02/k6-run.stdout.log:3: trailing whitespace.
++  █ THRESHOLDS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct02/k6-run.stdout.log:9: trailing whitespace.
++  █ TOTAL RESULTS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct02/k6-run.stdout.log:35: new blank line at EOF.
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct03/k6-run.stdout.log:3: trailing whitespace.
++  █ THRESHOLDS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct03/k6-run.stdout.log:9: trailing whitespace.
++  █ TOTAL RESULTS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct03/k6-run.stdout.log:23: trailing whitespace.
++    http_req_duration..............: avg=2.09ms  min=0s      med=0s      max=6.28ms  p(90)=5.02ms  p(95)=5.65ms 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct03/k6-run.stdout.log:24: trailing whitespace.
++      { expected_response:true }...: avg=2.09ms  min=0s      med=0s      max=6.28ms  p(90)=5.02ms  p(95)=5.65ms 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct03/k6-run.stdout.log:35: new blank line at EOF.
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct04/k6-run.stdout.log:3: trailing whitespace.
++  █ THRESHOLDS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct04/k6-run.stdout.log:9: trailing whitespace.
++  █ TOTAL RESULTS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct04/k6-run.stdout.log:24: trailing whitespace.
++    http_req_duration..............: avg=2.42ms  min=504.2µs med=994.6µs max=5.78ms  p(90)=4.82ms  p(95)=5.3ms  
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct04/k6-run.stdout.log:25: trailing whitespace.
++      { expected_response:true }...: avg=2.42ms  min=504.2µs med=994.6µs max=5.78ms  p(90)=4.82ms  p(95)=5.3ms  
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct04/k6-run.stdout.log:36: new blank line at EOF.
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct05/k6-run.stdout.log:3: trailing whitespace.
++  █ THRESHOLDS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct05/k6-run.stdout.log:9: trailing whitespace.
++  █ TOTAL RESULTS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct05/k6-run.stdout.log:26: trailing whitespace.
++    http_req_duration..............: avg=2.22ms  min=505.6µs med=954.45µs max=6.49ms  p(90)=4.96ms  p(95)=5.73ms 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct05/k6-run.stdout.log:27: trailing whitespace.
++      { expected_response:true }...: avg=2.22ms  min=505.6µs med=954.45µs max=6.49ms  p(90)=4.96ms  p(95)=5.73ms 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/modular_ct05/k6-run.stdout.log:38: new blank line at EOF.
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/node.stdout.log:1: trailing whitespace.
++v24.10.0
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct01/k6-run.stdout.log:3: trailing whitespace.
++  █ THRESHOLDS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct01/k6-run.stdout.log:9: trailing whitespace.
++  █ TOTAL RESULTS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct01/k6-run.stdout.log:19: trailing whitespace.
++    http_req_duration..............: avg=6.89ms  min=6.89ms  med=6.89ms  max=6.89ms  p(90)=6.89ms  p(95)=6.89ms 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct01/k6-run.stdout.log:20: trailing whitespace.
++      { expected_response:true }...: avg=6.89ms  min=6.89ms  med=6.89ms  max=6.89ms  p(90)=6.89ms  p(95)=6.89ms 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct01/k6-run.stdout.log:31: new blank line at EOF.
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct02/k6-run.stdout.log:3: trailing whitespace.
++  █ THRESHOLDS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct02/k6-run.stdout.log:9: trailing whitespace.
++  █ TOTAL RESULTS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct02/k6-run.stdout.log:23: trailing whitespace.
++    http_req_duration..............: avg=3.04ms  min=947.5µs med=1.14ms  max=7.04ms  p(90)=5.86ms  p(95)=6.45ms 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct02/k6-run.stdout.log:24: trailing whitespace.
++      { expected_response:true }...: avg=3.04ms  min=947.5µs med=1.14ms  max=7.04ms  p(90)=5.86ms  p(95)=6.45ms 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct02/k6-run.stdout.log:35: new blank line at EOF.
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct03/k6-run.stdout.log:3: trailing whitespace.
++  █ THRESHOLDS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct03/k6-run.stdout.log:9: trailing whitespace.
++  █ TOTAL RESULTS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct03/k6-run.stdout.log:23: trailing whitespace.
++    http_req_duration..............: avg=2.39ms  min=1.02ms  med=1.06ms  max=5.1ms   p(90)=4.29ms  p(95)=4.7ms  
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct03/k6-run.stdout.log:24: trailing whitespace.
++      { expected_response:true }...: avg=2.39ms  min=1.02ms  med=1.06ms  max=5.1ms   p(90)=4.29ms  p(95)=4.7ms  
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct03/k6-run.stdout.log:35: new blank line at EOF.
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct04/k6-run.stdout.log:3: trailing whitespace.
++  █ THRESHOLDS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct04/k6-run.stdout.log:9: trailing whitespace.
++  █ TOTAL RESULTS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct04/k6-run.stdout.log:24: trailing whitespace.
++    http_req_duration..............: avg=2.38ms  min=0s      med=503.8µs max=6.63ms  p(90)=5.41ms  p(95)=6.02ms 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct04/k6-run.stdout.log:25: trailing whitespace.
++      { expected_response:true }...: avg=2.38ms  min=0s      med=503.8µs max=6.63ms  p(90)=5.41ms  p(95)=6.02ms 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct04/k6-run.stdout.log:36: new blank line at EOF.
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct05/k6-run.stdout.log:3: trailing whitespace.
++  █ THRESHOLDS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct05/k6-run.stdout.log:9: trailing whitespace.
++  █ TOTAL RESULTS 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct05/k6-run.stdout.log:26: trailing whitespace.
++    http_req_duration..............: avg=2.49ms  min=504.29µs med=1.17ms  max=7.11ms  p(90)=5.35ms  p(95)=6.23ms 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct05/k6-run.stdout.log:27: trailing whitespace.
++      { expected_response:true }...: avg=2.49ms  min=504.29µs med=1.17ms  max=7.11ms  p(90)=5.35ms  p(95)=6.23ms 
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/regressao-e0/tradicional_ct05/k6-run.stdout.log:38: new blank line at EOF.
+evidencias/preparacao_e1/2026-11-05T18-49-16-610Z/versao-node.stdout.log:1: trailing whitespace.
++v24.10.0

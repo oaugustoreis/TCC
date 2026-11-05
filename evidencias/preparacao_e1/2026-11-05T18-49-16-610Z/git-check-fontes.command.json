@@ -1,0 +1,13 @@
+{
+  "command": [
+    "git",
+    "diff",
+    "--cached",
+    "--check",
+    "--",
+    "api/",
+    "scripts/",
+    "docs/"
+  ],
+  "exit_code": 0
+}

@@ -1,0 +1,38 @@
+✔ oráculo aceita fixture sintética conforme ct06 (1.6048ms)
+✔ oráculo aceita fixture sintética conforme ct07 (0.3419ms)
+✔ oráculo rejeita ordem de requisições (0.2516ms)
+✔ oráculo rejeita método (0.1823ms)
+✔ oráculo rejeita rota (0.1624ms)
+✔ oráculo rejeita query ausente (0.1432ms)
+✔ oráculo rejeita query extra (1.179ms)
+✔ oráculo rejeita Authorization incorreta (0.3379ms)
+✔ oráculo rejeita Host (0.3606ms)
+✔ oráculo rejeita Content-Type request (0.2189ms)
+✔ oráculo rejeita payload de login (0.1363ms)
+✔ oráculo rejeita body inesperado em GET (0.1023ms)
+✔ oráculo rejeita status (0.0793ms)
+✔ oráculo rejeita categoria obrigatória (0.0834ms)
+✔ oráculo rejeita filtro errado com dois produtos (0.0724ms)
+✔ oráculo rejeita JSON inválido (0.1452ms)
+✔ oráculo rejeita corpo null (0.0985ms)
+✔ oráculo rejeita check faltante (0.0799ms)
+✔ oráculo rejeita label errado (0.0798ms)
+✔ oráculo rejeita ordem de checks (0.0607ms)
+✔ oráculo rejeita check reprovado (0.0844ms)
+✔ oráculo rejeita VUs (0.1114ms)
+✔ oráculo rejeita iterações configuradas (0.0752ms)
+✔ oráculo rejeita iterações concluídas (0.0608ms)
+✔ oráculo rejeita http_reqs (0.056ms)
+✔ oráculo rejeita falha HTTP (0.055ms)
+✔ oráculo rejeita k6 com saída não zero (0.0867ms)
+✔ oráculo rejeita API não pronta (0.1658ms)
+✔ oráculo de estoque exige tipos e valores exatos (0.138ms)
+✔ profile modular aceita apenas shared-iterations com 1 VU/iteração (0.159ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 73.9924

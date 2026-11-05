@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "api/server.test.js"
+  ],
+  "cwd": "D:/TCC",
+  "started_utc": "2026-11-05T18:49:39.527Z",
+  "exit_code": 0,
+  "error": null
+}

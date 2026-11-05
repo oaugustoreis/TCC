@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "id": "ct06",
+      "passed": true,
+      "verdict": {
+        "passed": true,
+        "errors": [],
+        "expected_requests": 3,
+        "received_requests": 3,
+        "context": {
+          "token": "token-experimental",
+          "orderId": null
+        }
+      },
+      "received_requests": 3,
+      "k6_scenario_executed": false,
+      "k6_checks_verified": false,
+      "vu_iteration_verified": false,
+      "note": "A sonda verifica o contrato HTTP contra o oráculo; checks/VUs/iterações das futuras suítes permanecem não executados."
+    },
+    {
+      "id": "ct07",
+      "passed": true,
+      "verdict": {
+        "passed": true,
+        "errors": [],
+        "expected_requests": 3,
+        "received_requests": 3,
+        "context": {
+          "token": "token-experimental",
+          "orderId": null
+        }
+      },
+      "received_requests": 3,
+      "k6_scenario_executed": false,
+      "k6_checks_verified": false,
+      "vu_iteration_verified": false,
+      "note": "A sonda verifica o contrato HTTP contra o oráculo; checks/VUs/iterações das futuras suítes permanecem não executados."
+    }
+  ]
+}

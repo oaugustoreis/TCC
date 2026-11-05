@@ -1,0 +1,14 @@
+[
+  {
+    "status": 200,
+    "body": "{\"token\":\"token-experimental\",\"tokenType\":\"Bearer\"}"
+  },
+  {
+    "status": 200,
+    "body": "{\"productId\":\"p1\",\"quantity\":10,\"available\":true}"
+  },
+  {
+    "status": 200,
+    "body": "{\"productId\":\"p2\",\"quantity\":0,\"available\":false}"
+  }
+]

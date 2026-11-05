@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "scripts/validacao/oraculos.test.mjs"
+  ],
+  "cwd": "D:/TCC",
+  "started_utc": "2026-11-05T18:54:27.314Z",
+  "exit_code": 0,
+  "error": null
+}

@@ -1,0 +1,38 @@
+{
+  "created_utc": "2026-11-05T18:59:35.178Z",
+  "scope": "preparação funcional comum de E1",
+  "decision": "LIBERADO PARA IMPLEMENTAÇÃO MEDIDA SOB O PROTOCOLO",
+  "e0_regression": {
+    "executions": 10,
+    "received_requests": 28,
+    "passed_checks": 60,
+    "equivalent_pairs": 5,
+    "real_http": true
+  },
+  "contract_tests_passed": 9,
+  "oracle_tests_passed": 30,
+  "oracle_http_probe": {
+    "contracts_passed": 2,
+    "received_requests": 6,
+    "k6_scenarios_executed": false
+  },
+  "suites_unchanged": true,
+  "modular_files": 24,
+  "tags_unchanged": true,
+  "historical_files_unchanged": true,
+  "commits": {
+    "documentation_reorganization": "d27f1edcd835390e32ca2a2ca215de360a4dcfbc",
+    "api": "f1c52f8e3e37b5d6964f6a5a2ec17af74ec62d97",
+    "contracts": "47c242987c80c53aff1b42e7c4a37ff5e81a7bf9",
+    "validator": "cede8a039b45d33750ec6ae44de0f1e7708c62fe"
+  },
+  "operational_conditions": [
+    "sessões isoladas",
+    "ordem tradicional depois modular",
+    "captura de configuração por condição",
+    "controlador temporal externo antes dos prompts"
+  ],
+  "scenarios_ct06_to_ct15_implemented": false,
+  "experimental_effort_collected": false,
+  "e2_started": false
+}
