@@ -1,0 +1,12 @@
+✔ compara status, valores e tipos sem coerção (6.4777ms)
+✔ mesmo label agrupa campos em um check que exige todas as condições (4.7975ms)
+✔ valida arrays não vazios e rejeita campo ausente (5.8721ms)
+✔ aceita valores esperados falsy sem ignorar a comparação (1.2497ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 22.287

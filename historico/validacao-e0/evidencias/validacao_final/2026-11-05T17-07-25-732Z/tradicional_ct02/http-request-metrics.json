@@ -1,0 +1,44 @@
+[
+  {
+    "time": "2026-11-05T13:07:30.7963835-04:00",
+    "value": 1,
+    "tags": {
+      "expected_response": "true",
+      "group": "",
+      "method": "POST",
+      "name": "http://127.0.0.1:3334/auth/login",
+      "proto": "HTTP/1.1",
+      "scenario": "default",
+      "status": "200",
+      "url": "http://127.0.0.1:3334/auth/login"
+    }
+  },
+  {
+    "time": "2026-11-05T13:07:30.7974134-04:00",
+    "value": 1,
+    "tags": {
+      "expected_response": "true",
+      "group": "",
+      "method": "GET",
+      "name": "http://127.0.0.1:3334/products",
+      "proto": "HTTP/1.1",
+      "scenario": "default",
+      "status": "200",
+      "url": "http://127.0.0.1:3334/products"
+    }
+  },
+  {
+    "time": "2026-11-05T13:07:30.7984193-04:00",
+    "value": 1,
+    "tags": {
+      "expected_response": "true",
+      "group": "",
+      "method": "GET",
+      "name": "http://127.0.0.1:3334/products/p1",
+      "proto": "HTTP/1.1",
+      "scenario": "default",
+      "status": "200",
+      "url": "http://127.0.0.1:3334/products/p1"
+    }
+  }
+]

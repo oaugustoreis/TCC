@@ -1,0 +1,43 @@
+{
+  "scenario": "ct04",
+  "runs": [
+    {
+      "scenario": "ct04",
+      "suite": "tradicional",
+      "script": "tradicional/ct04.js",
+      "api_ready": false,
+      "exit_code": 99,
+      "profile_valid": true,
+      "expected_requests": 3,
+      "received_requests": 0,
+      "attempted_requests": 1,
+      "http_reqs": 1,
+      "iterations": 1,
+      "expected_checks": 7,
+      "observed_checks": 2,
+      "passed_checks": 0,
+      "real_success": false
+    },
+    {
+      "scenario": "ct04",
+      "suite": "modular",
+      "script": "modular/scenarios/pedidos/consulta.scenario.js",
+      "api_ready": false,
+      "exit_code": 99,
+      "profile_valid": true,
+      "expected_requests": 3,
+      "received_requests": 0,
+      "attempted_requests": 1,
+      "http_reqs": 1,
+      "iterations": 1,
+      "expected_checks": 7,
+      "observed_checks": 2,
+      "passed_checks": 0,
+      "real_success": false
+    }
+  ],
+  "requests_equal": null,
+  "checks_equal": null,
+  "response_statuses_equal": null,
+  "equivalent": false
+}

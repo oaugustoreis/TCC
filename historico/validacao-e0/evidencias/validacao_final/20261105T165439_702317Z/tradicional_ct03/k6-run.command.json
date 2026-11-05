@@ -1,0 +1,23 @@
+{
+  "command": [
+    "k6",
+    "run",
+    "--no-usage-report",
+    "--no-color",
+    "--quiet",
+    "--log-format=json",
+    "--log-output",
+    "file=/mnt/d/TCC/evidencias/validacao_final/20261105T165439_702317Z/tradicional_ct03/http-debug.jsonl",
+    "--http-debug=full",
+    "--summary-export",
+    "/mnt/d/TCC/evidencias/validacao_final/20261105T165439_702317Z/tradicional_ct03/summary.json",
+    "--out",
+    "json=/mnt/d/TCC/evidencias/validacao_final/20261105T165439_702317Z/tradicional_ct03/metrics.jsonl",
+    "-e",
+    "BASE_URL=http://127.0.0.1:3333",
+    "tradicional/ct03.js"
+  ],
+  "cwd": "/mnt/d/TCC",
+  "started_utc": "2026-11-05T16:54:41.369183+00:00",
+  "exit_code": 99
+}

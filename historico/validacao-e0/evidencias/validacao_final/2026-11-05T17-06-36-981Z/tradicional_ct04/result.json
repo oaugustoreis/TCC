@@ -1,0 +1,16 @@
+{
+  "scenario": "ct04",
+  "suite": "tradicional",
+  "script": "tradicional/ct04.js",
+  "api_ready": true,
+  "exit_code": 0,
+  "profile_valid": true,
+  "expected_requests": 3,
+  "received_requests": 3,
+  "http_reqs": 3,
+  "iterations": 1,
+  "expected_checks": 7,
+  "observed_checks": 7,
+  "passed_checks": 7,
+  "real_success": true
+}

@@ -1,0 +1,10 @@
+{
+  "command": [
+    "k6",
+    "inspect",
+    "modular/scenarios/pedidos/criacao.scenario.js"
+  ],
+  "cwd": "D:\\TCC",
+  "started_utc": "2026-11-05T17:07:25.574Z",
+  "exit_code": 0
+}

@@ -1,0 +1,62 @@
+{
+  "utc": "20261105T165439_702317Z",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "tools": {
+    "node": {
+      "command": [
+        "node",
+        "--version"
+      ],
+      "cwd": "/mnt/d/TCC",
+      "started_utc": "2026-11-05T16:54:39.854657+00:00",
+      "exit_code": 0,
+      "stdout": "v24.18.0\n",
+      "stderr": ""
+    },
+    "k6": {
+      "command": [
+        "k6",
+        "version"
+      ],
+      "cwd": "/mnt/d/TCC",
+      "started_utc": "2026-11-05T16:54:39.867180+00:00",
+      "exit_code": 0,
+      "stdout": "k6 v2.0.0 (commit/8c3be52cc1, go1.26.3, linux/amd64)\n",
+      "stderr": ""
+    },
+    "python": {
+      "command": [
+        "python3",
+        "--version"
+      ],
+      "cwd": "/mnt/d/TCC",
+      "started_utc": "2026-11-05T16:54:39.888894+00:00",
+      "exit_code": 0,
+      "stdout": "Python 3.12.3\n",
+      "stderr": ""
+    },
+    "system": {
+      "command": [
+        "uname",
+        "-a"
+      ],
+      "cwd": "/mnt/d/TCC",
+      "started_utc": "2026-11-05T16:54:39.897702+00:00",
+      "exit_code": 0,
+      "stdout": "Linux DESKTOP-K7T32M3 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux\n",
+      "stderr": ""
+    },
+    "git": {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/mnt/d/TCC",
+      "started_utc": "2026-11-05T16:54:39.908389+00:00",
+      "exit_code": 128,
+      "stdout": "",
+      "stderr": "fatal: not a git repository (or any parent up to mount point /mnt)\nStopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).\n"
+    }
+  }
+}

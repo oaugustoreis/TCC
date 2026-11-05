@@ -1,0 +1,17 @@
+{
+  "scenario": "ct01",
+  "suite": "modular",
+  "script": "modular/scenarios/autenticacao/autenticacao.scenario.js",
+  "api_ready": false,
+  "exit_code": 99,
+  "profile_valid": true,
+  "expected_requests": 1,
+  "received_requests": 0,
+  "attempted_requests": 1,
+  "http_reqs": 1,
+  "iterations": 1,
+  "expected_checks": 2,
+  "observed_checks": 2,
+  "passed_checks": 0,
+  "real_success": false
+}

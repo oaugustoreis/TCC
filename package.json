@@ -1,0 +1,12 @@
+{
+  "name": "tcc-k6-experimento",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "api": "node api/server.js",
+    "api:test": "node --test api/server.test.js"
+  },
+  "dependencies": {
+    "pulse-arch": "^1.3.9"
+  }
+}

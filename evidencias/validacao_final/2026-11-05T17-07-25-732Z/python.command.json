@@ -1,0 +1,10 @@
+{
+  "command": [
+    "python",
+    "--version"
+  ],
+  "cwd": "D:\\TCC",
+  "started_utc": "2026-11-05T17:07:26.180Z",
+  "exit_code": 127,
+  "error": "spawnSync python ENOENT"
+}

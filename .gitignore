@@ -1,0 +1,9 @@
+node_modules/
+reports/
+*.log
+__pycache__/
+*.pyc
+
+# Evidências autorais preservadas, inclusive stdout/stderr.
+!evidencias/**/*.log
+!historico/**/*.log

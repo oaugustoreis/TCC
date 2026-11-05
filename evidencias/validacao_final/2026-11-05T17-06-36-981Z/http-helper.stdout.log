@@ -1,0 +1,12 @@
+✔ GET envia Bearer, preserva opções k6 e retorna a Response original (5.4023ms)
+✔ POST e PATCH serializam objetos e preservam strings JSON (1.3452ms)
+✔ headers explícitos prevalecem e opções recebidas não são modificadas (1.1559ms)
+✔ corpos binários e null são encaminhados sem serialização JSON (2.1339ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13.9023

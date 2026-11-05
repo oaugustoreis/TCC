@@ -1,0 +1,44 @@
+[
+  {
+    "time": "2026-11-05T13:07:32.4952194-04:00",
+    "value": 1,
+    "tags": {
+      "expected_response": "true",
+      "group": "",
+      "method": "POST",
+      "name": "http://127.0.0.1:3334/auth/login",
+      "proto": "HTTP/1.1",
+      "scenario": "ct04",
+      "status": "200",
+      "url": "http://127.0.0.1:3334/auth/login"
+    }
+  },
+  {
+    "time": "2026-11-05T13:07:32.4972459-04:00",
+    "value": 1,
+    "tags": {
+      "expected_response": "true",
+      "group": "",
+      "method": "POST",
+      "name": "http://127.0.0.1:3334/orders",
+      "proto": "HTTP/1.1",
+      "scenario": "ct04",
+      "status": "201",
+      "url": "http://127.0.0.1:3334/orders"
+    }
+  },
+  {
+    "time": "2026-11-05T13:07:32.4984978-04:00",
+    "value": 1,
+    "tags": {
+      "expected_response": "true",
+      "group": "",
+      "method": "GET",
+      "name": "http://127.0.0.1:3334/orders/o1",
+      "proto": "HTTP/1.1",
+      "scenario": "ct04",
+      "status": "200",
+      "url": "http://127.0.0.1:3334/orders/o1"
+    }
+  }
+]

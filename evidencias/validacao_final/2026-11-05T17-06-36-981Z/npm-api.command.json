@@ -1,0 +1,10 @@
+{
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "npm.cmd run api"
+  ],
+  "cwd": "D:\\TCC",
+  "started_utc": "2026-11-05T17:06:37.489Z"
+}

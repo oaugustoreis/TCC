@@ -1,0 +1,9 @@
+{
+  "command": [
+    "k6",
+    "version"
+  ],
+  "cwd": "/mnt/d/TCC",
+  "started_utc": "2026-11-05T16:54:39.867180+00:00",
+  "exit_code": 0
+}

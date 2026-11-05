@@ -1,0 +1,33 @@
+{
+  "expected_file_count": 24,
+  "actual_file_count": 24,
+  "included_in_modular_code_metrics": [
+    "modular/flows/autenticacao/autenticacao.flow.js",
+    "modular/flows/catalogo/catalogo.flow.js",
+    "modular/flows/pedidos/atualizacao.flow.js",
+    "modular/flows/pedidos/consulta.flow.js",
+    "modular/flows/pedidos/criacao.flow.js",
+    "modular/helpers/checks/checks.js",
+    "modular/helpers/http/http.js",
+    "modular/profiles/autenticacao/autenticacao.profiles.js",
+    "modular/profiles/catalogo/catalogo.profiles.js",
+    "modular/profiles/comum/smoke.profile.js",
+    "modular/profiles/pedidos/atualizacao.profiles.js",
+    "modular/profiles/pedidos/consulta.profiles.js",
+    "modular/profiles/pedidos/criacao.profiles.js",
+    "modular/scenarios/autenticacao/autenticacao.scenario.js",
+    "modular/scenarios/catalogo/catalogo.scenario.js",
+    "modular/scenarios/pedidos/atualizacao.scenario.js",
+    "modular/scenarios/pedidos/consulta.scenario.js",
+    "modular/scenarios/pedidos/criacao.scenario.js",
+    "modular/use-cases/autenticacao/login.useCase.js",
+    "modular/use-cases/catalogo/getProduct.useCase.js",
+    "modular/use-cases/catalogo/listProducts.useCase.js",
+    "modular/use-cases/pedidos/createOrder.useCase.js",
+    "modular/use-cases/pedidos/getOrder.useCase.js",
+    "modular/use-cases/pedidos/updateOrder.useCase.js"
+  ],
+  "http_helper_included": true,
+  "checks_helper_included": true,
+  "note": "Inventário de escopo e hashes; sem experimentos definitivos ou coleta de LOC/duplicação/manutenção/reutilização."
+}

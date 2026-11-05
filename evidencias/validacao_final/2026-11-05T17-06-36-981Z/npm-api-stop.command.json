@@ -1,0 +1,12 @@
+{
+  "command": [
+    "taskkill",
+    "/PID",
+    "18144",
+    "/T",
+    "/F"
+  ],
+  "cwd": "D:\\TCC",
+  "started_utc": "2026-11-05T17:06:39.043Z",
+  "exit_code": 1
+}

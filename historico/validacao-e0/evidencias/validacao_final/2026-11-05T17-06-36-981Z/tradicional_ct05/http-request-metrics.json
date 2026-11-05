@@ -1,0 +1,58 @@
+[
+  {
+    "time": "2026-11-05T13:07:27.0111459-04:00",
+    "value": 1,
+    "tags": {
+      "expected_response": "true",
+      "group": "",
+      "method": "POST",
+      "name": "http://127.0.0.1:3333/auth/login",
+      "proto": "HTTP/1.1",
+      "scenario": "default",
+      "status": "200",
+      "url": "http://127.0.0.1:3333/auth/login"
+    }
+  },
+  {
+    "time": "2026-11-05T13:07:27.0131872-04:00",
+    "value": 1,
+    "tags": {
+      "expected_response": "true",
+      "group": "",
+      "method": "POST",
+      "name": "http://127.0.0.1:3333/orders",
+      "proto": "HTTP/1.1",
+      "scenario": "default",
+      "status": "201",
+      "url": "http://127.0.0.1:3333/orders"
+    }
+  },
+  {
+    "time": "2026-11-05T13:07:27.014221-04:00",
+    "value": 1,
+    "tags": {
+      "expected_response": "true",
+      "group": "",
+      "method": "PATCH",
+      "name": "http://127.0.0.1:3333/orders/o1/status",
+      "proto": "HTTP/1.1",
+      "scenario": "default",
+      "status": "200",
+      "url": "http://127.0.0.1:3333/orders/o1/status"
+    }
+  },
+  {
+    "time": "2026-11-05T13:07:27.0150178-04:00",
+    "value": 1,
+    "tags": {
+      "expected_response": "true",
+      "group": "",
+      "method": "GET",
+      "name": "http://127.0.0.1:3333/orders/o1",
+      "proto": "HTTP/1.1",
+      "scenario": "default",
+      "status": "200",
+      "url": "http://127.0.0.1:3333/orders/o1"
+    }
+  }
+]

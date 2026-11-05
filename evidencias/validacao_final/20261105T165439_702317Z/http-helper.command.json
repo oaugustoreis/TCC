@@ -1,0 +1,10 @@
+{
+  "command": [
+    "node",
+    "--experimental-vm-modules",
+    "tests/http-helper.test.js"
+  ],
+  "cwd": "/mnt/d/TCC",
+  "started_utc": "2026-11-05T16:54:39.920638+00:00",
+  "exit_code": 0
+}

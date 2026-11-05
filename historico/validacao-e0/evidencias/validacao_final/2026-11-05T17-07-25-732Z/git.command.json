@@ -1,0 +1,10 @@
+{
+  "command": [
+    "git",
+    "rev-parse",
+    "HEAD"
+  ],
+  "cwd": "D:\\TCC",
+  "started_utc": "2026-11-05T17:07:26.188Z",
+  "exit_code": 128
+}

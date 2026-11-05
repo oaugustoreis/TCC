@@ -1,0 +1,22 @@
+[
+  {
+    "name": "login 200",
+    "value": 0,
+    "time": "2026-11-05T12:54:41.391316594-04:00",
+    "tags": {
+      "check": "login 200",
+      "group": "",
+      "scenario": "default"
+    }
+  },
+  {
+    "name": "token presente",
+    "value": 0,
+    "time": "2026-11-05T12:54:41.391316594-04:00",
+    "tags": {
+      "check": "token presente",
+      "group": "",
+      "scenario": "default"
+    }
+  }
+]

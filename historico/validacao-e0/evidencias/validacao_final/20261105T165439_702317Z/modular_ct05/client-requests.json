@@ -1,0 +1,18 @@
+[
+  {
+    "sequence": 1,
+    "method": "POST",
+    "path": "/auth/login",
+    "protocol": "HTTP/1.1",
+    "headers": {
+      "host": "127.0.0.1:3333",
+      "user-agent": "Grafana k6/2.0.0",
+      "content-length": "48",
+      "content-type": "application/json",
+      "accept-encoding": "gzip"
+    },
+    "payload": "{\"username\":\"pesquisador\",\"password\":\"teste123\"}",
+    "request_id": "7d1d7b63-351b-48a4-8556-e93bcf01a955",
+    "observation": "client_attempt"
+  }
+]

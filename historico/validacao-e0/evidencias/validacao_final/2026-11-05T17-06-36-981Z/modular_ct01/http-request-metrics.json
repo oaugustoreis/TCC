@@ -1,0 +1,16 @@
+[
+  {
+    "time": "2026-11-05T13:07:24.5597437-04:00",
+    "value": 1,
+    "tags": {
+      "expected_response": "true",
+      "group": "",
+      "method": "POST",
+      "name": "http://127.0.0.1:3333/auth/login",
+      "proto": "HTTP/1.1",
+      "scenario": "ct01",
+      "status": "200",
+      "url": "http://127.0.0.1:3333/auth/login"
+    }
+  }
+]

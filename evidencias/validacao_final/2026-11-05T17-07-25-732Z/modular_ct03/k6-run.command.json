@@ -1,0 +1,23 @@
+{
+  "command": [
+    "k6",
+    "run",
+    "--no-usage-report",
+    "--no-color",
+    "--quiet",
+    "--log-format=json",
+    "--log-output",
+    "file=D:\\TCC\\evidencias\\validacao_final\\2026-11-05T17-07-25-732Z\\modular_ct03\\http-debug.jsonl",
+    "--http-debug=full",
+    "--summary-export",
+    "D:\\TCC\\evidencias\\validacao_final\\2026-11-05T17-07-25-732Z\\modular_ct03\\summary.json",
+    "--out",
+    "json=D:\\TCC\\evidencias\\validacao_final\\2026-11-05T17-07-25-732Z\\modular_ct03\\metrics.jsonl",
+    "-e",
+    "BASE_URL=http://127.0.0.1:3334",
+    "modular/scenarios/pedidos/criacao.scenario.js"
+  ],
+  "cwd": "D:\\TCC",
+  "started_utc": "2026-11-05T17:07:31.621Z",
+  "exit_code": 0
+}

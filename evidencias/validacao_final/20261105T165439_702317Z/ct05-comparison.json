@@ -1,0 +1,43 @@
+{
+  "scenario": "ct05",
+  "runs": [
+    {
+      "scenario": "ct05",
+      "suite": "tradicional",
+      "script": "tradicional/ct05.js",
+      "api_ready": false,
+      "exit_code": 99,
+      "profile_valid": true,
+      "expected_requests": 4,
+      "received_requests": 0,
+      "attempted_requests": 1,
+      "http_reqs": 1,
+      "iterations": 1,
+      "expected_checks": 9,
+      "observed_checks": 2,
+      "passed_checks": 0,
+      "real_success": false
+    },
+    {
+      "scenario": "ct05",
+      "suite": "modular",
+      "script": "modular/scenarios/pedidos/atualizacao.scenario.js",
+      "api_ready": false,
+      "exit_code": 99,
+      "profile_valid": true,
+      "expected_requests": 4,
+      "received_requests": 0,
+      "attempted_requests": 1,
+      "http_reqs": 1,
+      "iterations": 1,
+      "expected_checks": 9,
+      "observed_checks": 2,
+      "passed_checks": 0,
+      "real_success": false
+    }
+  ],
+  "requests_equal": null,
+  "checks_equal": null,
+  "response_statuses_equal": null,
+  "equivalent": false
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "time": "2026-11-05T12:54:40.605305417-04:00",
+    "value": 1,
+    "tags": {
+      "error": "dial: unknown errno 1 error with msg `operation not permitted`",
+      "error_code": "1213",
+      "expected_response": "false",
+      "group": "",
+      "method": "POST",
+      "name": "http://127.0.0.1:3333/auth/login",
+      "scenario": "ct01",
+      "status": "0",
+      "url": "http://127.0.0.1:3333/auth/login"
+    }
+  }
+]
