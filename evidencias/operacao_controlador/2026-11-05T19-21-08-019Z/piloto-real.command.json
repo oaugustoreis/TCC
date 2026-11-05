@@ -1,0 +1,12 @@
+{
+  "command": [
+    "node",
+    "scripts/medicao/piloto-operacional.mjs",
+    "--dir",
+    "D:/TCC/evidencias/operacao_controlador/2026-11-05T19-21-08-019Z/ensaio-real",
+    "--codex",
+    "C:\\Users\\ask5g\\.codex\\packages\\app-server-daemon\\releases\\0.166.0-x86_64-pc-windows-msvc\\bin\\codex.exe"
+  ],
+  "exit_code": 1,
+  "signal": null
+}

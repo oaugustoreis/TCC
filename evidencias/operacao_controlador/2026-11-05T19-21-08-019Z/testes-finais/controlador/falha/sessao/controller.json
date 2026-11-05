@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "pid": 20948,
+  "unit_id": "TESTE",
+  "mode": "ensaio",
+  "closed": true,
+  "clock_session_id": "903e80fb-bc04-4c37-9cdb-59304dfb6f17",
+  "updated_utc": "2026-11-05T19:28:03.888Z",
+  "heartbeat_monotonic_ns": "16618652589400",
+  "main": null,
+  "auxiliary_human": null,
+  "turns": [
+    {
+      "number": 1,
+      "start_event_id": "e46f490a-97c3-4e41-98ac-4ce804946259",
+      "clock_session_id": "903e80fb-bc04-4c37-9cdb-59304dfb6f17",
+      "start_utc": "2026-11-05T19:28:03.867Z",
+      "prompt_sha256": "28226175c28a9341ea270525a859d02960fff687a52b081beb06985103aca104",
+      "prompt_path": "turnos/001/prompt.txt",
+      "transport": "codex-cli-ensaio",
+      "status": "failed",
+      "response_received": false,
+      "dispatch_event_id": "fa4ab085-e888-4721-b399-b3936449d5ba",
+      "end_event_id": "5b65fda1-1382-480d-bd62-7ba915895344",
+      "end_utc": "2026-11-05T19:28:03.882Z",
+      "received_event_id": "2ad25503-e4ad-4ce1-b68c-460e52f7aff4",
+      "exit_code": -4058,
+      "signal": null,
+      "transport_error": "spawn D:\\TCC\\evidencias\\operacao_controlador\\2026-11-05T19-21-08-019Z\\testes-finais\\controlador\\falha\\nao-existe.exe ENOENT"
+    }
+  ]
+}

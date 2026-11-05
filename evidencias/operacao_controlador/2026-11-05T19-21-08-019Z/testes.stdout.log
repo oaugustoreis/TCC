@@ -1,0 +1,20 @@
+✔ persistência anterior ao término, exclusividade e referência (12.9189ms)
+✔ pausa/retomada e trilhas auxiliares não duplicam tempo ativo (11.6303ms)
+✔ queda preserva início; recuperação cria outro relógio e duração desconhecida (98.6748ms)
+✔ JSON truncado é detectado e não reescrito (5.2464ms)
+✔ tentativa de misturar sessões de relógio é rejeitada (10.3845ms)
+✔ marcadores externos persistem antes da entrega e separam humanos, Codex e sobreposição (52.7209ms)
+✔ pausa e retomada exigem ação explícita e motivo (21.567ms)
+✔ auditoria rejeita despacho ausente e resposta não arquivada (26.3545ms)
+✔ auditoria detecta alteração do prompt depois da entrega (43.3203ms)
+✔ modo experimental recusa simulação e transporte CLI de ensaio (10.7409ms)
+✔ falha de transporte é registrada e não aprovada como resposta (34.5248ms)
+✔ limite é checado antes de entregar novo prompt sem inventar duração (15.3463ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 284.2684

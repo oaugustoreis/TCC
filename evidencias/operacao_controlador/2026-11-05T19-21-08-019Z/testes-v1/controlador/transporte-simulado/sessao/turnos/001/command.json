@@ -1,0 +1,9 @@
+{
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "args": [
+    "D:\\TCC\\scripts\\medicao\\simulador-transporte.mjs",
+    "--json",
+    "-"
+  ],
+  "cwd": "D:\\TCC\\evidencias\\operacao_controlador\\2026-11-05T19-21-08-019Z\\testes-v1\\controlador\\transporte-simulado"
+}

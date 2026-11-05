@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "pid": 22508,
+  "unit_id": "TESTE",
+  "mode": "ensaio",
+  "closed": true,
+  "clock_session_id": "e6e82717-e8f9-4243-8d0d-8c4c83afc0b4",
+  "updated_utc": "2026-11-05T19:26:24.480Z",
+  "main": null,
+  "auxiliary_human": null,
+  "turns": [
+    {
+      "number": 1,
+      "start_event_id": "452bdbe0-1f6f-4400-a3a6-d50218265eaf",
+      "clock_session_id": "e6e82717-e8f9-4243-8d0d-8c4c83afc0b4",
+      "start_utc": "2026-11-05T19:26:24.460Z",
+      "prompt_sha256": "28226175c28a9341ea270525a859d02960fff687a52b081beb06985103aca104",
+      "prompt_path": "turnos/001/prompt.txt",
+      "transport": "manual",
+      "status": "received",
+      "response_received": true,
+      "dispatch_event_id": "c7362ab1-5391-40b3-93d8-c565f51021e0",
+      "end_event_id": "fbd58c80-c0d3-4c7d-845d-940e36977ad6",
+      "end_utc": "2026-11-05T19:26:24.467Z",
+      "received_event_id": "d2a4d540-e055-49db-82ad-7d31c3781af8",
+      "response_sha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df",
+      "response_path": "turnos/001/response.txt"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "pid": 22508,
+  "unit_id": "TESTE",
+  "mode": "ensaio",
+  "closed": true,
+  "clock_session_id": "f98122e9-6975-4fa0-a17e-12053df9731a",
+  "updated_utc": "2026-11-05T19:26:24.544Z",
+  "main": null,
+  "auxiliary_human": null,
+  "turns": []
+}

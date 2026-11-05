@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "pid": 10436,
+  "unit_id": "ENSAIO-OPERACIONAL-NEUTRO",
+  "mode": "ensaio",
+  "closed": true,
+  "clock_session_id": "a852ed37-9815-4e3f-8610-4d71fa13339c",
+  "updated_utc": "2026-11-05T19:28:52.750Z",
+  "heartbeat_monotonic_ns": "16667515738200",
+  "main": null,
+  "auxiliary_human": null,
+  "turns": [
+    {
+      "number": 1,
+      "start_event_id": "23490547-2e0e-49e5-862a-2f7475413944",
+      "clock_session_id": "a852ed37-9815-4e3f-8610-4d71fa13339c",
+      "start_utc": "2026-11-05T19:28:52.684Z",
+      "prompt_sha256": "6e5c5fef81cbb92bc06c50cf92a419214cf172b7db75a070fc651b7e0f4a7473",
+      "prompt_path": "turnos/001/prompt.txt",
+      "transport": "simulador-jsonl",
+      "status": "received",
+      "response_received": true,
+      "dispatch_event_id": "be862d23-df1d-400e-84df-5f368ea7aefb",
+      "end_event_id": "30620cf6-43ca-42fa-9b39-309051b636da",
+      "end_utc": "2026-11-05T19:28:52.736Z",
+      "received_event_id": "1340e0c9-3f35-4dce-8cf1-c99d1516691e",
+      "response_sha256": "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5",
+      "response_path": "turnos/001/response.txt",
+      "exit_code": 0,
+      "signal": null,
+      "transport_error": null
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "pid": 22508,
+  "unit_id": "TESTE",
+  "mode": "experimental",
+  "closed": true,
+  "clock_session_id": "a397aee0-3fcb-46f2-81cc-81962ddee114",
+  "updated_utc": "2026-11-05T19:26:24.494Z",
+  "main": null,
+  "auxiliary_human": null,
+  "turns": []
+}

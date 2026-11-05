@@ -56,3 +56,9 @@ node scripts/prontidao/auditar.mjs <pasta-nova-da-auditoria>
 COLLECTOR_TEST_DIR pode definir a pasta dos testes. Piloto: ordenar palavras e somar inteiros, com arquivos somente na pasta passada. Não acessa API, k6 ou suítes. Categorias humanas/Codex usadas em testes unitários são intervalos simulados, identificados como tal, não medições de trabalho real.
 
 Cada repetição usa pasta nova; manter também as tentativas anteriores. O resultado do piloto delimita explicitamente seu escopo, sem extrapolar milissegundos de subprocessos para esforço de implementação.
+
+## Ponte operacional externa
+
+Para operar os marcadores sem copiar IDs manualmente, usar controlador.mjs, em um terminal do operador anterior ao turno medido. O coletor original permanece inalterado. Guia completo: [GUIA_OPERACIONAL_CONTROLE_TEMPO.md](../../docs/GUIA_OPERACIONAL_CONTROLE_TEMPO.md).
+
+Teste técnico: `node --test scripts/medicao/coletor.test.mjs scripts/medicao/controlador.test.mjs`. Ensaio neutro: `node scripts/medicao/piloto-operacional.mjs --dir <pasta-nova> --codex <codex.exe>`. `--simulador` testa transporte local sem ser Codex nem liberar E1.

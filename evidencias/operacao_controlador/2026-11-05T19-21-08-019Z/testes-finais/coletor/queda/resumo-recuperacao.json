@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "events": 6,
+  "clock_sessions": 2,
+  "intervals": [
+    {
+      "start_event_id": "65bef889-d570-49ab-85d1-e5b65653f860",
+      "clock_session_id": "a63842fd-ebbb-46c3-ab1b-a50803567b41",
+      "category": "coordenacao_comum",
+      "track": "principal",
+      "duration_ms": 0.4925,
+      "activity": "após recuperação"
+    }
+  ],
+  "open_intervals": [
+    {
+      "start_event_id": "4d0ac6e8-ea53-4120-84d5-989137d13795",
+      "clock_session_id": "0cc8d0e8-cc28-4ca0-8c24-bb0ccbe212d4",
+      "category": "codex_execucao",
+      "track": "principal",
+      "duration_ms": null,
+      "reason": "início persistido sem término"
+    }
+  ],
+  "complete": false,
+  "session_elapsed": [
+    {
+      "clock_session_id": "0cc8d0e8-cc28-4ca0-8c24-bb0ccbe212d4",
+      "elapsed_ms": null
+    },
+    {
+      "clock_session_id": "a63842fd-ebbb-46c3-ab1b-a50803567b41",
+      "elapsed_ms": 1.7496
+    }
+  ],
+  "unit_elapsed_ms": null,
+  "inter_session_gaps_unknown": true,
+  "known_category_ms": {
+    "humano_ativo": 0,
+    "codex_execucao": 0,
+    "ferramenta_externa": 0,
+    "pausa": 0,
+    "bloqueio_ambiente": 0,
+    "coordenacao_comum": 0.4925
+  },
+  "known_human_observed_ms": 0,
+  "known_codex_execution_ms": 0,
+  "known_condition_active_ms": 0,
+  "known_command_ms": 0,
+  "condition_active_ms": null,
+  "codex_execution_ms": null,
+  "human_observed_ms": null,
+  "note": "Categorias sem intervalo observado têm métricas públicas null, não esforço zero. Totais known são somas apenas dos intervalos encerrados. Totais conhecidos não imputam intervalos abertos. Nenhuma subtração entre sessões; subeventos de comando não são somados ao tempo ativo."
+}

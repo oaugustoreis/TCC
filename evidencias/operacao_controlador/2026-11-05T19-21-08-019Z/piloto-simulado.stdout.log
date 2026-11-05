@@ -1,0 +1,118 @@
+{
+  "scope": "ensaio operacional neutro, não E1",
+  "real_codex_transport": false,
+  "codex_subject_simulated": true,
+  "human_phases_simulated": true,
+  "expected_response": "10",
+  "observed_response": "10",
+  "passed": true,
+  "audit": {
+    "passed": true,
+    "errors": [],
+    "unit_id": "ENSAIO-OPERACIONAL-NEUTRO",
+    "mode": "ensaio",
+    "experimental_measurement": false,
+    "dispatch_evidence": [
+      {
+        "turn": 1,
+        "transport": "simulador-jsonl",
+        "manual_attestation": false,
+        "automatic_transport": true
+      }
+    ],
+    "human_observed_ms": null,
+    "human_observation_simulated": true,
+    "codex_subject_simulated": true,
+    "codex_execution_ms": null,
+    "codex_interval_attempts_ms": 52.5765,
+    "active_total_ms": null,
+    "technical_category_totals_ms": {
+      "humano_ativo": 10.466899999999999,
+      "codex_execucao": 52.5765,
+      "ferramenta_externa": 0,
+      "pausa": 1.7864,
+      "bloqueio_ambiente": 0,
+      "coordenacao_comum": 0
+    },
+    "summary": {
+      "schema_version": 1,
+      "events": 20,
+      "clock_sessions": 1,
+      "intervals": [
+        {
+          "start_event_id": "54b4a48f-cc23-4b3b-99a1-f181fece2fad",
+          "clock_session_id": "a852ed37-9815-4e3f-8610-4d71fa13339c",
+          "category": "humano_ativo",
+          "track": "principal",
+          "duration_ms": 2.532,
+          "activity": "SIMULAÇÃO da preparação humana, para testar categorias; não é esforço observado"
+        },
+        {
+          "start_event_id": "97a771b9-28e0-4669-95af-7c04628e4a14",
+          "clock_session_id": "a852ed37-9815-4e3f-8610-4d71fa13339c",
+          "category": "pausa",
+          "track": "principal",
+          "duration_ms": 1.7864,
+          "activity": "pausa"
+        },
+        {
+          "start_event_id": "2e8400e8-7715-40c1-9f1d-8e31914c1280",
+          "clock_session_id": "a852ed37-9815-4e3f-8610-4d71fa13339c",
+          "category": "humano_ativo",
+          "track": "principal",
+          "duration_ms": 5.9043,
+          "activity": "SIMULAÇÃO da preparação humana, para testar categorias; não é esforço observado"
+        },
+        {
+          "start_event_id": "23490547-2e0e-49e5-862a-2f7475413944",
+          "clock_session_id": "a852ed37-9815-4e3f-8610-4d71fa13339c",
+          "category": "codex_execucao",
+          "track": "principal",
+          "duration_ms": 52.5765,
+          "activity": "Turno 1"
+        },
+        {
+          "start_event_id": "e9f3f865-feeb-46c6-ba82-77f77746ce41",
+          "clock_session_id": "a852ed37-9815-4e3f-8610-4d71fa13339c",
+          "category": "humano_ativo",
+          "track": "principal",
+          "duration_ms": 2.0306,
+          "activity": "SIMULAÇÃO da conferência humana após resposta, não é esforço observado"
+        }
+      ],
+      "open_intervals": [],
+      "complete": true,
+      "session_elapsed": [
+        {
+          "clock_session_id": "a852ed37-9815-4e3f-8610-4d71fa13339c",
+          "elapsed_ms": 81.1722
+        }
+      ],
+      "unit_elapsed_ms": 81.1722,
+      "inter_session_gaps_unknown": false,
+      "known_category_ms": {
+        "humano_ativo": 10.466899999999999,
+        "codex_execucao": 52.5765,
+        "ferramenta_externa": 0,
+        "pausa": 1.7864,
+        "bloqueio_ambiente": 0,
+        "coordenacao_comum": 0
+      },
+      "known_human_observed_ms": 10.466899999999999,
+      "known_codex_execution_ms": 52.5765,
+      "known_condition_active_ms": 63.043400000000005,
+      "known_command_ms": 0,
+      "condition_active_ms": 63.043400000000005,
+      "codex_execution_ms": 52.5765,
+      "human_observed_ms": 10.466899999999999,
+      "note": "Categorias sem intervalo observado têm métricas públicas null, não esforço zero. Totais known são somas apenas dos intervalos encerrados. Totais conhecidos não imputam intervalos abertos. Nenhuma subtração entre sessões; subeventos de comando não são somados ao tempo ativo."
+    },
+    "note": "Marcadores manuais são observações do operador; não provam envio automático. Simulação humana nunca é esforço humano real. Este auditor não substitui captura de configuração nem isolamento do protocolo."
+  },
+  "metadata": {
+    "model_requested": "gpt-6.1-sol",
+    "reasoning_requested": "low",
+    "sandbox_requested": "read-only",
+    "note": "Perfil read-only somente para o ensaio neutro; não substitui a configuração congelada para E1 nem constitui sua recaptura efetiva."
+  }
+}

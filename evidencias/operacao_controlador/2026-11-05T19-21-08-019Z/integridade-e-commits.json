@@ -1,0 +1,14 @@
+{
+  "utc": "2026-11-05T19:35:10.278Z",
+  "controller_commit": "e4e87942754cc4b0bdff176a5410d53ae0547562",
+  "tests_commit": "04a00d8cc1ddc0cbae9dbe382ccd426aeb20bfca",
+  "branch": "infra/controlador-tempo",
+  "frozen_collector_unchanged": true,
+  "protocol_and_tags_unchanged": true,
+  "api_and_suites_and_validator_unchanged": true,
+  "experimental_unit_started": false,
+  "blocked_attempt_times_reconstructed": false,
+  "real_codex_rehearsal_complete": false,
+  "technical_simulator_complete": true,
+  "tests_passed": 13
+}

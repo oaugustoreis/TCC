@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "pid": 9060,
+  "unit_id": "TESTE",
+  "mode": "experimental",
+  "closed": true,
+  "clock_session_id": "26267edb-5f22-45f2-b011-45d4c7ee8790",
+  "updated_utc": "2026-11-05T19:29:44.383Z",
+  "heartbeat_monotonic_ns": "16719148163100",
+  "main": null,
+  "auxiliary_human": null,
+  "turns": []
+}

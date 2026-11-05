@@ -1,0 +1,10 @@
+{
+  "utc": "2026-11-05T19:21:08.096Z",
+  "head": "72285183d395bd44aead1cafab8d8eccb4cff7a0",
+  "status": "?? docs/RELATORIO_E1_TRADICIONAL.md\n?? evidencias/bloqueios/\n?? evidencias/operacao_controlador/",
+  "tags": {
+    "e0-baseline-validada": "b584945778f438d5579d02b6ec9806521d744b7f",
+    "protocolo-evolucao-v1.0": "304cd0ba8e98b7be60fff02571d251454ffbbaec"
+  },
+  "scope": "infraestrutura operacional de medição; não é E1"
+}
