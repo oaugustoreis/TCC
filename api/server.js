@@ -1,7 +1,8 @@
 import http from 'node:http';
 const PORT = Number(process.env.PORT || 3333);
 const TOKEN = 'token-experimental';
-const products = [{ id: 'p1', name: 'Produto A', price: 100 }, { id: 'p2', name: 'Produto B', price: 50 }];
+const products = [{ id: 'p1', name: 'Produto A', price: 100, category: 'principal' }, { id: 'p2', name: 'Produto B', price: 50, category: 'acessorio' }];
+const stockQuantities = { p1: 10, p2: 0 };
 let orders = new Map();
 let nextId = 1;
 function send(res, status, body) { res.writeHead(status, { 'content-type': 'application/json; charset=utf-8' }); res.end(JSON.stringify(body)); }
@@ -13,7 +14,8 @@ async function parseBody(req) {
 }
 export function createServer() {
  return http.createServer(async (req, res) => {
-  const path = new URL(req.url, 'http://localhost').pathname;
+  const url = new URL(req.url, 'http://localhost');
+  const path = url.pathname;
   try {
    if (req.method === 'GET' && path === '/health') return send(res, 200, { status: 'ok' });
    if (req.method === 'POST' && path === '/auth/login') {
@@ -22,7 +24,17 @@ export function createServer() {
       ? send(res, 200, { token: TOKEN, tokenType: 'Bearer' }) : send(res, 401, { error: 'Credenciais inválidas' });
    }
    if (!authorized(req)) return send(res, 401, { error: 'Não autorizado' });
-   if (req.method === 'GET' && path === '/products') return send(res, 200, { items: products });
+   if (req.method === 'GET' && path === '/products') {
+    const category = url.searchParams.get('category');
+    return send(res, 200, { items: category === null ? products : products.filter(p => p.category === category) });
+   }
+   const stock = path.match(/^\/products\/([^/]+)\/stock$/);
+   if (req.method === 'GET' && stock) {
+    const found = products.find(p => p.id === stock[1]);
+    if (!found) return send(res, 404, { error: 'Produto não encontrado' });
+    const quantity = stockQuantities[found.id];
+    return send(res, 200, { productId: found.id, quantity, available: quantity > 0 });
+   }
    const product = path.match(/^\/products\/([^/]+)$/);
    if (req.method === 'GET' && product) {
     const found = products.find(p => p.id === product[1]);
