@@ -1,0 +1,9 @@
+{
+  "command": [
+    "node",
+    "scripts/medicao/piloto.mjs",
+    "D:/TCC/evidencias/prontidao/2026-11-05T17-36-24-859Z/piloto-neutro"
+  ],
+  "exit_code": 0,
+  "error": null
+}

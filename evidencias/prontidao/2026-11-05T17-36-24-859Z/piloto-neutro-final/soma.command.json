@@ -1,0 +1,11 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "-e",
+    "const fs=require('node:fs');const p=require('node:path');const d=process.argv[1];fs.writeFileSync(p.join(d,'soma.json'),JSON.stringify({sum:[2,3,5].reduce((a,b)=>a+b,0)}));",
+    "D:\\TCC\\evidencias\\prontidao\\2026-11-05T17-36-24-859Z\\piloto-neutro-final"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": ""
+}

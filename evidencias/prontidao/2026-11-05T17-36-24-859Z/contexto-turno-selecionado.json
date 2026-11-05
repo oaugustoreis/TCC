@@ -1,0 +1,21 @@
+{
+  "source": "C:/Users/ask5g/.codex/sessions/2026/11/05/rollout-2026-11-05T13-03-45-01a1acaa-9f7b-7cc3-9c35-507cf30b5bdc.jsonl",
+  "timestamp": "2026-11-05T17:35:25.593Z",
+  "turn_id": "01a1acc7-9d60-7222-baf7-2abe7df58a4e",
+  "model": "gpt-6.1-sol",
+  "approval_policy": {
+    "granular": {
+      "sandbox_approval": false,
+      "rules": false,
+      "skill_approval": false,
+      "request_permissions": true,
+      "mcp_elicitations": true
+    }
+  },
+  "sandbox_policy": {
+    "type": "workspace-write",
+    "network_access": false,
+    "exclude_tmpdir_env_var": false,
+    "exclude_slash_tmp": false
+  }
+}

@@ -199,3 +199,9 @@ Aceitação de lote exige todos os critérios novos, regressão dos anteriores, 
 Cada novo arquivo/edição/defeito registra o(s) CT(s) atendido(s); componentes compartilhados podem ter vários CTs. As contagens e sequências da matriz devem alimentar o futuro validador em commit comum separado, antes das implementações medidas.
 
 Contratos ambíguos são resolvidos por emenda antes do lote, aplicada aos dois braços; não ajustar a aceitação para acomodar uma solução já produzida. Toda mudança de contrato precisa declarar efeitos nos cenários antigos, novos, fixtures, oráculos e métricas. Os dez novos cenários permanecem não implementados nesta entrega.
+
+## Conferência de prontidão de 05/11/2026
+
+A auditoria scripts/prontidao/auditar.mjs conta os índices/ranges de operações de CT-06–CT-15, confere dois checks por resposta nova, a sequência de IDs, os cinco cenários E0 e as somas por etapa. Totais confirmados por suíte: E0 14/30; E1 20/42; E2 34/70; E3 42/86; E4 66/134 (requests/checks). Não houve mudança nos requisitos ou nos números previstos. Esses valores continuam expectativas, não execuções da expansão.
+
+A revisão manual confirmou que os dois braços recebem os mesmos dados, ordem, labels e predicados. A API e a futura validação de E1 continuam pendentes; nenhuma equivalência de CT-06–CT-15 é declarada. Evidências e decisão em [RELATORIO_PRONTIDAO_EXPERIMENTO.md](RELATORIO_PRONTIDAO_EXPERIMENTO.md).

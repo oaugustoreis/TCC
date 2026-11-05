@@ -36,7 +36,7 @@ Os três documentos são a especificação prospectiva v1.0. Antes de qualquer u
 4. Ensaiar o mecanismo de registro em tarefa neutra fora das suítes. Não desenvolver CT-06–CT-15 no ensaio. Registrar o piloto separadamente, sem usar seus tempos como resultados.
 5. Registrar revisão dos contratos, critérios, ordem e campos de coleta; criar a tag e guardar o SHA. Não mudar o protocolo após conhecer resultados sem emenda datada e nova versão.
 
-Nesta entrega, o conteúdo v1.0 é registrado em commit de preparação; a tag de congelamento definitivo fica reservada para a conferência de prontidão acima. Não há medição autorizada implicitamente pela existência dos documentos.
+A preparação inicial registrou o conteúdo v1.0 antes do piloto. A revisão de prontidão implementa o coletor, executa o piloto neutro e captura a configuração efetiva; a decisão de congelamento e suas evidências estão em [RELATORIO_PRONTIDAO_EXPERIMENTO.md](RELATORIO_PRONTIDAO_EXPERIMENTO.md). A tag protocolo-evolucao-v1.0 identifica o commit conferido, sem autorizar implicitamente a implementação de cenários.
 
 O desenho pode ser congelado antes de implementar a API. Cada lote tem gate adicional de prontidão: API e testes de contrato em commits próprios, regressão E0 aprovada, validador comum apto a todos os cenários do estado, fixtures e oráculos congelados. Esse trabalho comum precede as duas unidades medidas.
 
@@ -82,3 +82,11 @@ CT-01–CT-05 não serão reescritos ou fortalecidos silenciosamente. Mudança i
 Apresentar resultados dos oito lotes, diferenças pareadas e acumulados, distinguindo tempo humano, tempo Codex, espera automática, alterações, reutilização e defeitos/correções. Relacionar os resultados ao conteúdo dos lotes, que variam em quantidade e domínio. Não calcular tempo de E0 com base na conversa antiga.
 
 Um projeto, um operador e um percurso assistido por IA limitam generalização. Aprendizagem, ordem, história, dependências e mudanças de modelo são ameaças. A alternância dá duas primeiras posições a cada arquitetura, mas não elimina transferência de conhecimento. Não tratar as quatro etapas como réplicas independentes. LOC não substitui dificuldade; smoke não sustenta comparação de desempenho.
+
+## Revisão de prontidão de 05/11/2026
+
+Coletor comum: scripts/medicao/coletor.mjs; piloto: scripts/medicao/piloto.mjs; auditoria repetível: scripts/prontidao/auditar.mjs. Configuração prospectiva comum capturada: gpt-6.1-sol, reasoning effort low, cliente/backend Codex 0.166.0, workspace-write e aprovação granular. Recapturar e comparar os campos e o inventário de ferramentas antes de cada condição; mudança exige registro e revalidação do par. O service tier e o snapshot interno do alias não são expostos e permanecem explicitamente desconhecidos. Não se presume estabilidade interna de um alias.
+
+A execução do Codex será delimitada pelo operador/controlador fora do turno medido. Não iniciar o cronômetro de um turno de dentro dele. O piloto valida a instrumentação com tarefa neutra, sem medir esforço humano ou duração integral deste turno. A captura de prompts/intervenções e a supervisão do limite de 120 minutos continuam obrigatórias. A rota de comandos local usa Node e subprocessos, disponível mesmo com falha do lançador exec_command; manter essa rota igual nos dois braços.
+
+Congelamento metodológico e prontidão funcional de E1 são gates distintos: E1 ainda exige API/fixtures e validador de CT-06/07 em commits próprios, testes e regressão real antes de abrir unidades medidas. Nada disso foi implementado nesta revisão.

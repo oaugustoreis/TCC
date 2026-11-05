@@ -1,0 +1,9 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "scripts/medicao/coletor.test.mjs"
+  ],
+  "exit_code": 0,
+  "error": null
+}

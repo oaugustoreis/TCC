@@ -1,0 +1,9 @@
+{
+  "command": [
+    "node",
+    "scripts/prontidao/auditar.mjs",
+    "D:/TCC/evidencias/prontidao/2026-11-05T17-36-24-859Z"
+  ],
+  "exit_code": null,
+  "error": "spawnSync node ETIMEDOUT"
+}

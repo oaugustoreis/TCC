@@ -1,0 +1,39 @@
+{
+  "captured_utc": "2026-11-05T17:45:56.009Z",
+  "phase": "prontidao e piloto neutro, fora da amostra",
+  "e0_commit": "e93c3fcf8e954dc1a1e8a05d621c9f23b8ccdc87",
+  "protocol_version": "1.0",
+  "target_freeze_tag": "protocolo-evolucao-v1.0",
+  "gates": {
+    "collector_implemented": true,
+    "collector_tests_passed": 5,
+    "pilot_neutral_passed": true,
+    "pilot_open_intervals": 0,
+    "effective_model_captured": true,
+    "reasoning_effort_captured": true,
+    "client_version_captured": true,
+    "sandbox_captured": true,
+    "approval_policy_confirmed": true,
+    "tool_inventory_captured": true,
+    "e0_tag_and_hashes_verified": true,
+    "historical_evidence_integrity_verified": true,
+    "matrix_arithmetic_verified": true,
+    "environment_versions_captured": true
+  },
+  "methodological_freeze_approved": true,
+  "e1_implementation_ready": false,
+  "e1_pending": [
+    "Implementar/testar API e fixtures de E1 em commit separado",
+    "Atualizar/testar validador comum de CT-06/07 antes das suítes",
+    "Revalidar E0 via HTTP real na API preparada",
+    "Criar condições isoladas, recapturar configuração por sessão e iniciar controlador antes dos prompts"
+  ],
+  "expanded_scenarios_implemented": false,
+  "definitive_effort_measurements_started": false,
+  "baseline_modified": false,
+  "limitations": [
+    "exec_command indisponível por falha técnica; subprocessos via Node operacionais",
+    "service tier, versão GUI e snapshot interno do alias não expostos; null explícito",
+    "piloto não mede turno Codex completo nem atividade humana; controle externo obrigatório"
+  ]
+}

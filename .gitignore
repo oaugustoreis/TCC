@@ -7,3 +7,6 @@ __pycache__/
 # Evidências autorais preservadas, inclusive stdout/stderr.
 !evidencias/**/*.log
 !historico/**/*.log
+
+# Logs brutos dos pilotos e verificações de prontidão.
+!evidencias/prontidao/**/*.log

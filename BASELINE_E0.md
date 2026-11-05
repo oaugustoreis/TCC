@@ -24,4 +24,4 @@ git -c safe.directory=D:/TCC rev-parse 'e0-baseline-validada^{commit}'
 git -c safe.directory=D:/TCC show --no-patch e0-baseline-validada
 ```
 
-Consultar [PROTOCOLO_EVOLUCAO_INCREMENTAL.md](PROTOCOLO_EVOLUCAO_INCREMENTAL.md), [MATRIZ_REQUISITOS_EXPANSAO.md](MATRIZ_REQUISITOS_EXPANSAO.md) e [PLANO_MEDICAO_ESFORCO.md](PLANO_MEDICAO_ESFORCO.md) para E1–E4. O protocolo ainda precisa do piloto de coleta e da ficha efetiva do Codex antes do congelamento definitivo e de qualquer medição.
+Consultar [PROTOCOLO_EVOLUCAO_INCREMENTAL.md](PROTOCOLO_EVOLUCAO_INCREMENTAL.md), [MATRIZ_REQUISITOS_EXPANSAO.md](MATRIZ_REQUISITOS_EXPANSAO.md) e [PLANO_MEDICAO_ESFORCO.md](PLANO_MEDICAO_ESFORCO.md) para E1–E4. O piloto de coleta e a ficha efetiva do Codex foram conferidos na revisão seguinte, documentada em [RELATORIO_PRONTIDAO_EXPERIMENTO.md](RELATORIO_PRONTIDAO_EXPERIMENTO.md). O documento atualiza apenas a identificação/referência; a tag E0 e seus fontes permanecem intactos.

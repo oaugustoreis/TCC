@@ -1,0 +1,13 @@
+✔ persistência anterior ao término, exclusividade e referência (13.082ms)
+✔ pausa/retomada e trilhas auxiliares não duplicam tempo ativo (9.5387ms)
+✔ queda preserva início; recuperação cria outro relógio e duração desconhecida (72.0017ms)
+✔ JSON truncado é detectado e não reescrito (2.4696ms)
+✔ tentativa de misturar sessões de relógio é rejeitada (6.4229ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 167.3715

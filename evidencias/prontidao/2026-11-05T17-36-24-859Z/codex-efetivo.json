@@ -1,0 +1,153 @@
+{
+  "captured_utc": "2026-11-05T17:36:24.859Z",
+  "source": "nodeRepl.requestMeta: metadados deste turno fornecidos pelo cliente",
+  "turn": {
+    "auto_review_enabled": false,
+    "codex_version": "0.166.0",
+    "model": "gpt-6.1-sol",
+    "node_repl_auto_review_required": true,
+    "node_repl_disabled": false,
+    "reasoning_effort": "low",
+    "sandbox": "windows_elevated",
+    "sandbox_mode": "workspace-write",
+    "session_id": "01a1acaa-9f7b-7cc3-9c35-507cf30b5bdc",
+    "thread_id": "01a1acaa-9f7b-7cc3-9c35-507cf30b5bdc",
+    "thread_source": "user",
+    "turn_id": "01a1acc7-9d60-7222-baf7-2abe7df58a4e",
+    "turn_started_at_unix_ms": 1793900125568,
+    "turn_trigger": "user"
+  },
+  "sandbox_state": {
+    "codexLinuxSandboxExe": null,
+    "permissionProfile": {
+      "file_system": {
+        "entries": [
+          {
+            "access": "read",
+            "path": {
+              "type": "special",
+              "value": {
+                "kind": "root"
+              }
+            }
+          },
+          {
+            "access": "write",
+            "path": {
+              "path": "D:\\TCC",
+              "type": "path"
+            }
+          },
+          {
+            "access": "write",
+            "path": {
+              "type": "special",
+              "value": {
+                "kind": "slash_tmp"
+              }
+            }
+          },
+          {
+            "access": "write",
+            "path": {
+              "type": "special",
+              "value": {
+                "kind": "tmpdir"
+              }
+            }
+          },
+          {
+            "access": "read",
+            "missing_path_behavior": "skip",
+            "path": {
+              "path": "D:\\TCC\\.git",
+              "type": "path"
+            }
+          },
+          {
+            "access": "read",
+            "missing_path_behavior": "skip",
+            "path": {
+              "path": "D:\\TCC\\.agents",
+              "type": "path"
+            }
+          },
+          {
+            "access": "read",
+            "missing_path_behavior": "skip",
+            "path": {
+              "path": "D:\\TCC\\.codex",
+              "type": "path"
+            }
+          },
+          {
+            "access": "read",
+            "missing_path_behavior": "skip",
+            "path": {
+              "path": "D:\\TCC\\.aws",
+              "type": "path"
+            }
+          }
+        ],
+        "type": "restricted"
+      },
+      "network": "restricted",
+      "type": "managed"
+    },
+    "sandboxCwd": "file:///D:/TCC",
+    "useLegacyLandlock": false,
+    "useMxc": false
+  },
+  "launcher": {
+    "codexExecutable": "C:\\Users\\ask5g\\.codex\\packages\\app-server-daemon\\releases\\0.166.0-x86_64-pc-windows-msvc\\bin\\codex.exe"
+  },
+  "approval_policy": {
+    "value": "granular",
+    "source": "turn_context da sessão ativa, confirmado pelas instruções vigentes",
+    "effective": {
+      "granular": {
+        "sandbox_approval": false,
+        "rules": false,
+        "skill_approval": false,
+        "request_permissions": true,
+        "mcp_elicitations": true
+      }
+    }
+  },
+  "service_tier": {
+    "value": null,
+    "reason": "não exposto nos metadados do turno"
+  },
+  "gui_app_version": {
+    "value": null,
+    "reason": "backend Codex capturado; versão da interface gráfica não exposta"
+  },
+  "exact_model_snapshot": {
+    "value": null,
+    "reason": "alias efetivo exposto; snapshot interno não exposto"
+  },
+  "capture_consistent": true,
+  "skills_available": [
+    "imagegen",
+    "openai-docs",
+    "skill-creator",
+    "skill-installer",
+    "browser:control-in-app-browser",
+    "documents:documents",
+    "find-skills",
+    "pdf:pdf",
+    "plugin-management:plugin-management",
+    "presentations:Presentations",
+    "sites:sites",
+    "sites:sites-remix",
+    "spreadsheets:Spreadsheets",
+    "template-creator:template-creator",
+    "vercel:* (catálogo da sessão)",
+    "work-pets:create-pet",
+    "work-pets:pets",
+    "work-pets:update-pet"
+  ],
+  "skills_used": [
+    "openai-docs"
+  ]
+}

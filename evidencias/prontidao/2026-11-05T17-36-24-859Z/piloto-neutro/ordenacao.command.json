@@ -1,0 +1,11 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "-e",
+    "const fs=require('node:fs');const p=require('node:path');const d=process.argv[1];const words=['gama','alfa','beta'];fs.writeFileSync(p.join(d,'palavras.json'),JSON.stringify([...words].sort()));",
+    "D:\\TCC\\evidencias\\prontidao\\2026-11-05T17-36-24-859Z\\piloto-neutro"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": ""
+}
