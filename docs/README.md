@@ -44,11 +44,11 @@ A revisão das cinco camadas e as adaptações em relação ao Pulse estão em [
 
 O estado atual da suíte, a estrutura por domínio e os exemplos de uso estão no [relatório modular](RELATORIO_MODULAR_ATUAL.md).
 
-A validação funcional real e suas limitações estão em [RELATORIO_VALIDACAO_FINAL.md](RELATORIO_VALIDACAO_FINAL.md). Procedimento reproduzível: `python3 scripts/validacao/validar.py`. Os 24 arquivos modulares, incluindo os dois helpers, integram integralmente o conjunto das futuras métricas de código.
+A validação funcional real e suas limitações estão em [RELATORIO_VALIDACAO_FINAL.md](RELATORIO_VALIDACAO_FINAL.md). Procedimento reproduzível: `node scripts/validacao/validar.mjs`. Os 24 arquivos modulares, incluindo os dois helpers, integram integralmente o conjunto das futuras métricas de código.
 
-## Estudo de evolução incremental — preparação
+## Estudo de evolução incremental e manutenção
 
-E0 está identificada em [BASELINE_E0.md](BASELINE_E0.md), com commit e tag locais. A expansão planejada segue 5 → 7 → 10 → 12 → 15 cenários por arquitetura. Ver [protocolo](PROTOCOLO_EVOLUCAO_INCREMENTAL.md), [matriz de requisitos](MATRIZ_REQUISITOS_EXPANSAO.md) e [plano de medição](PLANO_MEDICAO_ESFORCO.md). E1–E4 não foram implementados; nenhuma medição definitiva foi iniciada. O protocolo antigo em docs/protocolo.md permanece histórico. A operação atual segue o [roteiro manual](EXECUCAO_MANUAL.md), separado das exigências operacionais do desenho anterior.
+E0 está identificada em [BASELINE_E0.md](BASELINE_E0.md), com commit e tag locais. A expansão planejada segue 5 → 7 → 10 → 12 → 15 cenários por arquitetura (`E1`–`E4`), seguida pelas tarefas de manutenção transversal (`M1`–`M3`). Ver [protocolo](PROTOCOLO_EVOLUCAO_INCREMENTAL.md), [matriz de requisitos](MATRIZ_REQUISITOS_EXPANSAO.md) e [plano de medição](PLANO_MEDICAO_ESFORCO.md). A operação segue o [roteiro operacional](EXECUCAO_MANUAL.md).
 
 ## Preparação funcional de E1
 

@@ -1,9 +1,0 @@
-{
-  "command": [
-    "python3",
-    "--version"
-  ],
-  "cwd": "/mnt/d/TCC",
-  "started_utc": "2026-11-05T16:54:39.888894+00:00",
-  "exit_code": 0
-}

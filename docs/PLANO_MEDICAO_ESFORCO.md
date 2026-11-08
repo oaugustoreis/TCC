@@ -1,166 +1,126 @@
-# Plano de medição do esforço de implementação
+# Plano de Medição — Experimento Conduzido por IA (Evolução e Manutenção)
 
-> **Emenda Operacional v2.0 (08/11/2026) — Medição Automatizada (Estrutural, Duplicação e Esforço da IA)**: A partir de 08/11/2026, a coleta manual de tempo humano foi substituída pela extração automatizada via [scripts/metricas/coletar-metricas.mjs](../scripts/metricas/coletar-metricas.mjs), combinando métricas determinísticas de engenharia de software (deltas Git, superfície de impacto, reutilização de módulos e duplicação/clones de código) com métricas operacionais do subagente de IA (*Pass@1*, ciclos de validação, *tool calls* e duração do turno). O texto v1.0 abaixo permanece preservado como histórico metodológico.
+Versão 2.1 — 08/11/2026. Este documento define **o que é medido**, **a distinção entre coleta primária, cálculo e consolidação**, e **como cada métrica é auditada** na comparação entre as arquiteturas **Tradicional** (`tradicional/`) e **Modular** (`modular/`) em k6.
 
-Versão 1.0 — planejamento prospectivo. Nenhum tempo de implementação de E1–E4 foi coletado. Não reconstruir tempos de E0 ou desta preparação a partir de lembranças ou duração total da conversa.
+Vínculos: [Protocolo Experimental](PROTOCOLO_EVOLUCAO_INCREMENTAL.md), [Matriz de Requisitos](MATRIZ_REQUISITOS_EXPANSAO.md), [Baseline E0](BASELINE_E0.md), [Extrator e Consolidador de Métricas](../scripts/metricas/coletar-metricas.mjs).
 
-Vínculos: [protocolo](PROTOCOLO_EVOLUCAO_INCREMENTAL.md), [requisitos](MATRIZ_REQUISITOS_EXPANSAO.md), [baseline](BASELINE_E0.md).
+---
 
-## Unidade, início e encerramento
+## 1. Princípio Metodológico e Separação de Responsabilidades
 
-Unidade = lote de novos cenários de uma arquitetura em uma etapa: E1-T, E1-M, E2-M, E2-T, E3-T, E3-M, E4-M, E4-T, nessa ordem. Mensurar o lote inteiro; decompor por CT somente quando o evento puder ser atribuído sem rateio arbitrário. A API e a infraestrutura já devem estar prontas no SHA-base comum.
+Para eliminar ruídos subjetivos de digitação humana, fadiga e pausas manuais, a escrita de novos cenários (**Fase 1 — Evolução: `E1` a `E4`**) e a propagação de mudanças de contrato (**Fase 2 — Manutenção: `M1` a `M3`**) são executadas por um **único agente de IA controlado** (mesmo modelo, configuração e prompts padronizados), atuando em **subagentes isolados** por arquitetura.
 
-Iniciar o cronômetro antes de entregar o prompt e da primeira leitura específica da condição. Encerrar após implementação, validação própria, revisão e commit da condição, registrando a decisão. Se a comparação final descobrir problema da suíte, reabrir a mesma unidade e acrescentar os eventos de correção/revalidação; não apagar o encerramento anterior.
+Para garantir rigor de auditoria, o processo de medição separa explicitamente três etapas:
+1. **Coleta Primária (Externa ao LLM)**:
+   - Os logs de ações e timestamps do subagente são gravados automaticamente pelo runtime do sistema em `.system_generated/logs/transcript.jsonl`.
+   - Os resultados de cada tentativa de validação funcional são gravados pelo orquestrador [scripts/validacao/validar.mjs](../scripts/validacao/validar.mjs) em arquivos `result.json` numerados por tentativa (`attempt-01`, `attempt-02`, ...).
+   - **A IA nunca preenche manualmente estimativas sobre suas próprias ações ou tempos.**
+2. **Cálculo Determinístico**:
+   - O utilitário [scripts/metricas/coletar-metricas.mjs](../scripts/metricas/coletar-metricas.mjs) analisa o código-fonte em disco e o histórico do Git para calcular tamanho (LOC/SLOC/tokens), deltas líquidos (`git diff`), reutilização específica da tarefa (`batch_reuse`) e duplicação léxica de código.
+3. **Consolidação e Relatório**:
+   - O mesmo utilitário lê os registros primários externos (`transcript.jsonl` e `result.json` das tentativas de validação), une-os às métricas estruturais calculadas e exporta `metricas.json` e `RELATORIO_METRICAS.md`. Caso algum registro primário não esteja disponível no transporte, o campo correspondente é registrado como `null` acompanhado de `missing_reason`, jamais presumido ou estimado.
 
-Limite operacional comum: até 120 minutos de tempo ativo da condição por lote. Inclui intervalos de trabalho humano e execução do Codex, como união temporal, sem contar pausas e esperas externas. Se atingido, marcar unidade incompleta/censurada, guardar tudo e concluir a outra sob a mesma regra. Não registrar “120 minutos” se o cronômetro não demonstrar esse valor. Não avançar ao estado seguinte com par incompleto. Retomada além do limite exige emenda para ambos os braços, identificando a censura original.
+---
 
-## Registro temporal
+## 2. Unidades de Medição (14 Unidades Pareadas + Baseline `E0`)
 
-Usar um coletor de eventos validado em piloto neutro antes do congelamento. Relógio monotônico para durações; UTC ISO-8601 e offset local para correlação. Um evento de início deve ser persistido antes de executar a ação; término persistido imediatamente depois. Queda sem término gera evento aberto e duração desconhecida, não zero. Reinício do processo gera novo clock_session_id; não subtrair relógios monotônicos de processos diferentes.
+O estudo organiza a análise em **dois blocos complementares** (7 etapas pareadas = 14 unidades experimentais):
 
-Estados mutuamente exclusivos do relógio principal:
+### Bloco 1 — Fase 1: Evolução Incremental (Adição de Novos Cenários)
+Avalia quanto código cada arquitetura precisa acrescentar ou modificar para incorporar novos cenários de negócio cumulativamente:
+| Etapa | Unidade Tradicional | Unidade Modular | Ordem de Execução | Escopo |
+|---|---|---|---|---|
+| **E0** | Baseline `tradicional/` (5 CTs) | Baseline `modular/` (5 CTs) | Concluída | `CT-01` a `CT-05` (Referência inicial) |
+| **E1** | `E1-T` | `E1-M` | Tradicional → Modular | + `CT-06`, `CT-07` (Catálogo filtrado e Estoque — total 7 CTs) |
+| **E2** | `E2-T` | `E2-M` | Modular → Tradicional | + `CT-08` a `CT-10` (Carrinho de compras — total 10 CTs) |
+| **E3** | `E3-T` | `E3-M` | Tradicional → Modular | + `CT-11`, `CT-12` (Listagem filtrada e Cancelamento — total 12 CTs) |
+| **E4** | `E4-T` | `E4-M` | Modular → Tradicional | + `CT-13` a `CT-15` (Pagamentos e Checkout completo — total 15 CTs) |
 
-| Categoria | Exemplos | Destino |
+### Bloco 2 — Fase 2: Manutenção Transversal (Propagação de Mudanças sobre `E4`)
+Avalia a propagação de mudanças de contrato pelos 15 cenários existentes. **Cada tarefa (`M1`, `M2`, `M3`) parte independentemente do commit validado do estado `E4`** (em branch própria a partir de `estado-e4`), impedindo que uma manutenção altere o ponto de partida da seguinte:
+| Tarefa | Ponto de Partida | Unidade Tradicional | Unidade Modular | Ordem de Execução | Mudança de Contrato / Verificação |
+|---|---|---|---|---|---|
+| **M1** | `estado-e4` | `M1-T` | `M1-M` | Tradicional → Modular | `/auth/login` retorna `expiresIn: 3600`; validar campo no check de login nos 15 cenários. |
+| **M2** | `estado-e4` | `M2-T` | `M2-M` | Modular → Tradicional | `POST /orders` exige/retorna `currency: "BRL"`; atualizar envio e check de criação de pedido (`CT-03` a `CT-05`, `CT-11` a `CT-15`). |
+| **M3** | `estado-e4` | `M3-T` | `M3-M` | Tradicional → Modular | `GET /orders/:id` retorna `createdAt` string não vazia; validar campo nas consultas individuais de pedido. |
+
+---
+
+## 3. Especificação das Métricas e Fórmulas
+
+### 3.1. Escopo Primário das Arquiteturas
+- **Tradicional (`tradicional/`)**: Todos os arquivos `.js` sob `tradicional/`.
+- **Modular (`modular/`)**: Todos os arquivos `.js` sob `modular/`, incluindo integralmente `scenarios/`, `profiles/`, `flows/`, `use-cases/` e `helpers/` (`http.js` e `checks.js`). Nenhum helper é descontado ou externalizado.
+- **Escopo Comum (Fora das métricas das arquiteturas)**: `api/`, `shared/`, `tests/`, `scripts/`, `docs/` e `evidencias/`.
+
+### 3.2. Métricas Estruturais de Tamanho
+1. **Arquivos JS Autorais (`files_count`)**: Quantidade total de arquivos `.js` na pasta da arquitetura ao fim da etapa.
+2. **Linhas Físicas (`physical_lines` / LOC)**: Total de linhas terminadas por `\n` ou `\r\n` (linha final sem newline conta 1).
+3. **Linhas Lógicas (`logical_lines` / SLOC)**: Total de linhas contendo código efetivo, após remover comentários (`//` e `/* ... */`) e linhas em branco.
+4. **Total de Tokens JS (`total_tokens`)**: Quantidade total de tokens léxicos da linguagem JavaScript (identificadores, palavras-chave, operadores, pontuação e literais).
+
+### 3.3. Métricas de Alteração no Git: Mudança Líquida vs. Esforço de Escrita
+Calculadas via `git diff --no-ext-diff --no-textconv --no-renames` entre `<SHA-base>` e `<SHA-final>`:
+1. **Arquivos Criados (`files_added` — `A`), Modificados (`files_modified` — `M`) e Removidos (`files_deleted` — `D`)**.
+2. **Superfície de Impacto (`files_touched_total` / *Blast Radius*)**: Soma `A + M + D` no diff final da unidade.
+3. **Linhas Adicionadas (`lines_added` — `+`) e Removidas (`lines_removed` — `-`)**: Extraídas via `--numstat`.
+4. **Distinção entre Mudança Líquida e Retrabalho**:
+   - **`net_diff_lines` (Volume de alteração líquida)**: Soma `lines_added + lines_removed` entre o `<SHA-base>` e o `<SHA-final>`. Mede o tamanho líquido da entrega consolidada no Git, **não** o retrabalho ocorrido durante a execução.
+   - **`files_written` (Operações de escrita registradas)**: Quantidade total de chamadas de criação/edição de arquivos (`write_file` + `edit_file`) registradas no log do subagente (ex.: se a IA editar o mesmo arquivo 5 vezes na sessão, `files_modified` no Git será `1`, mas `files_written` será `5`).
+   - **`intermediate_churn` (Churn entre checkpoints)**: Soma acumulada de `lines_added + lines_removed` entre checkpoints intermediários (quando houver múltiplos ciclos de validação com commits/patches intermediários). Quando não houver checkpoints intermediários, registra `null` com nota explicativa.
+
+### 3.4. Métricas de Reutilização: Reuso na Tarefa (`batch_reuse`) vs. Acoplamento Estático (`static_suite_imports`)
+Para evitar inflar a reutilização da arquitetura Modular contando módulos antigos que não participaram da tarefa, o extrator separa duas visões:
+1. **Reutilização Efetiva na Tarefa (`batch_reuse`)**:
+   - Parte **exclusivamente dos arquivos criados (`A`) ou modificados (`M`) na unidade** (`batch_entry_files_touched`).
+   - Percorre o fecho transitivo de dependências internas (`import`) consumidas por esses arquivos ativos no lote e classifica cada componente interno consumido:
+     - **`batch_reused_unmodified_count`**: Módulos preexistentes no `<SHA-base>` efetivamente importados pelos arquivos da tarefa **sem sofrer nenhuma edição** na etapa.
+     - **`batch_reused_modified_count`**: Módulos preexistentes no `<SHA-base>` importados pelos arquivos da tarefa que **foram modificados (`M`)** na etapa.
+     - **`batch_created_shared_count`**: Novos módulos internos criados na própria etapa (`A`) e importados por outros arquivos do lote.
+2. **Acoplamento Estático Acumulado da Suíte (`static_suite_imports`)**:
+   - Mede a estrutura global de `imports` da suíte inteira ao fim do estado (`internal_imports_total` e `distinct_internal_components_imported`), relatada separadamente apenas como propriedade estrutural do estado.
+
+### 3.5. Métricas de Duplicação de Código (Detector Léxico `exact-token-window-union-v1`)
+Calculadas por `computeCodeDuplication` em [scripts/metricas/coletar-metricas.mjs](../scripts/metricas/coletar-metricas.mjs), validado por testes unitários determinísticos ([scripts/metricas/coletar-metricas.test.mjs](../scripts/metricas/coletar-metricas.test.mjs)):
+- **Regras de Normalização e Escopo**:
+  - Comentários de linha (`//`), comentários de bloco (`/* ... */`) e espaços/quebras de linha são removidos durante a tokenização.
+  - Identificadores, palavras-chave, operadores e literais são preservados literalmente (detecção de clones **Tipo-1** exatos).
+  - Janela mínima de detecção: **`min_tokens_window = 25` tokens consecutivos** (limiar inspirado na literatura e em ferramentas como `jscpd`, mas implementado por algoritmo léxico próprio e determinístico, sem alegar identidade de implementação com o pacote `jscpd`).
+  - As janelas deslizantes respeitam estritamente os limites de cada arquivo (**nunca cruzam a fronteira entre o fim de um arquivo e o início de outro**).
+  - São detectados e contabilizados separadamente **clones intra-arquivo** (`intra_file_clones_count`, repetidos em posições distintas do mesmo arquivo) e **clones inter-arquivos** (`cross_file_clones_count`, repetidos entre arquivos diferentes da mesma suíte).
+- **Cálculo de Percentuais por União (Sem Contagem Dupla)**:
+  - Quando múltiplas janelas de 25 tokens se sobrepõem, cada posição de token do arquivo é marcada uma única vez em um vetor booleano (`Uint8Array`) e cada linha lógica (`arquivo:linha`) é inserida em um conjunto matemático (`Set`).
+  - $$\text{Duplicação de Tokens (\%)} = \frac{|\text{União das posições de tokens em clones}|}{\text{Total de Tokens da suíte}} \times 100$$
+  - $$\text{Duplicação de Linhas (\%)} = \frac{|\text{União das linhas lógicas (SLOC) com tokens em clones}|}{\text{Total de SLOC da suíte}} \times 100$$
+
+### 3.6. Métricas Operacionais Auditadas do Agente de IA
+Extraídas mecanicamente a partir dos logs primários externos, nunca auto-declaradas pelo modelo:
+| Métrica | Origem Auditável Primária | Definição Operacional |
 |---|---|---|
-| humano_ativo | Ler tarefa, decidir, revisar diff, editar, preparar prompt | Esforço humano |
-| codex_execucao | Turno da entrega do prompt até resposta final, inclusive comandos internos | Tempo de execução do agente, não esforço humano presumido |
-| ferramenta_externa | k6/Node executado fora de um turno, sem trabalho humano concomitante | Espera automática |
-| pausa | Ausência pessoal/interrupção sem trabalho | Excluída do tempo ativo |
-| bloqueio_ambiente | API indisponível, rede, permissão, indisponibilidade do serviço | Espera externa, causa registrada |
-| coordenacao_comum | Integração, comparador, API, infraestrutura | Conta separada, nunca atribuída a uma condição por conveniência |
+| **`first_validation_pass`** | `attempt-01/result.json` (ou 1ª tentativa sem erro de infra) | Indicador operacional próprio deste estudo (`true`/`false`): registra se a suíte passou com 100% de aprovação na 1ª execução funcional do validador após a implementação (não confundir com a estimativa probabilística combinatória $pass@k$ de benchmarks de LLMs). |
+| **`functional_validation_cycles`** | Diretórios de tentativas do `validar.mjs` | Quantidade de execuções funcionais válidas do validador realizadas até aprovar a unidade. |
+| **`infra_error_runs`** | Diretórios de tentativas do `validar.mjs` | Quantidade de execuções interrompidas por falha ambiental/infraestrutura (`api_ready: false` ou erro de processo) antes do julgamento funcional, contabilizadas separadamente de defeitos da suíte. |
+| **`files_read`** | `.system_generated/logs/transcript.jsonl` | Total de chamadas `read_file` / `view_file` registradas nos passos `PLANNER_RESPONSE`. |
+| **`files_written`** | `.system_generated/logs/transcript.jsonl` | Total de chamadas `write_file` + `edit_file` registradas nos passos `PLANNER_RESPONSE`. |
+| **`commands_run`** | `.system_generated/logs/transcript.jsonl` | Total de chamadas `run_command` registradas nos passos `PLANNER_RESPONSE`. |
+| **`tool_calls_total`** | `.system_generated/logs/transcript.jsonl` | Soma de todas as invocações de ferramentas registradas no transcript do subagente. |
+| **`duration_seconds`** | `.system_generated/logs/transcript.jsonl` | Diferença em segundos entre o `created_at` (ISO-8601) do primeiro e do último passo registrados pelo runtime na sessão do subagente. |
 
-Quando o humano revisa durante um turno do Codex, guardar intervalo de sobreposição em trilha auxiliar. O relógio principal continua em codex_execucao; a trilha permite relatar tempo humano observado sem somá-lo duas vezes ao tempo ativo da condição. Comandos disparados pelo próprio Codex são subeventos dentro do turno, não novos intervalos somados ao principal.
+---
 
-Definições:
+## 4. Comando de Extração e Consolidação
 
-- Tempo decorrido da unidade: fim − início em relógio monotônico, por sessões; expor pausas e intervalos desconhecidos.
-- Tempo humano observado: soma de humano_ativo e intervalos humanos auxiliares, sem sobreposição entre si.
-- Tempo de execução do Codex: soma dos turnos observados; inclui espera por ferramentas internas e não equivale a tempo de inferência.
-- Tempo ativo da condição: união dos intervalos humano_ativo e codex_execucao, descontando sobreposições. Sem estimar “tempo de pensamento”.
-- Tempo de validação automática: duração dos comandos k6/Node, relatada à parte mesmo se já contida em codex_execucao.
-- Custos de API, instrumentação, preparo, integração e ambiente: categorias próprias no total do estudo.
+Ao término de cada etapa `<ESTADO>`, executar:
 
-Sem coleta confiável, registrar null/“não registrado” e motivo. Nunca substituir ausência por 0, médias, estimativas ou tempos inventados. Não arredondar antes de agregar; apresentar segundos/minutos com precisão compatível com o coletor.
-
-## Arquivos e esquema da coleta futura
-
-Uma pasta por unidade, com tentativas numeradas. Registros append-only em UTF-8; correções são novos eventos que apontam o registro corrigido. Não colocar resultados dentro das pastas medidas das suítes.
-
-| Artefato | Campos mínimos |
-|---|---|
-| unidade.json | id, estado, arquitetura, ordem, CTs, SHA-base, SHA-final, SHA API/infra, tag do protocolo, status, operador, máquina, ambiente, relógio, início/fim, motivo de ausência |
-| eventos.jsonl | event_id, unit_id, clock_session_id, UTC, monotonic_ms, tipo start/end/pause/resume, categoria, atividade, referência ao evento inicial, motivo |
-| turnos.jsonl | turn_id, UTC início/fim, duração observada, modelo efetivo, versão cliente/app, reasoning effort, service tier, ferramentas/skills, sandbox, política de aprovação, sessão, tokens/custo se observáveis |
-| prompts/ | Texto exato enviado, em ordem, inclusive correções e anexos/contexto; hash dos arquivos disponibilizados |
-| intervencoes.jsonl | id, humano/assistente, UTC, tipo, texto/diff exato, justificativa, requisito afetado, turno associado |
-| alteracoes/ | Inventário anterior/posterior, hashes, numstat, name-status, diff completo, classificação de arquivos e commits |
-| reutilizacao.csv | unit_id, componente, origem/commit, CTs consumidores, antes/depois, tipo de reutilização, evidência de chamadas/imports, adaptação |
-| defeitos.jsonl | defect_id, requisito, fase de detecção, sintoma, causa, classe suíte/API/infra/ambiente, severidade, evidência, correção e reteste |
-| ciclos.jsonl | cycle_id, tentativa, CTs, defeitos relacionados, comandos de validação, resultado, início/fim, commit |
-| validacao/ | Comandos, stdout/stderr, readiness, HTTP recebido, métricas/checks, comparação com oráculo e entre pares |
-
-CSV usa cabeçalho, UTF-8 e escape adequado. JSON usa null para ausência, acompanhado de motivo. Cada resultado tabulado deve apontar eventos e commits de origem; preservar todos os erros e tentativas invalidadas.
-
-## Linhas e arquivos
-
-Medir deltas ao fim de cada condição contra o SHA-base comum do lote, e acumulados contra E0. Comandos prospectivos, executados somente na coleta definitiva:
-
-```powershell
-git diff --no-ext-diff --no-textconv --no-renames --numstat <SHA-base> <SHA-final> -- tradicional/
-git diff --no-ext-diff --no-textconv --no-renames --name-status <SHA-base> <SHA-final> -- tradicional/
-git diff --no-ext-diff --no-textconv --no-renames --numstat <SHA-base> <SHA-final> -- modular/
-git diff --no-ext-diff --no-textconv --no-renames --name-status <SHA-base> <SHA-final> -- modular/
-git diff --no-ext-diff --no-textconv --no-renames --binary <SHA-base> <SHA-final> -- <escopo>
-git ls-tree -r --name-only <SHA-final>
+```bash
+node scripts/metricas/coletar-metricas.mjs \
+  --state <ESTADO> \
+  --base <SHA_BASE> \
+  --target <SHA_FINAL> \
+  --validation evidencias/evolucao/<ESTADO>/validacao_both/result.json \
+  --trad-transcript <CAMINHO_TRANSCRIPT_SUBAGENTE_TRADICIONAL> \
+  --mod-transcript <CAMINHO_TRANSCRIPT_SUBAGENTE_MODULAR> \
+  --trad-val-attempts evidencias/evolucao/<ESTADO>/tentativas_tradicional \
+  --mod-val-attempts evidencias/evolucao/<ESTADO>/tentativas_modular \
+  --out evidencias/metricas/<ESTADO>
 ```
-
-Guardar a versão do Git e as opções. `--no-renames` torna movimentações explícitas como remoção+adição; identificar movimentações no relatório para não interpretá-las como comportamento novo. Arquivos binários têm linhas não aplicáveis, mas contam como arquivos autorais. Não ignorar comentários, linhas em branco ou whitespace no numstat. Não executar formatador global entre condições.
-
-Métricas distintas:
-
-- Linhas adicionadas e removidas no diff final, sem condensar em apenas saldo.
-- Churn bruto dos commits de trabalho em cadeia linear da condição: soma de adições/remoções por commit, inclusive código descartado nas correções; guardar patches intermediários ou checkpoints. Não somar commits de merge/integracão novamente.
-- Arquivos criados, modificados e excluídos por lote; contagem de caminhos distintos e classificação A/M/D. Arquivo criado e depois editado conta como um criado no diff final; seus retrabalhos aparecem no churn.
-- Tamanho do estado: arquivos e linhas físicas dos arquivos texto autorais em UTF-8; linha final sem newline conta uma vez, CRLF é um terminador. Essa regra não se confunde com SLOC, nem é usada sozinha para inferir dificuldade.
-
-Escopo primário das arquiteturas: **todos os arquivos autorais** sob tradicional/ e modular/, incluindo helpers HTTP/checks, profiles, fluxos, use cases, novos utilitários, fixtures e configuração local quando existirem. Os 24 arquivos modulares E0 integram o escopo integral, mesmo quando não forem alterados no lote. Não medir somente cenários de entrada.
-
-Escopo autoral complementar: shared/, api/, tests/, scripts/, documentação, configuração raiz e manifesto de dependências, com custos/arquivos classificados por suporte comum, API, testes, infraestrutura e documentação. Relatar também o total autoral do projeto, para que nenhum arquivo autoral desapareça dos resultados. Acervo histórico e evidências brutas são contados/classificados como artefatos de evidência, fora das linhas de implementação. Dependências instaladas, caches, .git e gerados por ferramentas não são código autoral.
-
-Não mover lógica para shared/, API, documentação executável ou fora das suítes para reduzir artificialmente o escopo primário. Se shared/ ganhar lógica específica de uma condição, atribuir seu custo a ela e incluí-la no total da condição; lógica comum preparada previamente fica em linha comum. Registrar qualquer arquivo autoral novo fora do inventário e sua classificação. Não descontar helpers por reutilização.
-
-Não há coleta definitiva de duplicação nesta fase. Uma análise futura de clones exigirá ferramenta/versão/parâmetros congelados por emenda antes da coleta; não introduzir um indicador retrospectivo para favorecer resultados conhecidos.
-
-## Reutilização e defeitos
-
-Componente reutilizado = função, módulo, configuração ou operação já existente no SHA-base e efetivamente consumido por pelo menos um novo cenário. O registro identifica símbolo/caminho, commit de origem e evidência de consumo. Distinguir:
-
-1. Reuso sem alteração do componente.
-2. Reuso com adaptação, com diff e custo incluídos.
-3. Componente novo compartilhado dentro do lote; não chamá-lo de preexistente.
-4. Cópia de código: registrar como cópia, não como chamada/reuso de componente.
-
-Aplicar a definição também às funções locais tradicionais quando efetivamente chamadas; registrar ausência de reuso sem julgamento. Contar componentes distintos e cenários consumidores separadamente. Não comparar apenas números absolutos de componentes entre arquiteturas de granularidade diferente; apresentar exemplos e dependências.
-
-Defeito = não atendimento verificável de requisito ou regressão, com evidência. Separar erro funcional de suíte, API, infraestrutura e ambiente. Severidade: bloqueador (impede executar), maior (resultado/fluxo incorreto), menor (violação sem impedir a jornada). Vários checks com a mesma causa formam um defeito; causas independentes são defeitos distintos. Registrar o critério de agrupamento.
-
-Ciclo de correção = edição motivada por falha seguida de uma nova validação. Primeira implementação e primeira validação são tentativa inicial, não ciclo de correção. Correção de múltiplos defeitos antes de um reteste forma um ciclo com múltiplas referências. Executar de novo sem editar é reexecução, não correção. Registrar falhas detectadas antes de executar e retrabalho manual, sem inventar uma execução inexistente.
-
-## Política idêntica de uso do Codex
-
-O estudo mede desenvolvimento assistido sob uma política fixa, não produtividade humana sem assistência. Usar o mesmo operador, cliente, modelo efetivo, reasoning effort, service tier se configurável, ferramentas, skills, acesso de rede, permissões, autonomia e limite de tempo nos dois braços de cada par. Registrar mudanças de disponibilidade entre etapas e não atribuí-las à arquitetura.
-
-A documentação oficial lista campos como model, model_reasoning_effort, sandbox_mode e approval_policy: [Configuration Reference](https://learn.chatgpt.com/docs/config-file/config-reference), consultada em 05/11/2026. A configuração declarada é uma fonte; registrar também o que a sessão expõe como efetivo. Não assumir que o arquivo global prova qual modelo respondeu.
-
-Antes do congelamento, preencher uma ficha comum com os valores efetivos e evidência de captura. Se alias exato, versão do cliente ou esforço não forem observáveis, marcar a ausência e resolver a captura em piloto; não alegar igualdade verificada com campos desconhecidos. Congelar o valor efetivamente disponível, sem selecionar um modelo em função dos resultados de uma arquitetura.
-
-Sessão nova por condição, sem acesso a código/logs/prompts da implementação oposta. Fornecer o mesmo protocolo e contrato, mudando apenas estado, arquitetura, caminhos e CTs. Sem agentes paralelos, acesso a soluções externas ou dicas de design específicas para apenas uma condição. A conversa atual de preparação não será reutilizada como contexto medido.
-
-Permitir um prompt inicial e até cinco intervenções humanas de orientação/correção por condição. Perguntas do agente e respostas humanas também entram nesse limite; a mensagem final padronizada de encerramento é administrativa, sem dica técnica. Edições manuais contam como intervenção, com diff. Comandos autônomos e tentativas internas do agente são registrados, sem serem tratados como prompts humanos adicionais. Se o limite for atingido sem aprovação, a unidade é incompleta, sem ajuda extra silenciosa.
-
-Não pedir à condição executada depois que copie ou “melhore” a solução da primeira. Intervenções fornecem requisito ou diagnóstico observado; não oferecer a uma condição uma solução estrutural que a outra teve de descobrir. Informação nova de domínio é emenda comum ou invalida/reinicia o par conforme protocolo. Repetir apenas a unidade mais lenta/defeituosa para obter melhor número é proibido.
-
-Prompt inicial padronizado (substituições registradas, sem outras diferenças de política):
-
-> Implemente somente os cenários {CTs} da transição {estado anterior}→{estado}, na arquitetura {arquitetura}, a partir do commit {SHA-base}. Siga a matriz e o protocolo v1.0 anexos e preserve os cenários anteriores. A API e o validador comum já estão prontos; não os altere. Use 1 VU e 1 iteração por entrada, os dados, sequência de chamadas e checks exatos da matriz. Pode reutilizar e adaptar componentes compatíveis com esta arquitetura, incluindo seu custo integral. Registre comandos, falhas, decisões e correções; valide toda a suíte-alvo do estado em HTTP real. Não consulte a outra arquitetura, não execute experimentos fora deste escopo, não faça refatoração cosmética e não invente tempos ou resultados. Se o contrato/ambiente impedir a tarefa, registre a evidência e suspenda o trabalho dependente. Pare ao atingir os limites da unidade; finalize com arquivos alterados, requisitos atendidos, validações e limitações.
-
-Prompt de correção padronizado:
-
-> A validação {referência} observou {diagnóstico verificável} contra o requisito {ID}. Corrija somente a condição atual, preserve os contratos e registre a nova tentativa e o reteste. Não consulte a solução da outra arquitetura.
-
-Ficha desta preparação, fora da amostra: fontes de versão anteriores registram Node v24.10.0, npm 11.6.1, k6 v2.3.0 e Windows 10.0.26200; Git observado agora 2.51.0.windows.2. Não são garantia das futuras sessões. O identificador exato do modelo efetivo, reasoning effort, tokens e duração total ativa desta preparação não foram capturados de forma verificável para medição; são “não registrados”, não estimados. Ferramentas usadas na preparação: shell PowerShell/Git, edição de arquivos, Node e consulta à documentação oficial. Sem subagentes. O pedido integral do usuário e suas restrições são a origem deste planejamento; não há prompts de implementação E1–E4 nem tempos desses cenários.
-
-## Alternância e análise
-
-Ordem fixa: E1 T→M, E2 M→T, E3 T→M, E4 M→T. Registrar ordem real e qualquer desvio. Não trocar a ordem após ver o esforço do lote. Alternar reduz o desequilíbrio de posição, mas não remove aprendizagem do operador; sessões isoladas reduzem transferência direta de código, não memória humana.
-
-Apresentar tabela por unidade com tempo humano, Codex, ativo/decorrido, espera, adições/remoções, churn, arquivos, componentes/consumidores, defeitos e ciclos. Informar dados faltantes, limites e tentativas inválidas. Resultados de API/infra aparecem em tabela comum separada e no total do projeto.
-
-Para cada etapa, diferença pareada = modular − tradicional, com unidade e denominador explícitos. Razão modular/tradicional somente quando ambas as observações forem completas e o denominador for positivo. Não dividir por zero nem substituir ausência por zero. Acumulados E1–E4 só somam observações compatíveis, distinguindo duração de esforço de duração calendário.
-
-Não criar índice de dificuldade baseado apenas em linhas ou uma pontuação composta escolhida depois de ver resultados. Combinar tempo, retrabalho, defeitos, alcance de mudanças e evidência qualitativa. Como os lotes diferem e são dependentes, relatar descrição de estudo de caso, sem alegação causal geral ou significância estatística baseada em cenários tratados como réplicas.
-
-## Estado da preparação
-
-- Documentos e E0 preparados; cenários expandidos ausentes.
-- Modelo/configuração efetivos capturados e coletor temporal implementado/ensaiado na revisão de prontidão; ver relatório e evidências. A captura antiga ausente não foi reconstruída retrospectivamente.
-- API futura e adaptação do validador ainda não implementadas; prontidão será verificada por lote.
-- Nenhuma linha desta especificação é resultado de esforço já medido.
-
-## Operação atual (Emenda v2.0 — Medição Automatizada *AI-Only*)
-
-O extrator [scripts/metricas/coletar-metricas.mjs](../scripts/metricas/coletar-metricas.mjs) coleta e consolida automaticamente as seguintes métricas para `tradicional/` e `modular/` em cada etapa (`E0`–`E4` e `M1`–`M3`):
-
-1. **Métricas Estruturais de Código e Git**:
-   - **Tamanho do Estado**: Total de arquivos `.js` autorais, linhas físicas (LOC), linhas lógicas sem comentários/vazias (SLOC) e tamanho em bytes.
-   - **Delta de Alteração (`git diff --numstat`)**: Linhas adicionadas (`+`) e linhas removidas (`-`) na transição.
-   - **Superfície de Impacto (`git diff --name-status`)**: Quantidade e lista de arquivos criados (`A`), modificados (`M`) e excluídos (`D`).
-2. **Métricas de Reutilização**:
-   - **Grafo de Imports ESM**: Contagem de componentes compartilhados (`use-cases`, `flows`, `profiles`, `helpers`) importados pelos cenários, distinguindo reuso sem alteração vs. reuso com adaptação no lote.
-3. **Métricas de Duplicação de Código (Clones)**:
-   - Análise determinística de clones de código (blocos de linhas/tokens repetidos dentro de `tradicional/` e dentro de `modular/`): quantidade de clones, linhas duplicadas, **% de linhas duplicadas** e **% de tokens duplicados** em cada etapa.
-4. **Métricas Operacionais do Agente de IA**:
-   - **Acerto de Primeira (*Pass@1*)**: Aprovação imediata na 1ª execução de [scripts/validacao/validar.mjs](../scripts/validacao/validar.mjs).
-   - **Ciclos de Validação/Correção**: Quantidade de execuções do validador até atingir 100% de aprovação no oráculo.
-   - **Operações do Agente (*Tool Calls*)**: Quantidade de leituras, escritas/edições de arquivos e comandos executados pelo subagente isolado.
-   - **Duração do Turno do Subagente**: Intervalo em segundos entre o início e o término do subagente na unidade.

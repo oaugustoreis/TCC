@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T19:08:06.695Z",
+  "generated_at": "2026-11-08T19:21:03.125Z",
   "state": "E0",
   "tradicional": {
     "suite": "tradicional",
@@ -10,23 +10,25 @@
     "physical_lines": 85,
     "logical_lines": 76,
     "bytes": 5243,
-    "reuse": {
+    "static_suite_imports": {
       "internal_imports_total": 0,
       "shared_config_imports_total": 5,
       "distinct_internal_components_imported": 0,
-      "components_reused_unmodified": 0,
-      "components_reused_with_adaptation": 0,
-      "components_created_in_batch": 0,
       "components": []
     },
+    "batch_reuse": null,
     "duplication": {
+      "algorithm": "exact-token-window-union-v1",
       "min_tokens_window": 25,
+      "normalization_rules": "Remove comentários de linha/bloco e whitespace; preserva literais e identificadores literalmente (clones Tipo-1); não cruza fronteira entre arquivos; percentual calculado sobre a união de posições de tokens e de linhas SLOC (sem contagem dupla em regiões sobrepostas).",
       "total_tokens": 1162,
       "duplicated_tokens": 1050,
       "duplication_tokens_pct": 90.36,
       "duplicated_lines": 73,
       "duplication_lines_pct": 96.05,
-      "clones_count": 4
+      "clones_count": 4,
+      "intra_file_clones_count": 0,
+      "cross_file_clones_count": 4
     },
     "files": [
       {
@@ -86,53 +88,45 @@
     "physical_lines": 333,
     "logical_lines": 286,
     "bytes": 11058,
-    "reuse": {
+    "static_suite_imports": {
       "internal_imports_total": 41,
       "shared_config_imports_total": 6,
       "distinct_internal_components_imported": 19,
-      "components_reused_unmodified": 19,
-      "components_reused_with_adaptation": 0,
-      "components_created_in_batch": 0,
       "components": [
         {
           "component": "modular/flows/autenticacao/autenticacao.flow.js",
           "consumers_count": 1,
           "consumers": [
             "modular/scenarios/autenticacao/autenticacao.scenario.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         },
         {
           "component": "modular/flows/catalogo/catalogo.flow.js",
           "consumers_count": 1,
           "consumers": [
             "modular/scenarios/catalogo/catalogo.scenario.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         },
         {
           "component": "modular/flows/pedidos/atualizacao.flow.js",
           "consumers_count": 1,
           "consumers": [
             "modular/scenarios/pedidos/atualizacao.scenario.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         },
         {
           "component": "modular/flows/pedidos/consulta.flow.js",
           "consumers_count": 1,
           "consumers": [
             "modular/scenarios/pedidos/consulta.scenario.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         },
         {
           "component": "modular/flows/pedidos/criacao.flow.js",
           "consumers_count": 1,
           "consumers": [
             "modular/scenarios/pedidos/criacao.scenario.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         },
         {
           "component": "modular/helpers/checks/checks.js",
@@ -144,8 +138,7 @@
             "modular/use-cases/pedidos/createOrder.useCase.js",
             "modular/use-cases/pedidos/getOrder.useCase.js",
             "modular/use-cases/pedidos/updateOrder.useCase.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         },
         {
           "component": "modular/helpers/http/http.js",
@@ -157,24 +150,21 @@
             "modular/use-cases/pedidos/createOrder.useCase.js",
             "modular/use-cases/pedidos/getOrder.useCase.js",
             "modular/use-cases/pedidos/updateOrder.useCase.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         },
         {
           "component": "modular/profiles/autenticacao/autenticacao.profiles.js",
           "consumers_count": 1,
           "consumers": [
             "modular/scenarios/autenticacao/autenticacao.scenario.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         },
         {
           "component": "modular/profiles/catalogo/catalogo.profiles.js",
           "consumers_count": 1,
           "consumers": [
             "modular/scenarios/catalogo/catalogo.scenario.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         },
         {
           "component": "modular/profiles/comum/smoke.profile.js",
@@ -185,32 +175,28 @@
             "modular/profiles/pedidos/atualizacao.profiles.js",
             "modular/profiles/pedidos/consulta.profiles.js",
             "modular/profiles/pedidos/criacao.profiles.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         },
         {
           "component": "modular/profiles/pedidos/atualizacao.profiles.js",
           "consumers_count": 1,
           "consumers": [
             "modular/scenarios/pedidos/atualizacao.scenario.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         },
         {
           "component": "modular/profiles/pedidos/consulta.profiles.js",
           "consumers_count": 1,
           "consumers": [
             "modular/scenarios/pedidos/consulta.scenario.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         },
         {
           "component": "modular/profiles/pedidos/criacao.profiles.js",
           "consumers_count": 1,
           "consumers": [
             "modular/scenarios/pedidos/criacao.scenario.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         },
         {
           "component": "modular/use-cases/autenticacao/login.useCase.js",
@@ -221,8 +207,7 @@
             "modular/flows/pedidos/atualizacao.flow.js",
             "modular/flows/pedidos/consulta.flow.js",
             "modular/flows/pedidos/criacao.flow.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         },
         {
           "component": "modular/use-cases/catalogo/getProduct.useCase.js",
@@ -230,16 +215,14 @@
           "consumers": [
             "modular/flows/catalogo/catalogo.flow.js",
             "modular/flows/pedidos/criacao.flow.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         },
         {
           "component": "modular/use-cases/catalogo/listProducts.useCase.js",
           "consumers_count": 1,
           "consumers": [
             "modular/flows/catalogo/catalogo.flow.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         },
         {
           "component": "modular/use-cases/pedidos/createOrder.useCase.js",
@@ -248,8 +231,7 @@
             "modular/flows/pedidos/atualizacao.flow.js",
             "modular/flows/pedidos/consulta.flow.js",
             "modular/flows/pedidos/criacao.flow.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         },
         {
           "component": "modular/use-cases/pedidos/getOrder.useCase.js",
@@ -257,27 +239,30 @@
           "consumers": [
             "modular/flows/pedidos/atualizacao.flow.js",
             "modular/flows/pedidos/consulta.flow.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         },
         {
           "component": "modular/use-cases/pedidos/updateOrder.useCase.js",
           "consumers_count": 1,
           "consumers": [
             "modular/flows/pedidos/atualizacao.flow.js"
-          ],
-          "status_in_batch": "preexisting_unmodified"
+          ]
         }
       ]
     },
+    "batch_reuse": null,
     "duplication": {
+      "algorithm": "exact-token-window-union-v1",
       "min_tokens_window": 25,
+      "normalization_rules": "Remove comentários de linha/bloco e whitespace; preserva literais e identificadores literalmente (clones Tipo-1); não cruza fronteira entre arquivos; percentual calculado sobre a união de posições de tokens e de linhas SLOC (sem contagem dupla em regiões sobrepostas).",
       "total_tokens": 2016,
       "duplicated_tokens": 160,
       "duplication_tokens_pct": 7.94,
       "duplicated_lines": 18,
       "duplication_lines_pct": 6.29,
-      "clones_count": 1
+      "clones_count": 1,
+      "intra_file_clones_count": 0,
+      "cross_file_clones_count": 1
     },
     "files": [
       {

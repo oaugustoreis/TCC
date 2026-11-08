@@ -43,5 +43,3 @@ Comparação entre pares normaliza ordem de chaves JSON e IDs de token/pedido re
 A sonda verificar-oraculo-e1.mjs é um teste de contrato HTTP em Node, sem k6, sem VU/iteração ou checks reais de CT-06/07. Seu resultado não comprova os cenários futuros. Testes sintéticos de oraculos.test.mjs verificam se o validador rejeita desvios; seus labels/métricas sintéticos não são dados experimentais.
 
 api-observada.mjs captura requests/responses da API real sem alterar as suítes. Observa writeHead para capturar headers explícitos e write/end para o corpo. Erros de captura reprovam a validação, em vez de serem descartados.
-
-O validador Python e as evidências anteriores permanecem preservados como histórico; a entrada operacional E0/E1 desta preparação é a versão Node acima.

@@ -1,9 +1,0 @@
-{
-  "command": [
-    "uname",
-    "-a"
-  ],
-  "cwd": "/mnt/d/TCC",
-  "started_utc": "2026-11-05T16:54:39.897702+00:00",
-  "exit_code": 0
-}

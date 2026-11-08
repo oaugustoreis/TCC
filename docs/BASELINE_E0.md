@@ -10,8 +10,7 @@ Preparada em 05/11/2026. Estado: cinco cenários tradicionais e cinco modulares 
 - Carga E0: 1 VU e 1 iteração por entrada.
 - Evidência funcional: [resultado aprovado](../evidencias/validacao_final/2026-11-05T17-07-25-732Z/result.json), 10/10 execuções reais, 28 requisições e 60 checks. Nenhuma execução nova foi necessária para a preparação.
 - Fontes da tag confrontados byte a byte, por SHA-256, com o manifesto da validação anterior: nenhuma divergência.
-- Arquivo separado: [histórico E0](../historico/validacao-e0/LEIA-ME.md), com 694 cópias verificadas e [manifesto](../historico/validacao-e0/MANIFESTO_PRESERVACAO.json).
-- Dependências node_modules e caches Python não versionados. Código autoral, lockfile, documentação e logs das evidências foram incluídos no commit inicial.
+- Dependências node_modules e caches Python não versionados. Código autoral, documentação e logs das evidências oficiais em `evidencias/validacao_final/2026-11-05T17-07-25-732Z/` foram preservados.
 
 O commit E0 antecede os três documentos do estudo incremental, que pertencem ao commit de preparação seguinte. A tag E0 não será movida para incorporar planejamento ou expansões.
 
