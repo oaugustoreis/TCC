@@ -1,1 +1,0 @@
-Ensaio operacional neutro de transporte. Não leia arquivos, não use ferramentas, não altere nada e não consulte qualquer suíte ou projeto. Calcule 2+3+5 e responda somente com o número 10.

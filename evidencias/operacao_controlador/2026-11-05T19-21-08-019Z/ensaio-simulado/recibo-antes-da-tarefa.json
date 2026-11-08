@@ -1,9 +1,0 @@
-{
-  "ready_to_send": true,
-  "unit_id": "ENSAIO-OPERACIONAL-NEUTRO",
-  "clock_session_id": "a852ed37-9815-4e3f-8610-4d71fa13339c",
-  "start_event_id": "23490547-2e0e-49e5-862a-2f7475413944",
-  "prompt_sha256": "6e5c5fef81cbb92bc06c50cf92a419214cf172b7db75a070fc651b7e0f4a7473",
-  "controller_file": "D:\\TCC\\evidencias\\operacao_controlador\\2026-11-05T19-21-08-019Z\\ensaio-simulado\\sessao\\controller.json",
-  "turn_dir": "D:\\TCC\\evidencias\\operacao_controlador\\2026-11-05T19-21-08-019Z\\ensaio-simulado\\sessao\\turnos\\001"
-}

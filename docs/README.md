@@ -48,8 +48,12 @@ A validação funcional real e suas limitações estão em [RELATORIO_VALIDACAO_
 
 ## Estudo de evolução incremental — preparação
 
-E0 está identificada em [BASELINE_E0.md](BASELINE_E0.md), com commit e tag locais. A expansão planejada segue 5 → 7 → 10 → 12 → 15 cenários por arquitetura. Ver [protocolo](PROTOCOLO_EVOLUCAO_INCREMENTAL.md), [matriz de requisitos](MATRIZ_REQUISITOS_EXPANSAO.md) e [plano de medição](PLANO_MEDICAO_ESFORCO.md). E1–E4 não foram implementados; nenhuma medição definitiva foi iniciada. O protocolo antigo em docs/protocolo.md permanece histórico.
+E0 está identificada em [BASELINE_E0.md](BASELINE_E0.md), com commit e tag locais. A expansão planejada segue 5 → 7 → 10 → 12 → 15 cenários por arquitetura. Ver [protocolo](PROTOCOLO_EVOLUCAO_INCREMENTAL.md), [matriz de requisitos](MATRIZ_REQUISITOS_EXPANSAO.md) e [plano de medição](PLANO_MEDICAO_ESFORCO.md). E1–E4 não foram implementados; nenhuma medição definitiva foi iniciada. O protocolo antigo em docs/protocolo.md permanece histórico. A operação atual segue o [roteiro manual](EXECUCAO_MANUAL.md), separado das exigências operacionais do desenho anterior.
 
 ## Preparação funcional de E1
 
 API de catálogo/estoque e validador comum preparados, sem implementação dos cenários novos. Decisão e evidências em [RELATORIO_PRONTIDAO_E1.md](RELATORIO_PRONTIDAO_E1.md). Operação do validador: [scripts/validacao/README.md](../scripts/validacao/README.md).
+
+## Execução e medição conduzida por IA (Emenda v2.0)
+
+A automação antiga de cronômetro humano foi removida e substituída pelo protocolo *AI-Only* (Fase 1: Expansão `E1`–`E4`; Fase 2: Manutenção `M1`–`M3`), utilizando subagentes isolados por arquitetura, validação HTTP real via `scripts/validacao/validar.mjs` e extração automática de métricas estruturais, reutilização, duplicação e esforço do agente via `scripts/metricas/coletar-metricas.mjs`. Consulte [EXECUCAO_MANUAL.md](EXECUCAO_MANUAL.md), [PROTOCOLO_EVOLUCAO_INCREMENTAL.md](PROTOCOLO_EVOLUCAO_INCREMENTAL.md) e [PLANO_MEDICAO_ESFORCO.md](PLANO_MEDICAO_ESFORCO.md).

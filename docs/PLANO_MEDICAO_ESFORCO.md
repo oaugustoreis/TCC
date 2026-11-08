@@ -1,5 +1,7 @@
 # Plano de medição do esforço de implementação
 
+> **Emenda Operacional v2.0 (08/11/2026) — Medição Automatizada (Estrutural, Duplicação e Esforço da IA)**: A partir de 08/11/2026, a coleta manual de tempo humano foi substituída pela extração automatizada via [scripts/metricas/coletar-metricas.mjs](../scripts/metricas/coletar-metricas.mjs), combinando métricas determinísticas de engenharia de software (deltas Git, superfície de impacto, reutilização de módulos e duplicação/clones de código) com métricas operacionais do subagente de IA (*Pass@1*, ciclos de validação, *tool calls* e duração do turno). O texto v1.0 abaixo permanece preservado como histórico metodológico.
+
 Versão 1.0 — planejamento prospectivo. Nenhum tempo de implementação de E1–E4 foi coletado. Não reconstruir tempos de E0 ou desta preparação a partir de lembranças ou duração total da conversa.
 
 Vínculos: [protocolo](PROTOCOLO_EVOLUCAO_INCREMENTAL.md), [requisitos](MATRIZ_REQUISITOS_EXPANSAO.md), [baseline](BASELINE_E0.md).
@@ -145,10 +147,20 @@ Não criar índice de dificuldade baseado apenas em linhas ou uma pontuação co
 - API futura e adaptação do validador ainda não implementadas; prontidão será verificada por lote.
 - Nenhuma linha desta especificação é resultado de esforço já medido.
 
-## Instrumentação e revisão de prontidão
+## Operação atual (Emenda v2.0 — Medição Automatizada *AI-Only*)
 
-Implementação: [scripts/medicao/coletor.mjs](../scripts/medicao/coletor.mjs). Instruções e limites: [manual do coletor](../scripts/medicao/README.md). Cada processo escreve JSONL exclusivo com fsync por evento e ACK posterior à persistência. O relógio é process.hrtime.bigint; novo UUID a cada processo. Um escritor por pasta, pausa/retomada, trilhas auxiliares e recuperação sem atribuir duração a intervalo interrompido. Somente intervalos encerrados contribuem para somas known; ausência/queda relevante produz null na métrica pública. Não subtrair relógios entre sessões.
+O extrator [scripts/metricas/coletar-metricas.mjs](../scripts/metricas/coletar-metricas.mjs) coleta e consolida automaticamente as seguintes métricas para `tradicional/` e `modular/` em cada etapa (`E0`–`E4` e `M1`–`M3`):
 
-Modelo/effort/cliente fixados a partir do turno de prontidão: gpt-6.1-sol / low / Codex 0.166.0. Sandbox workspace-write, rede restrita, aprovação granular com rejeição automática de sandbox_approval, rules e skill_approval; capacidades restantes conforme captura do turno. Versão da GUI, service tier e snapshot interno não expostos, sem valores presumidos. O backend/CLI é o cliente verificável para o estudo. A lista de ferramentas e suas descrições por hash deve ser recapturada antes de cada braço, assim como os campos da sessão. Detalhes em [RELATORIO_PRONTIDAO_EXPERIMENTO.md](RELATORIO_PRONTIDAO_EXPERIMENTO.md).
-
-O piloto neutro mede somente subprocessos de ordenação/soma, não o turno completo nem esforço humano. Os testes de categorias humanas/Codex usam dados simulados identificados. A automação não identifica sozinha leitura, decisão ou intervenções humanas. Para E1, o operador/controlador deve abrir o intervalo antes de enviar o prompt, aguardar ACK e fechá-lo ao receber a resposta; registrar também prompts, intervenções e a supervisão do limite de 120 minutos. Esses procedimentos valem igualmente nos dois braços.
+1. **Métricas Estruturais de Código e Git**:
+   - **Tamanho do Estado**: Total de arquivos `.js` autorais, linhas físicas (LOC), linhas lógicas sem comentários/vazias (SLOC) e tamanho em bytes.
+   - **Delta de Alteração (`git diff --numstat`)**: Linhas adicionadas (`+`) e linhas removidas (`-`) na transição.
+   - **Superfície de Impacto (`git diff --name-status`)**: Quantidade e lista de arquivos criados (`A`), modificados (`M`) e excluídos (`D`).
+2. **Métricas de Reutilização**:
+   - **Grafo de Imports ESM**: Contagem de componentes compartilhados (`use-cases`, `flows`, `profiles`, `helpers`) importados pelos cenários, distinguindo reuso sem alteração vs. reuso com adaptação no lote.
+3. **Métricas de Duplicação de Código (Clones)**:
+   - Análise determinística de clones de código (blocos de linhas/tokens repetidos dentro de `tradicional/` e dentro de `modular/`): quantidade de clones, linhas duplicadas, **% de linhas duplicadas** e **% de tokens duplicados** em cada etapa.
+4. **Métricas Operacionais do Agente de IA**:
+   - **Acerto de Primeira (*Pass@1*)**: Aprovação imediata na 1ª execução de [scripts/validacao/validar.mjs](../scripts/validacao/validar.mjs).
+   - **Ciclos de Validação/Correção**: Quantidade de execuções do validador até atingir 100% de aprovação no oráculo.
+   - **Operações do Agente (*Tool Calls*)**: Quantidade de leituras, escritas/edições de arquivos e comandos executados pelo subagente isolado.
+   - **Duração do Turno do Subagente**: Intervalo em segundos entre o início e o término do subagente na unidade.

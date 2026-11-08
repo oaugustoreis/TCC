@@ -1,5 +1,7 @@
 # Relatório de prontidão funcional de E1
 
+> Relatório histórico de preparação funcional. A automação temporal e de isolamento citada abaixo foi encerrada e removida em 06/11/2026. A operação atual está em [EXECUCAO_MANUAL.md](EXECUCAO_MANUAL.md); a decisão antiga não comprova os controles do novo procedimento.
+
 Data: 05/11/2026. **Decisão: E1 liberado funcionalmente para implementação medida de CT-06 e CT-07.** API, contratos, oráculo e validador comum estão preparados; a regressão HTTP real de E0 passou integralmente.
 
 Esta entrega termina na preparação comum. **Nenhum cenário CT-06–CT-15 foi implementado nas suítes; nenhum esforço experimental foi coletado; não houve avanço para E2.** A liberação não declara equivalência funcional dos cenários novos, que ainda serão implementados e validados sob o protocolo congelado. O início de cada unidade continua sujeito a sessões isoladas, ordem tradicional→modular, recaptura de configuração e controle temporal externo antes dos prompts.
@@ -12,7 +14,7 @@ Esta entrega termina na preparação comum. **Nenhum cenário CT-06–CT-15 foi 
 | Protocolo, tag anotada protocolo-evolucao-v1.0 | 92c3bff5a6b0c7837aa97729fdc56bdf11976007 |
 | HEAD encontrado no início | 92c3bff5a6b0c7837aa97729fdc56bdf11976007 |
 
-Foram consultados o [protocolo](PROTOCOLO_EVOLUCAO_INCREMENTAL.md), a [matriz](MATRIZ_REQUISITOS_EXPANSAO.md), o [plano de esforço](PLANO_MEDICAO_ESFORCO.md) e o [relatório de prontidão metodológica](RELATORIO_PRONTIDAO_EXPERIMENTO.md), incluindo suas versões na tag congelada. A comparação confirmou que as diferenças atuais desses quatro documentos limitam-se aos destinos dos links após a movimentação para docs/.
+Foram consultados o [protocolo](PROTOCOLO_EVOLUCAO_INCREMENTAL.md), a [matriz](MATRIZ_REQUISITOS_EXPANSAO.md), o [plano de esforço](PLANO_MEDICAO_ESFORCO.md) e o relatório de prontidão metodológica (documento da automação removida), incluindo suas versões na tag congelada. A comparação confirmou que as diferenças atuais desses quatro documentos limitam-se aos destinos dos links após a movimentação para docs/.
 
 O repositório começou com essa reorganização documental pendente, realizada a pedido anterior do usuário; ela foi registrada separadamente antes de alterar a API. Nenhuma tag foi alterada ou movida. Branch de preparação: **api/e1**.
 

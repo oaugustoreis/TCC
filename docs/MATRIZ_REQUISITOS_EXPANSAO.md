@@ -202,6 +202,6 @@ Contratos ambíguos são resolvidos por emenda antes do lote, aplicada aos dois 
 
 ## Conferência de prontidão de 05/11/2026
 
-A auditoria scripts/prontidao/auditar.mjs conta os índices/ranges de operações de CT-06–CT-15, confere dois checks por resposta nova, a sequência de IDs, os cinco cenários E0 e as somas por etapa. Totais confirmados por suíte: E0 14/30; E1 20/42; E2 34/70; E3 42/86; E4 66/134 (requests/checks). Não houve mudança nos requisitos ou nos números previstos. Esses valores continuam expectativas, não execuções da expansão.
+A auditoria anterior (script removido no reinício manual) contou os índices/ranges de operações de CT-06–CT-15, confere dois checks por resposta nova, a sequência de IDs, os cinco cenários E0 e as somas por etapa. Totais confirmados por suíte: E0 14/30; E1 20/42; E2 34/70; E3 42/86; E4 66/134 (requests/checks). Não houve mudança nos requisitos ou nos números previstos. Esses valores continuam expectativas, não execuções da expansão.
 
-A revisão manual confirmou que os dois braços recebem os mesmos dados, ordem, labels e predicados. A API e a futura validação de E1 continuam pendentes; nenhuma equivalência de CT-06–CT-15 é declarada. Evidências e decisão em [RELATORIO_PRONTIDAO_EXPERIMENTO.md](RELATORIO_PRONTIDAO_EXPERIMENTO.md).
+A revisão manual confirmou que os dois braços recebem os mesmos dados, ordem, labels e predicados. A API e a futura validação de E1 continuam pendentes; nenhuma equivalência de CT-06–CT-15 é declarada. Evidências e decisão em RELATORIO_PRONTIDAO_EXPERIMENTO.md (documento da automação removida).

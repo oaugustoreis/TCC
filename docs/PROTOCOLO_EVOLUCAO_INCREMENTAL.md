@@ -1,5 +1,7 @@
 # Protocolo de evolução incremental de testes k6
 
+> **Emenda Operacional v2.0 (08/11/2026) — Execução e Medição 100% Conduzida por IA (Fases 1 e 2)**: A partir de 08/11/2026, a implementação dos cenários de expansão (`E1`–`E4`) e das tarefas de manutenção transversal (`M1`–`M3`) passa a ser executada exclusivamente por um agente de IA controlado (mesmo modelo e prompt padronizado), operando em subagentes isolados por arquitetura (`tradicional/` vs. `modular/`), sem intervenção de digitação humana ou cronômetro manual. Veja a seção final deste documento e [EXECUCAO_MANUAL.md](EXECUCAO_MANUAL.md). O texto v1.0 abaixo é preservado integralmente como histórico metodológico.
+
 Versão 1.0 — 05/11/2026. Escopo desta entrega: preparação e planejamento. Nenhum cenário expandido foi implementado e nenhuma medição definitiva foi iniciada.
 
 ## Pergunta e desenho
@@ -36,7 +38,7 @@ Os três documentos são a especificação prospectiva v1.0. Antes de qualquer u
 4. Ensaiar o mecanismo de registro em tarefa neutra fora das suítes. Não desenvolver CT-06–CT-15 no ensaio. Registrar o piloto separadamente, sem usar seus tempos como resultados.
 5. Registrar revisão dos contratos, critérios, ordem e campos de coleta; criar a tag e guardar o SHA. Não mudar o protocolo após conhecer resultados sem emenda datada e nova versão.
 
-A preparação inicial registrou o conteúdo v1.0 antes do piloto. A revisão de prontidão implementa o coletor, executa o piloto neutro e captura a configuração efetiva; a decisão de congelamento e suas evidências estão em [RELATORIO_PRONTIDAO_EXPERIMENTO.md](RELATORIO_PRONTIDAO_EXPERIMENTO.md). A tag protocolo-evolucao-v1.0 identifica o commit conferido, sem autorizar implicitamente a implementação de cenários.
+A preparação inicial registrou o conteúdo v1.0 antes do piloto. A revisão de prontidão implementa o coletor, executa o piloto neutro e captura a configuração efetiva; a decisão de congelamento e suas evidências estão em RELATORIO_PRONTIDAO_EXPERIMENTO.md (documento da automação removida). A tag protocolo-evolucao-v1.0 identifica o commit conferido, sem autorizar implicitamente a implementação de cenários.
 
 O desenho pode ser congelado antes de implementar a API. Cada lote tem gate adicional de prontidão: API e testes de contrato em commits próprios, regressão E0 aprovada, validador comum apto a todos os cenários do estado, fixtures e oráculos congelados. Esse trabalho comum precede as duas unidades medidas.
 
@@ -85,8 +87,26 @@ Um projeto, um operador e um percurso assistido por IA limitam generalização. 
 
 ## Revisão de prontidão de 05/11/2026
 
-Coletor comum: scripts/medicao/coletor.mjs; piloto: scripts/medicao/piloto.mjs; auditoria repetível: scripts/prontidao/auditar.mjs. Configuração prospectiva comum capturada: gpt-6.1-sol, reasoning effort low, cliente/backend Codex 0.166.0, workspace-write e aprovação granular. Recapturar e comparar os campos e o inventário de ferramentas antes de cada condição; mudança exige registro e revalidação do par. O service tier e o snapshot interno do alias não são expostos e permanecem explicitamente desconhecidos. Não se presume estabilidade interna de um alias.
+O coletor, o piloto e o auditor de prontidão desta versão foram removidos no reinício manual solicitado em 06/11/2026. Configuração prospectiva comum capturada: gpt-6.1-sol, reasoning effort low, cliente/backend Codex 0.166.0, workspace-write e aprovação granular. Recapturar e comparar os campos e o inventário de ferramentas antes de cada condição; mudança exige registro e revalidação do par. O service tier e o snapshot interno do alias não são expostos e permanecem explicitamente desconhecidos. Não se presume estabilidade interna de um alias.
 
 A execução do Codex será delimitada pelo operador/controlador fora do turno medido. Não iniciar o cronômetro de um turno de dentro dele. O piloto valida a instrumentação com tarefa neutra, sem medir esforço humano ou duração integral deste turno. A captura de prompts/intervenções e a supervisão do limite de 120 minutos continuam obrigatórias. A rota de comandos local usa Node e subprocessos, disponível mesmo com falha do lançador exec_command; manter essa rota igual nos dois braços.
 
 Congelamento metodológico e prontidão funcional de E1 são gates distintos: E1 ainda exige API/fixtures e validador de CT-06/07 em commits próprios, testes e regressão real antes de abrir unidades medidas. Nada disso foi implementado nesta revisão.
+
+---
+
+## Emenda v2.0 (08/11/2026) — Execução 100% Conduzida por IA (Fases 1 e 2)
+
+### 1. Racional e Desenho Experimental
+Para eliminar o viés de fadiga, variação de velocidade de digitação humana e subjetividade de pausas manuais, o experimento adota um **agente de IA único e padronizado** como instrumento executor constante para ambas as arquiteturas (`tradicional/` e `modular/`):
+- **Isolamento por condição**: Cada lote de cada arquitetura (ex.: `E1-Tradicional` e `E1-Modular`) é executado em uma instância de subagente dedicada, recebendo o mesmo prompt padronizado e restrita a ler/editar apenas os arquivos da própria arquitetura (`tradicional/` ou `modular/`).
+- **Oráculo determinístico**: Toda unidade é validada em HTTP real com o `k6` contra [scripts/validacao/validar.mjs](../scripts/validacao/validar.mjs) e [scripts/validacao/oraculos.mjs](../scripts/validacao/oraculos.mjs).
+
+### 2. Fases Avaliadas
+1. **Fase 1 — Evolução Incremental (`E0` → `E1` → `E2` → `E3` → `E4`)**:
+   - Expansão cumulativa de 5 para 15 cenários (`CT-01` a `CT-15`) seguindo integralmente [MATRIZ_REQUISITOS_EXPANSAO.md](MATRIZ_REQUISITOS_EXPANSAO.md) e a alternância de ordem (`E1`: T→M; `E2`: M→T; `E3`: T→M; `E4`: M→T).
+2. **Fase 2 — Manutenção e Atualização Transversal (`M1`, `M2`, `M3` sobre `E4`)**:
+   - Executada em branches independentes a partir do estado `E4` validado (15 cenários por suíte), medindo o impacto de mudanças de contrato/verificação sobre uma suíte madura:
+     - **`M1` (Contrato de Autenticação)**: `/auth/login` inclui `expiresIn: 3600` e todas as autenticações da suíte passam a validar esse campo no check de corpo do login.
+     - **`M2` (Contrato de Criação de Pedido)**: `POST /orders` passa a retornar e exigir validação de `currency: "BRL"` em todos os cenários que criam pedidos (`CT-03`, `CT-04`, `CT-05`, `CT-11` a `CT-15`).
+     - **`M3` (Verificação em Consulta de Pedido)**: `GET /orders/:id` passa a exigir validação de `createdAt` string não vazia nos cenários que consultam pedidos por ID.
