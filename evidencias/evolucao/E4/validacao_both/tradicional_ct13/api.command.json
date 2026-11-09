@@ -1,0 +1,12 @@
+{
+  "command": [
+    "node",
+    "scripts/validacao/api-observada.mjs"
+  ],
+  "cwd": "/mnt/d/TCC",
+  "environment": {
+    "PORT": "0",
+    "TRACE_FILE": "/mnt/d/TCC/evidencias/evolucao/E4/validacao_both/tradicional_ct13/server-requests.jsonl",
+    "READY_FILE": "/mnt/d/TCC/evidencias/evolucao/E4/validacao_both/tradicional_ct13/api-ready.json"
+  }
+}

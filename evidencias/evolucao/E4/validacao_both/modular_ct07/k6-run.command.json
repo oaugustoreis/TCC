@@ -1,0 +1,25 @@
+{
+  "command": [
+    "k6",
+    "run",
+    "--no-usage-report",
+    "--no-color",
+    "--quiet",
+    "--log-format=json",
+    "--log-output",
+    "file=/mnt/d/TCC/evidencias/evolucao/E4/validacao_both/modular_ct07/http-debug.jsonl",
+    "--http-debug=full",
+    "--summary-export",
+    "/mnt/d/TCC/evidencias/evolucao/E4/validacao_both/modular_ct07/summary.json",
+    "--out",
+    "json=/mnt/d/TCC/evidencias/evolucao/E4/validacao_both/modular_ct07/metrics.jsonl",
+    "-e",
+    "BASE_URL=http://127.0.0.1:35543",
+    "modular/scenarios/catalogo/estoque.scenario.js"
+  ],
+  "cwd": "/mnt/d/TCC",
+  "started_utc": "2026-11-09T19:46:34.693Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

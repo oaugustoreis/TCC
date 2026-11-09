@@ -13,6 +13,11 @@ const addCartItem={method:'POST',path:'/carts/:cartId/items',payload:{productId:
 const updateCartItem={method:'PATCH',path:'/carts/:cartId/items/p1',payload:{quantity:3},status:200,kind:'cart-snapshot',expectedItems:[{productId:'p1',quantity:3,unitPrice:100,subtotal:300}],expectedTotal:300};
 const deleteCartItem={method:'DELETE',path:'/carts/:cartId/items/p1',status:200,kind:'cart-snapshot',expectedItems:[],expectedTotal:0};
 const readCart=(expectedItems,expectedTotal,expectedStatus='open')=>({method:'GET',path:'/carts/:cartId',status:200,kind:'cart-snapshot',expectedItems,expectedTotal,expectedStatus});
+const createCartOrder={method:'POST',path:'/orders',payload:{cartId:':cartId'},status:201,kind:'create-cart-order',expectedItems:[{productId:'p1',quantity:1,unitPrice:100,subtotal:100}],expectedTotal:100};
+const confirmCartOrder={method:'PATCH',path:'/orders/:orderId/status',payload:{status:'confirmed'},status:200,kind:'cart-order',expectedItems:[{productId:'p1',quantity:1,unitPrice:100,subtotal:100}],expectedTotal:100,expectedStatus:'confirmed'};
+const readCartOrder=expectedStatus=>({method:'GET',path:'/orders/:orderId',status:200,kind:'cart-order',expectedItems:[{productId:'p1',quantity:1,unitPrice:100,subtotal:100}],expectedTotal:100,expectedStatus});
+const createPayment=(method,expectedStatus)=>({method:'POST',path:'/payments',payload:{orderId:':orderId',method},status:201,kind:'create-payment',expectedAmount:100,expectedStatus});
+const readPayment=expectedStatus=>({method:'GET',path:'/payments/:paymentId',status:200,kind:'payment',expectedAmount:100,expectedStatus});
 const checks={
  ct01:['login 200','token presente'],
  ct02:['login 200','token presente','lista 200','produtos disponíveis','produto 200','produto p1'],
@@ -32,7 +37,10 @@ const definitions={
  ct09:{steps:[login,createCart,addCartItem,updateCartItem,readCart([{productId:'p1',quantity:3,unitPrice:100,subtotal:300}],300)]},
  ct10:{steps:[login,createCart,addCartItem,deleteCartItem,readCart([],0)]},
  ct11:{steps:[login,create,read('created'),listOrders('created')]},
- ct12:{steps:[login,create,cancel,read('cancelled')]}
+ ct12:{steps:[login,create,cancel,read('cancelled')]},
+ ct13:{steps:[login,create,confirm,createPayment('test_approved','approved'),readPayment('approved'),read('paid')]},
+ ct14:{steps:[login,create,confirm,createPayment('test_declined','declined'),readPayment('declined'),read('confirmed')]},
+ ct15:{steps:[login,{...product,kind:'product-e1'},{method:'GET',path:'/products/p1/stock',status:200,kind:'stock',productId:'p1'},createCart,addCartItem,readCart([{productId:'p1',quantity:1,unitPrice:100,subtotal:100}],100,'open'),createCartOrder,confirmCartOrder,createPayment('test_approved','approved'),readPayment('approved'),readCartOrder('paid'),readCart([{productId:'p1',quantity:1,unitPrice:100,subtotal:100}],100,'checked_out')]}
 };
 for(const [id,spec]of Object.entries(definitions)){
  spec.checks=checks[id]||spec.steps.flatMap((_,i)=>['status','corpo'].map(suffix=>id.toUpperCase().replace('CT','CT-')+' '+String(i+1).padStart(2,'0')+' '+suffix));
@@ -43,6 +51,7 @@ export const E0_IDS=['ct01','ct02','ct03','ct04','ct05'];
 export const E1_IDS=[...E0_IDS,'ct06','ct07'];
 export const E2_IDS=[...E1_IDS,'ct08','ct09','ct10'];
 export const E3_IDS=[...E2_IDS,'ct11','ct12'];
+export const E4_IDS=[...E3_IDS,'ct13','ct14','ct15'];
 export function stable(value){
  if(Array.isArray(value))return value.map(stable);
  if(value!==null&&typeof value==='object')return Object.fromEntries(Object.keys(value).sort().map(k=>[k,stable(value[k])]));
@@ -56,10 +65,13 @@ const nonempty=v=>typeof v==='string'&&v.length>0;
 const productFixture=id=>({id,name:id==='p1'?'Produto A':'Produto B',price:id==='p1'?100:50});
 const headersLower=h=>Object.fromEntries(Object.entries(h||{}).map(([k,v])=>[k.toLowerCase(),v]));
 const media=value=>typeof value==='string'?value.split(';')[0].trim().toLowerCase():'';
+const resolveDynamic=(val,ctx)=>val===':orderId'?ctx.orderId:val===':cartId'?ctx.cartId:val===':paymentId'?ctx.paymentId
+ :Array.isArray(val)?val.map(v=>resolveDynamic(v,ctx))
+ :val!==null&&typeof val==='object'?Object.fromEntries(Object.entries(val).map(([k,v])=>[k,resolveDynamic(v,ctx)])):val;
 export function validateHttp(id,received,{host,client='k6'}={}){
  const spec=SCENARIOS[id];if(!spec)throw Error('Cenário desconhecido: '+id);
  const errors=[];const expect=(condition,message)=>{if(!condition)errors.push(message)};
- const context={token:null,orderId:null,cartId:null};
+ const context={token:null,orderId:null,cartId:null,paymentId:null};
  expect(received.length===spec.steps.length,'quantidade de requisições');
  for(const [i,step] of spec.steps.entries()){
   const r=received[i];const label=id+' operação '+(i+1);
@@ -69,7 +81,7 @@ export function validateHttp(id,received,{host,client='k6'}={}){
   expect(r.method===step.method,label+': método');
   let actualUrl;
   try{actualUrl=new URL(r.path,'http://local.invalid');}catch{errors.push(label+': URL inválida');continue;}
-  const target=new URL(step.path.replace(':orderId',context.orderId).replace(':cartId',context.cartId),'http://local.invalid');
+  const target=new URL(step.path.replace(':orderId',context.orderId).replace(':cartId',context.cartId).replace(':paymentId',context.paymentId),'http://local.invalid');
   expect(actualUrl.pathname===target.pathname,label+': rota');
   expect(same([...actualUrl.searchParams].sort(),[...target.searchParams].sort()),label+': query');
   expect(media(headers['content-type'])==='application/json',label+': Content-Type request');
@@ -78,7 +90,7 @@ export function validateHttp(id,received,{host,client='k6'}={}){
   expect(step.kind==='login'?headers.authorization===undefined:headers.authorization==='Bearer '+context.token,label+': Authorization');
   if(step.payload===undefined)expect(r.payload==='',label+': body inesperado');
   else{
-   try{expect(same(JSON.parse(r.payload),step.payload),label+': payload');}catch{errors.push(label+': payload JSON inválido');}
+   try{expect(same(JSON.parse(r.payload),resolveDynamic(step.payload,context)),label+': payload');}catch{errors.push(label+': payload JSON inválido');}
    expect(String(headers['content-length'])===String(Buffer.byteLength(r.payload||'')),label+': Content-Length');
   }
   expect(r.status===step.status,label+': status HTTP');
@@ -101,6 +113,24 @@ export function validateHttp(id,received,{host,client='k6'}={}){
    valid=body.id===context.cartId&&body.status===expectedStatus&&body.total===step.expectedTotal
     &&Array.isArray(body.items)&&body.items.length===step.expectedItems.length
     &&step.expectedItems.every((exp,idx)=>subset(body.items[idx],exp));
+  }
+  if(step.kind==='create-cart-order'){
+   valid=nonempty(body.id)&&body.cartId===context.cartId&&body.status==='created'&&body.total===step.expectedTotal
+    &&Array.isArray(body.items)&&body.items.length===step.expectedItems.length
+    &&step.expectedItems.every((exp,idx)=>subset(body.items[idx],exp));
+   context.orderId=body.id;
+  }
+  if(step.kind==='cart-order'){
+   valid=body.id===context.orderId&&body.cartId===context.cartId&&body.status===step.expectedStatus&&body.total===step.expectedTotal
+    &&Array.isArray(body.items)&&body.items.length===step.expectedItems.length
+    &&step.expectedItems.every((exp,idx)=>subset(body.items[idx],exp));
+  }
+  if(step.kind==='create-payment'){
+   valid=nonempty(body.id)&&body.orderId===context.orderId&&body.amount===step.expectedAmount&&body.status===step.expectedStatus;
+   context.paymentId=body.id;
+  }
+  if(step.kind==='payment'){
+   valid=body.id===context.paymentId&&body.orderId===context.orderId&&body.amount===step.expectedAmount&&body.status===step.expectedStatus;
   }
   expect(valid,label+': campos obrigatórios da resposta');
  }
@@ -129,17 +159,19 @@ export function validateRun(id,{received,checks,options,suite,scenarioKey=id,met
  return {passed:errors.length===0,errors,expected_requests:spec.steps.length,expected_checks:spec.checks.length};
 }
 export function canonicalTrace(received){
- let token=null,orderId=null,cartId=null;
+ let token=null,orderId=null,cartId=null,paymentId=null;
  for(const r of received){
   const body=JSON.parse(r.responseBody);
   if(r.path==='/auth/login')token=body.token;
   if(r.method==='POST'&&r.path==='/orders')orderId=body.id;
   if(r.method==='POST'&&r.path==='/carts')cartId=body.id;
+  if(r.method==='POST'&&r.path==='/payments')paymentId=body.id;
  }
  const normalize=value=>{
   if(value===token&&token!==null)return '<token>';
   if(value===orderId&&orderId!==null)return '<orderId>';
   if(value===cartId&&cartId!==null)return '<cartId>';
+  if(value===paymentId&&paymentId!==null)return '<paymentId>';
   if(Array.isArray(value))return value.map(normalize);
   if(value!==null&&typeof value==='object')return Object.fromEntries(Object.entries(value).map(([k,v])=>[k,normalize(v)]));
   return value;
@@ -148,6 +180,7 @@ export function canonicalTrace(received){
   let res=p;
   if(orderId)res=res.replace('/orders/'+orderId,'/orders/<orderId>');
   if(cartId)res=res.replace('/carts/'+cartId,'/carts/<cartId>');
+  if(paymentId)res=res.replace('/payments/'+paymentId,'/payments/<paymentId>');
   return res;
  };
  return stable(received.map(r=>({method:r.method,path:normPath(r.path),

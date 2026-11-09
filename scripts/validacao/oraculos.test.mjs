@@ -135,3 +135,56 @@ test('oráculo de pedidos E3 rejeita listagem sem filtro ou status divergente',(
  y.received[3].responseBody=JSON.stringify({id:'o1',productId:'p1',quantity:1,status:'confirmed'});
  assert.equal(validateRun('ct12',y).passed,false);
 });
+function e4Fixture(id){
+ const host='127.0.0.1:12345';
+ const auth={host,'user-agent':'Grafana k6/test','content-type':'application/json',authorization:'Bearer token-experimental'};
+ const req=(seq,method,path,payload,status,responseObj)=>{
+  const bodyStr=payload===undefined?'':JSON.stringify(payload);
+  const headers=seq===1
+   ?{host,'user-agent':'Grafana k6/test','content-type':'application/json','content-length':String(Buffer.byteLength(bodyStr))}
+   :{...auth,...(payload!==undefined?{'content-length':String(Buffer.byteLength(bodyStr))}:{})};
+  return {sequence:seq,method,path,headers,payload:bodyStr,status,responseHeaders:{'content-type':'application/json'},responseBody:JSON.stringify(responseObj)};
+ };
+ let received;
+ if(id==='ct13'||id==='ct14'){
+  const approved=id==='ct13';
+  const payStatus=approved?'approved':'declined';
+  const ordStatus=approved?'paid':'confirmed';
+  received=[
+   req(1,'POST','/auth/login',{username:'pesquisador',password:'teste123'},200,{token:'token-experimental',tokenType:'Bearer'}),
+   req(2,'POST','/orders',{productId:'p1',quantity:1},201,{id:'o1',productId:'p1',quantity:1,status:'created'}),
+   req(3,'PATCH','/orders/o1/status',{status:'confirmed'},200,{id:'o1',productId:'p1',quantity:1,status:'confirmed'}),
+   req(4,'POST','/payments',{orderId:'o1',method:approved?'test_approved':'test_declined'},201,{id:'pay1',orderId:'o1',amount:100,status:payStatus}),
+   req(5,'GET','/payments/pay1',undefined,200,{id:'pay1',orderId:'o1',amount:100,status:payStatus}),
+   req(6,'GET','/orders/o1',undefined,200,{id:'o1',productId:'p1',quantity:1,status:ordStatus})
+  ];
+ }else{
+  const items=[{productId:'p1',quantity:1,unitPrice:100,subtotal:100}];
+  received=[
+   req(1,'POST','/auth/login',{username:'pesquisador',password:'teste123'},200,{token:'token-experimental',tokenType:'Bearer'}),
+   req(2,'GET','/products/p1',undefined,200,{id:'p1',name:'Produto A',price:100,category:'principal'}),
+   req(3,'GET','/products/p1/stock',undefined,200,{productId:'p1',quantity:10,available:true}),
+   req(4,'POST','/carts',{},201,{id:'c1',status:'open',items:[],total:0}),
+   req(5,'POST','/carts/c1/items',{productId:'p1',quantity:1},201,{id:'c1',status:'open',items,total:100}),
+   req(6,'GET','/carts/c1',undefined,200,{id:'c1',status:'open',items,total:100}),
+   req(7,'POST','/orders',{cartId:'c1'},201,{id:'o1',cartId:'c1',items,total:100,status:'created'}),
+   req(8,'PATCH','/orders/o1/status',{status:'confirmed'},200,{id:'o1',cartId:'c1',items,total:100,status:'confirmed'}),
+   req(9,'POST','/payments',{orderId:'o1',method:'test_approved'},201,{id:'pay1',orderId:'o1',amount:100,status:'approved'}),
+   req(10,'GET','/payments/pay1',undefined,200,{id:'pay1',orderId:'o1',amount:100,status:'approved'}),
+   req(11,'GET','/orders/o1',undefined,200,{id:'o1',cartId:'c1',items,total:100,status:'paid'}),
+   req(12,'GET','/carts/c1',undefined,200,{id:'c1',status:'checked_out',items,total:100})
+  ];
+ }
+ const label=id.toUpperCase().replace('CT','CT-');
+ const checks=received.flatMap((_,i)=>['status','corpo'].map(s=>({name:`${label} ${String(i+1).padStart(2,'0')} ${s}`,value:1})));
+ return {received,checks,options:{vus:1,iterations:1,thresholds:{checks:['rate==1']}},suite:'tradicional',
+  metrics:{iterations:1,http_reqs:received.length,http_req_failed:0},exitCode:0,inspectionExit:0,apiReady:true,host};
+}
+for(const id of ['ct13','ct14','ct15'])test('oráculo aceita fixture sintética de pagamentos/checkout E4 conforme '+id,()=>{
+ assert.equal(validateRun(id,e4Fixture(id)).passed,true);
+});
+test('oráculo de E4 rejeita carrinho que permanece open após checkout em ct15',()=>{
+ const x=e4Fixture('ct15');
+ x.received[11].responseBody=JSON.stringify({id:'c1',status:'open',items:[{productId:'p1',quantity:1,unitPrice:100,subtotal:100}],total:100});
+ assert.equal(validateRun('ct15',x).passed,false);
+});

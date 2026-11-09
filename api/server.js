@@ -20,6 +20,8 @@ export function createServer() {
  let nextId = 1;
  const carts = new Map();
  let nextCartId = 1;
+ const payments = new Map();
+ let nextPaymentId = 1;
  return http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://localhost');
   const path = url.pathname;
@@ -110,6 +112,24 @@ export function createServer() {
    }
    if (req.method === 'POST' && path === '/orders') {
     const body = await parseBody(req);
+    if (body && body.cartId !== undefined) {
+     if (typeof body.cartId !== 'string' || !body.cartId)
+       return send(res, 400, { error: 'Carrinho inválido' });
+     const cart = carts.get(body.cartId);
+     if (!cart) return send(res, 404, { error: 'Carrinho não encontrado' });
+     if (cart.status !== 'open' || cart.items.length === 0)
+       return send(res, 409, { error: 'Carrinho vazio ou já utilizado no checkout' });
+     cart.status = 'checked_out';
+     const order = {
+       id: `o${nextId++}`,
+       cartId: cart.id,
+       items: cart.items.map(i => ({ ...i })),
+       total: cart.total,
+       status: 'created',
+     };
+     orders.set(order.id, order);
+     return send(res, 201, order);
+    }
     const found = products.find(p => p.id === body.productId);
     if (!found || !Number.isInteger(body.quantity) || body.quantity < 1)
       return send(res, 400, { error: 'Pedido inválido' });
@@ -133,6 +153,30 @@ export function createServer() {
       return send(res, 409, { error: 'Transição de status inválida' });
     order.status = body.status;
     return send(res, 200, order);
+   }
+   if (req.method === 'POST' && path === '/payments') {
+    const body = await parseBody(req);
+    if (body.method !== 'test_approved' && body.method !== 'test_declined')
+      return send(res, 400, { error: 'Método de pagamento inválido' });
+    if (typeof body.orderId !== 'string' || !body.orderId)
+      return send(res, 400, { error: 'Pedido inválido' });
+    const order = orders.get(body.orderId);
+    if (!order) return send(res, 404, { error: 'Pedido não encontrado' });
+    if (order.status !== 'confirmed')
+      return send(res, 409, { error: 'Pedido não está confirmado para pagamento' });
+    const amount = typeof order.total === 'number'
+      ? order.total
+      : products.find(p => p.id === order.productId).price * order.quantity;
+    const status = body.method === 'test_approved' ? 'approved' : 'declined';
+    if (status === 'approved') order.status = 'paid';
+    const payment = { id: `pay${nextPaymentId++}`, orderId: order.id, amount, status };
+    payments.set(payment.id, payment);
+    return send(res, 201, payment);
+   }
+   const paymentMatch = path.match(/^\/payments\/([^/]+)$/);
+   if (req.method === 'GET' && paymentMatch) {
+    const payment = payments.get(paymentMatch[1]);
+    return payment ? send(res, 200, payment) : send(res, 404, { error: 'Pagamento não encontrado' });
    }
    return send(res, 404, { error: 'Rota não encontrada' });
   } catch (error) { return send(res, error instanceof SyntaxError ? 400 : 413, { error: 'Requisição inválida' }); }

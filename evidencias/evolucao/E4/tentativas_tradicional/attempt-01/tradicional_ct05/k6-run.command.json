@@ -1,0 +1,25 @@
+{
+  "command": [
+    "k6",
+    "run",
+    "--no-usage-report",
+    "--no-color",
+    "--quiet",
+    "--log-format=json",
+    "--log-output",
+    "file=/mnt/d/TCC/evidencias/evolucao/E4/tentativas_tradicional/attempt-01/tradicional_ct05/http-debug.jsonl",
+    "--http-debug=full",
+    "--summary-export",
+    "/mnt/d/TCC/evidencias/evolucao/E4/tentativas_tradicional/attempt-01/tradicional_ct05/summary.json",
+    "--out",
+    "json=/mnt/d/TCC/evidencias/evolucao/E4/tentativas_tradicional/attempt-01/tradicional_ct05/metrics.jsonl",
+    "-e",
+    "BASE_URL=http://127.0.0.1:39867",
+    "tradicional/ct05.js"
+  ],
+  "cwd": "/mnt/d/TCC",
+  "started_utc": "2026-11-09T19:46:26.525Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}
