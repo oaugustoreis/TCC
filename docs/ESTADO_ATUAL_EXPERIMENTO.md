@@ -1,62 +1,54 @@
 # Estado Atual do Experimento (Checkpoint de Continuidade)
 
-Atualizado em: `08/11/2026`.
+Atualizado em: `09/11/2026`.
 
-Este documento registra o ponto exato de parada do experimento para retomada imediata em qualquer sessão futura.
+Este documento registra o ponto exato de parada do experimento para retomada imediata em um novo terminal.
+
+---
+
+## ⚠️ Regra Operacional Crítica para a Nova Sessão na CLI
+- **NUNCA permita que um subagente (`invoke_subagent`) execute `run_command` (`Bash`), `write_file` ou `edit_file`** caso a CLI esteja solicitando aprovação manual (`ctrl+k`), pois chamadas de ferramentas que exigem aprovação dentro de subagentes em background travam a fila visual de permissões da CLI (`waiting_for_input`).
+- **Como operar sem travar a CLI**:
+  - Se usar subagentes (`research` ou `self`), instrua-os a usar **SOMENTE `read_file`** e retornar o código/resumo na resposta final (ou ler os tokens do seu `transcript.jsonl`), enquanto o **agente principal (orquestrador)** executa `write_file`, `edit_file` e `run_command` (onde o `ctrl+k` / auto-approve funciona diretamente no terminal principal).
 
 ---
 
 ## 1. O Que Já Foi Concluído
 
-1. **Limpeza do Repositório e Padronização Metodológica (v2.1)**:
-   - Removidos scripts/evidências legadas de cronômetro humano, validador Python antigo (`validar.py`) e dependências externas não utilizadas (`pulse-arch`).
-   - Atualizados [docs/PROTOCOLO_EVOLUCAO_INCREMENTAL.md](PROTOCOLO_EVOLUCAO_INCREMENTAL.md) e [docs/PLANO_MEDICAO_ESFORCO.md](PLANO_MEDICAO_ESFORCO.md) para a versão 2.1 (*AI-Only*), incorporando:
-     - Separação explícita entre **Coleta Primária** (`transcript.jsonl` do sistema e `result.json` do validador), **Cálculo Determinístico** e **Consolidação**.
-     - Distinção entre mudança líquida no Git (`net_diff_lines`) e operações de escrita (`files_written`).
-     - Métrica de reutilização restrita aos arquivos tocados na tarefa (`batch_reuse` vs. `static_suite_imports`).
-     - Detector léxico de duplicação (`exact-token-window-union-v1`, janela $\ge 25$ tokens, união sem contagem dupla, separando clones intra e inter-arquivos).
-     - Extração auditada de tokens do LLM (`llm_input_tokens`, `llm_cache_read_tokens`, `llm_output_tokens`, `llm_total_tokens`), `tool_calls_total`, `first_validation_pass`, `functional_validation_cycles` e `infra_error_runs`.
-   - Implementado e testado [scripts/metricas/coletar-metricas.mjs](../scripts/metricas/coletar-metricas.mjs) e [scripts/metricas/coletar-metricas.test.mjs](../scripts/metricas/coletar-metricas.test.mjs) (54/54 testes automatizados do projeto passando via `npm run test:all`).
-
-2. **Fotografia da Baseline `E0` Concluída**:
-   - Relatório salvo em [evidencias/metricas/E0/RELATORIO_METRICAS.md](../evidencias/metricas/E0/RELATORIO_METRICAS.md) e [evidencias/metricas/E0/metricas.json](../evidencias/metricas/E0/metricas.json).
+1. **Padronização Metodológica (v2.1) e Baseline `E0`**:
+   - Relatório `E0` salvo em [evidencias/metricas/E0/RELATORIO_METRICAS.md](../evidencias/metricas/E0/RELATORIO_METRICAS.md).
    - Commit base antes de `E1`: `103a1e1ec5ceb05b15411b308b00f8f79fdc15a6`.
 
-3. **Etapa `E1` (`CT-06` e `CT-07` — Catálogo filtrado e Estoque) Concluída e Validada**:
-   - **Tradicional (`E1-T`)**: Criados `tradicional/ct06.js` e `tradicional/ct07.js`.
-   - **Modular (`E1-M`)**: Adaptados de forma retrocompatível `modular/helpers/checks/checks.js`, `modular/use-cases/autenticacao/login.useCase.js`, `modular/use-cases/catalogo/listProducts.useCase.js`, `modular/use-cases/catalogo/getProduct.useCase.js`, `modular/profiles/catalogo/catalogo.profiles.js`; criados `modular/use-cases/catalogo/getProductStock.useCase.js`, `modular/flows/catalogo/filtro.flow.js`, `modular/flows/catalogo/estoque.flow.js`, `modular/scenarios/catalogo/filtro.scenario.js` e `modular/scenarios/catalogo/estoque.scenario.js`.
-   - **Validação HTTP Real (`--suite both`)**: 14/14 execuções aprovadas (`validation_passed: true`, `complete_functional_equivalence: true`) em `evidencias/evolucao/E1/validacao_both/result.json`.
-   - **Transcripts Arquivados**: `evidencias/evolucao/E1/transcripts/tradicional.transcript.jsonl` e `modular.transcript.jsonl`.
-   - **Métricas de `E1` Extraídas**: Salvas em [evidencias/metricas/E1/RELATORIO_METRICAS.md](../evidencias/metricas/E1/RELATORIO_METRICAS.md) e [evidencias/metricas/E1/metricas.json](../evidencias/metricas/E1/metricas.json).
+2. **Etapa `E1` (`CT-06` e `CT-07` — Catálogo filtrado e Estoque) Concluída, Validada e Commitada**:
+   - Relatório `E1` salvo em [evidencias/metricas/E1/RELATORIO_METRICAS.md](../evidencias/metricas/E1/RELATORIO_METRICAS.md).
+   - **Commit do estado `E1` (`<SHA-base>` da Etapa `E2`)**: `452524a4963356e4ac0ae352ec99f681d3808eee`.
+
+3. **Etapa `E2` (`CT-08`, `CT-09` e `CT-10` — Carrinho de Compras) — Implementação Concluída e `E2-Modular` Validada**:
+   - **Preparação Comum Concluída**:
+     - Rotas de carrinho (`POST /carts`, `GET /carts/:id`, `POST /carts/:id/items`, `PATCH /carts/:id/items/:productId`, `DELETE /carts/:id/items/:productId`) implementadas em [api/server.js](../api/server.js).
+     - Testes de contrato criados em [api/e2.contract.test.js](../api/e2.contract.test.js) (62/62 testes automatizados passando via `npm run test:all`).
+     - Oráculo atualizado para `CT-08`–`CT-10` (`E2_IDS`) em [scripts/validacao/oraculos.mjs](../scripts/validacao/oraculos.mjs) e [scripts/validacao/validar.mjs](../scripts/validacao/validar.mjs).
+   - **Unidade `E2-Modular` (`E2-M`) Concluída e Validada**:
+     - Editado `modular/helpers/http/http.js` (`del`).
+     - Criados `modular/profiles/carrinho/carrinho.profiles.js`, `modular/use-cases/carrinho/{createCart,addCartItem,updateCartItem,removeCartItem,getCart}.useCase.js`, `modular/flows/carrinho/{adicao,atualizacao,remocao}.flow.js` e `modular/scenarios/carrinho/{adicao,atualizacao,remocao}.scenario.js`.
+     - Validado com sucesso (`10/10` cenários aprovados na 1ª tentativa) em `evidencias/evolucao/E2/tentativas_modular/attempt-01/result.json`.
+     - Transcript arquivado em `evidencias/evolucao/E2/transcripts/modular.transcript.jsonl`.
+   - **Unidade `E2-Tradicional` (`E2-T`) Implementada (Pronta para Rodar `validar.mjs`)**:
+     - Criados `tradicional/ct08.js`, `tradicional/ct09.js`, `tradicional/ct10.js`.
+     - Criados `evidencias/evolucao/E2/manifest-tradicional.json` e `evidencias/evolucao/E2/manifest-both.json`.
+     - Transcript arquivado em `evidencias/evolucao/E2/transcripts/tradicional.transcript.jsonl`.
 
 ---
 
-## 2. Resumo Comparativo Acumulado Até Aqui (`E0` e `E1`)
+## 2. Próximos Passos Imediatos no Novo Terminal
 
-| Métrica | `E0` Trad | `E0` Mod | `E1` Trad | `E1` Mod |
-|---|---:|---:|---:|---:|
-| Cenários (CTs) | 5 | 5 | 7 | 7 |
-| Arquivos JS autorais | 5 | 24 | 7 | 29 |
-| Linhas físicas (LOC) / lógicas (SLOC) | 85 / 76 | 333 / 286 | 153 / 140 | 484 / 421 |
-| Tokens JS duplicados (%) | 90.36% | 7.94% | 73.77% | 5.52% |
-| Linhas duplicadas (%) | 96.05% | 6.29% | 69.29% | 4.28% |
-| Arquivos tocados no lote (*Blast Radius*) | — | — | 2 (2A / 0M) | 10 (5A / 5M) |
-| Volume líquido de diff (`net_diff_lines`) | — | — | 68 | 179 |
-| Reuso no lote (sem edição / adaptados / criados) | — | — | 0 / 0 / 0 | 2 / 5 / 3 |
-| Total de Tool Calls do Agente | — | — | 12 | 42 |
-| Tokens LLM consumidos (`input + cache + output`) | — | — | 61.935 | 155.364 |
-| Tokens LLM gerados (`output_tokens`) | — | — | 3.177 | 14.125 |
-
----
-
-## 3. Próximos Passos ao Retomar
-
-1. **Commit do Estado `E1`**:
-   - Commitar as alterações atuais do working tree (que entregam `E1` completo e validado) e registrar o `<SHA-base>` para a próxima etapa.
-2. **Executar Etapa `E2` (Carrinho de Compras: `CT-08`, `CT-09`, `CT-10` — Ordem: `Modular` → `Tradicional`)**:
-   - Preparar comuns: adicionar rotas de carrinho (`POST /carts`, `POST /carts/:id/items`, `PATCH /carts/:id/items/:productId`, `DELETE /carts/:id/items/:productId`, `GET /carts/:id`) em `api/server.js`, testes de contrato `api/e2.contract.test.js` e oráculo de `CT-08`–`CT-10` em `scripts/validacao/oraculos.mjs`.
-   - Executar unidade `E2-Modular` → `E2-Tradicional`, validar com `validar.mjs --state E2 --suite both` e extrair `evidencias/metricas/E2/`.
-3. **Executar Etapa `E3` (Listagem filtrada e Cancelamento de Pedidos: `CT-11`, `CT-12` — Ordem: `Tradicional` → `Modular`)**.
-4. **Executar Etapa `E4` (Pagamentos e Compra Completa por Carrinho: `CT-13`, `CT-14`, `CT-15` — Ordem: `Modular` → `Tradicional`)**.
-5. **Executar Fase 2 — Manutenções Independentes a partir de `E4` (`M1`, `M2`, `M3`)**.
-6. **Gerar Relatório Consolidado Final (`docs/RELATORIO_EXPERIMENTAL_COMPLETO.md`)** com todas as tabelas e análises das Fases 1 e 2.
+1. **Finalizar Validação e Métricas de `E2`** (basta rodar estes 3 comandos):
+   ```bash
+   node scripts/validacao/validar.mjs --state E2 --suite tradicional --manifest evidencias/evolucao/E2/manifest-tradicional.json --out evidencias/evolucao/E2/tentativas_tradicional/attempt-01
+   node scripts/validacao/validar.mjs --state E2 --suite both --manifest evidencias/evolucao/E2/manifest-both.json --out evidencias/evolucao/E2/validacao_both
+   node scripts/metricas/coletar-metricas.mjs --state E2 --base 452524a4963356e4ac0ae352ec99f681d3808eee --target WORKTREE --trad-transcript evidencias/evolucao/E2/transcripts/tradicional.transcript.jsonl --mod-transcript evidencias/evolucao/E2/transcripts/modular.transcript.jsonl --trad-val-dir evidencias/evolucao/E2/tentativas_tradicional --mod-val-dir evidencias/evolucao/E2/tentativas_modular --both-val evidencias/evolucao/E2/validacao_both/result.json --out evidencias/metricas/E2
+   ```
+2. **Commitar o Estado `E2`** para registrar o `<SHA-base>` da Etapa `E3`.
+3. **Executar Etapa `E3`** (`CT-11` e `CT-12` — Listagem filtrada e Cancelamento de Pedidos; Ordem: `Tradicional` → `Modular`).
+4. **Executar Etapa `E4`** (`CT-13`, `CT-14`, `CT-15` — Pagamentos e Compra Completa por Carrinho; Ordem: `Modular` → `Tradicional`).
+5. **Executar Fase 2 (`M1`, `M2`, `M3` sobre `E4`)** e gerar o relatório consolidado final (`docs/RELATORIO_EXPERIMENTAL_COMPLETO.md`).

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "ct01",
+    "suite": "tradicional",
+    "script": "tradicional/ct01.js"
+  },
+  {
+    "id": "ct02",
+    "suite": "tradicional",
+    "script": "tradicional/ct02.js"
+  },
+  {
+    "id": "ct03",
+    "suite": "tradicional",
+    "script": "tradicional/ct03.js"
+  },
+  {
+    "id": "ct04",
+    "suite": "tradicional",
+    "script": "tradicional/ct04.js"
+  },
+  {
+    "id": "ct05",
+    "suite": "tradicional",
+    "script": "tradicional/ct05.js"
+  },
+  {
+    "id": "ct06",
+    "suite": "tradicional",
+    "script": "tradicional/ct06.js"
+  },
+  {
+    "id": "ct07",
+    "suite": "tradicional",
+    "script": "tradicional/ct07.js"
+  },
+  {
+    "id": "ct08",
+    "suite": "tradicional",
+    "script": "tradicional/ct08.js"
+  },
+  {
+    "id": "ct09",
+    "suite": "tradicional",
+    "script": "tradicional/ct09.js"
+  },
+  {
+    "id": "ct10",
+    "suite": "tradicional",
+    "script": "tradicional/ct10.js"
+  }
+]

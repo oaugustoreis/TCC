@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import crypto from 'node:crypto';
-import {SCENARIOS,E0_IDS,E1_IDS,validateRun,canonicalTrace,stable} from './oraculos.mjs';
+import {SCENARIOS,E0_IDS,E1_IDS,E2_IDS,validateRun,canonicalTrace,stable} from './oraculos.mjs';
 import {ROOT,write,lines,command,cleanK6Environment,startObservedApi} from './execucao.mjs';
 const args=process.argv.slice(2);
 const arg=(key,fallback)=>args.includes(key)?args[args.indexOf(key)+1]:fallback;
@@ -23,7 +23,8 @@ function inventory(){
 }
 const before=inventory();write(path.join(out,'source-manifest-before.json'),before);
 const groups=suite==='both'?['tradicional','modular']:[suite];
-const ids=state==='E0'?E0_IDS:E1_IDS;
+const STATE_IDS={E0:E0_IDS,E1:E1_IDS,E2:E2_IDS};
+const ids=STATE_IDS[state];
 const env=cleanK6Environment();
 const versions={};
 for(const [name,cmd]of Object.entries({node:['node','--version'],k6:['k6','version'],npm:['cmd.exe','/d','/c','npm.cmd --version'],git:['git','-c','safe.directory='+ROOT.replaceAll('\\','/'),'rev-parse','HEAD']}))versions[name]=command(cmd,out,name,{env});
@@ -31,10 +32,10 @@ write(path.join(out,'environment.json'),{utc:new Date().toISOString(),platform:o
  k6_environment_options_removed:Object.keys(process.env).filter(k=>/^K6_/i.test(k))});
 let entries;
 try{
- if(!['E0','E1'].includes(state)||!groups.every(g=>['tradicional','modular'].includes(g)))throw Error('Estado/arquitetura inválidos');
+ if(!STATE_IDS[state]||!groups.every(g=>['tradicional','modular'].includes(g)))throw Error('Estado/arquitetura inválidos');
  if(args.includes('--manifest'))entries=JSON.parse(fs.readFileSync(path.resolve(arg('--manifest')),'utf8'));
  else if(state==='E0')entries=groups.flatMap(group=>E0_IDS.map(id=>({id,suite:group,script:group==='tradicional'?'tradicional/'+id+'.js':'modular/scenarios/'+SCENARIOS[id].journey+'.scenario.js'})));
- else throw Error('E1 exige --manifest com os caminhos dos cenários reais; o validador não cria entradas CT-06/07');
+ else throw Error(state+' exige --manifest com os caminhos dos cenários reais; o validador não cria entradas automaticamente');
  if(!Array.isArray(entries))throw Error('Manifesto deve ser array');
  entries=entries.filter(e=>groups.includes(e.suite));
  const expected=groups.flatMap(g=>ids.map(id=>g+':'+id)).sort();

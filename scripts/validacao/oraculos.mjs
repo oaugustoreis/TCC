@@ -6,6 +6,11 @@ const product={method:'GET',path:'/products/p1',status:200,kind:'product'};
 const create={method:'POST',path:'/orders',payload:{productId:'p1',quantity:1},status:201,kind:'create'};
 const read=expectedStatus=>({method:'GET',path:'/orders/:orderId',status:200,kind:'order',expectedStatus});
 const confirm={method:'PATCH',path:'/orders/:orderId/status',payload:{status:'confirmed'},status:200,kind:'order',expectedStatus:'confirmed'};
+const createCart={method:'POST',path:'/carts',payload:{},status:201,kind:'create-cart'};
+const addCartItem={method:'POST',path:'/carts/:cartId/items',payload:{productId:'p1',quantity:1},status:201,kind:'cart-snapshot',expectedItems:[{productId:'p1',quantity:1,unitPrice:100,subtotal:100}],expectedTotal:100};
+const updateCartItem={method:'PATCH',path:'/carts/:cartId/items/p1',payload:{quantity:3},status:200,kind:'cart-snapshot',expectedItems:[{productId:'p1',quantity:3,unitPrice:100,subtotal:300}],expectedTotal:300};
+const deleteCartItem={method:'DELETE',path:'/carts/:cartId/items/p1',status:200,kind:'cart-snapshot',expectedItems:[],expectedTotal:0};
+const readCart=(expectedItems,expectedTotal,expectedStatus='open')=>({method:'GET',path:'/carts/:cartId',status:200,kind:'cart-snapshot',expectedItems,expectedTotal,expectedStatus});
 const checks={
  ct01:['login 200','token presente'],
  ct02:['login 200','token presente','lista 200','produtos disponíveis','produto 200','produto p1'],
@@ -20,7 +25,10 @@ const definitions={
  ct04:{journey:'pedidos/consulta',steps:[login,create,read('created')]},
  ct05:{journey:'pedidos/atualizacao',steps:[login,create,confirm,read('confirmed')]},
  ct06:{steps:[login,{...products,path:'/products?category=principal',kind:'filtered-products'},{...product,kind:'product-e1'}]},
- ct07:{steps:[login,...['p1','p2'].map(productId=>({method:'GET',path:'/products/'+productId+'/stock',status:200,kind:'stock',productId}))]}
+ ct07:{steps:[login,...['p1','p2'].map(productId=>({method:'GET',path:'/products/'+productId+'/stock',status:200,kind:'stock',productId}))]},
+ ct08:{steps:[login,createCart,addCartItem,readCart([{productId:'p1',quantity:1,unitPrice:100,subtotal:100}],100)]},
+ ct09:{steps:[login,createCart,addCartItem,updateCartItem,readCart([{productId:'p1',quantity:3,unitPrice:100,subtotal:300}],300)]},
+ ct10:{steps:[login,createCart,addCartItem,deleteCartItem,readCart([],0)]}
 };
 for(const [id,spec]of Object.entries(definitions)){
  spec.checks=checks[id]||spec.steps.flatMap((_,i)=>['status','corpo'].map(suffix=>id.toUpperCase().replace('CT','CT-')+' '+String(i+1).padStart(2,'0')+' '+suffix));
@@ -29,6 +37,7 @@ for(const [id,spec]of Object.entries(definitions)){
 export const SCENARIOS=definitions;
 export const E0_IDS=['ct01','ct02','ct03','ct04','ct05'];
 export const E1_IDS=[...E0_IDS,'ct06','ct07'];
+export const E2_IDS=[...E1_IDS,'ct08','ct09','ct10'];
 export function stable(value){
  if(Array.isArray(value))return value.map(stable);
  if(value!==null&&typeof value==='object')return Object.fromEntries(Object.keys(value).sort().map(k=>[k,stable(value[k])]));
@@ -45,7 +54,7 @@ const media=value=>typeof value==='string'?value.split(';')[0].trim().toLowerCas
 export function validateHttp(id,received,{host,client='k6'}={}){
  const spec=SCENARIOS[id];if(!spec)throw Error('Cenário desconhecido: '+id);
  const errors=[];const expect=(condition,message)=>{if(!condition)errors.push(message)};
- const context={token:null,orderId:null};
+ const context={token:null,orderId:null,cartId:null};
  expect(received.length===spec.steps.length,'quantidade de requisições');
  for(const [i,step] of spec.steps.entries()){
   const r=received[i];const label=id+' operação '+(i+1);
@@ -55,7 +64,7 @@ export function validateHttp(id,received,{host,client='k6'}={}){
   expect(r.method===step.method,label+': método');
   let actualUrl;
   try{actualUrl=new URL(r.path,'http://local.invalid');}catch{errors.push(label+': URL inválida');continue;}
-  const target=new URL(step.path.replace(':orderId',context.orderId),'http://local.invalid');
+  const target=new URL(step.path.replace(':orderId',context.orderId).replace(':cartId',context.cartId),'http://local.invalid');
   expect(actualUrl.pathname===target.pathname,label+': rota');
   expect(same([...actualUrl.searchParams].sort(),[...target.searchParams].sort()),label+': query');
   expect(media(headers['content-type'])==='application/json',label+': Content-Type request');
@@ -80,6 +89,13 @@ export function validateHttp(id,received,{host,client='k6'}={}){
   if(step.kind==='stock')valid=subset(body,{productId:step.productId,quantity:step.productId==='p1'?10:0,available:step.productId==='p1'});
   if(step.kind==='create'){valid=nonempty(body.id)&&subset(body,{productId:'p1',quantity:1,status:'created'});context.orderId=body.id;}
   if(step.kind==='order')valid=subset(body,{id:context.orderId,productId:'p1',quantity:1,status:step.expectedStatus});
+  if(step.kind==='create-cart'){valid=nonempty(body.id)&&body.status==='open'&&Array.isArray(body.items)&&body.items.length===0&&body.total===0;context.cartId=body.id;}
+  if(step.kind==='cart-snapshot'){
+   const expectedStatus=step.expectedStatus||'open';
+   valid=body.id===context.cartId&&body.status===expectedStatus&&body.total===step.expectedTotal
+    &&Array.isArray(body.items)&&body.items.length===step.expectedItems.length
+    &&step.expectedItems.every((exp,idx)=>subset(body.items[idx],exp));
+  }
   expect(valid,label+': campos obrigatórios da resposta');
  }
  return {passed:errors.length===0,errors,expected_requests:spec.steps.length,received_requests:received.length,context};
@@ -107,16 +123,28 @@ export function validateRun(id,{received,checks,options,suite,scenarioKey=id,met
  return {passed:errors.length===0,errors,expected_requests:spec.steps.length,expected_checks:spec.checks.length};
 }
 export function canonicalTrace(received){
- let token=null,orderId=null;
- for(const r of received){const body=JSON.parse(r.responseBody);if(r.path==='/auth/login')token=body.token;if(r.method==='POST'&&r.path==='/orders')orderId=body.id;}
+ let token=null,orderId=null,cartId=null;
+ for(const r of received){
+  const body=JSON.parse(r.responseBody);
+  if(r.path==='/auth/login')token=body.token;
+  if(r.method==='POST'&&r.path==='/orders')orderId=body.id;
+  if(r.method==='POST'&&r.path==='/carts')cartId=body.id;
+ }
  const normalize=value=>{
   if(value===token&&token!==null)return '<token>';
   if(value===orderId&&orderId!==null)return '<orderId>';
+  if(value===cartId&&cartId!==null)return '<cartId>';
   if(Array.isArray(value))return value.map(normalize);
   if(value!==null&&typeof value==='object')return Object.fromEntries(Object.entries(value).map(([k,v])=>[k,normalize(v)]));
   return value;
  };
- return stable(received.map(r=>({method:r.method,path:orderId?r.path.replace('/orders/'+orderId,'/orders/<orderId>'):r.path,
+ const normPath=p=>{
+  let res=p;
+  if(orderId)res=res.replace('/orders/'+orderId,'/orders/<orderId>');
+  if(cartId)res=res.replace('/carts/'+cartId,'/carts/<cartId>');
+  return res;
+ };
+ return stable(received.map(r=>({method:r.method,path:normPath(r.path),
   headers:{'content-type':media(headersLower(r.headers)['content-type']),authorization:headersLower(r.headers).authorization?'Bearer <token>':null},
   payload:r.payload?normalize(JSON.parse(r.payload)):null,status:r.status,response:normalize(JSON.parse(r.responseBody))})));
 }

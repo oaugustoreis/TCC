@@ -30,3 +30,7 @@ export function post(url, body, params = {}) {
 export function patch(url, body, params = {}) {
     return request("PATCH", url, body, params);
 }
+
+export function del(url, params = {}) {
+    return request("DELETE", url, null, params);
+}

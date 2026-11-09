@@ -61,3 +61,40 @@ test('profile modular aceita apenas shared-iterations com 1 VU/iteração',()=>{
  assert.equal(validateRun('ct06',x).passed,true);
  x.options.scenarios.ct06.executor='constant-vus';assert.equal(validateRun('ct06',x).passed,false);
 });
+function cartFixture(id){
+ const host='127.0.0.1:12345';
+ const auth={host,'user-agent':'Grafana k6/test','content-type':'application/json',authorization:'Bearer token-experimental'};
+ const req=(seq,method,path,payload,status,responseObj)=>{
+  const bodyStr=payload===undefined?'':JSON.stringify(payload);
+  const headers=seq===1
+   ?{host,'user-agent':'Grafana k6/test','content-type':'application/json','content-length':String(Buffer.byteLength(bodyStr))}
+   :{...auth,...(payload!==undefined?{'content-length':String(Buffer.byteLength(bodyStr))}:{})};
+  return {sequence:seq,method,path,headers,payload:bodyStr,status,responseHeaders:{'content-type':'application/json'},responseBody:JSON.stringify(responseObj)};
+ };
+ const received=[
+  req(1,'POST','/auth/login',{username:'pesquisador',password:'teste123'},200,{token:'token-experimental',tokenType:'Bearer'}),
+  req(2,'POST','/carts',{},201,{id:'c1',status:'open',items:[],total:0}),
+  req(3,'POST','/carts/c1/items',{productId:'p1',quantity:1},201,{id:'c1',status:'open',items:[{productId:'p1',quantity:1,unitPrice:100,subtotal:100}],total:100})
+ ];
+ if(id==='ct08'){
+  received.push(req(4,'GET','/carts/c1',undefined,200,{id:'c1',status:'open',items:[{productId:'p1',quantity:1,unitPrice:100,subtotal:100}],total:100}));
+ }else if(id==='ct09'){
+  received.push(req(4,'PATCH','/carts/c1/items/p1',{quantity:3},200,{id:'c1',status:'open',items:[{productId:'p1',quantity:3,unitPrice:100,subtotal:300}],total:300}));
+  received.push(req(5,'GET','/carts/c1',undefined,200,{id:'c1',status:'open',items:[{productId:'p1',quantity:3,unitPrice:100,subtotal:300}],total:300}));
+ }else if(id==='ct10'){
+  received.push(req(4,'DELETE','/carts/c1/items/p1',undefined,200,{id:'c1',status:'open',items:[],total:0}));
+  received.push(req(5,'GET','/carts/c1',undefined,200,{id:'c1',status:'open',items:[],total:0}));
+ }
+ const label=id.toUpperCase().replace('CT','CT-');
+ const checks=received.flatMap((_,i)=>['status','corpo'].map(s=>({name:`${label} ${String(i+1).padStart(2,'0')} ${s}`,value:1})));
+ return {received,checks,options:{vus:1,iterations:1,thresholds:{checks:['rate==1']}},suite:'tradicional',
+  metrics:{iterations:1,http_reqs:received.length,http_req_failed:0},exitCode:0,inspectionExit:0,apiReady:true,host};
+}
+for(const id of ['ct08','ct09','ct10'])test('oráculo aceita fixture sintética de carrinho conforme '+id,()=>{
+ assert.equal(validateRun(id,cartFixture(id)).passed,true);
+});
+test('oráculo de carrinho rejeita total divergente ou segundo item indevido',()=>{
+ const x=cartFixture('ct09');
+ x.received[3].responseBody=JSON.stringify({id:'c1',status:'open',items:[{productId:'p1',quantity:3,unitPrice:100,subtotal:300}],total:100});
+ assert.equal(validateRun('ct09',x).passed,false);
+});
