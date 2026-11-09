@@ -98,3 +98,40 @@ test('oráculo de carrinho rejeita total divergente ou segundo item indevido',()
  x.received[3].responseBody=JSON.stringify({id:'c1',status:'open',items:[{productId:'p1',quantity:3,unitPrice:100,subtotal:300}],total:100});
  assert.equal(validateRun('ct09',x).passed,false);
 });
+function orderE3Fixture(id){
+ const host='127.0.0.1:12345';
+ const auth={host,'user-agent':'Grafana k6/test','content-type':'application/json',authorization:'Bearer token-experimental'};
+ const req=(seq,method,path,payload,status,responseObj)=>{
+  const bodyStr=payload===undefined?'':JSON.stringify(payload);
+  const headers=seq===1
+   ?{host,'user-agent':'Grafana k6/test','content-type':'application/json','content-length':String(Buffer.byteLength(bodyStr))}
+   :{...auth,...(payload!==undefined?{'content-length':String(Buffer.byteLength(bodyStr))}:{})};
+  return {sequence:seq,method,path,headers,payload:bodyStr,status,responseHeaders:{'content-type':'application/json'},responseBody:JSON.stringify(responseObj)};
+ };
+ const received=[
+  req(1,'POST','/auth/login',{username:'pesquisador',password:'teste123'},200,{token:'token-experimental',tokenType:'Bearer'}),
+  req(2,'POST','/orders',{productId:'p1',quantity:1},201,{id:'o1',productId:'p1',quantity:1,status:'created'})
+ ];
+ if(id==='ct11'){
+  received.push(req(3,'GET','/orders/o1',undefined,200,{id:'o1',productId:'p1',quantity:1,status:'created'}));
+  received.push(req(4,'GET','/orders?status=created',undefined,200,{items:[{id:'o1',productId:'p1',quantity:1,status:'created'}]}));
+ }else if(id==='ct12'){
+  received.push(req(3,'PATCH','/orders/o1/status',{status:'cancelled'},200,{id:'o1',productId:'p1',quantity:1,status:'cancelled'}));
+  received.push(req(4,'GET','/orders/o1',undefined,200,{id:'o1',productId:'p1',quantity:1,status:'cancelled'}));
+ }
+ const label=id.toUpperCase().replace('CT','CT-');
+ const checks=received.flatMap((_,i)=>['status','corpo'].map(s=>({name:`${label} ${String(i+1).padStart(2,'0')} ${s}`,value:1})));
+ return {received,checks,options:{vus:1,iterations:1,thresholds:{checks:['rate==1']}},suite:'tradicional',
+  metrics:{iterations:1,http_reqs:received.length,http_req_failed:0},exitCode:0,inspectionExit:0,apiReady:true,host};
+}
+for(const id of ['ct11','ct12'])test('oráculo aceita fixture sintética de pedidos E3 conforme '+id,()=>{
+ assert.equal(validateRun(id,orderE3Fixture(id)).passed,true);
+});
+test('oráculo de pedidos E3 rejeita listagem sem filtro ou status divergente',()=>{
+ const x=orderE3Fixture('ct11');
+ x.received[3].path='/orders';
+ assert.equal(validateRun('ct11',x).passed,false);
+ const y=orderE3Fixture('ct12');
+ y.received[3].responseBody=JSON.stringify({id:'o1',productId:'p1',quantity:1,status:'confirmed'});
+ assert.equal(validateRun('ct12',y).passed,false);
+});

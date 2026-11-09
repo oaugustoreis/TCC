@@ -74,7 +74,7 @@ test('E0: saúde, credenciais, criação, consulta, confirmação e erros anteri
   const order={id:created.body.id,productId:'p1',quantity:1,status:'created'};
   assert.deepEqual(created.body,order);
   assert.deepEqual(await request('/orders/'+order.id,{token}),{status:200,body:order});
-  assert.equal((await request('/orders/'+order.id+'/status',{method:'PATCH',body:{status:'cancelled'},token})).status,400);
+  assert.equal((await request('/orders/'+order.id+'/status',{method:'PATCH',body:{status:'invalido'},token})).status,400);
   const confirmed={...order,status:'confirmed'};
   assert.deepEqual(await request('/orders/'+order.id+'/status',{method:'PATCH',body:{status:'confirmed'},token}),{status:200,body:confirmed});
   assert.deepEqual(await request('/orders/'+order.id,{token}),{status:200,body:confirmed});

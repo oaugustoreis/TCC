@@ -6,6 +6,8 @@ const product={method:'GET',path:'/products/p1',status:200,kind:'product'};
 const create={method:'POST',path:'/orders',payload:{productId:'p1',quantity:1},status:201,kind:'create'};
 const read=expectedStatus=>({method:'GET',path:'/orders/:orderId',status:200,kind:'order',expectedStatus});
 const confirm={method:'PATCH',path:'/orders/:orderId/status',payload:{status:'confirmed'},status:200,kind:'order',expectedStatus:'confirmed'};
+const cancel={method:'PATCH',path:'/orders/:orderId/status',payload:{status:'cancelled'},status:200,kind:'order',expectedStatus:'cancelled'};
+const listOrders=expectedStatus=>({method:'GET',path:'/orders?status='+expectedStatus,status:200,kind:'filtered-orders',expectedStatus});
 const createCart={method:'POST',path:'/carts',payload:{},status:201,kind:'create-cart'};
 const addCartItem={method:'POST',path:'/carts/:cartId/items',payload:{productId:'p1',quantity:1},status:201,kind:'cart-snapshot',expectedItems:[{productId:'p1',quantity:1,unitPrice:100,subtotal:100}],expectedTotal:100};
 const updateCartItem={method:'PATCH',path:'/carts/:cartId/items/p1',payload:{quantity:3},status:200,kind:'cart-snapshot',expectedItems:[{productId:'p1',quantity:3,unitPrice:100,subtotal:300}],expectedTotal:300};
@@ -28,7 +30,9 @@ const definitions={
  ct07:{steps:[login,...['p1','p2'].map(productId=>({method:'GET',path:'/products/'+productId+'/stock',status:200,kind:'stock',productId}))]},
  ct08:{steps:[login,createCart,addCartItem,readCart([{productId:'p1',quantity:1,unitPrice:100,subtotal:100}],100)]},
  ct09:{steps:[login,createCart,addCartItem,updateCartItem,readCart([{productId:'p1',quantity:3,unitPrice:100,subtotal:300}],300)]},
- ct10:{steps:[login,createCart,addCartItem,deleteCartItem,readCart([],0)]}
+ ct10:{steps:[login,createCart,addCartItem,deleteCartItem,readCart([],0)]},
+ ct11:{steps:[login,create,read('created'),listOrders('created')]},
+ ct12:{steps:[login,create,cancel,read('cancelled')]}
 };
 for(const [id,spec]of Object.entries(definitions)){
  spec.checks=checks[id]||spec.steps.flatMap((_,i)=>['status','corpo'].map(suffix=>id.toUpperCase().replace('CT','CT-')+' '+String(i+1).padStart(2,'0')+' '+suffix));
@@ -38,6 +42,7 @@ export const SCENARIOS=definitions;
 export const E0_IDS=['ct01','ct02','ct03','ct04','ct05'];
 export const E1_IDS=[...E0_IDS,'ct06','ct07'];
 export const E2_IDS=[...E1_IDS,'ct08','ct09','ct10'];
+export const E3_IDS=[...E2_IDS,'ct11','ct12'];
 export function stable(value){
  if(Array.isArray(value))return value.map(stable);
  if(value!==null&&typeof value==='object')return Object.fromEntries(Object.keys(value).sort().map(k=>[k,stable(value[k])]));
@@ -89,6 +94,7 @@ export function validateHttp(id,received,{host,client='k6'}={}){
   if(step.kind==='stock')valid=subset(body,{productId:step.productId,quantity:step.productId==='p1'?10:0,available:step.productId==='p1'});
   if(step.kind==='create'){valid=nonempty(body.id)&&subset(body,{productId:'p1',quantity:1,status:'created'});context.orderId=body.id;}
   if(step.kind==='order')valid=subset(body,{id:context.orderId,productId:'p1',quantity:1,status:step.expectedStatus});
+  if(step.kind==='filtered-orders')valid=Array.isArray(body.items)&&body.items.length===1&&subset(body.items[0],{id:context.orderId,productId:'p1',quantity:1,status:step.expectedStatus});
   if(step.kind==='create-cart'){valid=nonempty(body.id)&&body.status==='open'&&Array.isArray(body.items)&&body.items.length===0&&body.total===0;context.cartId=body.id;}
   if(step.kind==='cart-snapshot'){
    const expectedStatus=step.expectedStatus||'open';

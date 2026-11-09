@@ -102,6 +102,12 @@ export function createServer() {
     cart.items.splice(idx, 1);
     return send(res, 200, recalcCart(cart));
    }
+   if (req.method === 'GET' && path === '/orders') {
+    const status = url.searchParams.get('status');
+    const allOrders = [...orders.values()].sort((a, b) => a.id.localeCompare(b.id));
+    const items = status === null ? allOrders : allOrders.filter(o => o.status === status);
+    return send(res, 200, { items });
+   }
    if (req.method === 'POST' && path === '/orders') {
     const body = await parseBody(req);
     const found = products.find(p => p.id === body.productId);
@@ -111,17 +117,20 @@ export function createServer() {
     orders.set(order.id, order);
     return send(res, 201, order);
    }
-   const orderMatch = path.match(/^\/orders\/(o\d+)$/);
+   const orderMatch = path.match(/^\/orders\/([^/]+)$/);
    if (req.method === 'GET' && orderMatch) {
     const order = orders.get(orderMatch[1]);
     return order ? send(res, 200, order) : send(res, 404, { error: 'Pedido não encontrado' });
    }
-   const statusMatch = path.match(/^\/orders\/(o\d+)\/status$/);
+   const statusMatch = path.match(/^\/orders\/([^/]+)\/status$/);
    if (req.method === 'PATCH' && statusMatch) {
     const order = orders.get(statusMatch[1]);
     if (!order) return send(res, 404, { error: 'Pedido não encontrado' });
     const body = await parseBody(req);
-    if (body.status !== 'confirmed') return send(res, 400, { error: 'Status inválido' });
+    if (body.status !== 'confirmed' && body.status !== 'cancelled')
+      return send(res, 400, { error: 'Status inválido' });
+    if (order.status !== 'created')
+      return send(res, 409, { error: 'Transição de status inválida' });
     order.status = body.status;
     return send(res, 200, order);
    }
