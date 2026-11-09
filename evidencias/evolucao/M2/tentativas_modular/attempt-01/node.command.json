@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "--version"
+  ],
+  "cwd": "/mnt/d/TCC",
+  "started_utc": "2026-11-09T20:09:06.814Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

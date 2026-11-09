@@ -1,0 +1,6 @@
+{
+  "scenario": "ct15",
+  "requests_responses_equal": true,
+  "checks_equal": true,
+  "equivalent": true
+}

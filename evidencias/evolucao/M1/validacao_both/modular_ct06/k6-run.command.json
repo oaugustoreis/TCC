@@ -1,0 +1,25 @@
+{
+  "command": [
+    "k6",
+    "run",
+    "--no-usage-report",
+    "--no-color",
+    "--quiet",
+    "--log-format=json",
+    "--log-output",
+    "file=/mnt/d/TCC/evidencias/evolucao/M1/validacao_both/modular_ct06/http-debug.jsonl",
+    "--http-debug=full",
+    "--summary-export",
+    "/mnt/d/TCC/evidencias/evolucao/M1/validacao_both/modular_ct06/summary.json",
+    "--out",
+    "json=/mnt/d/TCC/evidencias/evolucao/M1/validacao_both/modular_ct06/metrics.jsonl",
+    "-e",
+    "BASE_URL=http://127.0.0.1:42703",
+    "modular/scenarios/catalogo/filtro.scenario.js"
+  ],
+  "cwd": "/mnt/d/TCC",
+  "started_utc": "2026-11-09T19:53:45.776Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

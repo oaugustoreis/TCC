@@ -1,0 +1,169 @@
+{
+    "metrics": {
+        "http_req_connecting": {
+            "p(90)": 0.11633370000000004,
+            "p(95)": 0.14126234999999995,
+            "avg": 0.04154775,
+            "min": 0,
+            "med": 0,
+            "max": 0.166191
+        },
+        "http_reqs": {
+            "count": 4,
+            "rate": 202.71842365342894
+        },
+        "iteration_duration": {
+            "max": 18.823974,
+            "p(90)": 18.823974,
+            "p(95)": 18.823974,
+            "avg": 18.823974,
+            "min": 18.823974,
+            "med": 18.823974
+        },
+        "checks": {
+            "passes": 8,
+            "fails": 0,
+            "thresholds": {
+                "rate==1": false
+            },
+            "value": 1
+        },
+        "http_req_duration{expected_response:true}": {
+            "p(90)": 5.5579704,
+            "p(95)": 5.7310557,
+            "avg": 4.13891125,
+            "min": 1.850982,
+            "med": 4.400261,
+            "max": 5.904141
+        },
+        "iterations": {
+            "count": 1,
+            "rate": 50.679605913357236
+        },
+        "data_received": {
+            "count": 1089,
+            "rate": 55190.09083964603
+        },
+        "http_req_sending": {
+            "max": 0.045881,
+            "p(90)": 0.033975200000000004,
+            "p(95)": 0.03992809999999999,
+            "avg": 0.015968999999999997,
+            "min": 0.005756,
+            "med": 0.0061195
+        },
+        "http_req_waiting": {
+            "p(90)": 5.4378474,
+            "p(95)": 5.6187837,
+            "avg": 4.0169274999999995,
+            "min": 1.702394,
+            "med": 4.282798,
+            "max": 5.79972
+        },
+        "http_req_duration": {
+            "med": 4.400261,
+            "max": 5.904141,
+            "p(90)": 5.5579704,
+            "p(95)": 5.7310557,
+            "avg": 4.13891125,
+            "min": 1.850982
+        },
+        "http_req_receiving": {
+            "p(95)": 0.13803919999999997,
+            "avg": 0.10601474999999999,
+            "min": 0.072121,
+            "med": 0.10455300000000001,
+            "max": 0.142832,
+            "p(90)": 0.1332464
+        },
+        "http_req_blocked": {
+            "max": 0.210172,
+            "p(90)": 0.14809900000000004,
+            "p(95)": 0.17913549999999992,
+            "avg": 0.05462975,
+            "min": 0.002443,
+            "med": 0.0029519999999999998
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 4,
+            "value": 0
+        },
+        "http_req_tls_handshaking": {
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0
+        },
+        "data_sent": {
+            "count": 718,
+            "rate": 36387.95704579049
+        }
+    },
+    "root_group": {
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "CT-08 01 status": {
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "CT-08 01 status",
+                    "path": "::CT-08 01 status",
+                    "id": "df8cd682fd629cdcedd3c437c9abf9f6"
+                },
+                "CT-08 01 corpo": {
+                    "path": "::CT-08 01 corpo",
+                    "id": "6a8c0d633b557ff37acc9f13a8cc0d3c",
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "CT-08 01 corpo"
+                },
+                "CT-08 02 status": {
+                    "fails": 0,
+                    "name": "CT-08 02 status",
+                    "path": "::CT-08 02 status",
+                    "id": "b4262e0a8bfea3ddac71178ddb09722a",
+                    "passes": 1
+                },
+                "CT-08 02 corpo": {
+                    "fails": 0,
+                    "name": "CT-08 02 corpo",
+                    "path": "::CT-08 02 corpo",
+                    "id": "4afd4d225cf9ff73fd65aa0a6999f199",
+                    "passes": 1
+                },
+                "CT-08 03 status": {
+                    "path": "::CT-08 03 status",
+                    "id": "dd01cf46338f5e6e137dfaadb041e6b1",
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "CT-08 03 status"
+                },
+                "CT-08 03 corpo": {
+                    "id": "f14ab697f590631d7d39399a011c664a",
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "CT-08 03 corpo",
+                    "path": "::CT-08 03 corpo"
+                },
+                "CT-08 04 status": {
+                    "id": "9f60c2fd4d78a5547663aa505b7a47f4",
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "CT-08 04 status",
+                    "path": "::CT-08 04 status"
+                },
+                "CT-08 04 corpo": {
+                    "name": "CT-08 04 corpo",
+                    "path": "::CT-08 04 corpo",
+                    "id": "36aaa8a27f12aacd8de02ccdd551adf5",
+                    "passes": 1,
+                    "fails": 0
+                }
+            }
+    }
+}
