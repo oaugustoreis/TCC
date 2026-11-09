@@ -5,6 +5,8 @@ function matchesField(value, rule) {
     if (rule.type === "array" && !Array.isArray(value)) return false;
     if (rule.type && rule.type !== "array" && typeof value !== rule.type) return false;
     if (rule.nonEmpty && (!Array.isArray(value) || value.length === 0)) return false;
+    if (typeof rule.minLength === "number" && (typeof value !== "string" || value.length < rule.minLength)) return false;
+    if (typeof rule.predicate === "function" && !rule.predicate(value)) return false;
     return true;
 }
 

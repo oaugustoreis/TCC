@@ -104,6 +104,10 @@ Extraídas mecanicamente a partir dos logs primários externos, nunca auto-decla
 | **`files_written`** | `.system_generated/logs/transcript.jsonl` | Total de chamadas `write_file` + `edit_file` registradas nos passos `PLANNER_RESPONSE`. |
 | **`commands_run`** | `.system_generated/logs/transcript.jsonl` | Total de chamadas `run_command` registradas nos passos `PLANNER_RESPONSE`. |
 | **`tool_calls_total`** | `.system_generated/logs/transcript.jsonl` | Soma de todas as invocações de ferramentas registradas no transcript do subagente. |
+| **`llm_input_tokens`** | `.system_generated/logs/transcript.jsonl` | Soma de `input_tokens` (novos tokens de prompt/contexto enviados ao modelo) nos passos `PLANNER_RESPONSE`. |
+| **`llm_cache_read_tokens`** | `.system_generated/logs/transcript.jsonl` | Soma de `cache_read_tokens` (tokens de contexto reutilizados do cache da sessão) nos passos `PLANNER_RESPONSE`. |
+| **`llm_output_tokens`** | `.system_generated/logs/transcript.jsonl` | Soma de `output_tokens` (tokens gerados pelo modelo em raciocínio, código e chamadas de ferramentas) nos passos `PLANNER_RESPONSE`. |
+| **`llm_total_tokens`** | `.system_generated/logs/transcript.jsonl` | Soma total de tokens LLM processados na unidade (`llm_input_tokens + llm_cache_read_tokens + llm_output_tokens`). |
 | **`duration_seconds`** | `.system_generated/logs/transcript.jsonl` | Diferença em segundos entre o `created_at` (ISO-8601) do primeiro e do último passo registrados pelo runtime na sessão do subagente. |
 
 ---

@@ -1,0 +1,37 @@
+
+
+  █ THRESHOLDS 
+
+    checks
+    ✓ 'rate==1' rate=100.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 6       408.482994/s
+    checks_succeeded...: 100.00% 6 out of 6
+    checks_failed......: 0.00%   0 out of 6
+
+    ✓ login 200
+    ✓ token presente
+    ✓ lista 200
+    ✓ produtos disponíveis
+    ✓ produto 200
+    ✓ produto p1
+
+    HTTP
+    http_req_duration..............: avg=4.4ms   min=1.82ms  med=5.33ms  max=6.06ms  p(90)=5.91ms  p(95)=5.99ms 
+      { expected_response:true }...: avg=4.4ms   min=1.82ms  med=5.33ms  max=6.06ms  p(90)=5.91ms  p(95)=5.99ms 
+    http_req_failed................: 0.00% 0 out of 3
+    http_reqs......................: 3     204.241497/s
+
+    EXECUTION
+    iteration_duration.............: avg=14.54ms min=14.54ms med=14.54ms max=14.54ms p(90)=14.54ms p(95)=14.54ms
+    iterations.....................: 1     68.080499/s
+
+    NETWORK
+    data_received..................: 825 B 56 kB/s
+    data_sent......................: 491 B 33 kB/s
+
+
+

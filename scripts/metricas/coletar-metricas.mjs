@@ -415,6 +415,17 @@ export function collectGitDelta(
   if (!baseRef) {
     return null;
   }
+  if (targetRef === "WORKTREE") {
+    try {
+      execFileSync(
+        "git",
+        ["-c", `safe.directory=${rootDir}`, "add", "-N", "--", scopePath],
+        { cwd: rootDir, encoding: "utf8" }
+      );
+    } catch {
+      // ignora caso não haja arquivos novos
+    }
+  }
   const runNumstat = (fromRef, toRef) => {
     const diffRange = toRef === "WORKTREE" ? [fromRef] : [fromRef, toRef];
     return execFileSync(
@@ -543,6 +554,10 @@ export function parseSubagentTranscript(transcriptPath) {
       commands_run: null,
       tool_calls_total: null,
       tool_calls_by_name: null,
+      llm_input_tokens: null,
+      llm_cache_read_tokens: null,
+      llm_output_tokens: null,
+      llm_total_tokens: null,
     };
   }
 
@@ -560,6 +575,10 @@ export function parseSubagentTranscript(transcriptPath) {
   let filesWritten = 0;
   let commandsRun = 0;
   let toolCallsTotal = 0;
+  let llmInputTokens = 0;
+  let llmCacheReadTokens = 0;
+  let llmOutputTokens = 0;
+  let hasTokenCounts = false;
   const toolCallsByName = {};
 
   for (const line of lines) {
@@ -576,6 +595,13 @@ export function parseSubagentTranscript(transcriptPath) {
           lastStepIso = step.created_at;
         }
       }
+    }
+
+    if (typeof step.input_tokens === "number" || typeof step.output_tokens === "number") {
+      hasTokenCounts = true;
+      llmInputTokens += Number(step.input_tokens || 0);
+      llmCacheReadTokens += Number(step.cache_read_tokens || 0);
+      llmOutputTokens += Number(step.output_tokens || 0);
     }
 
     if (Array.isArray(step.tool_calls)) {
@@ -611,6 +637,12 @@ export function parseSubagentTranscript(transcriptPath) {
     commands_run: commandsRun,
     tool_calls_total: toolCallsTotal,
     tool_calls_by_name: toolCallsByName,
+    llm_input_tokens: hasTokenCounts ? llmInputTokens : null,
+    llm_cache_read_tokens: hasTokenCounts ? llmCacheReadTokens : null,
+    llm_output_tokens: hasTokenCounts ? llmOutputTokens : null,
+    llm_total_tokens: hasTokenCounts
+      ? llmInputTokens + llmCacheReadTokens + llmOutputTokens
+      : null,
   };
 }
 
@@ -733,6 +765,10 @@ export function buildAuditedAgentUnitMetrics({ transcriptPath = null, validation
       commands_run: transcript.commands_run,
       tool_calls_total: transcript.tool_calls_total,
       duration_seconds: transcript.duration_seconds,
+      llm_input_tokens: transcript.llm_input_tokens,
+      llm_cache_read_tokens: transcript.llm_cache_read_tokens,
+      llm_output_tokens: transcript.llm_output_tokens,
+      llm_total_tokens: transcript.llm_total_tokens,
     },
   };
 }
@@ -915,6 +951,10 @@ export function formatMarkdownSummary(report) {
       `| Operações de escrita/edição (files_written) | ${fmtNum(tSum.files_written)} | ${fmtNum(mSum.files_written)} | ${fmtDiff(mSum.files_written, tSum.files_written)} |`,
       `| Comandos executados (commands_run) | ${fmtNum(tSum.commands_run)} | ${fmtNum(mSum.commands_run)} | ${fmtDiff(mSum.commands_run, tSum.commands_run)} |`,
       `| Total de Tool Calls | ${fmtNum(tSum.tool_calls_total)} | ${fmtNum(mSum.tool_calls_total)} | ${fmtDiff(mSum.tool_calls_total, tSum.tool_calls_total)} |`,
+      `| Tokens de entrada novos do LLM (input_tokens) | ${fmtNum(tSum.llm_input_tokens)} | ${fmtNum(mSum.llm_input_tokens)} | ${fmtDiff(mSum.llm_input_tokens, tSum.llm_input_tokens)} |`,
+      `| Tokens de contexto em cache (cache_read_tokens) | ${fmtNum(tSum.llm_cache_read_tokens)} | ${fmtNum(mSum.llm_cache_read_tokens)} | ${fmtDiff(mSum.llm_cache_read_tokens, tSum.llm_cache_read_tokens)} |`,
+      `| Tokens gerados pelo LLM (output_tokens) | ${fmtNum(tSum.llm_output_tokens)} | ${fmtNum(mSum.llm_output_tokens)} | ${fmtDiff(mSum.llm_output_tokens, tSum.llm_output_tokens)} |`,
+      `| Total de tokens LLM consumidos na unidade | ${fmtNum(tSum.llm_total_tokens)} | ${fmtNum(mSum.llm_total_tokens)} | ${fmtDiff(mSum.llm_total_tokens, tSum.llm_total_tokens)} |`,
       `| Duração registrada do subagente (s) | ${fmtNum(tSum.duration_seconds)} | ${fmtNum(mSum.duration_seconds)} | ${typeof mSum.duration_seconds === "number" && typeof tSum.duration_seconds === "number" ? Number((mSum.duration_seconds - tSum.duration_seconds).toFixed(2)) : "—"} |`
     );
   }
