@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "/mnt/d/TCC/evidencias/auditoria/recoletar.mjs",
+    "E0",
+    "-",
+    "103a1e1ec5ceb05b15411b308b00f8f79fdc15a6",
+    "/tmp/tcc-auditoria-E0",
+    "/mnt/d/TCC/evidencias/auditoria/E0/metricas"
+  ]
+}

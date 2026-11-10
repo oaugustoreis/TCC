@@ -1,0 +1,14 @@
+{
+  "command": [
+    "git",
+    "-c",
+    "safe.directory=/tmp/tcc-auditoria-E2",
+    "rev-parse",
+    "HEAD"
+  ],
+  "cwd": "/tmp/tcc-auditoria-E2",
+  "started_utc": "2026-11-10T16:18:06.282Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

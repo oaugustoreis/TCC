@@ -1,0 +1,32 @@
+{
+  "scenario": "ct02",
+  "suite": "tradicional",
+  "script": "tradicional/ct02.js",
+  "exit_code": null,
+  "api_ready": false,
+  "received_requests": 0,
+  "passed_checks": 0,
+  "observed_checks": 0,
+  "metrics": {
+    "iterations": 0,
+    "http_reqs": 0,
+    "http_req_failed": 0
+  },
+  "real_success": false,
+  "oracle": {
+    "passed": false,
+    "errors": [
+      "quantidade de requisições",
+      "ct02 operação 1: ausente",
+      "ct02 operação 2: ausente",
+      "ct02 operação 3: ausente",
+      "quantidade, ordem e labels de checks",
+      "uma iteração concluída",
+      "contagem http_reqs",
+      "saídas k6 run/inspect zero",
+      "prontidão da API"
+    ],
+    "expected_requests": 3,
+    "expected_checks": 6
+  }
+}

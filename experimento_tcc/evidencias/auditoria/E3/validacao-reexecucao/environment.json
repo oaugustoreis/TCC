@@ -1,0 +1,66 @@
+{
+  "utc": "2026-11-10T16:18:10.735Z",
+  "platform": "linux",
+  "release": "6.6.87.2-microsoft-standard-WSL2",
+  "arch": "x64",
+  "tools": {
+    "node": {
+      "command": [
+        "node",
+        "--version"
+      ],
+      "cwd": "/tmp/tcc-auditoria-E3",
+      "started_utc": "2026-11-10T16:18:10.325Z",
+      "exit_code": 0,
+      "error": null,
+      "signal": null,
+      "stdout": "v24.18.0\n",
+      "stderr": ""
+    },
+    "k6": {
+      "command": [
+        "k6",
+        "version"
+      ],
+      "cwd": "/tmp/tcc-auditoria-E3",
+      "started_utc": "2026-11-10T16:18:10.338Z",
+      "exit_code": 0,
+      "error": null,
+      "signal": null,
+      "stdout": "k6 v2.0.0 (commit/8c3be52cc1, go1.26.3, linux/amd64)\n",
+      "stderr": ""
+    },
+    "npm": {
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "npm.cmd --version"
+      ],
+      "cwd": "/tmp/tcc-auditoria-E3",
+      "started_utc": "2026-11-10T16:18:10.358Z",
+      "exit_code": 0,
+      "error": null,
+      "signal": null,
+      "stdout": "11.7.0\n",
+      "stderr": "'\\\\wsl.localhost\\Ubuntu\\tmp\\tcc-auditoria-E3'\r\nCMD.EXE was started with the above path as the current directory.\r\nUNC paths are not supported.  Defaulting to Windows directory.\r\n"
+    },
+    "git": {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=/tmp/tcc-auditoria-E3",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/tmp/tcc-auditoria-E3",
+      "started_utc": "2026-11-10T16:18:10.681Z",
+      "exit_code": 0,
+      "error": null,
+      "signal": null,
+      "stdout": "6c1ab09a2d0f51510bef8db7af43a69a5c822c88\n",
+      "stderr": ""
+    }
+  },
+  "k6_environment_options_removed": []
+}

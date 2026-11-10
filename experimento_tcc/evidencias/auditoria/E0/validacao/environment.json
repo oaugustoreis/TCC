@@ -1,0 +1,66 @@
+{
+  "utc": "2026-11-10T16:07:04.784Z",
+  "platform": "linux",
+  "release": "6.6.87.2-microsoft-standard-WSL2",
+  "arch": "x64",
+  "tools": {
+    "node": {
+      "command": [
+        "node",
+        "--version"
+      ],
+      "cwd": "/tmp/tcc-auditoria-E0",
+      "started_utc": "2026-11-10T16:07:04.579Z",
+      "exit_code": 0,
+      "error": "spawnSync node EPERM",
+      "signal": null,
+      "stdout": "v24.18.0\n",
+      "stderr": ""
+    },
+    "k6": {
+      "command": [
+        "k6",
+        "version"
+      ],
+      "cwd": "/tmp/tcc-auditoria-E0",
+      "started_utc": "2026-11-10T16:07:04.593Z",
+      "exit_code": 0,
+      "error": "spawnSync k6 EPERM",
+      "signal": null,
+      "stdout": "k6 v2.0.0 (commit/8c3be52cc1, go1.26.3, linux/amd64)\n",
+      "stderr": ""
+    },
+    "npm": {
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "npm.cmd --version"
+      ],
+      "cwd": "/tmp/tcc-auditoria-E0",
+      "started_utc": "2026-11-10T16:07:04.719Z",
+      "exit_code": 1,
+      "error": "spawnSync cmd.exe EPERM",
+      "signal": null,
+      "stdout": "",
+      "stderr": "<3>WSL (18 - ) ERROR: UtilBindVsockAnyPort:307: socket failed 1\n"
+    },
+    "git": {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=/tmp/tcc-auditoria-E0",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/tmp/tcc-auditoria-E0",
+      "started_utc": "2026-11-10T16:07:04.736Z",
+      "exit_code": 0,
+      "error": "spawnSync git EPERM",
+      "signal": null,
+      "stdout": "103a1e1ec5ceb05b15411b308b00f8f79fdc15a6\n",
+      "stderr": ""
+    }
+  },
+  "k6_environment_options_removed": []
+}

@@ -1,0 +1,12 @@
+{
+  "command": [
+    "k6",
+    "inspect",
+    "modular/scenarios/catalogo/catalogo.scenario.js"
+  ],
+  "cwd": "/tmp/tcc-auditoria-E2",
+  "started_utc": "2026-11-10T16:18:08.508Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

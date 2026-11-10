@@ -1,0 +1,33 @@
+{
+  "scenario": "ct05",
+  "suite": "tradicional",
+  "script": "tradicional/ct05.js",
+  "exit_code": null,
+  "api_ready": false,
+  "received_requests": 0,
+  "passed_checks": 0,
+  "observed_checks": 0,
+  "metrics": {
+    "iterations": 0,
+    "http_reqs": 0,
+    "http_req_failed": 0
+  },
+  "real_success": false,
+  "oracle": {
+    "passed": false,
+    "errors": [
+      "quantidade de requisições",
+      "ct05 operação 1: ausente",
+      "ct05 operação 2: ausente",
+      "ct05 operação 3: ausente",
+      "ct05 operação 4: ausente",
+      "quantidade, ordem e labels de checks",
+      "uma iteração concluída",
+      "contagem http_reqs",
+      "saídas k6 run/inspect zero",
+      "prontidão da API"
+    ],
+    "expected_requests": 4,
+    "expected_checks": 9
+  }
+}

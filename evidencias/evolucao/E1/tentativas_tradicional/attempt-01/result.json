@@ -1,8 +1,0 @@
-{
-  "state": "E1",
-  "suite": "tradicional",
-  "preflight_passed": false,
-  "validation_passed": false,
-  "complete_functional_equivalence": false,
-  "error": "Manifesto deve ser array"
-}

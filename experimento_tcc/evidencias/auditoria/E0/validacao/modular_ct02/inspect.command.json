@@ -1,0 +1,12 @@
+{
+  "command": [
+    "k6",
+    "inspect",
+    "modular/scenarios/catalogo/catalogo.scenario.js"
+  ],
+  "cwd": "/tmp/tcc-auditoria-E0",
+  "started_utc": "2026-11-10T16:07:05.468Z",
+  "exit_code": 0,
+  "error": "spawnSync k6 EPERM",
+  "signal": null
+}
