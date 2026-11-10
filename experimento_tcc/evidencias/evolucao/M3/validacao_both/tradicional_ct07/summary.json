@@ -1,0 +1,155 @@
+{
+    "metrics": {
+        "http_req_connecting": {
+            "p(90)": 0.0897184,
+            "p(95)": 0.10093319999999999,
+            "avg": 0.03738266666666667,
+            "min": 0,
+            "med": 0,
+            "max": 0.112148
+        },
+        "http_req_duration{expected_response:true}": {
+            "min": 2.308092,
+            "med": 5.701884,
+            "max": 6.844761,
+            "p(90)": 6.6161856,
+            "p(95)": 6.7304733,
+            "avg": 4.951579
+        },
+        "data_received": {
+            "rate": 44981.895729327094,
+            "count": 716
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 3,
+            "value": 0
+        },
+        "http_reqs": {
+            "rate": 188.47163015081185,
+            "count": 3
+        },
+        "http_req_waiting": {
+            "avg": 4.780437333333333,
+            "min": 2.201963,
+            "med": 5.458522,
+            "max": 6.680827,
+            "p(90)": 6.436366,
+            "p(95)": 6.5585965
+        },
+        "http_req_sending": {
+            "p(95)": 0.05775019999999999,
+            "avg": 0.024192999999999996,
+            "min": 0.003245,
+            "med": 0.005813,
+            "max": 0.063521,
+            "p(90)": 0.051979399999999995
+        },
+        "http_req_receiving": {
+            "p(95)": 0.22408250000000002,
+            "avg": 0.14694866666666667,
+            "min": 0.100413,
+            "med": 0.102884,
+            "max": 0.237549,
+            "p(90)": 0.21061600000000003
+        },
+        "checks": {
+            "passes": 6,
+            "fails": 0,
+            "thresholds": {
+                "rate==1": false
+            },
+            "value": 1
+        },
+        "data_sent": {
+            "count": 506,
+            "rate": 31788.881618770265
+        },
+        "http_req_blocked": {
+            "p(95)": 0.1401975,
+            "avg": 0.05293933333333334,
+            "min": 0.001307,
+            "med": 0.001953,
+            "max": 0.155558,
+            "p(90)": 0.12483699999999999
+        },
+        "http_req_tls_handshaking": {
+            "p(95)": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0
+        },
+        "iteration_duration": {
+            "p(90)": 15.806552,
+            "p(95)": 15.806552,
+            "avg": 15.806552,
+            "min": 15.806552,
+            "med": 15.806552,
+            "max": 15.806552
+        },
+        "iterations": {
+            "count": 1,
+            "rate": 62.823876716937285
+        },
+        "http_req_duration": {
+            "p(90)": 6.6161856,
+            "p(95)": 6.7304733,
+            "avg": 4.951579,
+            "min": 2.308092,
+            "med": 5.701884,
+            "max": 6.844761
+        }
+    },
+    "root_group": {
+        "checks": {
+            "CT-07 01 status": {
+                "name": "CT-07 01 status",
+                "path": "::CT-07 01 status",
+                "id": "2d49ca200214ae201ad664e563d696a0",
+                "passes": 1,
+                "fails": 0
+            },
+            "CT-07 01 corpo": {
+                "name": "CT-07 01 corpo",
+                "path": "::CT-07 01 corpo",
+                "id": "e8c16f78fdde9c254a53dd40bf366c07",
+                "passes": 1,
+                "fails": 0
+            },
+            "CT-07 02 status": {
+                "name": "CT-07 02 status",
+                "path": "::CT-07 02 status",
+                "id": "fcf1b93dcf99313e6473cbde3856c595",
+                "passes": 1,
+                "fails": 0
+            },
+            "CT-07 02 corpo": {
+                "path": "::CT-07 02 corpo",
+                "id": "196c5579e8a93aaefe6f29ef3291a9ad",
+                "passes": 1,
+                "fails": 0,
+                "name": "CT-07 02 corpo"
+            },
+            "CT-07 03 status": {
+                "name": "CT-07 03 status",
+                "path": "::CT-07 03 status",
+                "id": "6b663377c53ee9f7a7696f2e31a9e5c4",
+                "passes": 1,
+                "fails": 0
+            },
+            "CT-07 03 corpo": {
+                "name": "CT-07 03 corpo",
+                "path": "::CT-07 03 corpo",
+                "id": "69a49061d154df13df2c9b035f039388",
+                "passes": 1,
+                "fails": 0
+            }
+        },
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {}
+    }
+}

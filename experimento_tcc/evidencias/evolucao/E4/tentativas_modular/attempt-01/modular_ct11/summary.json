@@ -1,0 +1,169 @@
+{
+    "metrics": {
+        "http_req_waiting": {
+            "max": 6.542897,
+            "p(90)": 6.1750235,
+            "p(95)": 6.358960249999999,
+            "avg": 4.61179925,
+            "min": 1.90565,
+            "med": 4.999325000000001
+        },
+        "http_req_receiving": {
+            "avg": 0.09181425,
+            "min": 0.077398,
+            "med": 0.09546450000000001,
+            "max": 0.09893,
+            "p(90)": 0.0986156,
+            "p(95)": 0.09877280000000001
+        },
+        "data_sent": {
+            "count": 705,
+            "rate": 34195.04026405361
+        },
+        "checks": {
+            "passes": 8,
+            "fails": 0,
+            "thresholds": {
+                "rate==1": false
+            },
+            "value": 1
+        },
+        "http_req_blocked": {
+            "p(95)": 0.16159699999999994,
+            "avg": 0.049725000000000005,
+            "min": 0.00209,
+            "med": 0.0038365,
+            "max": 0.189137,
+            "p(90)": 0.13405700000000004
+        },
+        "data_received": {
+            "rate": 48697.61762426926,
+            "count": 1004
+        },
+        "iteration_duration": {
+            "avg": 20.527051,
+            "min": 20.527051,
+            "med": 20.527051,
+            "max": 20.527051,
+            "p(90)": 20.527051,
+            "p(95)": 20.527051
+        },
+        "http_req_duration": {
+            "p(95)": 6.460996649999999,
+            "avg": 4.72388,
+            "min": 1.989389,
+            "med": 5.1309075,
+            "max": 6.644316,
+            "p(90)": 6.277677300000001
+        },
+        "http_req_sending": {
+            "max": 0.059748,
+            "p(90)": 0.04433520000000001,
+            "p(95)": 0.052041599999999986,
+            "avg": 0.020266500000000003,
+            "min": 0.006341,
+            "med": 0.0074884999999999995
+        },
+        "http_req_connecting": {
+            "avg": 0.03546525,
+            "min": 0,
+            "med": 0,
+            "max": 0.141861,
+            "p(90)": 0.09930270000000002,
+            "p(95)": 0.12058184999999993
+        },
+        "iterations": {
+            "count": 1,
+            "rate": 48.50360321142357
+        },
+        "http_req_duration{expected_response:true}": {
+            "p(95)": 6.460996649999999,
+            "avg": 4.72388,
+            "min": 1.989389,
+            "med": 5.1309075,
+            "max": 6.644316,
+            "p(90)": 6.277677300000001
+        },
+        "http_req_tls_handshaking": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 4,
+            "value": 0
+        },
+        "http_reqs": {
+            "count": 4,
+            "rate": 194.01441284569427
+        }
+    },
+    "root_group": {
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "CT-11 01 status": {
+                    "name": "CT-11 01 status",
+                    "path": "::CT-11 01 status",
+                    "id": "e29b205826002ce3bd4366a7484fee19",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "CT-11 01 corpo": {
+                    "path": "::CT-11 01 corpo",
+                    "id": "b3d43312f0a4dfe5abdbf3b77ed338f7",
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "CT-11 01 corpo"
+                },
+                "CT-11 02 status": {
+                    "fails": 0,
+                    "name": "CT-11 02 status",
+                    "path": "::CT-11 02 status",
+                    "id": "40dc68f0beb09fa8518dfdf61b6da678",
+                    "passes": 1
+                },
+                "CT-11 02 corpo": {
+                    "name": "CT-11 02 corpo",
+                    "path": "::CT-11 02 corpo",
+                    "id": "6fe35c2f411eea51409b23fce16af94c",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "CT-11 03 status": {
+                    "name": "CT-11 03 status",
+                    "path": "::CT-11 03 status",
+                    "id": "7199c5fba6d48188a7fb58d02426f999",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "CT-11 03 corpo": {
+                    "name": "CT-11 03 corpo",
+                    "path": "::CT-11 03 corpo",
+                    "id": "9d3798d5bb7d331ca826256550d060f7",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "CT-11 04 status": {
+                    "name": "CT-11 04 status",
+                    "path": "::CT-11 04 status",
+                    "id": "d4f21bdb64a14bfaa2ce7936585c1c3c",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "CT-11 04 corpo": {
+                    "name": "CT-11 04 corpo",
+                    "path": "::CT-11 04 corpo",
+                    "id": "e74c5305836be62af26d6ce6c8ab5063",
+                    "passes": 1,
+                    "fails": 0
+                }
+            },
+        "name": "",
+        "path": ""
+    }
+}

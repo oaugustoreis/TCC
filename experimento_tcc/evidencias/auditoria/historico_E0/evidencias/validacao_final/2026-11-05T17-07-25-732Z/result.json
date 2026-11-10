@@ -1,0 +1,211 @@
+{
+  "complete_functional_equivalence": true,
+  "architecture_preserved": true,
+  "pairs": [
+    {
+      "scenario": "ct01",
+      "runs": [
+        {
+          "scenario": "ct01",
+          "suite": "tradicional",
+          "script": "tradicional/ct01.js",
+          "api_ready": true,
+          "exit_code": 0,
+          "profile_valid": true,
+          "expected_requests": 1,
+          "received_requests": 1,
+          "http_reqs": 1,
+          "iterations": 1,
+          "expected_checks": 2,
+          "observed_checks": 2,
+          "passed_checks": 2,
+          "real_success": true
+        },
+        {
+          "scenario": "ct01",
+          "suite": "modular",
+          "script": "modular/scenarios/autenticacao/autenticacao.scenario.js",
+          "api_ready": true,
+          "exit_code": 0,
+          "profile_valid": true,
+          "expected_requests": 1,
+          "received_requests": 1,
+          "http_reqs": 1,
+          "iterations": 1,
+          "expected_checks": 2,
+          "observed_checks": 2,
+          "passed_checks": 2,
+          "real_success": true
+        }
+      ],
+      "requests_equal": true,
+      "checks_equal": true,
+      "response_statuses_equal": true,
+      "equivalent": true
+    },
+    {
+      "scenario": "ct02",
+      "runs": [
+        {
+          "scenario": "ct02",
+          "suite": "tradicional",
+          "script": "tradicional/ct02.js",
+          "api_ready": true,
+          "exit_code": 0,
+          "profile_valid": true,
+          "expected_requests": 3,
+          "received_requests": 3,
+          "http_reqs": 3,
+          "iterations": 1,
+          "expected_checks": 6,
+          "observed_checks": 6,
+          "passed_checks": 6,
+          "real_success": true
+        },
+        {
+          "scenario": "ct02",
+          "suite": "modular",
+          "script": "modular/scenarios/catalogo/catalogo.scenario.js",
+          "api_ready": true,
+          "exit_code": 0,
+          "profile_valid": true,
+          "expected_requests": 3,
+          "received_requests": 3,
+          "http_reqs": 3,
+          "iterations": 1,
+          "expected_checks": 6,
+          "observed_checks": 6,
+          "passed_checks": 6,
+          "real_success": true
+        }
+      ],
+      "requests_equal": true,
+      "checks_equal": true,
+      "response_statuses_equal": true,
+      "equivalent": true
+    },
+    {
+      "scenario": "ct03",
+      "runs": [
+        {
+          "scenario": "ct03",
+          "suite": "tradicional",
+          "script": "tradicional/ct03.js",
+          "api_ready": true,
+          "exit_code": 0,
+          "profile_valid": true,
+          "expected_requests": 3,
+          "received_requests": 3,
+          "http_reqs": 3,
+          "iterations": 1,
+          "expected_checks": 6,
+          "observed_checks": 6,
+          "passed_checks": 6,
+          "real_success": true
+        },
+        {
+          "scenario": "ct03",
+          "suite": "modular",
+          "script": "modular/scenarios/pedidos/criacao.scenario.js",
+          "api_ready": true,
+          "exit_code": 0,
+          "profile_valid": true,
+          "expected_requests": 3,
+          "received_requests": 3,
+          "http_reqs": 3,
+          "iterations": 1,
+          "expected_checks": 6,
+          "observed_checks": 6,
+          "passed_checks": 6,
+          "real_success": true
+        }
+      ],
+      "requests_equal": true,
+      "checks_equal": true,
+      "response_statuses_equal": true,
+      "equivalent": true
+    },
+    {
+      "scenario": "ct04",
+      "runs": [
+        {
+          "scenario": "ct04",
+          "suite": "tradicional",
+          "script": "tradicional/ct04.js",
+          "api_ready": true,
+          "exit_code": 0,
+          "profile_valid": true,
+          "expected_requests": 3,
+          "received_requests": 3,
+          "http_reqs": 3,
+          "iterations": 1,
+          "expected_checks": 7,
+          "observed_checks": 7,
+          "passed_checks": 7,
+          "real_success": true
+        },
+        {
+          "scenario": "ct04",
+          "suite": "modular",
+          "script": "modular/scenarios/pedidos/consulta.scenario.js",
+          "api_ready": true,
+          "exit_code": 0,
+          "profile_valid": true,
+          "expected_requests": 3,
+          "received_requests": 3,
+          "http_reqs": 3,
+          "iterations": 1,
+          "expected_checks": 7,
+          "observed_checks": 7,
+          "passed_checks": 7,
+          "real_success": true
+        }
+      ],
+      "requests_equal": true,
+      "checks_equal": true,
+      "response_statuses_equal": true,
+      "equivalent": true
+    },
+    {
+      "scenario": "ct05",
+      "runs": [
+        {
+          "scenario": "ct05",
+          "suite": "tradicional",
+          "script": "tradicional/ct05.js",
+          "api_ready": true,
+          "exit_code": 0,
+          "profile_valid": true,
+          "expected_requests": 4,
+          "received_requests": 4,
+          "http_reqs": 4,
+          "iterations": 1,
+          "expected_checks": 9,
+          "observed_checks": 9,
+          "passed_checks": 9,
+          "real_success": true
+        },
+        {
+          "scenario": "ct05",
+          "suite": "modular",
+          "script": "modular/scenarios/pedidos/atualizacao.scenario.js",
+          "api_ready": true,
+          "exit_code": 0,
+          "profile_valid": true,
+          "expected_requests": 4,
+          "received_requests": 4,
+          "http_reqs": 4,
+          "iterations": 1,
+          "expected_checks": 9,
+          "observed_checks": 9,
+          "passed_checks": 9,
+          "real_success": true
+        }
+      ],
+      "requests_equal": true,
+      "checks_equal": true,
+      "response_statuses_equal": true,
+      "equivalent": true
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+    "metrics": {
+        "iteration_duration": {
+            "max": 13.649641,
+            "p(90)": 13.649641,
+            "p(95)": 13.649641,
+            "avg": 13.649641,
+            "min": 13.649641,
+            "med": 13.649641
+        },
+        "http_req_blocked": {
+            "min": 0.001355,
+            "med": 0.003494,
+            "max": 0.159087,
+            "p(90)": 0.1279684,
+            "p(95)": 0.14352769999999998,
+            "avg": 0.05464533333333333
+        },
+        "data_received": {
+            "rate": 55227.59327522664,
+            "count": 760
+        },
+        "iterations": {
+            "count": 1,
+            "rate": 72.6678858884561
+        },
+        "http_req_tls_handshaking": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "checks": {
+            "passes": 7,
+            "fails": 0,
+            "thresholds": {
+                "rate==1": false
+            },
+            "value": 1
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 4.2439089999999995,
+            "min": 2.187443,
+            "med": 5.153532,
+            "max": 5.390752,
+            "p(90)": 5.343308,
+            "p(95)": 5.36703
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 3,
+            "value": 0
+        },
+        "http_req_waiting": {
+            "med": 4.974509,
+            "max": 5.229078,
+            "p(90)": 5.1781642,
+            "p(95)": 5.2036211,
+            "avg": 4.100901666666666,
+            "min": 2.099118
+        },
+        "http_req_duration": {
+            "med": 5.153532,
+            "max": 5.390752,
+            "p(90)": 5.343308,
+            "p(95)": 5.36703,
+            "avg": 4.2439089999999995,
+            "min": 2.187443
+        },
+        "http_req_receiving": {
+            "avg": 0.10996233333333334,
+            "min": 0.084891,
+            "med": 0.101333,
+            "max": 0.143663,
+            "p(90)": 0.135197,
+            "p(95)": 0.13943
+        },
+        "http_reqs": {
+            "count": 3,
+            "rate": 218.0036576653683
+        },
+        "http_req_connecting": {
+            "med": 0,
+            "max": 0.111975,
+            "p(90)": 0.08958,
+            "p(95)": 0.10077749999999999,
+            "avg": 0.037325000000000004,
+            "min": 0
+        },
+        "http_req_sending": {
+            "min": 0.003434,
+            "med": 0.018011,
+            "max": 0.07769,
+            "p(90)": 0.0657542,
+            "p(95)": 0.07172209999999998,
+            "avg": 0.033045
+        },
+        "data_sent": {
+            "count": 539,
+            "rate": 39167.990493877835
+        }
+    },
+    "root_group": {
+        "groups": {},
+        "checks": {
+                "login 200": {
+                    "name": "login 200",
+                    "path": "::login 200",
+                    "id": "48b06dc5cde7f6ebb606ad7da726a2a5",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "token presente": {
+                    "id": "53cf0e5fdc5d8c03b8b90376bfd2b403",
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "token presente",
+                    "path": "::token presente"
+                },
+                "pedido 201": {
+                    "name": "pedido 201",
+                    "path": "::pedido 201",
+                    "id": "241b9da4421b4611e1da359859585803",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "pedido criado": {
+                    "id": "fee6d724f3e2be3f1add067fef374908",
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "pedido criado",
+                    "path": "::pedido criado"
+                },
+                "consulta 200": {
+                    "name": "consulta 200",
+                    "path": "::consulta 200",
+                    "id": "e2e6b2a834c6f21c5b28a1241f1bf894",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "pedido corresponde": {
+                    "name": "pedido corresponde",
+                    "path": "::pedido corresponde",
+                    "id": "07805e2c3600c23d110820b00457bd1f",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "status esperado": {
+                    "name": "status esperado",
+                    "path": "::status esperado",
+                    "id": "55ecf1181ed7abcfe1940bc12b453999",
+                    "passes": 1,
+                    "fails": 0
+                }
+            },
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

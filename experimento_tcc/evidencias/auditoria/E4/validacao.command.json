@@ -1,0 +1,15 @@
+{
+  "command": [
+    "node",
+    "/tmp/tcc-auditoria-E4/scripts/validacao/validar.mjs",
+    "--state",
+    "E4",
+    "--out",
+    "/mnt/d/TCC/evidencias/auditoria/E4/validacao-reexecucao",
+    "--manifest",
+    "/tmp/tcc-auditoria-E4/evidencias/evolucao/E4/manifest-both.json"
+  ],
+  "cwd": "/tmp/tcc-auditoria-E4",
+  "started_at": "2026-11-10T16:18:15.261941+00:00",
+  "exit_code": 0
+}

@@ -1,0 +1,25 @@
+{
+  "command": [
+    "k6",
+    "run",
+    "--no-usage-report",
+    "--no-color",
+    "--quiet",
+    "--log-format=json",
+    "--log-output",
+    "file=/mnt/d/TCC/evidencias/auditoria/E3/validacao-reexecucao/tradicional_ct11/http-debug.jsonl",
+    "--http-debug=full",
+    "--summary-export",
+    "/mnt/d/TCC/evidencias/auditoria/E3/validacao-reexecucao/tradicional_ct11/summary.json",
+    "--out",
+    "json=/mnt/d/TCC/evidencias/auditoria/E3/validacao-reexecucao/tradicional_ct11/metrics.jsonl",
+    "-e",
+    "BASE_URL=http://127.0.0.1:33229",
+    "tradicional/ct11.js"
+  ],
+  "cwd": "/tmp/tcc-auditoria-E3",
+  "started_utc": "2026-11-10T16:18:12.629Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

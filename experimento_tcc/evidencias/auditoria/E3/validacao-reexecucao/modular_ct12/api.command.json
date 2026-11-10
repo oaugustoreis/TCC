@@ -1,0 +1,12 @@
+{
+  "command": [
+    "node",
+    "scripts/validacao/api-observada.mjs"
+  ],
+  "cwd": "/tmp/tcc-auditoria-E3",
+  "environment": {
+    "PORT": "0",
+    "TRACE_FILE": "/mnt/d/TCC/evidencias/auditoria/E3/validacao-reexecucao/modular_ct12/server-requests.jsonl",
+    "READY_FILE": "/mnt/d/TCC/evidencias/auditoria/E3/validacao-reexecucao/modular_ct12/api-ready.json"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "/mnt/d/TCC/evidencias/auditoria/recoletar.mjs",
+    "M3",
+    "a84091f780bd745af4e22e6d787a9dd2124e7224",
+    "4df995ace48e7969329b673a990420644718fb4d",
+    "/tmp/tcc-auditoria-M3",
+    "/mnt/d/TCC/evidencias/auditoria/M3/metricas"
+  ]
+}

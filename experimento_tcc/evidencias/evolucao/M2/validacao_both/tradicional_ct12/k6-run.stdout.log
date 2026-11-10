@@ -1,0 +1,39 @@
+
+
+  █ THRESHOLDS 
+
+    checks
+    ✓ 'rate==1' rate=100.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 8       350.471369/s
+    checks_succeeded...: 100.00% 8 out of 8
+    checks_failed......: 0.00%   0 out of 8
+
+    ✓ CT-12 01 status
+    ✓ CT-12 01 corpo
+    ✓ CT-12 02 status
+    ✓ CT-12 02 corpo
+    ✓ CT-12 03 status
+    ✓ CT-12 03 corpo
+    ✓ CT-12 04 status
+    ✓ CT-12 04 corpo
+
+    HTTP
+    http_req_duration..............: avg=5.35ms  min=2.93ms  med=5.65ms  max=7.17ms  p(90)=6.77ms  p(95)=6.97ms 
+      { expected_response:true }...: avg=5.35ms  min=2.93ms  med=5.65ms  max=7.17ms  p(90)=6.77ms  p(95)=6.97ms 
+    http_req_failed................: 0.00%  0 out of 4
+    http_reqs......................: 4      175.235684/s
+
+    EXECUTION
+    iteration_duration.............: avg=22.73ms min=22.73ms med=22.73ms max=22.73ms p(90)=22.73ms p(95)=22.73ms
+    iterations.....................: 1      43.808921/s
+
+    NETWORK
+    data_received..................: 1.0 kB 46 kB/s
+    data_sent......................: 761 B  33 kB/s
+
+
+

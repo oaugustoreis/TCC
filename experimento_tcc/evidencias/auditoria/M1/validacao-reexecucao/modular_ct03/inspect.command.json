@@ -1,0 +1,12 @@
+{
+  "command": [
+    "k6",
+    "inspect",
+    "modular/scenarios/pedidos/criacao.scenario.js"
+  ],
+  "cwd": "/tmp/tcc-auditoria-M1",
+  "started_utc": "2026-11-10T16:18:25.766Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

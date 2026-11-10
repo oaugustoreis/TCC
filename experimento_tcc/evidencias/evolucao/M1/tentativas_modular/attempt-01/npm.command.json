@@ -1,0 +1,13 @@
+{
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "npm.cmd --version"
+  ],
+  "cwd": "/mnt/d/TCC",
+  "started_utc": "2026-11-09T19:53:36.155Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

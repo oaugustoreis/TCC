@@ -1,0 +1,12 @@
+{
+  "command": [
+    "k6",
+    "inspect",
+    "tradicional/ct09.js"
+  ],
+  "cwd": "/mnt/d/TCC",
+  "started_utc": "2026-11-09T19:25:50.722Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

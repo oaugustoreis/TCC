@@ -1,0 +1,90 @@
+[
+  {
+    "stage": "E0",
+    "scenarios_per_suite": 5,
+    "requests_per_suite": 14,
+    "checks_per_suite": 30,
+    "sources": [
+      "evidencias/auditoria/historico_E0/evidencias/validacao_final/2026-11-05T17-07-25-732Z/result.json",
+      "evidencias/auditoria/E0/validacao-reexecucao/result.json"
+    ],
+    "totals_match": true
+  },
+  {
+    "stage": "E1",
+    "scenarios_per_suite": 7,
+    "requests_per_suite": 20,
+    "checks_per_suite": 42,
+    "sources": [
+      "evidencias/evolucao/E1/validacao_both/result.json",
+      "evidencias/auditoria/E1/validacao-reexecucao/result.json"
+    ],
+    "totals_match": true
+  },
+  {
+    "stage": "E2",
+    "scenarios_per_suite": 10,
+    "requests_per_suite": 34,
+    "checks_per_suite": 70,
+    "sources": [
+      "evidencias/evolucao/E2/validacao_both/result.json",
+      "evidencias/auditoria/E2/validacao-reexecucao/result.json"
+    ],
+    "totals_match": true
+  },
+  {
+    "stage": "E3",
+    "scenarios_per_suite": 12,
+    "requests_per_suite": 42,
+    "checks_per_suite": 86,
+    "sources": [
+      "evidencias/evolucao/E3/validacao_both/result.json",
+      "evidencias/auditoria/E3/validacao-reexecucao/result.json"
+    ],
+    "totals_match": true
+  },
+  {
+    "stage": "E4",
+    "scenarios_per_suite": 15,
+    "requests_per_suite": 66,
+    "checks_per_suite": 134,
+    "sources": [
+      "evidencias/evolucao/E4/validacao_both/result.json",
+      "evidencias/auditoria/E4/validacao-reexecucao/result.json"
+    ],
+    "totals_match": true
+  },
+  {
+    "stage": "M1",
+    "scenarios_per_suite": 15,
+    "requests_per_suite": 66,
+    "checks_per_suite": 134,
+    "sources": [
+      "evidencias/evolucao/M1/validacao_both/result.json",
+      "evidencias/auditoria/M1/validacao-reexecucao/result.json"
+    ],
+    "totals_match": true
+  },
+  {
+    "stage": "M2",
+    "scenarios_per_suite": 15,
+    "requests_per_suite": 66,
+    "checks_per_suite": 134,
+    "sources": [
+      "evidencias/evolucao/M2/validacao_both/result.json",
+      "evidencias/auditoria/M2/validacao-reexecucao/result.json"
+    ],
+    "totals_match": true
+  },
+  {
+    "stage": "M3",
+    "scenarios_per_suite": 15,
+    "requests_per_suite": 66,
+    "checks_per_suite": 134,
+    "sources": [
+      "evidencias/evolucao/M3/validacao_both/result.json",
+      "evidencias/auditoria/M3/validacao-reexecucao/result.json"
+    ],
+    "totals_match": true
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "command": [
+    "k6",
+    "inspect",
+    "tradicional/ct08.js"
+  ],
+  "cwd": "/tmp/tcc-auditoria-M3",
+  "started_utc": "2026-11-10T16:18:36.247Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

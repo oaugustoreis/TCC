@@ -1,0 +1,2243 @@
+[
+  {
+    "indicator": "fase1/tradicional/git_delta/files_added",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_added",
+        "value": 2
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_added",
+        "value": 3
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_added",
+        "value": 2
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_added",
+        "value": 3
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 10
+  },
+  {
+    "indicator": "fase1/tradicional/git_delta/files_modified",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_modified",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_modified",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_modified",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_modified",
+        "value": 0
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 0
+  },
+  {
+    "indicator": "fase1/tradicional/git_delta/files_touched_total",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_touched_total",
+        "value": 2
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_touched_total",
+        "value": 3
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_touched_total",
+        "value": 2
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_touched_total",
+        "value": 3
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 10
+  },
+  {
+    "indicator": "fase1/tradicional/git_delta/lines_added",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/lines_added",
+        "value": 68
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/lines_added",
+        "value": 212
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/lines_added",
+        "value": 99
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/lines_added",
+        "value": 320
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 699
+  },
+  {
+    "indicator": "fase1/tradicional/git_delta/lines_removed",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/lines_removed",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/lines_removed",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/lines_removed",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/lines_removed",
+        "value": 0
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 0
+  },
+  {
+    "indicator": "fase1/tradicional/git_delta/net_diff_lines",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/net_diff_lines",
+        "value": 68
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/net_diff_lines",
+        "value": 212
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/net_diff_lines",
+        "value": 99
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/net_diff_lines",
+        "value": 320
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 699
+  },
+  {
+    "indicator": "fase1/tradicional/batch_reuse/batch_reused_unmodified_count",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_reused_unmodified_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_reused_unmodified_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_reused_unmodified_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_reused_unmodified_count",
+        "value": 0
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 0
+  },
+  {
+    "indicator": "fase1/tradicional/batch_reuse/batch_reused_modified_count",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_reused_modified_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_reused_modified_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_reused_modified_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_reused_modified_count",
+        "value": 0
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 0
+  },
+  {
+    "indicator": "fase1/tradicional/batch_reuse/batch_created_shared_count",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_created_shared_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_created_shared_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_created_shared_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_created_shared_count",
+        "value": 0
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 0
+  },
+  {
+    "indicator": "fase1/tradicional/agent/summary/first_validation_pass",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/first_validation_pass",
+        "value": false
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/first_validation_pass",
+        "value": true
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/first_validation_pass",
+        "value": true
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/first_validation_pass",
+        "value": true
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 3
+  },
+  {
+    "indicator": "fase1/tradicional/agent/summary/functional_validation_cycles",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/functional_validation_cycles",
+        "value": 2
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/functional_validation_cycles",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/functional_validation_cycles",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/functional_validation_cycles",
+        "value": 1
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 5
+  },
+  {
+    "indicator": "fase1/tradicional/agent/summary/files_read",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/files_read",
+        "value": 8
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/files_read",
+        "value": 8
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/files_read",
+        "value": 10
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/files_read",
+        "value": 8
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 34
+  },
+  {
+    "indicator": "fase1/tradicional/agent/summary/files_written",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/files_written",
+        "value": 3
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/files_written",
+        "value": 4
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/files_written",
+        "value": 3
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/files_written",
+        "value": 4
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 14
+  },
+  {
+    "indicator": "fase1/tradicional/agent/summary/commands_run",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/commands_run",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/commands_run",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/commands_run",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/commands_run",
+        "value": 0
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 1
+  },
+  {
+    "indicator": "fase1/tradicional/agent/summary/tool_calls_total",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/tool_calls_total",
+        "value": 12
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/tool_calls_total",
+        "value": 12
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/tool_calls_total",
+        "value": 13
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/tool_calls_total",
+        "value": 12
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 49
+  },
+  {
+    "indicator": "fase1/tradicional/agent/summary/llm_input_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_input_tokens",
+        "value": 24565
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_input_tokens",
+        "value": 24846
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_input_tokens",
+        "value": 24065
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_input_tokens",
+        "value": 24193
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 97669
+  },
+  {
+    "indicator": "fase1/tradicional/agent/summary/llm_cache_read_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_cache_read_tokens",
+        "value": 34193
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_cache_read_tokens",
+        "value": 32560
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_cache_read_tokens",
+        "value": 48014
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_cache_read_tokens",
+        "value": 27566
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 142333
+  },
+  {
+    "indicator": "fase1/tradicional/agent/summary/llm_output_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_output_tokens",
+        "value": 3177
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_output_tokens",
+        "value": 5152
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_output_tokens",
+        "value": 3211
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_output_tokens",
+        "value": 5089
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 16629
+  },
+  {
+    "indicator": "fase1/tradicional/agent/summary/llm_total_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_total_tokens",
+        "value": 61935
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_total_tokens",
+        "value": 62558
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_total_tokens",
+        "value": 75290
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_total_tokens",
+        "value": 56848
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 256631
+  },
+  {
+    "indicator": "fase1/tradicional/agent/summary/duration_seconds",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/duration_seconds",
+        "value": 48
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/duration_seconds",
+        "value": 13
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/duration_seconds",
+        "value": 47
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/duration_seconds",
+        "value": 49
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 157
+  },
+  {
+    "indicator": "fase1/modular/git_delta/files_added",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_added",
+        "value": 5
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_added",
+        "value": 12
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_added",
+        "value": 7
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_added",
+        "value": 9
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 33
+  },
+  {
+    "indicator": "fase1/modular/git_delta/files_modified",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_modified",
+        "value": 5
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_modified",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_modified",
+        "value": 3
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_modified",
+        "value": 3
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 12
+  },
+  {
+    "indicator": "fase1/modular/git_delta/files_touched_total",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_touched_total",
+        "value": 10
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_touched_total",
+        "value": 13
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_touched_total",
+        "value": 10
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_touched_total",
+        "value": 12
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 45
+  },
+  {
+    "indicator": "fase1/modular/git_delta/lines_added",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/git_delta/lines_added",
+        "value": 165
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/git_delta/lines_added",
+        "value": 364
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/git_delta/lines_added",
+        "value": 229
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/git_delta/lines_added",
+        "value": 492
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 1250
+  },
+  {
+    "indicator": "fase1/modular/git_delta/lines_removed",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/git_delta/lines_removed",
+        "value": 14
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/git_delta/lines_removed",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/git_delta/lines_removed",
+        "value": 15
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/git_delta/lines_removed",
+        "value": 28
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 57
+  },
+  {
+    "indicator": "fase1/modular/git_delta/net_diff_lines",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/git_delta/net_diff_lines",
+        "value": 179
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/git_delta/net_diff_lines",
+        "value": 364
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/git_delta/net_diff_lines",
+        "value": 244
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/git_delta/net_diff_lines",
+        "value": 520
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 1307
+  },
+  {
+    "indicator": "fase1/modular/batch_reuse/batch_reused_unmodified_count",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_reused_unmodified_count",
+        "value": 2
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_reused_unmodified_count",
+        "value": 3
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_reused_unmodified_count",
+        "value": 4
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_reused_unmodified_count",
+        "value": 9
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 18
+  },
+  {
+    "indicator": "fase1/modular/batch_reuse/batch_reused_modified_count",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_reused_modified_count",
+        "value": 5
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_reused_modified_count",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_reused_modified_count",
+        "value": 3
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_reused_modified_count",
+        "value": 3
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 12
+  },
+  {
+    "indicator": "fase1/modular/batch_reuse/batch_created_shared_count",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_created_shared_count",
+        "value": 3
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_created_shared_count",
+        "value": 9
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_created_shared_count",
+        "value": 5
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_created_shared_count",
+        "value": 6
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 23
+  },
+  {
+    "indicator": "fase1/modular/agent/summary/first_validation_pass",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/first_validation_pass",
+        "value": true
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/first_validation_pass",
+        "value": true
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/first_validation_pass",
+        "value": true
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/first_validation_pass",
+        "value": true
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 4
+  },
+  {
+    "indicator": "fase1/modular/agent/summary/functional_validation_cycles",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/functional_validation_cycles",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/functional_validation_cycles",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/functional_validation_cycles",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/functional_validation_cycles",
+        "value": 1
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 4
+  },
+  {
+    "indicator": "fase1/modular/agent/summary/files_read",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/files_read",
+        "value": 30
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/files_read",
+        "value": 29
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/files_read",
+        "value": 21
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/files_read",
+        "value": 20
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 100
+  },
+  {
+    "indicator": "fase1/modular/agent/summary/files_written",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/files_written",
+        "value": 12
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/files_written",
+        "value": 14
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/files_written",
+        "value": 11
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/files_written",
+        "value": 13
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 50
+  },
+  {
+    "indicator": "fase1/modular/agent/summary/commands_run",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/commands_run",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/commands_run",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/commands_run",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/commands_run",
+        "value": 0
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 1
+  },
+  {
+    "indicator": "fase1/modular/agent/summary/tool_calls_total",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/tool_calls_total",
+        "value": 42
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/tool_calls_total",
+        "value": 44
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/tool_calls_total",
+        "value": 32
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/tool_calls_total",
+        "value": 33
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 151
+  },
+  {
+    "indicator": "fase1/modular/agent/summary/llm_input_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_input_tokens",
+        "value": 34305
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_input_tokens",
+        "value": 40455
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_input_tokens",
+        "value": 33804
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_input_tokens",
+        "value": 35602
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 144166
+  },
+  {
+    "indicator": "fase1/modular/agent/summary/llm_cache_read_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_cache_read_tokens",
+        "value": 106934
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_cache_read_tokens",
+        "value": 146892
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_cache_read_tokens",
+        "value": 69035
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_cache_read_tokens",
+        "value": 52547
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 375408
+  },
+  {
+    "indicator": "fase1/modular/agent/summary/llm_output_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_output_tokens",
+        "value": 14125
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_output_tokens",
+        "value": 12373
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_output_tokens",
+        "value": 10441
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_output_tokens",
+        "value": 12104
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 49043
+  },
+  {
+    "indicator": "fase1/modular/agent/summary/llm_total_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_total_tokens",
+        "value": 155364
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_total_tokens",
+        "value": 199720
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_total_tokens",
+        "value": 113280
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_total_tokens",
+        "value": 100253
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 568617
+  },
+  {
+    "indicator": "fase1/modular/agent/summary/duration_seconds",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/duration_seconds",
+        "value": 87
+      },
+      {
+        "path": "evidencias/auditoria/E2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/duration_seconds",
+        "value": 162
+      },
+      {
+        "path": "evidencias/auditoria/E3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/duration_seconds",
+        "value": 95
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/duration_seconds",
+        "value": 116
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 460
+  },
+  {
+    "indicator": "fase2/tradicional/git_delta/files_added",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_added",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_added",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_added",
+        "value": 0
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 0
+  },
+  {
+    "indicator": "fase2/tradicional/git_delta/files_modified",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_modified",
+        "value": 15
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_modified",
+        "value": 8
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_modified",
+        "value": 7
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 30
+  },
+  {
+    "indicator": "fase2/tradicional/git_delta/files_touched_total",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_touched_total",
+        "value": 15
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_touched_total",
+        "value": 8
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_touched_total",
+        "value": 7
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 30
+  },
+  {
+    "indicator": "fase2/tradicional/git_delta/lines_added",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/lines_added",
+        "value": 15
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/lines_added",
+        "value": 21
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/lines_added",
+        "value": 17
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 53
+  },
+  {
+    "indicator": "fase2/tradicional/git_delta/lines_removed",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/lines_removed",
+        "value": 15
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/lines_removed",
+        "value": 16
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/lines_removed",
+        "value": 7
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 38
+  },
+  {
+    "indicator": "fase2/tradicional/git_delta/net_diff_lines",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/net_diff_lines",
+        "value": 30
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/net_diff_lines",
+        "value": 37
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/net_diff_lines",
+        "value": 24
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 91
+  },
+  {
+    "indicator": "fase2/tradicional/batch_reuse/batch_reused_unmodified_count",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_reused_unmodified_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_reused_unmodified_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_reused_unmodified_count",
+        "value": 0
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 0
+  },
+  {
+    "indicator": "fase2/tradicional/batch_reuse/batch_reused_modified_count",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_reused_modified_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_reused_modified_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_reused_modified_count",
+        "value": 0
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 0
+  },
+  {
+    "indicator": "fase2/tradicional/batch_reuse/batch_created_shared_count",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_created_shared_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_created_shared_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/batch_reuse/batch_created_shared_count",
+        "value": 0
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 0
+  },
+  {
+    "indicator": "fase2/tradicional/agent/summary/first_validation_pass",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/first_validation_pass",
+        "value": true
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/first_validation_pass",
+        "value": true
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/first_validation_pass",
+        "value": true
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 3
+  },
+  {
+    "indicator": "fase2/tradicional/agent/summary/functional_validation_cycles",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/functional_validation_cycles",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/functional_validation_cycles",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/functional_validation_cycles",
+        "value": 1
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 3
+  },
+  {
+    "indicator": "fase2/tradicional/agent/summary/files_read",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/files_read",
+        "value": 17
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/files_read",
+        "value": 9
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/files_read",
+        "value": 8
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 34
+  },
+  {
+    "indicator": "fase2/tradicional/agent/summary/files_written",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/files_written",
+        "value": 15
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/files_written",
+        "value": 8
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/files_written",
+        "value": 7
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 30
+  },
+  {
+    "indicator": "fase2/tradicional/agent/summary/commands_run",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/commands_run",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/commands_run",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/commands_run",
+        "value": 0
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 0
+  },
+  {
+    "indicator": "fase2/tradicional/agent/summary/tool_calls_total",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/tool_calls_total",
+        "value": 32
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/tool_calls_total",
+        "value": 17
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/tool_calls_total",
+        "value": 15
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 64
+  },
+  {
+    "indicator": "fase2/tradicional/agent/summary/llm_input_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_input_tokens",
+        "value": 26004
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_input_tokens",
+        "value": 20044
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_input_tokens",
+        "value": 19426
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 65474
+  },
+  {
+    "indicator": "fase2/tradicional/agent/summary/llm_cache_read_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_cache_read_tokens",
+        "value": 8026
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_cache_read_tokens",
+        "value": 8131
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_cache_read_tokens",
+        "value": 8243
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 24400
+  },
+  {
+    "indicator": "fase2/tradicional/agent/summary/llm_output_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_output_tokens",
+        "value": 12643
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_output_tokens",
+        "value": 7823
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_output_tokens",
+        "value": 7152
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 27618
+  },
+  {
+    "indicator": "fase2/tradicional/agent/summary/llm_total_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_total_tokens",
+        "value": 46673
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_total_tokens",
+        "value": 35998
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_total_tokens",
+        "value": 34821
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 117492
+  },
+  {
+    "indicator": "fase2/tradicional/agent/summary/duration_seconds",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/duration_seconds",
+        "value": 8
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/duration_seconds",
+        "value": 12
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/duration_seconds",
+        "value": 8
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 28
+  },
+  {
+    "indicator": "fase2/modular/git_delta/files_added",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_added",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_added",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_added",
+        "value": 0
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 0
+  },
+  {
+    "indicator": "fase2/modular/git_delta/files_modified",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_modified",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_modified",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_modified",
+        "value": 1
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 3
+  },
+  {
+    "indicator": "fase2/modular/git_delta/files_touched_total",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_touched_total",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_touched_total",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_touched_total",
+        "value": 1
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 3
+  },
+  {
+    "indicator": "fase2/modular/git_delta/lines_added",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/git_delta/lines_added",
+        "value": 2
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/git_delta/lines_added",
+        "value": 10
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/git_delta/lines_added",
+        "value": 15
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 27
+  },
+  {
+    "indicator": "fase2/modular/git_delta/lines_removed",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/git_delta/lines_removed",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/git_delta/lines_removed",
+        "value": 5
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/git_delta/lines_removed",
+        "value": 0
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 5
+  },
+  {
+    "indicator": "fase2/modular/git_delta/net_diff_lines",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/git_delta/net_diff_lines",
+        "value": 2
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/git_delta/net_diff_lines",
+        "value": 15
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/git_delta/net_diff_lines",
+        "value": 15
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 32
+  },
+  {
+    "indicator": "fase2/modular/batch_reuse/batch_reused_unmodified_count",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_reused_unmodified_count",
+        "value": 2
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_reused_unmodified_count",
+        "value": 2
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_reused_unmodified_count",
+        "value": 2
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 6
+  },
+  {
+    "indicator": "fase2/modular/batch_reuse/batch_reused_modified_count",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_reused_modified_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_reused_modified_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_reused_modified_count",
+        "value": 0
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 0
+  },
+  {
+    "indicator": "fase2/modular/batch_reuse/batch_created_shared_count",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_created_shared_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_created_shared_count",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/batch_reuse/batch_created_shared_count",
+        "value": 0
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 0
+  },
+  {
+    "indicator": "fase2/modular/agent/summary/first_validation_pass",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/first_validation_pass",
+        "value": true
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/first_validation_pass",
+        "value": true
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/first_validation_pass",
+        "value": true
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 3
+  },
+  {
+    "indicator": "fase2/modular/agent/summary/functional_validation_cycles",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/functional_validation_cycles",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/functional_validation_cycles",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/functional_validation_cycles",
+        "value": 1
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 3
+  },
+  {
+    "indicator": "fase2/modular/agent/summary/files_read",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/files_read",
+        "value": 5
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/files_read",
+        "value": 151
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/files_read",
+        "value": 10
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 166
+  },
+  {
+    "indicator": "fase2/modular/agent/summary/files_written",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/files_written",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/files_written",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/files_written",
+        "value": 1
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 3
+  },
+  {
+    "indicator": "fase2/modular/agent/summary/commands_run",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/commands_run",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/commands_run",
+        "value": 0
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/commands_run",
+        "value": 0
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 0
+  },
+  {
+    "indicator": "fase2/modular/agent/summary/tool_calls_total",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/tool_calls_total",
+        "value": 6
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/tool_calls_total",
+        "value": 152
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/tool_calls_total",
+        "value": 11
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 169
+  },
+  {
+    "indicator": "fase2/modular/agent/summary/llm_input_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_input_tokens",
+        "value": 15317
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_input_tokens",
+        "value": 120778
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_input_tokens",
+        "value": 17453
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 153548
+  },
+  {
+    "indicator": "fase2/modular/agent/summary/llm_cache_read_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_cache_read_tokens",
+        "value": 18182
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_cache_read_tokens",
+        "value": 1068924
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_cache_read_tokens",
+        "value": 20914
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 1108020
+  },
+  {
+    "indicator": "fase2/modular/agent/summary/llm_output_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_output_tokens",
+        "value": 1216
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_output_tokens",
+        "value": 20680
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_output_tokens",
+        "value": 2555
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 24451
+  },
+  {
+    "indicator": "fase2/modular/agent/summary/llm_total_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_total_tokens",
+        "value": 34715
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_total_tokens",
+        "value": 1210382
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_total_tokens",
+        "value": 40922
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 1286019
+  },
+  {
+    "indicator": "fase2/modular/agent/summary/duration_seconds",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/duration_seconds",
+        "value": 19
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/duration_seconds",
+        "value": 411
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/duration_seconds",
+        "value": 18
+      }
+    ],
+    "formula": "soma entre unidades; booleanos contam aprovações",
+    "value": 448
+  },
+  {
+    "indicator": "E0/razao_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E0/metricas/metricas.json",
+        "pointer": "/tradicional/duplication/total_tokens",
+        "value": 1162
+      },
+      {
+        "path": "evidencias/auditoria/E0/metricas/metricas.json",
+        "pointer": "/modular/duplication/total_tokens",
+        "value": 2016
+      }
+    ],
+    "formula": "Mod/Trad",
+    "value": 1.7349397590361446
+  },
+  {
+    "indicator": "E0/overhead_pct",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E0/metricas/metricas.json",
+        "pointer": "/tradicional/duplication/total_tokens",
+        "value": 1162
+      },
+      {
+        "path": "evidencias/auditoria/E0/metricas/metricas.json",
+        "pointer": "/modular/duplication/total_tokens",
+        "value": 2016
+      }
+    ],
+    "formula": "100*(Mod/Trad-1)",
+    "value": 73.49397590361446
+  },
+  {
+    "indicator": "E4/razao_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/duplication/total_tokens",
+        "value": 6982
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/duplication/total_tokens",
+        "value": 7799
+      }
+    ],
+    "formula": "Mod/Trad",
+    "value": 1.1170151818963048
+  },
+  {
+    "indicator": "E4/overhead_pct",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/duplication/total_tokens",
+        "value": 6982
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/duplication/total_tokens",
+        "value": 7799
+      }
+    ],
+    "formula": "100*(Mod/Trad-1)",
+    "value": 11.701518189630477
+  },
+  {
+    "indicator": "tradicional/crescimento_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E0/metricas/metricas.json",
+        "pointer": "/tradicional/duplication/total_tokens",
+        "value": 1162
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/duplication/total_tokens",
+        "value": 6982
+      }
+    ],
+    "formula": "E4/E0",
+    "value": 6.008605851979346
+  },
+  {
+    "indicator": "modular/crescimento_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E0/metricas/metricas.json",
+        "pointer": "/modular/duplication/total_tokens",
+        "value": 2016
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/duplication/total_tokens",
+        "value": 7799
+      }
+    ],
+    "formula": "E4/E0",
+    "value": 3.8685515873015874
+  },
+  {
+    "indicator": "E4/reducao_duplication_tokens_pct",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/duplication/duplication_tokens_pct",
+        "value": 73.35
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/duplication/duplication_tokens_pct",
+        "value": 32.36
+      }
+    ],
+    "formula": "Trad-Mod (pontos percentuais)",
+    "value": 40.989999999999995
+  },
+  {
+    "indicator": "E4/reducao_duplication_lines_pct",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/tradicional/duplication/duplication_lines_pct",
+        "value": 72.03
+      },
+      {
+        "path": "evidencias/auditoria/E4/metricas/metricas.json",
+        "pointer": "/modular/duplication/duplication_lines_pct",
+        "value": 35.8
+      }
+    ],
+    "formula": "Trad-Mod (pontos percentuais)",
+    "value": 36.230000000000004
+  },
+  {
+    "indicator": "fase2/reducao/git_delta/files_touched_total",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_touched_total",
+        "value": 15
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_touched_total",
+        "value": 8
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/files_touched_total",
+        "value": 7
+      },
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_touched_total",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_touched_total",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/git_delta/files_touched_total",
+        "value": 1
+      }
+    ],
+    "formula": "100*(1-soma(Mod)/soma(Trad))",
+    "value": 90.0
+  },
+  {
+    "indicator": "fase2/reducao/git_delta/net_diff_lines",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/net_diff_lines",
+        "value": 30
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/net_diff_lines",
+        "value": 37
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/git_delta/net_diff_lines",
+        "value": 24
+      },
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/git_delta/net_diff_lines",
+        "value": 2
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/git_delta/net_diff_lines",
+        "value": 15
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/git_delta/net_diff_lines",
+        "value": 15
+      }
+    ],
+    "formula": "100*(1-soma(Mod)/soma(Trad))",
+    "value": 64.83516483516483
+  },
+  {
+    "indicator": "fase2/reducao/agent/summary/files_written",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/files_written",
+        "value": 15
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/files_written",
+        "value": 8
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/files_written",
+        "value": 7
+      },
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/files_written",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/M2/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/files_written",
+        "value": 1
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/files_written",
+        "value": 1
+      }
+    ],
+    "formula": "100*(1-soma(Mod)/soma(Trad))",
+    "value": 90.0
+  },
+  {
+    "indicator": "M1/reducao_output_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_output_tokens",
+        "value": 12643
+      },
+      {
+        "path": "evidencias/auditoria/M1/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_output_tokens",
+        "value": 1216
+      }
+    ],
+    "formula": "100*(1-Mod/Trad)",
+    "value": 90.38202958158665
+  },
+  {
+    "indicator": "M3/reducao_output_tokens",
+    "sources": [
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/tradicional/agent/summary/llm_output_tokens",
+        "value": 7152
+      },
+      {
+        "path": "evidencias/auditoria/M3/metricas/metricas.json",
+        "pointer": "/modular/agent/summary/llm_output_tokens",
+        "value": 2555
+      }
+    ],
+    "formula": "100*(1-Mod/Trad)",
+    "value": 64.27572706935123
+  }
+]

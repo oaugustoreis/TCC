@@ -1,0 +1,12 @@
+{
+  "command": [
+    "k6",
+    "inspect",
+    "modular/scenarios/pedidos/atualizacao.scenario.js"
+  ],
+  "cwd": "/mnt/d/TCC",
+  "started_utc": "2026-11-09T17:05:39.416Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

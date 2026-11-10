@@ -1,0 +1,25 @@
+{
+  "command": [
+    "k6",
+    "run",
+    "--no-usage-report",
+    "--no-color",
+    "--quiet",
+    "--log-format=json",
+    "--log-output",
+    "file=/mnt/d/TCC/evidencias/auditoria/E4/validacao-reexecucao/modular_ct01/http-debug.jsonl",
+    "--http-debug=full",
+    "--summary-export",
+    "/mnt/d/TCC/evidencias/auditoria/E4/validacao-reexecucao/modular_ct01/summary.json",
+    "--out",
+    "json=/mnt/d/TCC/evidencias/auditoria/E4/validacao-reexecucao/modular_ct01/metrics.jsonl",
+    "-e",
+    "BASE_URL=http://127.0.0.1:45085",
+    "modular/scenarios/autenticacao/autenticacao.scenario.js"
+  ],
+  "cwd": "/tmp/tcc-auditoria-E4",
+  "started_utc": "2026-11-10T16:18:18.405Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

@@ -1,0 +1,12 @@
+{
+  "command": [
+    "k6",
+    "inspect",
+    "modular/scenarios/pedidos/listagemFiltrada.scenario.js"
+  ],
+  "cwd": "/tmp/tcc-auditoria-M1",
+  "started_utc": "2026-11-10T16:18:27.198Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

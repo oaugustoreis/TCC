@@ -1,0 +1,55 @@
+
+
+  █ THRESHOLDS 
+
+    checks
+    ✓ 'rate==1' rate=100.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 24      336.385249/s
+    checks_succeeded...: 100.00% 24 out of 24
+    checks_failed......: 0.00%   0 out of 24
+
+    ✓ CT-15 01 status
+    ✓ CT-15 01 corpo
+    ✓ CT-15 02 status
+    ✓ CT-15 02 corpo
+    ✓ CT-15 03 status
+    ✓ CT-15 03 corpo
+    ✓ CT-15 04 status
+    ✓ CT-15 04 corpo
+    ✓ CT-15 05 status
+    ✓ CT-15 05 corpo
+    ✓ CT-15 06 status
+    ✓ CT-15 06 corpo
+    ✓ CT-15 07 status
+    ✓ CT-15 07 corpo
+    ✓ CT-15 08 status
+    ✓ CT-15 08 corpo
+    ✓ CT-15 09 status
+    ✓ CT-15 09 corpo
+    ✓ CT-15 10 status
+    ✓ CT-15 10 corpo
+    ✓ CT-15 11 status
+    ✓ CT-15 11 corpo
+    ✓ CT-15 12 status
+    ✓ CT-15 12 corpo
+
+    HTTP
+    http_req_duration..............: avg=5.51ms  min=2.06ms  med=5.83ms  max=7.35ms  p(90)=6.08ms  p(95)=6.65ms 
+      { expected_response:true }...: avg=5.51ms  min=2.06ms  med=5.83ms  max=7.35ms  p(90)=6.08ms  p(95)=6.65ms 
+    http_req_failed................: 0.00%  0 out of 12
+    http_reqs......................: 12     168.192625/s
+
+    EXECUTION
+    iteration_duration.............: avg=71.27ms min=71.27ms med=71.27ms max=71.27ms p(90)=71.27ms p(95)=71.27ms
+    iterations.....................: 1      14.016052/s
+
+    NETWORK
+    data_received..................: 3.4 kB 47 kB/s
+    data_sent......................: 2.1 kB 30 kB/s
+
+
+

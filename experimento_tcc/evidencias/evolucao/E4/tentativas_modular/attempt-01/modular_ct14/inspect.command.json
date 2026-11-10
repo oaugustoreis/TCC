@@ -1,0 +1,12 @@
+{
+  "command": [
+    "k6",
+    "inspect",
+    "modular/scenarios/pagamentos/recusa.scenario.js"
+  ],
+  "cwd": "/mnt/d/TCC",
+  "started_utc": "2026-11-09T19:44:30.181Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

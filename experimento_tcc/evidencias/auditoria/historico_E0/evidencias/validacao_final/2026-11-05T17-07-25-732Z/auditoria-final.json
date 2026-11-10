@@ -1,0 +1,80 @@
+﻿{
+    "checked_utc":  "2026-11-05T17:11:06.9339162Z",
+    "source_hash_mismatches":  0,
+    "modular_files":  24,
+    "successful_runs":  10,
+    "received_requests":  28,
+    "passed_checks":  60,
+    "summaries_checks":  [
+                             {
+                                 "suite":  "modular_ct01",
+                                 "checks":  1,
+                                 "iterations":  1,
+                                 "http_reqs":  1,
+                                 "http_req_failed":  0
+                             },
+                             {
+                                 "suite":  "modular_ct02",
+                                 "checks":  1,
+                                 "iterations":  1,
+                                 "http_reqs":  3,
+                                 "http_req_failed":  0
+                             },
+                             {
+                                 "suite":  "modular_ct03",
+                                 "checks":  1,
+                                 "iterations":  1,
+                                 "http_reqs":  3,
+                                 "http_req_failed":  0
+                             },
+                             {
+                                 "suite":  "modular_ct04",
+                                 "checks":  1,
+                                 "iterations":  1,
+                                 "http_reqs":  3,
+                                 "http_req_failed":  0
+                             },
+                             {
+                                 "suite":  "modular_ct05",
+                                 "checks":  1,
+                                 "iterations":  1,
+                                 "http_reqs":  4,
+                                 "http_req_failed":  0
+                             },
+                             {
+                                 "suite":  "tradicional_ct01",
+                                 "checks":  1,
+                                 "iterations":  1,
+                                 "http_reqs":  1,
+                                 "http_req_failed":  0
+                             },
+                             {
+                                 "suite":  "tradicional_ct02",
+                                 "checks":  1,
+                                 "iterations":  1,
+                                 "http_reqs":  3,
+                                 "http_req_failed":  0
+                             },
+                             {
+                                 "suite":  "tradicional_ct03",
+                                 "checks":  1,
+                                 "iterations":  1,
+                                 "http_reqs":  3,
+                                 "http_req_failed":  0
+                             },
+                             {
+                                 "suite":  "tradicional_ct04",
+                                 "checks":  1,
+                                 "iterations":  1,
+                                 "http_reqs":  3,
+                                 "http_req_failed":  0
+                             },
+                             {
+                                 "suite":  "tradicional_ct05",
+                                 "checks":  1,
+                                 "iterations":  1,
+                                 "http_reqs":  4,
+                                 "http_req_failed":  0
+                             }
+                         ]
+}

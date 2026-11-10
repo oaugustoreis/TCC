@@ -1,0 +1,13 @@
+{
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "npm.cmd --version"
+  ],
+  "cwd": "/tmp/tcc-auditoria-E3",
+  "started_utc": "2026-11-10T16:18:10.358Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

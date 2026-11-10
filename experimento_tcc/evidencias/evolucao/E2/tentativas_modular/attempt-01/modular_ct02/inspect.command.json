@@ -1,0 +1,12 @@
+{
+  "command": [
+    "k6",
+    "inspect",
+    "modular/scenarios/catalogo/catalogo.scenario.js"
+  ],
+  "cwd": "/mnt/d/TCC",
+  "started_utc": "2026-11-09T16:28:59.177Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

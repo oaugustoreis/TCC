@@ -1,0 +1,12 @@
+{
+  "command": [
+    "k6",
+    "inspect",
+    "modular/scenarios/pagamentos/compraCompleta.scenario.js"
+  ],
+  "cwd": "/tmp/tcc-auditoria-M3",
+  "started_utc": "2026-11-10T16:18:40.498Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

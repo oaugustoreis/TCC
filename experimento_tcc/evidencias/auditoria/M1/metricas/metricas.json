@@ -1,0 +1,1337 @@
+{
+  "generated_at": "2026-11-10T16:15:37.798Z",
+  "state": "M1",
+  "tradicional": {
+    "suite": "tradicional",
+    "files_count": 15,
+    "layers": {
+      "root": 15
+    },
+    "physical_lines": 784,
+    "logical_lines": 733,
+    "bytes": 33086,
+    "static_suite_imports": {
+      "internal_imports_total": 0,
+      "shared_config_imports_total": 15,
+      "distinct_internal_components_imported": 0,
+      "components": []
+    },
+    "batch_reuse": {
+      "batch_entry_files_touched": [
+        "tradicional/ct01.js",
+        "tradicional/ct02.js",
+        "tradicional/ct03.js",
+        "tradicional/ct04.js",
+        "tradicional/ct05.js",
+        "tradicional/ct06.js",
+        "tradicional/ct07.js",
+        "tradicional/ct08.js",
+        "tradicional/ct09.js",
+        "tradicional/ct10.js",
+        "tradicional/ct11.js",
+        "tradicional/ct12.js",
+        "tradicional/ct13.js",
+        "tradicional/ct14.js",
+        "tradicional/ct15.js"
+      ],
+      "batch_active_files_total": 15,
+      "batch_distinct_components_imported": 0,
+      "batch_reused_unmodified_count": 0,
+      "batch_reused_modified_count": 0,
+      "batch_created_shared_count": 0,
+      "components": []
+    },
+    "duplication": {
+      "algorithm": "exact-token-window-union-v1",
+      "min_tokens_window": 25,
+      "normalization_rules": "Remove comentários de linha/bloco e whitespace; preserva literais e identificadores literalmente (clones Tipo-1); não cruza fronteira entre arquivos; percentual calculado sobre a união de posições de tokens e de linhas SLOC (sem contagem dupla em regiões sobrepostas).",
+      "total_tokens": 7117,
+      "duplicated_tokens": 5256,
+      "duplication_tokens_pct": 73.85,
+      "duplicated_lines": 528,
+      "duplication_lines_pct": 72.03,
+      "clones_count": 23,
+      "intra_file_clones_count": 2,
+      "cross_file_clones_count": 21
+    },
+    "files": [
+      {
+        "path": "tradicional/ct01.js",
+        "layer": "root",
+        "physical_lines": 11,
+        "logical_lines": 11,
+        "tokens_count": 131,
+        "bytes": 638
+      },
+      {
+        "path": "tradicional/ct02.js",
+        "layer": "root",
+        "physical_lines": 17,
+        "logical_lines": 15,
+        "tokens_count": 233,
+        "bytes": 1027
+      },
+      {
+        "path": "tradicional/ct03.js",
+        "layer": "root",
+        "physical_lines": 18,
+        "logical_lines": 16,
+        "tokens_count": 254,
+        "bytes": 1111
+      },
+      {
+        "path": "tradicional/ct04.js",
+        "layer": "root",
+        "physical_lines": 18,
+        "logical_lines": 16,
+        "tokens_count": 267,
+        "bytes": 1187
+      },
+      {
+        "path": "tradicional/ct05.js",
+        "layer": "root",
+        "physical_lines": 21,
+        "logical_lines": 18,
+        "tokens_count": 322,
+        "bytes": 1440
+      },
+      {
+        "path": "tradicional/ct06.js",
+        "layer": "root",
+        "physical_lines": 43,
+        "logical_lines": 41,
+        "tokens_count": 367,
+        "bytes": 1697
+      },
+      {
+        "path": "tradicional/ct07.js",
+        "layer": "root",
+        "physical_lines": 25,
+        "logical_lines": 23,
+        "tokens_count": 273,
+        "bytes": 1212
+      },
+      {
+        "path": "tradicional/ct08.js",
+        "layer": "root",
+        "physical_lines": 62,
+        "logical_lines": 59,
+        "tokens_count": 531,
+        "bytes": 2484
+      },
+      {
+        "path": "tradicional/ct09.js",
+        "layer": "root",
+        "physical_lines": 79,
+        "logical_lines": 75,
+        "tokens_count": 667,
+        "bytes": 3158
+      },
+      {
+        "path": "tradicional/ct10.js",
+        "layer": "root",
+        "physical_lines": 71,
+        "logical_lines": 67,
+        "tokens_count": 586,
+        "bytes": 2699
+      },
+      {
+        "path": "tradicional/ct11.js",
+        "layer": "root",
+        "physical_lines": 51,
+        "logical_lines": 48,
+        "tokens_count": 433,
+        "bytes": 1990
+      },
+      {
+        "path": "tradicional/ct12.js",
+        "layer": "root",
+        "physical_lines": 48,
+        "logical_lines": 45,
+        "tokens_count": 420,
+        "bytes": 1892
+      },
+      {
+        "path": "tradicional/ct13.js",
+        "layer": "root",
+        "physical_lines": 72,
+        "logical_lines": 67,
+        "tokens_count": 605,
+        "bytes": 2723
+      },
+      {
+        "path": "tradicional/ct14.js",
+        "layer": "root",
+        "physical_lines": 72,
+        "logical_lines": 67,
+        "tokens_count": 605,
+        "bytes": 2728
+      },
+      {
+        "path": "tradicional/ct15.js",
+        "layer": "root",
+        "physical_lines": 176,
+        "logical_lines": 165,
+        "tokens_count": 1423,
+        "bytes": 7100
+      }
+    ],
+    "git_delta": {
+      "base_ref": "a84091f780bd745af4e22e6d787a9dd2124e7224",
+      "target_ref": "4902526779b58c412bc3d876b9ba4b57540a11bc",
+      "lines_added": 15,
+      "lines_removed": 15,
+      "net_lines_delta": 0,
+      "net_diff_lines": 30,
+      "intermediate_churn": null,
+      "intermediate_churn_note": "Sem checkpoints intermediários registrados; net_diff_lines mede apenas a diferença líquida entre SHA-base e SHA-final.",
+      "files_added": 0,
+      "files_modified": 15,
+      "files_deleted": 0,
+      "files_touched_total": 15,
+      "files_detail": [
+        {
+          "path": "tradicional/ct01.js",
+          "added": 1,
+          "removed": 1,
+          "status": "M"
+        },
+        {
+          "path": "tradicional/ct02.js",
+          "added": 1,
+          "removed": 1,
+          "status": "M"
+        },
+        {
+          "path": "tradicional/ct03.js",
+          "added": 1,
+          "removed": 1,
+          "status": "M"
+        },
+        {
+          "path": "tradicional/ct04.js",
+          "added": 1,
+          "removed": 1,
+          "status": "M"
+        },
+        {
+          "path": "tradicional/ct05.js",
+          "added": 1,
+          "removed": 1,
+          "status": "M"
+        },
+        {
+          "path": "tradicional/ct06.js",
+          "added": 1,
+          "removed": 1,
+          "status": "M"
+        },
+        {
+          "path": "tradicional/ct07.js",
+          "added": 1,
+          "removed": 1,
+          "status": "M"
+        },
+        {
+          "path": "tradicional/ct08.js",
+          "added": 1,
+          "removed": 1,
+          "status": "M"
+        },
+        {
+          "path": "tradicional/ct09.js",
+          "added": 1,
+          "removed": 1,
+          "status": "M"
+        },
+        {
+          "path": "tradicional/ct10.js",
+          "added": 1,
+          "removed": 1,
+          "status": "M"
+        },
+        {
+          "path": "tradicional/ct11.js",
+          "added": 1,
+          "removed": 1,
+          "status": "M"
+        },
+        {
+          "path": "tradicional/ct12.js",
+          "added": 1,
+          "removed": 1,
+          "status": "M"
+        },
+        {
+          "path": "tradicional/ct13.js",
+          "added": 1,
+          "removed": 1,
+          "status": "M"
+        },
+        {
+          "path": "tradicional/ct14.js",
+          "added": 1,
+          "removed": 1,
+          "status": "M"
+        },
+        {
+          "path": "tradicional/ct15.js",
+          "added": 1,
+          "removed": 1,
+          "status": "M"
+        }
+      ]
+    },
+    "agent": {
+      "transcript": {
+        "available": true,
+        "source_transcript": "/tmp/tcc-auditoria-M1/evidencias/evolucao/M1/transcripts/tradicional.transcript.jsonl",
+        "missing_reason": null,
+        "first_step_at": "2026-11-09T19:49:18Z",
+        "last_step_at": "2026-11-09T19:49:26Z",
+        "duration_seconds": 8,
+        "files_read": 17,
+        "files_written": 15,
+        "commands_run": 0,
+        "tool_calls_total": 32,
+        "tool_calls_by_name": {
+          "read_file": 17,
+          "edit_file": 15
+        },
+        "llm_input_tokens": 26004,
+        "llm_cache_read_tokens": 8026,
+        "llm_output_tokens": 12643,
+        "llm_total_tokens": 46673
+      },
+      "validation": {
+        "available": true,
+        "missing_reason": null,
+        "first_validation_pass": true,
+        "functional_validation_cycles": 1,
+        "infra_error_runs": 0,
+        "final_validation_passed": true,
+        "attempts": [
+          {
+            "result_file": "/tmp/tcc-auditoria-M1/evidencias/evolucao/M1/tentativas_tradicional/attempt-01/result.json",
+            "is_infra_error": false,
+            "validation_passed": true
+          }
+        ]
+      },
+      "summary": {
+        "first_validation_pass": true,
+        "functional_validation_cycles": 1,
+        "infra_error_runs": 0,
+        "files_read": 17,
+        "files_written": 15,
+        "commands_run": 0,
+        "tool_calls_total": 32,
+        "duration_seconds": 8,
+        "llm_input_tokens": 26004,
+        "llm_cache_read_tokens": 8026,
+        "llm_output_tokens": 12643,
+        "llm_total_tokens": 46673
+      }
+    }
+  },
+  "modular": {
+    "suite": "modular",
+    "files_count": 57,
+    "layers": {
+      "flows": 15,
+      "helpers": 2,
+      "profiles": 10,
+      "scenarios": 15,
+      "use-cases": 15
+    },
+    "physical_lines": 1528,
+    "logical_lines": 1379,
+    "bytes": 49490,
+    "static_suite_imports": {
+      "internal_imports_total": 133,
+      "shared_config_imports_total": 16,
+      "distinct_internal_components_imported": 42,
+      "components": [
+        {
+          "component": "modular/flows/autenticacao/autenticacao.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/autenticacao/autenticacao.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/flows/carrinho/adicao.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/carrinho/adicao.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/flows/carrinho/atualizacao.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/carrinho/atualizacao.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/flows/carrinho/remocao.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/carrinho/remocao.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/flows/catalogo/catalogo.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/catalogo/catalogo.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/flows/catalogo/estoque.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/catalogo/estoque.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/flows/catalogo/filtro.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/catalogo/filtro.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/flows/pagamentos/aprovacao.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pagamentos/aprovacao.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/flows/pagamentos/compraCompleta.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pagamentos/compraCompleta.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/flows/pagamentos/recusa.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pagamentos/recusa.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/flows/pedidos/atualizacao.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pedidos/atualizacao.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/flows/pedidos/cancelamento.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pedidos/cancelamento.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/flows/pedidos/consulta.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pedidos/consulta.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/flows/pedidos/criacao.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pedidos/criacao.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/flows/pedidos/listagemFiltrada.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pedidos/listagemFiltrada.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/helpers/checks/checks.js",
+          "consumers_count": 15,
+          "consumers": [
+            "modular/use-cases/autenticacao/login.useCase.js",
+            "modular/use-cases/carrinho/addCartItem.useCase.js",
+            "modular/use-cases/carrinho/createCart.useCase.js",
+            "modular/use-cases/carrinho/getCart.useCase.js",
+            "modular/use-cases/carrinho/removeCartItem.useCase.js",
+            "modular/use-cases/carrinho/updateCartItem.useCase.js",
+            "modular/use-cases/catalogo/getProduct.useCase.js",
+            "modular/use-cases/catalogo/getProductStock.useCase.js",
+            "modular/use-cases/catalogo/listProducts.useCase.js",
+            "modular/use-cases/pagamentos/createPayment.useCase.js",
+            "modular/use-cases/pagamentos/getPayment.useCase.js",
+            "modular/use-cases/pedidos/createOrder.useCase.js",
+            "modular/use-cases/pedidos/getOrder.useCase.js",
+            "modular/use-cases/pedidos/listOrders.useCase.js",
+            "modular/use-cases/pedidos/updateOrder.useCase.js"
+          ]
+        },
+        {
+          "component": "modular/helpers/http/http.js",
+          "consumers_count": 15,
+          "consumers": [
+            "modular/use-cases/autenticacao/login.useCase.js",
+            "modular/use-cases/carrinho/addCartItem.useCase.js",
+            "modular/use-cases/carrinho/createCart.useCase.js",
+            "modular/use-cases/carrinho/getCart.useCase.js",
+            "modular/use-cases/carrinho/removeCartItem.useCase.js",
+            "modular/use-cases/carrinho/updateCartItem.useCase.js",
+            "modular/use-cases/catalogo/getProduct.useCase.js",
+            "modular/use-cases/catalogo/getProductStock.useCase.js",
+            "modular/use-cases/catalogo/listProducts.useCase.js",
+            "modular/use-cases/pagamentos/createPayment.useCase.js",
+            "modular/use-cases/pagamentos/getPayment.useCase.js",
+            "modular/use-cases/pedidos/createOrder.useCase.js",
+            "modular/use-cases/pedidos/getOrder.useCase.js",
+            "modular/use-cases/pedidos/listOrders.useCase.js",
+            "modular/use-cases/pedidos/updateOrder.useCase.js"
+          ]
+        },
+        {
+          "component": "modular/profiles/autenticacao/autenticacao.profiles.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/autenticacao/autenticacao.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/profiles/carrinho/carrinho.profiles.js",
+          "consumers_count": 3,
+          "consumers": [
+            "modular/scenarios/carrinho/adicao.scenario.js",
+            "modular/scenarios/carrinho/atualizacao.scenario.js",
+            "modular/scenarios/carrinho/remocao.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/profiles/catalogo/catalogo.profiles.js",
+          "consumers_count": 3,
+          "consumers": [
+            "modular/scenarios/catalogo/catalogo.scenario.js",
+            "modular/scenarios/catalogo/estoque.scenario.js",
+            "modular/scenarios/catalogo/filtro.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/profiles/comum/smoke.profile.js",
+          "consumers_count": 9,
+          "consumers": [
+            "modular/profiles/autenticacao/autenticacao.profiles.js",
+            "modular/profiles/carrinho/carrinho.profiles.js",
+            "modular/profiles/catalogo/catalogo.profiles.js",
+            "modular/profiles/pagamentos/pagamentos.profiles.js",
+            "modular/profiles/pedidos/atualizacao.profiles.js",
+            "modular/profiles/pedidos/cancelamento.profiles.js",
+            "modular/profiles/pedidos/consulta.profiles.js",
+            "modular/profiles/pedidos/criacao.profiles.js",
+            "modular/profiles/pedidos/listagemFiltrada.profiles.js"
+          ]
+        },
+        {
+          "component": "modular/profiles/pagamentos/pagamentos.profiles.js",
+          "consumers_count": 3,
+          "consumers": [
+            "modular/scenarios/pagamentos/aprovacao.scenario.js",
+            "modular/scenarios/pagamentos/compraCompleta.scenario.js",
+            "modular/scenarios/pagamentos/recusa.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/profiles/pedidos/atualizacao.profiles.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pedidos/atualizacao.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/profiles/pedidos/cancelamento.profiles.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pedidos/cancelamento.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/profiles/pedidos/consulta.profiles.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pedidos/consulta.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/profiles/pedidos/criacao.profiles.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pedidos/criacao.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/profiles/pedidos/listagemFiltrada.profiles.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pedidos/listagemFiltrada.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/autenticacao/login.useCase.js",
+          "consumers_count": 15,
+          "consumers": [
+            "modular/flows/autenticacao/autenticacao.flow.js",
+            "modular/flows/carrinho/adicao.flow.js",
+            "modular/flows/carrinho/atualizacao.flow.js",
+            "modular/flows/carrinho/remocao.flow.js",
+            "modular/flows/catalogo/catalogo.flow.js",
+            "modular/flows/catalogo/estoque.flow.js",
+            "modular/flows/catalogo/filtro.flow.js",
+            "modular/flows/pagamentos/aprovacao.flow.js",
+            "modular/flows/pagamentos/compraCompleta.flow.js",
+            "modular/flows/pagamentos/recusa.flow.js",
+            "modular/flows/pedidos/atualizacao.flow.js",
+            "modular/flows/pedidos/cancelamento.flow.js",
+            "modular/flows/pedidos/consulta.flow.js",
+            "modular/flows/pedidos/criacao.flow.js",
+            "modular/flows/pedidos/listagemFiltrada.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/carrinho/addCartItem.useCase.js",
+          "consumers_count": 4,
+          "consumers": [
+            "modular/flows/carrinho/adicao.flow.js",
+            "modular/flows/carrinho/atualizacao.flow.js",
+            "modular/flows/carrinho/remocao.flow.js",
+            "modular/flows/pagamentos/compraCompleta.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/carrinho/createCart.useCase.js",
+          "consumers_count": 4,
+          "consumers": [
+            "modular/flows/carrinho/adicao.flow.js",
+            "modular/flows/carrinho/atualizacao.flow.js",
+            "modular/flows/carrinho/remocao.flow.js",
+            "modular/flows/pagamentos/compraCompleta.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/carrinho/getCart.useCase.js",
+          "consumers_count": 4,
+          "consumers": [
+            "modular/flows/carrinho/adicao.flow.js",
+            "modular/flows/carrinho/atualizacao.flow.js",
+            "modular/flows/carrinho/remocao.flow.js",
+            "modular/flows/pagamentos/compraCompleta.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/carrinho/removeCartItem.useCase.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/flows/carrinho/remocao.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/carrinho/updateCartItem.useCase.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/flows/carrinho/atualizacao.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/catalogo/getProduct.useCase.js",
+          "consumers_count": 4,
+          "consumers": [
+            "modular/flows/catalogo/catalogo.flow.js",
+            "modular/flows/catalogo/filtro.flow.js",
+            "modular/flows/pagamentos/compraCompleta.flow.js",
+            "modular/flows/pedidos/criacao.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/catalogo/getProductStock.useCase.js",
+          "consumers_count": 2,
+          "consumers": [
+            "modular/flows/catalogo/estoque.flow.js",
+            "modular/flows/pagamentos/compraCompleta.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/catalogo/listProducts.useCase.js",
+          "consumers_count": 2,
+          "consumers": [
+            "modular/flows/catalogo/catalogo.flow.js",
+            "modular/flows/catalogo/filtro.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/pagamentos/createPayment.useCase.js",
+          "consumers_count": 3,
+          "consumers": [
+            "modular/flows/pagamentos/aprovacao.flow.js",
+            "modular/flows/pagamentos/compraCompleta.flow.js",
+            "modular/flows/pagamentos/recusa.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/pagamentos/getPayment.useCase.js",
+          "consumers_count": 3,
+          "consumers": [
+            "modular/flows/pagamentos/aprovacao.flow.js",
+            "modular/flows/pagamentos/compraCompleta.flow.js",
+            "modular/flows/pagamentos/recusa.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/pedidos/createOrder.useCase.js",
+          "consumers_count": 8,
+          "consumers": [
+            "modular/flows/pagamentos/aprovacao.flow.js",
+            "modular/flows/pagamentos/compraCompleta.flow.js",
+            "modular/flows/pagamentos/recusa.flow.js",
+            "modular/flows/pedidos/atualizacao.flow.js",
+            "modular/flows/pedidos/cancelamento.flow.js",
+            "modular/flows/pedidos/consulta.flow.js",
+            "modular/flows/pedidos/criacao.flow.js",
+            "modular/flows/pedidos/listagemFiltrada.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/pedidos/getOrder.useCase.js",
+          "consumers_count": 7,
+          "consumers": [
+            "modular/flows/pagamentos/aprovacao.flow.js",
+            "modular/flows/pagamentos/compraCompleta.flow.js",
+            "modular/flows/pagamentos/recusa.flow.js",
+            "modular/flows/pedidos/atualizacao.flow.js",
+            "modular/flows/pedidos/cancelamento.flow.js",
+            "modular/flows/pedidos/consulta.flow.js",
+            "modular/flows/pedidos/listagemFiltrada.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/pedidos/listOrders.useCase.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/flows/pedidos/listagemFiltrada.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/pedidos/updateOrder.useCase.js",
+          "consumers_count": 5,
+          "consumers": [
+            "modular/flows/pagamentos/aprovacao.flow.js",
+            "modular/flows/pagamentos/compraCompleta.flow.js",
+            "modular/flows/pagamentos/recusa.flow.js",
+            "modular/flows/pedidos/atualizacao.flow.js",
+            "modular/flows/pedidos/cancelamento.flow.js"
+          ]
+        }
+      ]
+    },
+    "batch_reuse": {
+      "batch_entry_files_touched": [
+        "modular/use-cases/autenticacao/login.useCase.js"
+      ],
+      "batch_active_files_total": 3,
+      "batch_distinct_components_imported": 2,
+      "batch_reused_unmodified_count": 2,
+      "batch_reused_modified_count": 0,
+      "batch_created_shared_count": 0,
+      "components": [
+        {
+          "component": "modular/helpers/checks/checks.js",
+          "classification": "reused_unmodified",
+          "git_status_in_batch": "UNMODIFIED",
+          "batch_consumers_count": 1,
+          "batch_consumers": [
+            "modular/use-cases/autenticacao/login.useCase.js"
+          ]
+        },
+        {
+          "component": "modular/helpers/http/http.js",
+          "classification": "reused_unmodified",
+          "git_status_in_batch": "UNMODIFIED",
+          "batch_consumers_count": 1,
+          "batch_consumers": [
+            "modular/use-cases/autenticacao/login.useCase.js"
+          ]
+        }
+      ]
+    },
+    "duplication": {
+      "algorithm": "exact-token-window-union-v1",
+      "min_tokens_window": 25,
+      "normalization_rules": "Remove comentários de linha/bloco e whitespace; preserva literais e identificadores literalmente (clones Tipo-1); não cruza fronteira entre arquivos; percentual calculado sobre a união de posições de tokens e de linhas SLOC (sem contagem dupla em regiões sobrepostas).",
+      "total_tokens": 7823,
+      "duplicated_tokens": 2524,
+      "duplication_tokens_pct": 32.26,
+      "duplicated_lines": 493,
+      "duplication_lines_pct": 35.75,
+      "clones_count": 21,
+      "intra_file_clones_count": 0,
+      "cross_file_clones_count": 21
+    },
+    "files": [
+      {
+        "path": "modular/flows/autenticacao/autenticacao.flow.js",
+        "layer": "flows",
+        "physical_lines": 5,
+        "logical_lines": 4,
+        "tokens_count": 28,
+        "bytes": 172
+      },
+      {
+        "path": "modular/flows/carrinho/adicao.flow.js",
+        "layer": "flows",
+        "physical_lines": 38,
+        "logical_lines": 34,
+        "tokens_count": 166,
+        "bytes": 1089
+      },
+      {
+        "path": "modular/flows/carrinho/atualizacao.flow.js",
+        "layer": "flows",
+        "physical_lines": 51,
+        "logical_lines": 46,
+        "tokens_count": 209,
+        "bytes": 1426
+      },
+      {
+        "path": "modular/flows/carrinho/remocao.flow.js",
+        "layer": "flows",
+        "physical_lines": 45,
+        "logical_lines": 40,
+        "tokens_count": 175,
+        "bytes": 1222
+      },
+      {
+        "path": "modular/flows/catalogo/catalogo.flow.js",
+        "layer": "flows",
+        "physical_lines": 9,
+        "logical_lines": 8,
+        "tokens_count": 72,
+        "bytes": 445
+      },
+      {
+        "path": "modular/flows/catalogo/estoque.flow.js",
+        "layer": "flows",
+        "physical_lines": 24,
+        "logical_lines": 21,
+        "tokens_count": 99,
+        "bytes": 680
+      },
+      {
+        "path": "modular/flows/catalogo/filtro.flow.js",
+        "layer": "flows",
+        "physical_lines": 60,
+        "logical_lines": 56,
+        "tokens_count": 348,
+        "bytes": 2139
+      },
+      {
+        "path": "modular/flows/pagamentos/aprovacao.flow.js",
+        "layer": "flows",
+        "physical_lines": 53,
+        "logical_lines": 47,
+        "tokens_count": 213,
+        "bytes": 1515
+      },
+      {
+        "path": "modular/flows/pagamentos/compraCompleta.flow.js",
+        "layer": "flows",
+        "physical_lines": 130,
+        "logical_lines": 117,
+        "tokens_count": 507,
+        "bytes": 3569
+      },
+      {
+        "path": "modular/flows/pagamentos/recusa.flow.js",
+        "layer": "flows",
+        "physical_lines": 53,
+        "logical_lines": 47,
+        "tokens_count": 213,
+        "bytes": 1517
+      },
+      {
+        "path": "modular/flows/pedidos/atualizacao.flow.js",
+        "layer": "flows",
+        "physical_lines": 15,
+        "logical_lines": 14,
+        "tokens_count": 117,
+        "bytes": 707
+      },
+      {
+        "path": "modular/flows/pedidos/cancelamento.flow.js",
+        "layer": "flows",
+        "physical_lines": 28,
+        "logical_lines": 27,
+        "tokens_count": 135,
+        "bytes": 902
+      },
+      {
+        "path": "modular/flows/pedidos/consulta.flow.js",
+        "layer": "flows",
+        "physical_lines": 13,
+        "logical_lines": 12,
+        "tokens_count": 95,
+        "bytes": 557
+      },
+      {
+        "path": "modular/flows/pedidos/criacao.flow.js",
+        "layer": "flows",
+        "physical_lines": 13,
+        "logical_lines": 12,
+        "tokens_count": 85,
+        "bytes": 517
+      },
+      {
+        "path": "modular/flows/pedidos/listagemFiltrada.flow.js",
+        "layer": "flows",
+        "physical_lines": 28,
+        "logical_lines": 27,
+        "tokens_count": 137,
+        "bytes": 921
+      },
+      {
+        "path": "modular/helpers/checks/checks.js",
+        "layer": "helpers",
+        "physical_lines": 35,
+        "logical_lines": 31,
+        "tokens_count": 371,
+        "bytes": 1430
+      },
+      {
+        "path": "modular/helpers/http/http.js",
+        "layer": "helpers",
+        "physical_lines": 36,
+        "logical_lines": 29,
+        "tokens_count": 251,
+        "bytes": 1098
+      },
+      {
+        "path": "modular/profiles/autenticacao/autenticacao.profiles.js",
+        "layer": "profiles",
+        "physical_lines": 5,
+        "logical_lines": 4,
+        "tokens_count": 21,
+        "bytes": 131
+      },
+      {
+        "path": "modular/profiles/carrinho/carrinho.profiles.js",
+        "layer": "profiles",
+        "physical_lines": 7,
+        "logical_lines": 6,
+        "tokens_count": 35,
+        "bytes": 189
+      },
+      {
+        "path": "modular/profiles/catalogo/catalogo.profiles.js",
+        "layer": "profiles",
+        "physical_lines": 7,
+        "logical_lines": 6,
+        "tokens_count": 35,
+        "bytes": 189
+      },
+      {
+        "path": "modular/profiles/comum/smoke.profile.js",
+        "layer": "profiles",
+        "physical_lines": 8,
+        "logical_lines": 7,
+        "tokens_count": 34,
+        "bytes": 200
+      },
+      {
+        "path": "modular/profiles/pagamentos/pagamentos.profiles.js",
+        "layer": "profiles",
+        "physical_lines": 7,
+        "logical_lines": 6,
+        "tokens_count": 35,
+        "bytes": 191
+      },
+      {
+        "path": "modular/profiles/pedidos/atualizacao.profiles.js",
+        "layer": "profiles",
+        "physical_lines": 7,
+        "logical_lines": 6,
+        "tokens_count": 22,
+        "bytes": 143
+      },
+      {
+        "path": "modular/profiles/pedidos/cancelamento.profiles.js",
+        "layer": "profiles",
+        "physical_lines": 5,
+        "logical_lines": 4,
+        "tokens_count": 21,
+        "bytes": 131
+      },
+      {
+        "path": "modular/profiles/pedidos/consulta.profiles.js",
+        "layer": "profiles",
+        "physical_lines": 5,
+        "logical_lines": 4,
+        "tokens_count": 21,
+        "bytes": 127
+      },
+      {
+        "path": "modular/profiles/pedidos/criacao.profiles.js",
+        "layer": "profiles",
+        "physical_lines": 5,
+        "logical_lines": 4,
+        "tokens_count": 21,
+        "bytes": 126
+      },
+      {
+        "path": "modular/profiles/pedidos/listagemFiltrada.profiles.js",
+        "layer": "profiles",
+        "physical_lines": 5,
+        "logical_lines": 4,
+        "tokens_count": 21,
+        "bytes": 135
+      },
+      {
+        "path": "modular/scenarios/autenticacao/autenticacao.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 565
+      },
+      {
+        "path": "modular/scenarios/carrinho/adicao.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 547
+      },
+      {
+        "path": "modular/scenarios/carrinho/atualizacao.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 572
+      },
+      {
+        "path": "modular/scenarios/carrinho/remocao.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 552
+      },
+      {
+        "path": "modular/scenarios/catalogo/catalogo.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 525
+      },
+      {
+        "path": "modular/scenarios/catalogo/estoque.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 552
+      },
+      {
+        "path": "modular/scenarios/catalogo/filtro.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 547
+      },
+      {
+        "path": "modular/scenarios/pagamentos/aprovacao.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 576
+      },
+      {
+        "path": "modular/scenarios/pagamentos/compraCompleta.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 565
+      },
+      {
+        "path": "modular/scenarios/pagamentos/recusa.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 561
+      },
+      {
+        "path": "modular/scenarios/pedidos/atualizacao.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 547
+      },
+      {
+        "path": "modular/scenarios/pedidos/cancelamento.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 555
+      },
+      {
+        "path": "modular/scenarios/pedidos/consulta.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 523
+      },
+      {
+        "path": "modular/scenarios/pedidos/criacao.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 515
+      },
+      {
+        "path": "modular/scenarios/pedidos/listagemFiltrada.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 587
+      },
+      {
+        "path": "modular/use-cases/autenticacao/login.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 25,
+        "logical_lines": 24,
+        "tokens_count": 164,
+        "bytes": 959
+      },
+      {
+        "path": "modular/use-cases/carrinho/addCartItem.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 42,
+        "logical_lines": 41,
+        "tokens_count": 213,
+        "bytes": 1318
+      },
+      {
+        "path": "modular/use-cases/carrinho/createCart.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 21,
+        "logical_lines": 20,
+        "tokens_count": 148,
+        "bytes": 784
+      },
+      {
+        "path": "modular/use-cases/carrinho/getCart.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 39,
+        "logical_lines": 38,
+        "tokens_count": 231,
+        "bytes": 1437
+      },
+      {
+        "path": "modular/use-cases/carrinho/removeCartItem.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 21,
+        "logical_lines": 20,
+        "tokens_count": 153,
+        "bytes": 848
+      },
+      {
+        "path": "modular/use-cases/carrinho/updateCartItem.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 42,
+        "logical_lines": 41,
+        "tokens_count": 211,
+        "bytes": 1325
+      },
+      {
+        "path": "modular/use-cases/catalogo/getProduct.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 13,
+        "logical_lines": 12,
+        "tokens_count": 88,
+        "bytes": 482
+      },
+      {
+        "path": "modular/use-cases/catalogo/getProductStock.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 16,
+        "logical_lines": 15,
+        "tokens_count": 115,
+        "bytes": 700
+      },
+      {
+        "path": "modular/use-cases/catalogo/listProducts.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 18,
+        "logical_lines": 17,
+        "tokens_count": 102,
+        "bytes": 620
+      },
+      {
+        "path": "modular/use-cases/pagamentos/createPayment.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 30,
+        "logical_lines": 29,
+        "tokens_count": 151,
+        "bytes": 899
+      },
+      {
+        "path": "modular/use-cases/pagamentos/getPayment.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 35,
+        "logical_lines": 34,
+        "tokens_count": 150,
+        "bytes": 1003
+      },
+      {
+        "path": "modular/use-cases/pedidos/createOrder.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 62,
+        "logical_lines": 61,
+        "tokens_count": 380,
+        "bytes": 2458
+      },
+      {
+        "path": "modular/use-cases/pedidos/getOrder.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 76,
+        "logical_lines": 75,
+        "tokens_count": 392,
+        "bytes": 2785
+      },
+      {
+        "path": "modular/use-cases/pedidos/listOrders.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 42,
+        "logical_lines": 41,
+        "tokens_count": 208,
+        "bytes": 1357
+      },
+      {
+        "path": "modular/use-cases/pedidos/updateOrder.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 79,
+        "logical_lines": 78,
+        "tokens_count": 385,
+        "bytes": 2758
+      }
+    ],
+    "git_delta": {
+      "base_ref": "a84091f780bd745af4e22e6d787a9dd2124e7224",
+      "target_ref": "4902526779b58c412bc3d876b9ba4b57540a11bc",
+      "lines_added": 2,
+      "lines_removed": 0,
+      "net_lines_delta": 2,
+      "net_diff_lines": 2,
+      "intermediate_churn": null,
+      "intermediate_churn_note": "Sem checkpoints intermediários registrados; net_diff_lines mede apenas a diferença líquida entre SHA-base e SHA-final.",
+      "files_added": 0,
+      "files_modified": 1,
+      "files_deleted": 0,
+      "files_touched_total": 1,
+      "files_detail": [
+        {
+          "path": "modular/use-cases/autenticacao/login.useCase.js",
+          "added": 2,
+          "removed": 0,
+          "status": "M"
+        }
+      ]
+    },
+    "agent": {
+      "transcript": {
+        "available": true,
+        "source_transcript": "/tmp/tcc-auditoria-M1/evidencias/evolucao/M1/transcripts/modular.transcript.jsonl",
+        "missing_reason": null,
+        "first_step_at": "2026-11-09T19:49:19Z",
+        "last_step_at": "2026-11-09T19:49:38Z",
+        "duration_seconds": 19,
+        "files_read": 5,
+        "files_written": 1,
+        "commands_run": 0,
+        "tool_calls_total": 6,
+        "tool_calls_by_name": {
+          "read_file": 5,
+          "edit_file": 1
+        },
+        "llm_input_tokens": 15317,
+        "llm_cache_read_tokens": 18182,
+        "llm_output_tokens": 1216,
+        "llm_total_tokens": 34715
+      },
+      "validation": {
+        "available": true,
+        "missing_reason": null,
+        "first_validation_pass": true,
+        "functional_validation_cycles": 1,
+        "infra_error_runs": 0,
+        "final_validation_passed": true,
+        "attempts": [
+          {
+            "result_file": "/tmp/tcc-auditoria-M1/evidencias/evolucao/M1/tentativas_modular/attempt-01/result.json",
+            "is_infra_error": false,
+            "validation_passed": true
+          }
+        ]
+      },
+      "summary": {
+        "first_validation_pass": true,
+        "functional_validation_cycles": 1,
+        "infra_error_runs": 0,
+        "files_read": 5,
+        "files_written": 1,
+        "commands_run": 0,
+        "tool_calls_total": 6,
+        "duration_seconds": 19,
+        "llm_input_tokens": 15317,
+        "llm_cache_read_tokens": 18182,
+        "llm_output_tokens": 1216,
+        "llm_total_tokens": 34715
+      }
+    }
+  },
+  "paired_comparison": {
+    "files_diff_mod_minus_trad": 42,
+    "physical_lines_diff_mod_minus_trad": 744,
+    "logical_lines_diff_mod_minus_trad": 646,
+    "duplication_tokens_pct_diff_mod_minus_trad": -41.59,
+    "duplication_lines_pct_diff_mod_minus_trad": -36.28,
+    "git_delta_comparison": {
+      "lines_added_diff_mod_minus_trad": -13,
+      "net_diff_lines_mod_minus_trad": -28,
+      "files_touched_diff_mod_minus_trad": -14,
+      "files_modified_diff_mod_minus_trad": -14
+    }
+  },
+  "validation": {
+    "path": "evidencias/evolucao/M1/validacao_both/result.json",
+    "state": "M1",
+    "validation_passed": true,
+    "complete_functional_equivalence": true,
+    "runs_total": 30
+  }
+}

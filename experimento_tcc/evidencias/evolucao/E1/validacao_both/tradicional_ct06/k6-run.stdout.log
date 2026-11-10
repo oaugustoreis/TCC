@@ -1,0 +1,37 @@
+
+
+  █ THRESHOLDS 
+
+    checks
+    ✓ 'rate==1' rate=100.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 6       415.222586/s
+    checks_succeeded...: 100.00% 6 out of 6
+    checks_failed......: 0.00%   0 out of 6
+
+    ✓ CT-06 01 status
+    ✓ CT-06 01 corpo
+    ✓ CT-06 02 status
+    ✓ CT-06 02 corpo
+    ✓ CT-06 03 status
+    ✓ CT-06 03 corpo
+
+    HTTP
+    http_req_duration..............: avg=4.37ms  min=2.23ms  med=5.2ms   max=5.67ms  p(90)=5.58ms  p(95)=5.62ms 
+      { expected_response:true }...: avg=4.37ms  min=2.23ms  med=5.2ms   max=5.67ms  p(90)=5.58ms  p(95)=5.62ms 
+    http_req_failed................: 0.00% 0 out of 3
+    http_reqs......................: 3     207.611293/s
+
+    EXECUTION
+    iteration_duration.............: avg=14.32ms min=14.32ms med=14.32ms max=14.32ms p(90)=14.32ms p(95)=14.32ms
+    iterations.....................: 1     69.203764/s
+
+    NETWORK
+    data_received..................: 760 B 53 kB/s
+    data_sent......................: 510 B 35 kB/s
+
+
+

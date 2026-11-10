@@ -1,0 +1,197 @@
+{
+    "metrics": {
+        "http_req_duration{expected_response:true}": {
+            "p(95)": 6.535444249999999,
+            "avg": 5.177712666666667,
+            "min": 2.41139,
+            "med": 5.6304965,
+            "max": 6.635242,
+            "p(90)": 6.4356465
+        },
+        "http_req_waiting": {
+            "avg": 4.926807,
+            "min": 2.284428,
+            "med": 5.4625995,
+            "max": 6.375631,
+            "p(90)": 6.029657500000001,
+            "p(95)": 6.2026442500000005
+        },
+        "http_req_blocked": {
+            "min": 0.002183,
+            "med": 0.0029905,
+            "max": 0.184919,
+            "p(90)": 0.094469,
+            "p(95)": 0.13969399999999998,
+            "avg": 0.03329766666666666
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 6,
+            "value": 0
+        },
+        "data_sent": {
+            "count": 1117,
+            "rate": 33712.10609878861
+        },
+        "http_req_duration": {
+            "p(95)": 6.535444249999999,
+            "avg": 5.177712666666667,
+            "min": 2.41139,
+            "med": 5.6304965,
+            "max": 6.635242,
+            "p(90)": 6.4356465
+        },
+        "http_req_receiving": {
+            "med": 0.192851,
+            "max": 0.54494,
+            "p(90)": 0.395606,
+            "p(95)": 0.470273,
+            "avg": 0.23041566666666669,
+            "min": 0.099561
+        },
+        "iterations": {
+            "count": 1,
+            "rate": 30.18093652532552
+        },
+        "http_req_tls_handshaking": {
+            "p(95)": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0
+        },
+        "data_received": {
+            "count": 1496,
+            "rate": 45150.68104188698
+        },
+        "http_req_connecting": {
+            "p(90)": 0.0691015,
+            "p(95)": 0.10365225,
+            "avg": 0.023033833333333333,
+            "min": 0,
+            "med": 0,
+            "max": 0.138203
+        },
+        "http_req_sending": {
+            "max": 0.063499,
+            "p(90)": 0.045450000000000004,
+            "p(95)": 0.0544745,
+            "avg": 0.020489999999999998,
+            "min": 0.005477,
+            "med": 0.010383
+        },
+        "iteration_duration": {
+            "med": 33.053996,
+            "max": 33.053996,
+            "p(90)": 33.053996,
+            "p(95)": 33.053996,
+            "avg": 33.053996,
+            "min": 33.053996
+        },
+        "checks": {
+            "passes": 12,
+            "fails": 0,
+            "thresholds": {
+                "rate==1": false
+            },
+            "value": 1
+        },
+        "http_reqs": {
+            "count": 6,
+            "rate": 181.08561915195313
+        }
+    },
+    "root_group": {
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "CT-13 01 status": {
+                    "name": "CT-13 01 status",
+                    "path": "::CT-13 01 status",
+                    "id": "a0e91d42326ebdbc1f7f86d031802af6",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "CT-13 01 corpo": {
+                    "fails": 0,
+                    "name": "CT-13 01 corpo",
+                    "path": "::CT-13 01 corpo",
+                    "id": "ae74c78a00cc24d2c2f3edcc1bfef28d",
+                    "passes": 1
+                },
+                "CT-13 02 status": {
+                    "fails": 0,
+                    "name": "CT-13 02 status",
+                    "path": "::CT-13 02 status",
+                    "id": "33ae0a47a459fd249b6709720a94d16b",
+                    "passes": 1
+                },
+                "CT-13 02 corpo": {
+                    "name": "CT-13 02 corpo",
+                    "path": "::CT-13 02 corpo",
+                    "id": "4ff9cd6023729553453fe6fcb54f17a6",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "CT-13 03 status": {
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "CT-13 03 status",
+                    "path": "::CT-13 03 status",
+                    "id": "42895e620aa4f68b520351d9b74783ef"
+                },
+                "CT-13 03 corpo": {
+                    "name": "CT-13 03 corpo",
+                    "path": "::CT-13 03 corpo",
+                    "id": "205d2515ec6a67e8d7360c6a829e5d5c",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "CT-13 04 status": {
+                    "path": "::CT-13 04 status",
+                    "id": "a843b21e96f678ff555a637244f0a9df",
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "CT-13 04 status"
+                },
+                "CT-13 04 corpo": {
+                    "name": "CT-13 04 corpo",
+                    "path": "::CT-13 04 corpo",
+                    "id": "294734ea7630da9cd1de8ea2db787aa2",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "CT-13 05 status": {
+                    "fails": 0,
+                    "name": "CT-13 05 status",
+                    "path": "::CT-13 05 status",
+                    "id": "f466724442061e86c0903acb06ed6ca7",
+                    "passes": 1
+                },
+                "CT-13 05 corpo": {
+                    "id": "303cc004c57990ced18048d766c5eb4a",
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "CT-13 05 corpo",
+                    "path": "::CT-13 05 corpo"
+                },
+                "CT-13 06 status": {
+                    "fails": 0,
+                    "name": "CT-13 06 status",
+                    "path": "::CT-13 06 status",
+                    "id": "5f9ec7536f08e605e09afed88176fa30",
+                    "passes": 1
+                },
+                "CT-13 06 corpo": {
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "CT-13 06 corpo",
+                    "path": "::CT-13 06 corpo",
+                    "id": "f39985be5fd27c7799d172b1aa10c646"
+                }
+            },
+        "name": "",
+        "path": ""
+    }
+}

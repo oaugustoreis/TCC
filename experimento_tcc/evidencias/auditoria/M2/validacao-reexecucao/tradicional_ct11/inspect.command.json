@@ -1,0 +1,12 @@
+{
+  "command": [
+    "k6",
+    "inspect",
+    "tradicional/ct11.js"
+  ],
+  "cwd": "/tmp/tcc-auditoria-M2",
+  "started_utc": "2026-11-10T16:18:30.470Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

@@ -1,0 +1,473 @@
+{
+  "generated_at": "2026-11-08T19:21:03.125Z",
+  "state": "E0",
+  "tradicional": {
+    "suite": "tradicional",
+    "files_count": 5,
+    "layers": {
+      "root": 5
+    },
+    "physical_lines": 85,
+    "logical_lines": 76,
+    "bytes": 5243,
+    "static_suite_imports": {
+      "internal_imports_total": 0,
+      "shared_config_imports_total": 5,
+      "distinct_internal_components_imported": 0,
+      "components": []
+    },
+    "batch_reuse": null,
+    "duplication": {
+      "algorithm": "exact-token-window-union-v1",
+      "min_tokens_window": 25,
+      "normalization_rules": "Remove comentários de linha/bloco e whitespace; preserva literais e identificadores literalmente (clones Tipo-1); não cruza fronteira entre arquivos; percentual calculado sobre a união de posições de tokens e de linhas SLOC (sem contagem dupla em regiões sobrepostas).",
+      "total_tokens": 1162,
+      "duplicated_tokens": 1050,
+      "duplication_tokens_pct": 90.36,
+      "duplicated_lines": 73,
+      "duplication_lines_pct": 96.05,
+      "clones_count": 4,
+      "intra_file_clones_count": 0,
+      "cross_file_clones_count": 4
+    },
+    "files": [
+      {
+        "path": "tradicional/ct01.js",
+        "layer": "root",
+        "physical_lines": 11,
+        "logical_lines": 11,
+        "tokens_count": 122,
+        "bytes": 606
+      },
+      {
+        "path": "tradicional/ct02.js",
+        "layer": "root",
+        "physical_lines": 17,
+        "logical_lines": 15,
+        "tokens_count": 224,
+        "bytes": 995
+      },
+      {
+        "path": "tradicional/ct03.js",
+        "layer": "root",
+        "physical_lines": 18,
+        "logical_lines": 16,
+        "tokens_count": 245,
+        "bytes": 1079
+      },
+      {
+        "path": "tradicional/ct04.js",
+        "layer": "root",
+        "physical_lines": 18,
+        "logical_lines": 16,
+        "tokens_count": 258,
+        "bytes": 1155
+      },
+      {
+        "path": "tradicional/ct05.js",
+        "layer": "root",
+        "physical_lines": 21,
+        "logical_lines": 18,
+        "tokens_count": 313,
+        "bytes": 1408
+      }
+    ],
+    "git_delta": null,
+    "agent": null
+  },
+  "modular": {
+    "suite": "modular",
+    "files_count": 24,
+    "layers": {
+      "flows": 5,
+      "helpers": 2,
+      "profiles": 6,
+      "scenarios": 5,
+      "use-cases": 6
+    },
+    "physical_lines": 333,
+    "logical_lines": 286,
+    "bytes": 11058,
+    "static_suite_imports": {
+      "internal_imports_total": 41,
+      "shared_config_imports_total": 6,
+      "distinct_internal_components_imported": 19,
+      "components": [
+        {
+          "component": "modular/flows/autenticacao/autenticacao.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/autenticacao/autenticacao.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/flows/catalogo/catalogo.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/catalogo/catalogo.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/flows/pedidos/atualizacao.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pedidos/atualizacao.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/flows/pedidos/consulta.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pedidos/consulta.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/flows/pedidos/criacao.flow.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pedidos/criacao.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/helpers/checks/checks.js",
+          "consumers_count": 6,
+          "consumers": [
+            "modular/use-cases/autenticacao/login.useCase.js",
+            "modular/use-cases/catalogo/getProduct.useCase.js",
+            "modular/use-cases/catalogo/listProducts.useCase.js",
+            "modular/use-cases/pedidos/createOrder.useCase.js",
+            "modular/use-cases/pedidos/getOrder.useCase.js",
+            "modular/use-cases/pedidos/updateOrder.useCase.js"
+          ]
+        },
+        {
+          "component": "modular/helpers/http/http.js",
+          "consumers_count": 6,
+          "consumers": [
+            "modular/use-cases/autenticacao/login.useCase.js",
+            "modular/use-cases/catalogo/getProduct.useCase.js",
+            "modular/use-cases/catalogo/listProducts.useCase.js",
+            "modular/use-cases/pedidos/createOrder.useCase.js",
+            "modular/use-cases/pedidos/getOrder.useCase.js",
+            "modular/use-cases/pedidos/updateOrder.useCase.js"
+          ]
+        },
+        {
+          "component": "modular/profiles/autenticacao/autenticacao.profiles.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/autenticacao/autenticacao.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/profiles/catalogo/catalogo.profiles.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/catalogo/catalogo.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/profiles/comum/smoke.profile.js",
+          "consumers_count": 5,
+          "consumers": [
+            "modular/profiles/autenticacao/autenticacao.profiles.js",
+            "modular/profiles/catalogo/catalogo.profiles.js",
+            "modular/profiles/pedidos/atualizacao.profiles.js",
+            "modular/profiles/pedidos/consulta.profiles.js",
+            "modular/profiles/pedidos/criacao.profiles.js"
+          ]
+        },
+        {
+          "component": "modular/profiles/pedidos/atualizacao.profiles.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pedidos/atualizacao.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/profiles/pedidos/consulta.profiles.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pedidos/consulta.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/profiles/pedidos/criacao.profiles.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/scenarios/pedidos/criacao.scenario.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/autenticacao/login.useCase.js",
+          "consumers_count": 5,
+          "consumers": [
+            "modular/flows/autenticacao/autenticacao.flow.js",
+            "modular/flows/catalogo/catalogo.flow.js",
+            "modular/flows/pedidos/atualizacao.flow.js",
+            "modular/flows/pedidos/consulta.flow.js",
+            "modular/flows/pedidos/criacao.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/catalogo/getProduct.useCase.js",
+          "consumers_count": 2,
+          "consumers": [
+            "modular/flows/catalogo/catalogo.flow.js",
+            "modular/flows/pedidos/criacao.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/catalogo/listProducts.useCase.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/flows/catalogo/catalogo.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/pedidos/createOrder.useCase.js",
+          "consumers_count": 3,
+          "consumers": [
+            "modular/flows/pedidos/atualizacao.flow.js",
+            "modular/flows/pedidos/consulta.flow.js",
+            "modular/flows/pedidos/criacao.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/pedidos/getOrder.useCase.js",
+          "consumers_count": 2,
+          "consumers": [
+            "modular/flows/pedidos/atualizacao.flow.js",
+            "modular/flows/pedidos/consulta.flow.js"
+          ]
+        },
+        {
+          "component": "modular/use-cases/pedidos/updateOrder.useCase.js",
+          "consumers_count": 1,
+          "consumers": [
+            "modular/flows/pedidos/atualizacao.flow.js"
+          ]
+        }
+      ]
+    },
+    "batch_reuse": null,
+    "duplication": {
+      "algorithm": "exact-token-window-union-v1",
+      "min_tokens_window": 25,
+      "normalization_rules": "Remove comentários de linha/bloco e whitespace; preserva literais e identificadores literalmente (clones Tipo-1); não cruza fronteira entre arquivos; percentual calculado sobre a união de posições de tokens e de linhas SLOC (sem contagem dupla em regiões sobrepostas).",
+      "total_tokens": 2016,
+      "duplicated_tokens": 160,
+      "duplication_tokens_pct": 7.94,
+      "duplicated_lines": 18,
+      "duplication_lines_pct": 6.29,
+      "clones_count": 1,
+      "intra_file_clones_count": 0,
+      "cross_file_clones_count": 1
+    },
+    "files": [
+      {
+        "path": "modular/flows/autenticacao/autenticacao.flow.js",
+        "layer": "flows",
+        "physical_lines": 5,
+        "logical_lines": 4,
+        "tokens_count": 28,
+        "bytes": 172
+      },
+      {
+        "path": "modular/flows/catalogo/catalogo.flow.js",
+        "layer": "flows",
+        "physical_lines": 9,
+        "logical_lines": 8,
+        "tokens_count": 72,
+        "bytes": 445
+      },
+      {
+        "path": "modular/flows/pedidos/atualizacao.flow.js",
+        "layer": "flows",
+        "physical_lines": 15,
+        "logical_lines": 14,
+        "tokens_count": 117,
+        "bytes": 707
+      },
+      {
+        "path": "modular/flows/pedidos/consulta.flow.js",
+        "layer": "flows",
+        "physical_lines": 13,
+        "logical_lines": 12,
+        "tokens_count": 95,
+        "bytes": 557
+      },
+      {
+        "path": "modular/flows/pedidos/criacao.flow.js",
+        "layer": "flows",
+        "physical_lines": 13,
+        "logical_lines": 12,
+        "tokens_count": 85,
+        "bytes": 517
+      },
+      {
+        "path": "modular/helpers/checks/checks.js",
+        "layer": "helpers",
+        "physical_lines": 33,
+        "logical_lines": 29,
+        "tokens_count": 324,
+        "bytes": 1222
+      },
+      {
+        "path": "modular/helpers/http/http.js",
+        "layer": "helpers",
+        "physical_lines": 32,
+        "logical_lines": 26,
+        "tokens_count": 226,
+        "bytes": 1006
+      },
+      {
+        "path": "modular/profiles/autenticacao/autenticacao.profiles.js",
+        "layer": "profiles",
+        "physical_lines": 5,
+        "logical_lines": 4,
+        "tokens_count": 21,
+        "bytes": 131
+      },
+      {
+        "path": "modular/profiles/catalogo/catalogo.profiles.js",
+        "layer": "profiles",
+        "physical_lines": 5,
+        "logical_lines": 4,
+        "tokens_count": 21,
+        "bytes": 127
+      },
+      {
+        "path": "modular/profiles/comum/smoke.profile.js",
+        "layer": "profiles",
+        "physical_lines": 8,
+        "logical_lines": 7,
+        "tokens_count": 34,
+        "bytes": 200
+      },
+      {
+        "path": "modular/profiles/pedidos/atualizacao.profiles.js",
+        "layer": "profiles",
+        "physical_lines": 7,
+        "logical_lines": 6,
+        "tokens_count": 22,
+        "bytes": 143
+      },
+      {
+        "path": "modular/profiles/pedidos/consulta.profiles.js",
+        "layer": "profiles",
+        "physical_lines": 5,
+        "logical_lines": 4,
+        "tokens_count": 21,
+        "bytes": 127
+      },
+      {
+        "path": "modular/profiles/pedidos/criacao.profiles.js",
+        "layer": "profiles",
+        "physical_lines": 5,
+        "logical_lines": 4,
+        "tokens_count": 21,
+        "bytes": 126
+      },
+      {
+        "path": "modular/scenarios/autenticacao/autenticacao.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 565
+      },
+      {
+        "path": "modular/scenarios/catalogo/catalogo.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 525
+      },
+      {
+        "path": "modular/scenarios/pedidos/atualizacao.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 547
+      },
+      {
+        "path": "modular/scenarios/pedidos/consulta.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 523
+      },
+      {
+        "path": "modular/scenarios/pedidos/criacao.scenario.js",
+        "layer": "scenarios",
+        "physical_lines": 18,
+        "logical_lines": 14,
+        "tokens_count": 83,
+        "bytes": 515
+      },
+      {
+        "path": "modular/use-cases/autenticacao/login.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 13,
+        "logical_lines": 12,
+        "tokens_count": 76,
+        "bytes": 419
+      },
+      {
+        "path": "modular/use-cases/catalogo/getProduct.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 13,
+        "logical_lines": 12,
+        "tokens_count": 80,
+        "bytes": 446
+      },
+      {
+        "path": "modular/use-cases/catalogo/listProducts.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 17,
+        "logical_lines": 16,
+        "tokens_count": 83,
+        "bytes": 497
+      },
+      {
+        "path": "modular/use-cases/pedidos/createOrder.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 14,
+        "logical_lines": 13,
+        "tokens_count": 94,
+        "bytes": 507
+      },
+      {
+        "path": "modular/use-cases/pedidos/getOrder.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 14,
+        "logical_lines": 13,
+        "tokens_count": 94,
+        "bytes": 527
+      },
+      {
+        "path": "modular/use-cases/pedidos/updateOrder.useCase.js",
+        "layer": "use-cases",
+        "physical_lines": 17,
+        "logical_lines": 16,
+        "tokens_count": 87,
+        "bytes": 507
+      }
+    ],
+    "git_delta": null,
+    "agent": null
+  },
+  "paired_comparison": {
+    "files_diff_mod_minus_trad": 19,
+    "physical_lines_diff_mod_minus_trad": 248,
+    "logical_lines_diff_mod_minus_trad": 210,
+    "duplication_tokens_pct_diff_mod_minus_trad": -82.42,
+    "duplication_lines_pct_diff_mod_minus_trad": -89.76,
+    "git_delta_comparison": null
+  },
+  "validation": null
+}
