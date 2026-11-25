@@ -1,0 +1,30 @@
+{"time":"2026-11-10T18:45:48.643Z","method":"POST","path":"/authentication","authorization":null,"status":200}
+{"time":"2026-11-10T18:45:48.654Z","method":"GET","path":"/products","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:48.659Z","method":"GET","path":"/products/1","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:49.666Z","method":"POST","path":"/authentication","authorization":null,"status":200}
+{"time":"2026-11-10T18:45:49.670Z","method":"GET","path":"/products","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:49.675Z","method":"GET","path":"/products/1","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:50.682Z","method":"POST","path":"/authentication","authorization":null,"status":200}
+{"time":"2026-11-10T18:45:50.685Z","method":"GET","path":"/products","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:50.692Z","method":"GET","path":"/products/1","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:51.699Z","method":"POST","path":"/authentication","authorization":null,"status":200}
+{"time":"2026-11-10T18:45:51.702Z","method":"GET","path":"/products","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:51.709Z","method":"GET","path":"/products/1","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:52.716Z","method":"POST","path":"/authentication","authorization":null,"status":200}
+{"time":"2026-11-10T18:45:52.719Z","method":"GET","path":"/products","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:52.727Z","method":"GET","path":"/products/1","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:53.735Z","method":"POST","path":"/authentication","authorization":null,"status":200}
+{"time":"2026-11-10T18:45:53.740Z","method":"GET","path":"/products","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:53.750Z","method":"GET","path":"/products/1","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:54.760Z","method":"POST","path":"/authentication","authorization":null,"status":200}
+{"time":"2026-11-10T18:45:54.762Z","method":"GET","path":"/products","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:54.769Z","method":"GET","path":"/products/1","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:55.776Z","method":"POST","path":"/authentication","authorization":null,"status":200}
+{"time":"2026-11-10T18:45:55.779Z","method":"GET","path":"/products","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:55.786Z","method":"GET","path":"/products/1","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:56.794Z","method":"POST","path":"/authentication","authorization":null,"status":200}
+{"time":"2026-11-10T18:45:56.797Z","method":"GET","path":"/products","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:56.805Z","method":"GET","path":"/products/1","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:57.812Z","method":"POST","path":"/authentication","authorization":null,"status":200}
+{"time":"2026-11-10T18:45:57.815Z","method":"GET","path":"/products","authorization":"Bearer t1-token","status":200}
+{"time":"2026-11-10T18:45:57.822Z","method":"GET","path":"/products/1","authorization":"Bearer t1-token","status":200}

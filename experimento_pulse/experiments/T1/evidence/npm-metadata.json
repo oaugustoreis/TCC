@@ -1,0 +1,162 @@
+{
+  "_id": "pulse-arch@1.3.9",
+  "_rev": "27-f4c038e24a1a00d6fe5bd8df56554285",
+  "name": "pulse-arch",
+  "dist-tags": {
+    "latest": "1.3.9"
+  },
+  "versions": [
+    "1.0.0",
+    "1.0.1",
+    "1.0.2",
+    "1.0.3",
+    "1.0.5",
+    "1.0.6",
+    "1.0.7",
+    "1.0.9",
+    "1.0.10",
+    "1.2.1",
+    "1.2.2",
+    "1.2.4",
+    "1.2.5",
+    "1.2.6",
+    "1.2.7",
+    "1.2.8",
+    "1.2.9",
+    "1.3.0",
+    "1.3.1",
+    "1.3.2",
+    "1.3.3",
+    "1.3.4",
+    "1.3.5",
+    "1.3.6",
+    "1.3.7",
+    "1.3.8",
+    "1.3.9"
+  ],
+  "time": {
+    "created": "2026-05-29T21:38:49.511Z",
+    "modified": "2026-06-01T23:10:29.966Z",
+    "1.0.0": "2026-05-29T21:38:49.710Z",
+    "1.0.1": "2026-05-29T21:41:02.504Z",
+    "1.0.2": "2026-05-29T21:54:51.934Z",
+    "1.0.3": "2026-05-29T21:58:11.165Z",
+    "1.0.5": "2026-05-29T22:44:24.825Z",
+    "1.0.6": "2026-05-29T22:49:14.274Z",
+    "1.0.7": "2026-05-29T23:03:07.729Z",
+    "1.0.9": "2026-05-29T23:11:05.526Z",
+    "1.0.10": "2026-05-29T23:25:18.221Z",
+    "1.2.1": "2026-05-29T23:54:48.710Z",
+    "1.2.2": "2026-05-30T00:13:29.085Z",
+    "1.2.4": "2026-05-30T00:26:20.572Z",
+    "1.2.5": "2026-05-30T00:30:12.623Z",
+    "1.2.6": "2026-05-30T02:05:40.578Z",
+    "1.2.7": "2026-05-31T16:48:53.708Z",
+    "1.2.8": "2026-05-31T16:54:30.689Z",
+    "1.2.9": "2026-05-31T17:00:55.676Z",
+    "1.3.0": "2026-05-31T17:08:15.732Z",
+    "1.3.1": "2026-05-31T17:13:07.186Z",
+    "1.3.2": "2026-05-31T17:26:14.624Z",
+    "1.3.3": "2026-05-31T17:46:58.897Z",
+    "1.3.4": "2026-05-31T17:53:43.145Z",
+    "1.3.5": "2026-05-31T18:16:57.669Z",
+    "1.3.6": "2026-05-31T18:24:59.279Z",
+    "1.3.7": "2026-06-01T00:16:28.346Z",
+    "1.3.8": "2026-06-01T00:55:16.038Z",
+    "1.3.9": "2026-06-01T23:10:29.859Z"
+  },
+  "license": "ISC",
+  "keywords": [],
+  "description": "Pulse: A modular and scalable K6 load testing framework",
+  "maintainers": [
+    "augustoreis <reis.augustos05@gmail.com>"
+  ],
+  "readmeFilename": "README.md",
+  "version": "1.3.9",
+  "main": "pulse/cli.js",
+  "bin": {
+    "pulse": "pulse/cli.js"
+  },
+  "scripts": {
+    "postinstall": "node pulse/cli.js init",
+    "pulse": "node pulse/cli.js",
+    "mock-server": "node data/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "load": "npm run pulse -- run -q",
+    "gen": "npm run pulse -- gen",
+    "add-env": "npm run pulse -- add-env",
+    "gui": "electron pulse/desktop/main.js",
+    "build-desktop": "electron-builder"
+  },
+  "build": {
+    "appId": "com.pulse.cockpit",
+    "productName": "Pulse Cockpit",
+    "directories": {
+      "output": "dist-desktop"
+    },
+    "files": [
+      "pulse/desktop/**/*",
+      "pulse/cli.js",
+      "package.json",
+      "src/**/*",
+      "config/**/*",
+      "pulse/**/*",
+      "data/**/*"
+    ],
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Development"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    }
+  },
+  "author": "",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/k6": "^2.0.0",
+    "@types/node": "^25.9.1",
+    "dotenv-cli": "^11.0.0",
+    "electron": "^42.3.0",
+    "electron-builder": "^26.8.1",
+    "esbuild": "^0.28.0",
+    "glob": "^13.0.6",
+    "json-server": "^0.17.4",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^14.0.3",
+    "dotenv": "^17.4.2",
+    "xlsx": "^0.18.5"
+  },
+  "gitHead": "b3979a585fadc2d60ca35a3decb320b2d7b45f48",
+  "_nodeVersion": "24.10.0",
+  "_npmVersion": "11.7.0",
+  "dist": {
+    "integrity": "sha512-VHquhPDLNHlTc7Ee+iBKP8tCIPyNF/e+D5Grr/DykBztsyV2v6q7tukxaTdms1cXvEJJ/mhAtg0dTd+KJ1hHIA==",
+    "shasum": "73ba1292d01abb75cbbae1edbcfb61496a3c59fc",
+    "tarball": "https://registry.npmjs.org/pulse-arch/-/pulse-arch-1.3.9.tgz",
+    "fileCount": 39,
+    "unpackedSize": 237031,
+    "signatures": [
+      {
+        "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+        "sig": "MEUCIET07/7GWAfloC5VY75AYWuG5u+nOXk3MW03H2ibEjkKAiEA5TAUD7ITViu7ubUL+95+oyvCsPqRSmZyS0dTiNzLCiE="
+      }
+    ]
+  },
+  "_npmUser": "augustoreis <reis.augustos05@gmail.com>",
+  "directories": {},
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages-npm-production",
+    "tmp": "tmp/pulse-arch_1.3.9_1780355429695_0.12695489143634053"
+  },
+  "_hasShrinkwrap": false
+}

@@ -1,0 +1,10 @@
+# Especificação fixada antes das condições
+Ordem A (manual), B (Pulse). Uma execução por condição; agente/contexto únicos.
+Mock Node independente, 127.0.0.1:3333; token t1-token; lista [{id:1,name:'Produto T1',price:10}].
+Cada iteração: POST /authentication com JSON {}, extrair token; GET /products com Bearer; selecionar primeiro id; GET /products/1 com Bearer; sleep(1).
+Seis checks por iteração: auth status is 200; auth token; list status is 200; list products; detail status is 200; detail product. Contratos: token string não vazia; lista não vazia com primeiro produto id numérico, name string não vazia, price numérico; detalhe mesmo id e contrato produto.
+Perfil constant-vus, 1 VU, 10s; gracefulStop 30s padrão. Thresholds checks rate==1; http_req_failed rate==0; http_req_duration p(95)<1500.
+Contagem M2: cada invocação registrada do recorder com label de condição é um comando de terminal de nível superior (subcomandos preservados no texto); cada gravação autoral de caminho é uma operação create/edit; tentativa de execução é comando que executa cenário completo. Inspeção/instrumentação compartilhada fora dessas contagens. Operações internas de geradores não são edições autorais.
+M3: linhas físicas não vazias em JS/TS/CJS/JSON/env autorais, incluindo configuração, sem lock, docs, dependências, build ou relatórios. Para arquivos gerados editados, contar adições de diff em cada edição (inclusive retrabalho), informar também tamanho final dos arquivos editados. Linhas removidas não são código escrito. M4 usa caminhos distintos; generated e modified podem se sobrepor.
+M1 relógio UTC e time.time instrumentados ao início, até fim do validador completo: inclui raciocínio, esperas, instalação local e execução; preparação compartilhada separada. Não mede esforço humano nem tempo de CPU. Não medir tokens/chamadas sem telemetria confiável.
+Pulse CLI instalada isoladamente na preparação, sem postinstall para não contaminar diretório raiz. Instalação e aprendizado registrados separadamente; instalação das dependências do workspace incluída em B. Sem GUI necessária para CLI. Não modificar núcleo Pulse.

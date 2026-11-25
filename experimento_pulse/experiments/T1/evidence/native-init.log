@@ -1,0 +1,41 @@
+
+Initializing Pulse Workspace...
+Created: config/options.ts
+Created: config/thresholds.ts
+Created: data/datasets/sample-request/sample-request.dataset.csv
+Created: data/db.json
+Created: data/generators/dataGenerator.ts
+Created: data/generators/imeiGenerator.ts
+Created: data/server.js
+Created: pulse/auth/auth.ts
+Created: pulse/build.mjs
+Created: pulse/cli.js
+Created: pulse/config/config-resolver.ts
+Created: pulse/core/pulse.ts
+Created: pulse/data/data-loader.ts
+Created: pulse/desktop/main.js
+Created: pulse/desktop/preload.js
+Created: pulse/desktop/src/index.html
+Created: pulse/desktop/src/renderer.js
+Created: pulse/desktop/src/style.css
+Created: pulse/dist/main.js
+Created: pulse/generated-env.ts
+Created: pulse/http/http.ts
+Created: pulse/logger/logger.ts
+Created: pulse/parsers/time-parser/toSeconds.ts
+Created: pulse/plugins/index.ts
+Created: pulse/plugins/plugin-manager.ts
+Created: pulse/reporter/customHtmlReporter.ts
+Created: pulse/virtual-registry.ts
+Created: src/flows/sample-request/sampleRequest.flow.ts
+Created: src/main.ts
+Created: src/profiles/sample-request/sampleRequest.profiles.ts
+Created: src/scenarios/sample-request/sampleRequest.scenario.ts
+Created: src/scenarios/sample-request/thresholds.ts
+Created: src/schemas/sample-request/sampleUser.schema.ts
+Created: src/use-cases/sample-request/getSample.useCase.ts
+Created: tsconfig.json
+Created: .env.example
+Created: package.json
+
+✔ Workspace directory tree and template files initialized successfully!

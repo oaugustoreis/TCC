@@ -1,0 +1,19 @@
+{
+  "original_core_unchanged": true,
+  "generated_changed_paths": [
+    "pulse/generated-env.ts",
+    "pulse/virtual-registry.ts",
+    "pulse/dist/main.js",
+    "src/flows/catalog/catalog.flow.ts",
+    "src/profiles/catalog/catalog.profiles.ts",
+    "src/scenarios/catalog/catalog.scenario.ts",
+    "src/scenarios/catalog/thresholds.ts",
+    "src/schemas/catalog/catalog.schema.ts",
+    "src/use-cases/catalog/getCatalog.useCase.ts"
+  ],
+  "build_regenerated_paths": [
+    "pulse/dist/main.js",
+    "pulse/generated-env.ts",
+    "pulse/virtual-registry.ts"
+  ]
+}

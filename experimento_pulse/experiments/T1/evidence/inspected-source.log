@@ -1,0 +1,1617 @@
+{
+  "name": "pulse-arch",
+  "version": "1.3.9",
+  "description": "Pulse: A modular and scalable K6 load testing framework",
+  "main": "pulse/cli.js",
+  "bin": {
+    "pulse": "./pulse/cli.js"
+  },
+  "scripts": {
+    "postinstall": "node pulse/cli.js init",
+    "pulse": "node pulse/cli.js",
+    "mock-server": "node data/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "load": "npm run pulse -- run -q",
+    "gen": "npm run pulse -- gen",
+    "add-env": "npm run pulse -- add-env",
+    "gui": "electron pulse/desktop/main.js",
+    "build-desktop": "electron-builder"
+  },
+  "build": {
+    "appId": "com.pulse.cockpit",
+    "productName": "Pulse Cockpit",
+    "directories": {
+      "output": "dist-desktop"
+    },
+    "files": [
+      "pulse/desktop/**/*",
+      "pulse/cli.js",
+      "package.json",
+      "src/**/*",
+      "config/**/*",
+      "pulse/**/*",
+      "data/**/*"
+    ],
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Development"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "files": [
+    "pulse/**/*",
+    "src/**/*",
+    "config/**/*",
+    "data/**/*",
+    "tsconfig.json",
+    ".env.example",
+    "template.package.json"
+  ],
+  "devDependencies": {
+    "@types/k6": "^2.0.0",
+    "@types/node": "^25.9.1",
+    "dotenv-cli": "^11.0.0",
+    "electron": "^42.3.0",
+    "electron-builder": "^26.8.1",
+    "esbuild": "^0.28.0",
+    "glob": "^13.0.6",
+    "json-server": "^0.17.4",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^14.0.3",
+    "dotenv": "^17.4.2",
+    "xlsx": "^0.18.5"
+  }
+}
+#!/usr/bin/env node
+
+const { Command } = require("commander");
+const chalk = require("chalk");
+const fs = require("fs");
+const path = require("path");
+const { execSync, execFileSync, spawn } = require("child_process");
+const packageJson = require("../package.json");
+
+if (fs.existsSync(".env")) {
+    require("dotenv").config({ quiet: true });
+}
+
+function isK6Installed() {
+    try {
+        execSync("k6 version", { stdio: "ignore" });
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
+
+function findLocalK6Path() {
+    const possiblePaths = [];
+
+    if (process.platform === "win32") {
+        const localAppData = process.env.LOCALAPPDATA || path.join(process.env.USERPROFILE || "", "AppData", "Local");
+        const programData = process.env.ProgramData || "C:\\ProgramData";
+        const programFiles = process.env.ProgramFiles || "C:\\Program Files";
+        const programFilesX86 = process.env["ProgramFiles(x86)"] || "C:\\Program Files (x86)";
+
+        possiblePaths.push(
+            path.join(localAppData, "Microsoft", "WinGet", "Links", "k6.exe"),
+            path.join(programFiles, "k6", "k6.exe"),
+            path.join(programFilesX86, "k6", "k6.exe"),
+            path.join(programData, "chocolatey", "bin", "k6.exe")
+        );
+    } else if (process.platform === "darwin") {
+        possiblePaths.push(
+            "/opt/homebrew/bin/k6",
+            "/usr/local/bin/k6"
+        );
+    } else if (process.platform === "linux") {
+        possiblePaths.push(
+            "/usr/bin/k6",
+            "/usr/local/bin/k6",
+            "/snap/bin/k6"
+        );
+    }
+
+    for (const p of possiblePaths) {
+        if (fs.existsSync(p)) {
+            return p;
+        }
+    }
+
+    return null;
+}
+
+function ensureK6Installed(forceExit = true) {
+    if (isK6Installed() || findLocalK6Path()) {
+        return true;
+    }
+
+    console.log(chalk.yellow("\n⚠️  k6 is not installed on this system."));
+    console.log(chalk.cyan("Pulse is powered by k6 and requires it to run load tests."));
+    console.log(chalk.cyan("Attempting to install k6 automatically...\n"));
+
+    const platform = process.platform;
+
+    if (platform === "win32") {
+        try {
+            console.log(chalk.gray("Checking for winget..."));
+            execSync("winget --version", { stdio: "ignore" });
+            console.log(chalk.green("Found winget! Installing k6 via winget..."));
+            execSync("winget install k6 --source winget --silent --accept-package-agreements --accept-source-agreements", { stdio: "inherit" });
+            console.log(chalk.green.bold("\n✔ k6 installed successfully via winget!"));
+            return true;
+        } catch (wingetErr) {
+            console.log(chalk.yellow("winget failed or not found. Trying Chocolatey..."));
+            try {
+                execSync("choco --version", { stdio: "ignore" });
+                console.log(chalk.green("Found Chocolatey! Installing k6 via Chocolatey..."));
+                execSync("choco install k6 -y", { stdio: "inherit" });
+                console.log(chalk.green.bold("\n✔ k6 installed successfully via Chocolatey!"));
+                return true;
+            } catch (chocoErr) {
+                console.error(chalk.red.bold("\n✖ Could not automatically install k6."));
+                console.log(chalk.white("Please install k6 manually on Windows using one of the following methods:"));
+                console.log(chalk.cyan("  - Winget: ") + chalk.white("winget install k6"));
+                console.log(chalk.cyan("  - Chocolatey: ") + chalk.white("choco install k6"));
+                console.log(chalk.cyan("  - Scoop: ") + chalk.white("scoop install k6"));
+                console.log(chalk.cyan("  - Direct Download: ") + chalk.white("https://dl.k6.io/msi/k6-latest-amd64.msi"));
+                if (forceExit) process.exit(1);
+                return false;
+            }
+        }
+    } else if (platform === "darwin") {
+        try {
+            console.log(chalk.gray("Checking for Homebrew..."));
+            execSync("brew --version", { stdio: "ignore" });
+            console.log(chalk.green("Found Homebrew! Installing k6 via Homebrew..."));
+            execSync("brew install k6", { stdio: "inherit" });
+            console.log(chalk.green.bold("\n✔ k6 installed successfully via Homebrew!"));
+            return true;
+        } catch (brewErr) {
+            console.error(chalk.red.bold("\n✖ Homebrew not found. Could not automatically install k6."));
+            console.log(chalk.white("Please install k6 manually on macOS:"));
+            console.log(chalk.cyan("  - Brew: ") + chalk.white("brew install k6"));
+            if (forceExit) process.exit(1);
+            return false;
+        }
+    } else if (platform === "linux") {
+        console.log(chalk.gray("Checking Linux package managers..."));
+        let installed = false;
+        
+        try {
+            execSync("apt-get --version", { stdio: "ignore" });
+            console.log(chalk.green("Found apt-get! Attempting to register repository and install k6..."));
+            const script = `
+                sudo gpg -k && \
+                curl -fsSL https://dl.k6.io/key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/k6-archive-keyring.gpg && \
+                echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list && \
+                sudo apt-get update && \
+                sudo apt-get install k6 -y
+            `;
+            execSync(script, { stdio: "inherit" });
+            installed = true;
+        } catch (e) {
+            try {
+                execSync("dnf --version", { stdio: "ignore" });
+                console.log(chalk.green("Found dnf! Installing k6..."));
+                execSync("sudo dnf install https://dl.k6.io/rpm/repo.rpm -y && sudo dnf install k6 -y", { stdio: "inherit" });
+                installed = true;
+            } catch (e2) {
+                try {
+                    execSync("snap --version", { stdio: "ignore" });
+                    console.log(chalk.green("Found snap! Installing k6..."));
+                    execSync("sudo snap install k6", { stdio: "inherit" });
+                    installed = true;
+                } catch (e3) {
+                    // Fail gracefully
+                }
+            }
+        }
+
+        if (installed) {
+            console.log(chalk.green.bold("\n✔ k6 installed successfully!"));
+            return true;
+        } else {
+            console.error(chalk.red.bold("\n✖ Could not automatically install k6 on Linux."));
+            console.log(chalk.white("Please install k6 manually using your package manager. See official documentation:"));
+            console.log(chalk.cyan("  https://grafana.com/docs/k6/latest/set-up/install-k6/#linux"));
+            if (forceExit) process.exit(1);
+            return false;
+        }
+    } else {
+        console.error(chalk.red.bold(`\n✖ Unsupported platform: ${platform}.`));
+        console.log(chalk.white("Please install k6 manually from:"));
+        console.log(chalk.cyan("  https://grafana.com/docs/k6/latest/set-up/install-k6/"));
+        if (forceExit) process.exit(1);
+        return false;
+    }
+}
+
+function checkDependencies() {
+    if (!fs.existsSync("node_modules")) {
+        console.error(chalk.red.bold("\n✖ Error: 'node_modules' folder not found."));
+        console.error(chalk.yellow("It looks like you haven't installed dependencies in this workspace yet."));
+        console.log(chalk.cyan("Please run 'npm install' to install dependencies before executing tests or opening the GUI.\n"));
+        process.exit(1);
+    }
+}
+
+const program = new Command();
+
+program
+    .name("pulse")
+    .description("Pulse: Modular Load Testing Framework powered by K6")
+    .version(packageJson.version)
+    .addHelpText(
+        "before",
+        chalk.cyan.bold(`
+██████╗ ██╗   ██╗██╗     ███████╗███████╗
+██╔══██╗██║   ██║██║     ██╔════╝██╔════╝
+██████╔╝██║   ██║██║     ███████╗█████╗  
+██╔═══╝ ██║   ██║██║     ╚════██║██╔══╝  
+██║     ╚██████╔╝███████╗███████║███████║
+╚═╝      ╚═════╝ ╚══════╝╚══════╝╚══════╝
+
+Pulse: Performance Engineering Runtime
+    `),
+    );
+
+program
+    .command("run")
+    .description("Execute a load test scenario using K6")
+    .argument("[scenario]", "Scenario name")
+    .argument("[env]", "Target environment", "dev")
+    .option("-v, --vus <number>", "Override Virtual Users")
+    .option("-d, --duration <string>", "Override test duration")
+    .allowUnknownOption()
+    .action((scenario, envArg, options, command) => {
+        checkDependencies();
+        const finalScenario = scenario || process.env.SCENARIO;
+        const finalEnv = envArg || process.env.ENV || "dev";
+
+        if (!finalScenario) {
+            console.error(chalk.red.bold("\n✖ Error: Scenario not provided."));
+            console.error(chalk.red.bold("\n✖ Note: You need to create a .env file before running the application."));
+            console.log(
+                chalk.yellow(
+                    "Example: node cli.js run sample_request_smoke_test dev",
+                ),
+            );
+            process.exit(1);
+        }
+
+        console.log(
+            chalk.blue.bold(
+                "\n═══════════════════════════════════════════════════════",
+            ),
+        );
+        console.log(`${chalk.yellow("Scenario")}   ${finalScenario}`);
+        console.log(`${chalk.yellow("Environment")} ${finalEnv}`);
+
+        process.env.SCENARIO = finalScenario;
+        process.env.ENV = finalEnv;
+
+        try {
+            console.log(chalk.gray("Building TypeScript..."));
+            const localBuildScript = "pulse/build.mjs";
+            const globalBuildScript = path.join(__dirname, "build.mjs");
+            const buildScript = fs.existsSync(localBuildScript) ? localBuildScript : globalBuildScript;
+            execFileSync("node", [buildScript], { stdio: "inherit" });
+        } catch (error) {
+            console.error(chalk.red.bold("\n✖ Build failed. Aborting k6 run."));
+            process.exit(1);
+        }
+
+        const k6Args = ["run", "--log-format", "raw", "--quiet"];
+
+        k6Args.push("-e", `SCENARIO=${finalScenario}`);
+        k6Args.push("-e", `ENV=${finalEnv}`);
+
+        if (options.vus) {
+            k6Args.push("-e", `VUS=${options.vus}`);
+        }
+        if (options.duration) {
+            k6Args.push("-e", `DURATION=${options.duration}`);
+        }
+
+        const dotenv = require("dotenv").config();
+        const envKeys = Object.keys(dotenv.parsed || {});
+        envKeys.forEach((key) => {
+            if (process.env[key] && key !== "SCENARIO" && key !== "ENV") {
+                k6Args.push("-e", `${key}=${process.env[key]}`);
+            }
+        });
+
+        if (options.vus) {
+            k6Args.push("--vus", options.vus);
+        }
+        if (options.duration) {
+            k6Args.push("--duration", options.duration);
+        }
+
+        const extraArgsArray = command.args.filter(
+            (arg) => arg !== scenario && arg !== envArg
+        );
+        k6Args.push(...extraArgsArray);
+
+        k6Args.push("pulse/dist/main.js");
+
+        console.log(
+            chalk.blue.bold(
+                "\n═══════════════════════════════════════════════════════\n",
+            ),
+        );
+
+        let k6Cmd = "k6";
+        if (!isK6Installed()) {
+            const localK6 = findLocalK6Path();
+            if (localK6) {
+                k6Cmd = localK6;
+            } else {
+                ensureK6Installed(true);
+                if (isK6Installed()) {
+                    k6Cmd = "k6";
+                } else {
+                    const postInstallK6 = findLocalK6Path();
+                    if (postInstallK6) {
+                        k6Cmd = postInstallK6;
+                    } else {
+                        console.error(chalk.red.bold("\n✖ k6 was installed but is not yet available in the environment path."));
+                        console.log(chalk.yellow("Please restart your terminal/IDE and try running the command again."));
+                        process.exit(1);
+                    }
+                }
+            }
+        }
+
+        try {
+            execFileSync(k6Cmd, k6Args, { stdio: "inherit" });
+        } catch (error) {
+            process.exit(error.status || 1);
+        }
+    });
+
+program
+    .command("mock")
+    .description("Start the integrated mock server")
+    .action(() => {
+        console.log(chalk.green.bold("\n🚀 Starting Pulse Mock Server..."));
+        if (!fs.existsSync("data/server.js")) {
+            console.error(chalk.red.bold("\n✖ Error: Mock server script not found at 'data/server.js'."));
+            console.log(chalk.yellow("Make sure you run this command inside an initialized Pulse workspace."));
+            process.exit(1);
+        }
+        try {
+            execFileSync("node", ["data/server.js"], { stdio: "inherit" });
+        } catch (error) {
+            console.error(chalk.red.bold("\n✖ Failed to run Mock Server."));
+            process.exit(1);
+        }
+    });
+
+program
+    .command("init")
+    .description("Initialize the framework workspace directories and template files")
+    .action(() => {
+        console.log(chalk.green.bold("\nInitializing Pulse Workspace..."));
+        
+        const packageRoot = path.join(__dirname, "..");
+        const itemsToCopy = [
+            "config",
+            "data",
+            "pulse",
+            "src",
+            "tsconfig.json",
+            ".env.example"
+        ];
+
+        function copyRecursiveSync(src, dest) {
+            const exists = fs.existsSync(src);
+            const stats = exists && fs.statSync(src);
+            const isDirectory = exists && stats.isDirectory();
+            if (isDirectory) {
+                if (!fs.existsSync(dest)) {
+                    fs.mkdirSync(dest, { recursive: true });
+                }
+                fs.readdirSync(src).forEach((childItemName) => {
+                    copyRecursiveSync(
+                        path.join(src, childItemName),
+                        path.join(dest, childItemName)
+                    );
+                });
+            } else {
+                if (!fs.existsSync(dest)) {
+                    fs.copyFileSync(src, dest);
+                    console.log(chalk.gray(`Created: ${path.relative(process.cwd(), dest)}`));
+                }
+            }
+        }
+
+        itemsToCopy.forEach((item) => {
+            const srcPath = path.join(packageRoot, item);
+            const destPath = path.join(process.cwd(), item);
+            if (fs.existsSync(srcPath)) {
+                copyRecursiveSync(srcPath, destPath);
+            }
+        });
+
+        const templatePkgPath = path.join(packageRoot, "template.package.json");
+        const destPkgPath = path.join(process.cwd(), "package.json");
+        if (fs.existsSync(templatePkgPath) && !fs.existsSync(destPkgPath)) {
+            fs.copyFileSync(templatePkgPath, destPkgPath);
+            console.log(chalk.gray("Created: package.json"));
+        }
+
+        console.log(
+            chalk.green.bold(
+                "\n✔ Workspace directory tree and template files initialized successfully!",
+            ),
+        );
+
+        ensureK6Installed(false);
+    });
+
+program
+    .command("gen")
+    .description("Generate a new load test scenario boilerplate")
+    .argument("<name>", "Name of the scenario (kebab-case)")
+    .action((name) => {
+        if (!fs.existsSync("tsconfig.json")) {
+            console.error(chalk.red.bold("\n✖ Error: Not in an initialized Pulse workspace (missing tsconfig.json)."));
+            console.log(chalk.yellow("Please run 'pulse init' first."));
+            process.exit(1);
+        }
+
+        if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(name)) {
+            console.error(
+                chalk.red.bold(
+                    "\n✖ Error: Invalid scenario name. Name must be in kebab-case (e.g., 'my-scenario-name') and contain only lowercase letters, numbers, and hyphens."
+                )
+            );
+            process.exit(1);
+        }
+
+        const baseDir = path.resolve(process.cwd(), "src");
+        const targetDirs = [
+            path.resolve(baseDir, "schemas", name),
+            path.resolve(baseDir, "use-cases", name),
+            path.resolve(baseDir, "flows", name),
+            path.resolve(baseDir, "profiles", name),
+            path.resolve(baseDir, "scenarios", name),
+        ];
+
+        for (const targetDir of targetDirs) {
+            if (!targetDir.startsWith(baseDir)) {
+                console.error(chalk.red.bold("\n✖ Error: Path traversal detected."));
+                process.exit(1);
+            }
+        }
+
+        const camelName = name.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+        const capitalName =
+            camelName.charAt(0).toUpperCase() + camelName.slice(1);
+        console.log(
+            chalk.cyan(`Generating scenario boilerplate for "${name}"...`),
+        );
+
+        const schemaDir = path.join("src/schemas", name);
+        fs.mkdirSync(schemaDir, { recursive: true });
+        fs.writeFileSync(
+            path.join(schemaDir, `${camelName}.schema.ts`),
+            `export const ${camelName}Schema = {
+    type: "object",
+    required: ["id"],
+    properties: {
+        id: { type: "number" }
+    }
+};
+`,
+        );
+
+        const ucDir = path.join("src/use-cases", name);
+        fs.mkdirSync(ucDir, { recursive: true });
+        fs.writeFileSync(
+            path.join(ucDir, `get${capitalName}.useCase.ts`),
+            `import { get } from "@pulse/http";
+import { ps } from "@pulse/core";
+import { ${camelName}Schema } from "@src/schemas/${name}/${camelName}.schema";
+
+export interface ${capitalName}Params { baseUrl: string; token: string; }
+
+export function get${capitalName}({ baseUrl, token }: ${capitalName}Params) {
+    const url = \`\${baseUrl}/${name}\`;
+    const res = get(url, { token }, 200, "get${capitalName}");
+
+    ps.expect(res)
+        .status(200)
+        .bodyNotEmpty()
+        .responseTimeLessThan(1000)
+        .jsonSchema(${camelName}Schema);
+
+    return res;
+}
+`,
+        );
+
+        const flowDir = path.join("src/flows", name);
+        fs.mkdirSync(flowDir, { recursive: true });
+        fs.writeFileSync(
+            path.join(flowDir, `${camelName}.flow.ts`),
+            `import { ps } from "@pulse/core";
+import { get${capitalName} } from "@src/use-cases/${name}/get${capitalName}.useCase";
+
+export interface FlowParams { baseUrl: string; token: string; }
+
+export function ${camelName}Flow({ baseUrl, token }: FlowParams): void {
+    ps.group("${capitalName} Flow", () => {
+        get${capitalName}({ baseUrl, token });
+        ps.sleep(1);
+    });
+}
+`,
+        );
+
+        const profileDir = path.join("src/profiles", name);
+        fs.mkdirSync(profileDir, { recursive: true });
+        fs.writeFileSync(
+            path.join(profileDir, `${camelName}.profiles.ts`),
+            `import { Options } from "k6/options";
+
+export const ${camelName}Profiles: Options["scenarios"] = {
+    "${name}_smoke_test": {
+        executor: "shared-iterations",
+        exec: "engine",
+        vus: 1,
+        iterations: 1,
+    },
+};
+`,
+        );
+
+        const scenarioDir = path.join("src/scenarios", name);
+        fs.mkdirSync(scenarioDir, { recursive: true });
+        fs.writeFileSync(
+            path.join(scenarioDir, `${camelName}.scenario.ts`),
+            `import { Env, configResolver } from "@pulse/config";
+import { ${camelName}Flow } from "@src/flows/${name}/${camelName}.flow";
+import { ps } from "@pulse/core";
+
+export function setup${capitalName}(): { baseUrl: string; token: string; } {
+    const envSuffix = (Env.ENV || "stg").toUpperCase();
+    const baseUrl = Env[\`BASE_URL_\${envSuffix}\`] || Env.BASE_URL || "http://localhost:3333";
+    const token = Env[\`TOKEN_\${envSuffix}\`] || Env.TOKEN || "no-token";
+
+    return { baseUrl, token };
+}
+
+export function ${camelName}Scenario(data: { baseUrl: string; token: string; }): void {
+    ${camelName}Flow({
+        baseUrl: data.baseUrl,
+        token: data.token,
+    });
+}
+`,
+        );
+
+        fs.writeFileSync(
+            path.join(scenarioDir, "thresholds.ts"),
+            `export const thresholds = {
+    http_req_duration: ["p(95)<1500"],
+    http_req_failed: ["rate<0.01"],
+};
+`,
+        );
+
+        console.log(
+            chalk.green.bold(
+                `✔ Boilerplate for scenario "${name}" successfully generated!`,
+            ),
+        );
+    });
+
+program
+    .command("add-env")
+    .description("Add a key-value environment variable to .env")
+    .argument("<key>", "Variable key name")
+    .argument("<value>", "Variable value")
+    .action((key, value) => {
+        if (!fs.existsSync("tsconfig.json")) {
+            console.error(chalk.red.bold("\n✖ Error: Not in an initialized Pulse workspace (missing tsconfig.json)."));
+            console.log(chalk.yellow("Please run 'pulse init' first."));
+            process.exit(1);
+        }
+
+        if (!/^[A-Za-z0-9_]+$/.test(key)) {
+            console.error(
+                chalk.red.bold(
+                    "\n✖ Error: Invalid key name. Only alphanumeric characters and underscores are allowed."
+                )
+            );
+            process.exit(1);
+        }
+
+        if (value.includes("\n") || value.includes("\r")) {
+            console.error(
+                chalk.red.bold(
+                    "\n✖ Error: Value cannot contain newline characters."
+                )
+            );
+            process.exit(1);
+        }
+
+        const envPath = ".env";
+        let content = "";
+        if (fs.existsSync(envPath)) {
+            content = fs.readFileSync(envPath, "utf8");
+        }
+
+        const lines = content.split("\n");
+        let updated = false;
+        const newLines = lines.map((line) => {
+            if (line.trim().startsWith(`${key}=`)) {
+                updated = true;
+                return `${key}=${value}`;
+            }
+            return line;
+        });
+
+        if (!updated) {
+            newLines.push(`${key}=${value}`);
+        }
+
+        fs.writeFileSync(envPath, newLines.join("\n"));
+        console.log(
+            chalk.green.bold(`✔ Env var ${key} updated successfully in .env!`),
+        );
+    });
+
+function findZipRecursively(dir, fileName) {
+    if (!fs.existsSync(dir)) return null;
+
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+        const fullPath = path.join(dir, file);
+        try {
+            const stat = fs.statSync(fullPath);
+            if (stat.isDirectory()) {
+                const found = findZipRecursively(fullPath, fileName);
+                if (found) return found;
+            } else if (file === fileName) {
+                return fullPath;
+            }
+        } catch (e) {
+            // Ignore stat errors
+        }
+    }
+    return null;
+}
+
+function launchGui() {
+    console.log(chalk.green.bold("\nLaunching Pulse Cockpit Desktop..."));
+    const desktopPath = "pulse/desktop/main.js";
+    if (!fs.existsSync(desktopPath)) {
+        console.error(
+            chalk.red.bold(
+                `\n✖ Error: Desktop entrypoint not found at ${desktopPath}.\nMake sure you run this command inside an initialized Pulse workspace.`
+            )
+        );
+        process.exit(1);
+    }
+
+    try {
+        let electronPath;
+        
+        const localElectronDir = path.join(process.cwd(), "node_modules", "electron");
+        const pathTxtPath = path.join(localElectronDir, "path.txt");
+        const installScript = path.join(localElectronDir, "install.js");
+        
+        // Self-heal: If local electron package is installed but binary was never fully downloaded/extracted
+        if (fs.existsSync(localElectronDir) && !fs.existsSync(pathTxtPath)) {
+            console.log(chalk.yellow("Local Electron binary is missing (corrupted installation)."));
+            console.log(chalk.cyan("Running Electron's local installation script..."));
+            try {
+                if (fs.existsSync(installScript)) {
+                    execFileSync("node", [installScript], { stdio: "inherit" });
+                }
+            } catch (installErr) {
+                console.warn(chalk.yellow("⚠️ Warning: Local Electron install script failed to execute."));
+            }
+
+            // Check if path.txt is STILL missing (Node's extract-zip fails silently on Windows with Node v26)
+            if (!fs.existsSync(pathTxtPath) && process.platform === "win32") {
+                console.log(chalk.yellow("Windows Node extract-zip bug detected. Running robust PowerShell extraction..."));
+                try {
+                    let electronVersion = "42.3.0";
+                    const pkgJsonPath = path.join(localElectronDir, "package.json");
+                    if (fs.existsSync(pkgJsonPath)) {
+                        const pkg = JSON.parse(fs.readFileSync(pkgJsonPath, "utf8"));
+                        electronVersion = pkg.version;
+                    }
+
+                    const zipName = `electron-v${electronVersion}-win32-x64.zip`;
+                    const cacheDir = path.join(process.env.LOCALAPPDATA || "", "electron", "Cache");
+                    
+                    // Search recursively for the cached zip (as newer @electron/get shards it in subdirectories)
+                    const zipPath = findZipRecursively(cacheDir, zipName);
+                    const distPath = path.join(localElectronDir, "dist");
+
+                    if (zipPath && fs.existsSync(zipPath)) {
+                        console.log(chalk.cyan(`Found cached zip recursively at: ${zipPath}`));
+                        console.log(chalk.cyan("Extracting using PowerShell..."));
+                        
+                        if (!fs.existsSync(distPath)) {
+                            fs.mkdirSync(distPath, { recursive: true });
+                        }
+
+                        const psCmd = `Expand-Archive -Path '${zipPath}' -DestinationPath '${distPath}' -Force`;
+                        execFileSync("powershell.exe", ["-Command", psCmd], { stdio: "inherit" });
+                        
+                        // Write path.txt
+                        fs.writeFileSync(path.join(localElectronDir, "path.txt"), "electron.exe");
+                        
+                        // Move electron.d.ts if it exists
+                        const srcTypeDefPath = path.join(distPath, "electron.d.ts");
+                        const targetTypeDefPath = path.join(localElectronDir, "electron.d.ts");
+                        if (fs.existsSync(srcTypeDefPath)) {
+                            fs.renameSync(srcTypeDefPath, targetTypeDefPath);
+                        }
+                        
+                        console.log(chalk.green("✔ Electron binary extracted and configured successfully via PowerShell!"));
+                    } else {
+                        console.error(chalk.red(`✖ Cached zip not found recursively in: ${cacheDir} for name: ${zipName}`));
+                    }
+                } catch (peErr) {
+                    console.error(chalk.red(`✖ PowerShell extraction failed: ${peErr.message}`));
+                }
+            }
+        }
+        
+        // 1. Try to read from node_modules/electron/path.txt to resolve the local binary directly
+        if (fs.existsSync(pathTxtPath)) {
+            try {
+                const relativeBinPath = fs.readFileSync(pathTxtPath, "utf8").trim();
+                const resolvedPath = path.join(localElectronDir, "dist", relativeBinPath);
+                if (fs.existsSync(resolvedPath)) {
+                    electronPath = resolvedPath;
+                }
+            } catch (e) {
+                // Fail silently and fall back
+            }
+        }
+
+        // 2. Fallbacks
+        if (!electronPath) {
+            try {
+                // Try requiring local electron package (which returns the binary path)
+                electronPath = require(path.join(process.cwd(), "node_modules", "electron"));
+            } catch (e) {
+                try {
+                    electronPath = require("electron");
+                } catch (e2) {
+                    // 3. Ultimate fallback: run npx electron with shell option on Windows to avoid EINVAL
+                    const npxCmd = process.platform === "win32" ? "npx.cmd" : "npx";
+                    execFileSync(npxCmd, ["electron", desktopPath], { 
+                        stdio: "inherit", 
+                        shell: process.platform === "win32" 
+                    });
+                    return;
+                }
+            }
+        }
+
+        execFileSync(electronPath, [desktopPath], { stdio: "inherit" });
+    } catch (error) {
+        console.error(chalk.red.bold("\n✖ Failed to launch desktop GUI."));
+        
+        const isElectronBug = error.message && (
+            error.message.includes("ENOENT") || 
+            error.message.includes("path.txt") ||
+            error.message.includes("electron")
+        );
+
+        if (isElectronBug || !fs.existsSync(path.join(process.cwd(), "node_modules", "electron", "path.txt"))) {
+            console.log(chalk.yellow("\n⚠️  Detectamos que a instalação do Electron na sua máquina está incompleta ou corrompida."));
+            console.log(chalk.white("Isso é um problema comum no Windows (geralmente causado por bloqueios de antivírus ou falhas de rede durante o 'npm install')."));
+            console.log(chalk.cyan("\nComo corrigir esse problema de forma fácil:"));
+            console.log(chalk.white("\n👉 Opção 1 (Recomendada): Reinstalação Limpa"));
+            console.log(chalk.gray("   1. Delete a pasta 'node_modules' do projeto (certifique-se de fechar editores de código para liberar travas do Windows)."));
+            console.log(chalk.gray("   2. Execute 'npm install' novamente para reinstalar todas as dependências de forma limpa."));
+            
+            console.log(chalk.white("\n👉 Opção 2 (Segura & Limpa): Instalação Global"));
+            console.log(chalk.gray("   1. Instale o Electron de forma global no seu Windows: ") + chalk.cyan("npm install -g electron"));
+            console.log(chalk.gray("   2. Abra a interface chamando o motor global diretamente: ") + chalk.cyan("electron pulse/desktop/main.js"));
+            
+            console.log(chalk.white("\n👉 Opção 3 (Override Oficial do Electron):"));
+            console.log(chalk.gray("   1. Baixe o arquivo 'electron-v42.3.0-win32-x64.zip' da página de Releases oficiais do Electron no GitHub."));
+            console.log(chalk.gray("   2. Descompacte o conteúdo em uma pasta (ex: 'C:\\Electron')."));
+            console.log(chalk.gray("   3. Defina a variável de ambiente no seu terminal antes de rodar: ") + chalk.cyan("$env:ELECTRON_OVERRIDE_DIST_PATH=\"C:\\Electron\"\n"));
+        } else {
+            if (error.message) {
+                console.error(chalk.red(`Details: ${error.message}`));
+            }
+            if (error.stderr) {
+                console.error(chalk.red(`Error Output:\n${error.stderr.toString()}`));
+            }
+        }
+        process.exit(1);
+    }
+}
+
+program
+    .command("gui")
+    .description("Launch the Pulse Cockpit Dashboard")
+    .action(() => {
+        checkDependencies();
+        launchGui();
+    });
+
+program
+    .command("open")
+    .description("Open framework components (e.g. 'gui')")
+    .argument("<component>", "Component to open ('gui')")
+    .action((component) => {
+        if (component === "gui") {
+            checkDependencies();
+            launchGui();
+        } else {
+            console.error(chalk.red.bold(`\n✖ Unknown component: ${component}`));
+            process.exit(1);
+        }
+    });
+
+program.parse(process.argv);
+
+import fs from "fs";
+import path from "path";
+import esbuild from "esbuild";
+import { fileURLToPath } from "url";
+import dotenv from "dotenv";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+function generateEnvTypes() {
+    const envPath = path.join(__dirname, "../.env");
+    if (!fs.existsSync(envPath)) return "";
+
+    const envConfig = dotenv.parse(fs.readFileSync(envPath));
+    const keys = Object.keys(envConfig);
+
+    let content = `// AUTO-GENERATED ENV TYPES - DO NOT EDIT\n`;
+    content += `export interface GeneratedEnv {\n`;
+    keys.forEach((key) => {
+        content += `    ${key}: string;\n`;
+    });
+    content += `    [key: string]: string | undefined;\n`;
+    content += `}\n\n`;
+
+    content += `export const RawEnv = {\n`;
+    keys.forEach((key) => {
+        content += `    ${key}: __ENV.${key},\n`;
+    });
+    content += `} as GeneratedEnv;\n`;
+
+    return content;
+}
+
+function findModuleForScenario(targetScenario) {
+    const profilesDir = path.join(__dirname, "../src/profiles");
+    if (!fs.existsSync(profilesDir)) return null;
+
+    const folders = fs.readdirSync(profilesDir);
+    for (const folder of folders) {
+        const folderPath = path.join(profilesDir, folder);
+        if (!fs.statSync(folderPath).isDirectory()) continue;
+
+        const files = fs.readdirSync(folderPath);
+        for (const file of files) {
+            if (file.endsWith(".profiles.ts")) {
+                const content = fs.readFileSync(
+                    path.join(folderPath, file),
+                    "utf8",
+                );
+                if (
+                    content.includes(`"${targetScenario}"`) ||
+                    content.includes(`'${targetScenario}'`) ||
+                    content.includes(`${targetScenario}:`)
+                ) {
+                    return folder;
+                }
+            }
+        }
+    }
+    return null;
+}
+
+function discoverScenarios() {
+    const scenariosDir = path.join(__dirname, "../src/scenarios");
+    if (!fs.existsSync(scenariosDir)) return "";
+
+    let modules = [];
+    const walk = (dir) => {
+        const files = fs.readdirSync(dir);
+        for (const file of files) {
+            const fullPath = path.join(dir, file);
+            if (fs.statSync(fullPath).isDirectory()) {
+                walk(fullPath);
+            } else if (file.endsWith(".scenario.ts")) {
+                const kebabName = path.basename(dir);
+                const camelName = kebabName.replace(/-([a-z])/g, (g) =>
+                    g[1].toUpperCase(),
+                );
+                modules.push({
+                    name: camelName,
+                    kebab: kebabName,
+                    path: fullPath,
+                });
+            }
+        }
+    };
+
+    walk(scenariosDir);
+
+    const targetScenario = process.env.SCENARIO;
+    if (targetScenario) {
+        const matchedModule = findModuleForScenario(targetScenario);
+        if (matchedModule) {
+            modules = modules.filter((m) => m.kebab === matchedModule);
+        }
+    }
+
+    let imports = `// AUTO-GENERATED FILE - DO NOT EDIT\n`;
+    let registryEntries = `export const registry: any = {\n`;
+
+    modules.forEach((mod) => {
+        const relativePath = path
+            .relative(path.join(__dirname, "../pulse"), mod.path)
+            .replace(/\\/g, "/")
+            .replace(".ts", "");
+        const profilePath = relativePath
+            .replace("scenarios", "profiles")
+            .replace(".scenario", ".profiles");
+        const thresholdsPath = path.join(
+            __dirname,
+            "../src/scenarios",
+            mod.kebab,
+            "thresholds.ts",
+        );
+        const hasCustomThresholds = fs.existsSync(thresholdsPath);
+
+        imports += `import * as ${mod.name}Scenario from '${relativePath}';\n`;
+        imports += `import { ${mod.name}Profiles } from '${profilePath}';\n`;
+        if (hasCustomThresholds) {
+            imports += `import { thresholds as ${mod.name}Thresholds } from '../src/scenarios/${mod.kebab}/thresholds';\n`;
+        }
+
+        registryEntries += `    ...Object.keys(${mod.name}Profiles || {}).reduce((acc: any, key) => {\n`;
+        registryEntries += `        acc[key] = {\n`;
+        registryEntries += `            profile: (${mod.name}Profiles as any)[key],\n`;
+        registryEntries += `            setup: ${mod.name}Scenario.setup${mod.name.charAt(0).toUpperCase() + mod.name.slice(1)},\n`;
+        registryEntries += `            scenarioFunc: ${mod.name}Scenario.${mod.name}Scenario,\n`;
+        registryEntries += `            thresholds: ${hasCustomThresholds ? `${mod.name}Thresholds` : "null"},\n`;
+        registryEntries += `        };\n`;
+        registryEntries += `        return acc;\n`;
+        registryEntries += `    }, {}),\n`;
+    });
+
+    registryEntries += `};\n`;
+    return imports + "\n" + registryEntries;
+}
+
+async function build() {
+    console.log("Starting Pulse Auto-Discovery...");
+
+    const virtualRegistry = discoverScenarios();
+    fs.writeFileSync(
+        path.join(__dirname, "../pulse/virtual-registry.ts"),
+        virtualRegistry,
+    );
+
+    const envTypes = generateEnvTypes();
+    fs.writeFileSync(path.join(__dirname, "../pulse/generated-env.ts"), envTypes);
+
+    console.log("Building framework bundle...");
+    try {
+        await esbuild.build({
+            entryPoints: [path.join(__dirname, "../src/main.ts")],
+            bundle: true,
+            minify: false,
+            format: "esm",
+            platform: "browser",
+            target: "esnext",
+            outfile: path.join(__dirname, "../pulse/dist/main.js"),
+            external: ["k6", "k6/*"],
+        });
+        console.log("Build successful: pulse/dist/main.js");
+    } catch (err) {
+        console.error("Build failed:", err);
+        process.exit(1);
+    }
+}
+
+build();
+# Pulse Framework
+
+> A modular, scalable, and TypeScript-native performance engineering framework powered by **K6**.
+
+📚 **[Documentation & User Guide](https://oaugustoreis.github.io/pulse/#/)** (Click to open in new tab)
+
+Pulse brings modern software engineering practices to performance testing. Write structured, maintainable load tests in TypeScript with auto-discovery, reuse business flows, mock dependencies with an integrated mock server, and execute/monitor runs via the CLI or a sleek Desktop GUI.
+
+---
+
+## Key Features
+
+- **TypeScript Native**: Write clean, type-safe load testing scripts.
+- **Modular Architecture**: Separate scenarios, user journeys (flows), API clients (use-cases), and load profiles.
+- **Auto-Discovery**: No manual scenario registration. Pulse automatically discovers scenarios and profiles.
+- **Cockpit Desktop App**: Run, manage, and inspect load tests and mock servers in real-time using a premium Electron-based GUI.
+- **Integrated Mock Server**: Spin up local mock APIs on the fly for hermetic load testing.
+- **Boilerplate Generator**: Scaffolding new tests in seconds using standard templates.
+
+---
+
+## Installation
+
+Add the framework to your project or install it globally to access the `pulse` CLI:
+
+```bash
+# Install globally
+npm install -g pulse-arch
+
+# Or link locally during development
+npm link
+```
+
+---
+
+## Getting Started
+
+### 1. Initialize the Workspace
+Run the initialization command to generate the required directory tree, configuration templates, and the workspace `package.json`:
+
+```bash
+pulse init
+```
+
+Next, **install the local workspace dependencies** required for TypeScript compilation and Electron desktop operation:
+
+```bash
+npm install
+```
+
+This creates the following structure:
+```text
+├── config/              # Runtime and environment configurations
+├── data/                # Payloads, generators, datasets, and mock server scripts
+│   ├── datasets/
+│   ├── generators/
+│   └── payloads/
+├── pulse/               # Framework core (HTTP client, config-resolver, logger, etc.)
+│   └── desktop/         # Cockpit Electron Desktop dashboard
+├── src/                 # Test code
+│   ├── flows/           # User flows / transaction groups
+│   ├── profiles/        # K6 load profiles (VUs, duration, etc.)
+│   ├── scenarios/       # Test entrypoints
+│   └── use-cases/       # Granular HTTP request calls
+└── tsconfig.json        # TypeScript configuration
+```
+
+### 2. Configure Environment Variables
+Copy `.env.example` to `.env` and set up your target base URLs and tokens:
+
+```bash
+cp .env.example .env
+```
+
+You can also use the CLI to add/update environment variables directly:
+```bash
+pulse add-env BASE_URL_DEV http://localhost:3333
+```
+
+---
+
+## CLI Usage
+
+Pulse exposes the `pulse` command line interface:
+
+### Run a Load Test
+Execute a load test by specifying the scenario and target environment:
+```bash
+pulse run <scenario-name> [env]
+
+# Examples:
+pulse run sample_request_smoke_test dev
+pulse run checkout_stress_test stg
+```
+
+Options:
+- `-v, --vus <number>`: Override virtual users (VUs) count
+- `-d, --duration <string>`: Override test duration (e.g. `10m`, `30s`)
+
+### Generate a New Scenario
+Scaffold a complete test scenario along with its flow, load profile, use case, and thresholds:
+```bash
+pulse gen <scenario-name-kebab-case>
+
+# Example:
+pulse gen user-login
+```
+
+### Run the Mock Server
+Start the built-in mock server to run tests against local mock dependencies:
+```bash
+pulse mock
+```
+
+---
+
+## Desktop Cockpit GUI
+
+For a visual dashboard to run and monitor your load tests, launch the **Pulse Cockpit** Desktop App:
+
+```bash
+pulse open gui
+
+# Or simply
+pulse gui
+```
+
+The desktop app allows you to:
+- Choose from auto-discovered scenarios and profiles.
+- Configure variables dynamically.
+- View real-time terminal output and performance logs.
+- Control the mock server with simple start/stop buttons.
+- View generated `summary.html` report pages instantly.
+
+---
+
+## Project Structure Explained
+
+- **Scenarios (`src/scenarios/`)**: The main entry points for K6. They define the lifecycle hook setups and map options/thresholds.
+- **Flows (`src/flows/`)**: Orchestrated actions that represent real-world user flows (e.g. browsing a product, adding to cart, checking out).
+- **Profiles (`src/profiles/`)**: Custom load profiles defining the virtual user ramp-ups and targets.
+- **Use Cases (`src/use-cases/`)**: Low-level, reusable API call definitions wrapped with validation checks.
+
+---
+
+## Credits
+
+Developed and maintained by **Augusto Reis** ([@oaugustoreis](https://github.com/oaugustoreis)).
+
+---
+
+## License
+
+This project is licensed under the [ISC License](LICENSE).
+# Pulse Framework: Complete Developer & User Guide
+
+Welcome to the Pulse Framework! Pulse is a modern, modular, and TypeScript-native performance engineering framework powered by K6. It is designed to bring clean software engineering practices (like modularity, loose decoupling, type-safety, fluent assertions, and contract testing) to the performance testing world.
+
+This guide provides a comprehensive overview of the folder structure, core features, and CLI commands to get new developers up and running instantly.
+
+---
+
+## 1. Directory Structure & Architecture
+
+When you run `pulse init` in a workspace, the framework bootstraps a structured, decoupled architecture. Here is what every directory is for:
+
+```text
+├── config/              # Global runtime and SLA configurations
+├── data/                # Payloads, CSV datasets, and local Mock dependencies
+├── pulse/               # Framework Core, Compiler, and Cockpit Dashboard
+├── src/                 # Test Suite Source Code (Your actual tests)
+│   ├── flows/           # Logical user journeys (transactions)
+│   ├── profiles/        # K6 load profiles (VUs, durations, stages)
+│   ├── scenarios/       # Test entrypoints resolved by K6
+│   ├── schemas/         # API contract JSON Schemas
+│   └── use-cases/       # Granular, atomic REST API client requests
+├── tsconfig.json        # TypeScript configuration with path aliases
+└── package.json         # Workspace dependencies and scripts
+```
+
+### /config (Runtime Settings)
+Stores global options like default timeouts, base thresholds, and target SLA profiles. Keeps testing logic separate from configuration.
+
+### /data (Test Data & Mocking)
+Stores CSV datasets, dynamic generators, static payloads, and the built-in mock server.
+- **data/datasets/**: CSV files representing user accounts, product lists, or other database-seeded master data.
+- **data/generators/**: Helper scripts to generate dynamic mock data on the fly (e.g., random names, unique identifiers, CPFs) to prevent cache hits or data collision under heavy load.
+- **data/server.js**: An integrated mock server. Allows running performance runs locally without hitting live staging environments. Confira o [Tutorial do Mock Server](docs/mock-server.md) para aprender a estender o servidor com rotas customizadas.
+
+### /pulse (The Core Engine - Brief Overview)
+This is the heart of the framework. Users do not need to modify files here, but it contains incredibly useful utilities:
+- **pulse/core/pulse.ts**: Exposes the `ps` namespace, enabling transaction grouping (`ps.group`), pacing (`ps.sleep`), and fluent checks/SLAs (`ps.expect`).
+- **pulse/http/http.ts**: A type-safe HTTP client wrapper around K6's HTTP library supporting auto-injected bearer tokens, content-type defaults, and telemetry.
+- **pulse/desktop/**: The Electron-based Cockpit Dashboard application source code.
+- **pulse/build.mjs**: The TypeScript compiler and automatic scenario discovery pipeline.
+
+### /src (Your Test Code - Decoupled Architecture)
+Pulse implements a highly decoupled 5-tier architecture to make tests clean and maintainable:
+1. **Use Cases (src/use-cases/)**: Atomic REST client wrappers. They do the actual call and assert SLAs/contracts.
+2. **Schemas (src/schemas/)**: JSON Schema files validating API contracts, decoupled from client logic for global reusability.
+3. **Flows (src/flows/)**: High-level business flows orchestrating multiple Use Cases into transactional user stories (e.g. browsing -> selecting product -> checkout).
+4. **Profiles (src/profiles/)**: Load patterns defining VU ramp-ups, targets, durations, and stages.
+5. **Scenarios (src/scenarios/)**: Test entrypoints loaded by K6. They handle setup hooks, load CSV files, shard iterations, and trigger the Flows.
+
+---
+
+## 2. Core Features
+
+### TypeScript Native (Compiled on the fly)
+Write standard, type-safe TypeScript code. Pulse automatically compiles all tests, schemas, and configurations into a single bundled JavaScript file (`pulse/dist/main.js`) in milliseconds every time you trigger a scenario run.
+
+### Fluent Assertion SLA Layer (ps.expect)
+The `ps.expect()` API is a chainable, highly readable Assertion Engine designed specifically for verifying functional SLAs (Service Level Agreements) and API contracts during high-throughput load tests.
+
+#### How It Works Under the Hood
+Rather than throwing standard JavaScript exceptions that would crash the entire concurrent virtual user (VU) process and abort the test prematurely, `ps.expect()` integrates directly with K6's internal Metric and Check systems.
+
+Every chained assertion method translates internally into a **K6 Check**. This design choice provides three major benefits:
+1. **Non-Blocking Execution**: If an assertion fails, the load test continues running, allowing you to capture complete telemetry (response times, error distribution) across the entire duration instead of stopping at the first error.
+2. **Aggregated Telemetry**: Failed assertions are registered in K6's metrics, meaning they appear in the final HTML report, console summary output, and Cockpit dashboard charts as precise failure rates.
+3. **Robust Safety Nets**: All internal operations (such as response JSON parsing) are fully wrapped in `try/catch` safety shields, ensuring that empty or invalid responses (e.g., 500 Server Errors with no body) will not trigger unhandled exceptions.
+
+#### Available Assertion Methods
+You can chain as many assertions as you need in a single statement:
+
+* **`.status(code: number)`**
+  Validates that the HTTP response status code matches the expected integer.
+  *Example*: `.status(200)`
+
+* **`.bodyNotEmpty()`**
+  Asserts that the response body is present and contains content (length greater than zero).
+  *Example*: `.bodyNotEmpty()`
+
+* **`.header(name: string, expectedValue: string)`**
+  Inspects the response headers for a specific header key and validates that its value contains the expected string (performs case-insensitive matching).
+  *Example*: `.header("Content-Type", "application/json")`
+
+* **`.hasProperty(path: string)`**
+  Safely parses the response JSON and asserts that a specific property exists at the given path selector.
+  *Example*: `.hasProperty("id")` or `.hasProperty("data.items[0].name")`
+
+* **`.responseTimeLessThan(ms: number)`**
+  Sets a strict latency SLA requirement. Asserts that the time taken for the HTTP transaction (duration) is less than the specified milliseconds.
+  *Example*: `.responseTimeLessThan(800)`
+
+* **`.jsonSchema(schema: any)`**
+  Performs deep, recursive JSON Schema structural contract validation on the response payload. It automatically checks for required properties and exact data types (object, array, string, number, boolean, integer) under load.
+  *Example*: `.jsonSchema(userSchema)`
+
+### API Contract Validation (JSON Schema)
+Catch API payload breaks under heavy load. Pulse comes with an integrated, native recursive JSON Schema validator compatible with the K6 Goja runtime:
+```typescript
+ps.expect(res).jsonSchema(myUserSchema);
+```
+If a database degradation or microservice failure causes the payload to return truncated properties or incorrect types, the schema validator catches it instantly!
+
+---
+
+## 3. CLI Command Reference
+
+The pulse CLI is designed to completely automate setup, scaffolding, running, and visual debugging.
+
+### 1. pulse init
+- **Why it exists**: Manually creating 15+ subdirectories, path aliases, typescript configs, and copying boilerplate files is tedious and prone to configuration mistakes.
+- **How it helps**: Bootstraps the entire modular framework directory tree, copies default templates, configurations (`tsconfig.json`, `.env.example`), and generates a workspace `package.json` with all required dependencies in one click.
+- **Usage**:
+  ```bash
+  pulse init
+  ```
+
+### 2. pulse gen &lt;scenario-name-kebab-case&gt;
+- **Why it exists**: Creating a new scenario requires manually writing a Use Case, a Schema, a Flow, a Load Profile, and a Scenario entrypoint, keeping import paths aligned.
+- **How it helps**: Instantly scaffolds a complete, type-safe performance test scenario based on naming conventions. It generates all 5 files, configures standard templates, imports schemas, and wires up standard assertions in seconds.
+- **Usage**:
+  ```bash
+  pulse gen user-login
+  ```
+
+### 3. pulse run &lt;scenario-name&gt; [env]
+- **Why it exists**: Executing a load test usually requires compiling code, setting K6 environment variables, mapping CLI overrides, and pointing to the correct bundled file.
+- **How it helps**: Combines compilation and K6 execution into one simple command. It automatically resolves environment configs from `.env`, runs the esbuild compiler, prints a clean console UI, and triggers the K6 run.
+- **Options**:
+  - `-v, --vus <number>`: Override virtual users target count on the fly.
+  - `-d, --duration <string>`: Override duration on the fly (e.g. `5m`, `10s`).
+- **Usage**:
+  ```bash
+  pulse run user_login_smoke_test dev
+  ```
+
+### 4. pulse mock
+- **Why it exists**: Hits live staging environments during performance scripting can trigger rate-limits, contaminate databases, or yield flaky results.
+- **How it helps**: Starts the local mock server in the background, allowing scripts to be written and tested hermetically with zero external dependencies.
+- **Usage**:
+  ```bash
+  pulse mock
+  ```
+
+> [!TIP]
+> Você pode aprender a estender e adicionar rotas customizadas para seus testes locais lendo o nosso [Tutorial do Mock Server](docs/mock-server.md).
+
+### 5. pulse gui / pulse open gui
+- **Why it exists**: Scripting and executing via command line can feel dry, and analyzing console logs or opening static HTML report files manually is annoying.
+- **How it helps**: Launces the premium Pulse Cockpit Dashboard Desktop application. Enables visual scenario selection, real-time log streaming, mock controls, and instant HTML report reloading in a stunning visual interface.
+- **Usage**:
+  ```bash
+  pulse open gui
+  ```
+
+### 6. pulse add-env &lt;key&gt; &lt;value&gt;
+- **Why it exists**: Editing `.env` files manually requires opening editors and managing keys.
+- **How it helps**: Safely updates or appends key-value pairs directly in your local `.env` file right from the terminal.
+- **Usage**:
+  ```bash
+  pulse add-env BASE_URL_PROD https://api.pulse-project.com
+  ```
+
+---
+
+## 4. End-to-End Code Example
+
+Here is a complete, working example of a newly generated endpoint test using the Pulse 5-tier modular architecture:
+
+### 1. The Schema (src/schemas/product/product.schema.ts)
+```typescript
+export const productSchema = {
+    type: "object",
+    required: ["id", "title", "price"],
+    properties: {
+        id: { type: "number" },
+        title: { type: "string" },
+        price: { type: "number" }
+    }
+};
+```
+
+### 2. The Use-Case (src/use-cases/product/getProduct.useCase.ts)
+```typescript
+import { get } from "@pulse/http";
+import { ps } from "@pulse/core";
+import { productSchema } from "@src/schemas/product/product.schema";
+
+export interface ProductParams { baseUrl: string; token: string; productId: number; }
+
+export function getProduct({ baseUrl, token, productId }: ProductParams) {
+    const url = `${baseUrl}/products/${productId}`;
+    const res = get(url, { token }, 200, "getProduct");
+
+    // Enforce Functional SLAs & Schema contract checks
+    ps.expect(res)
+        .status(200)
+        .bodyNotEmpty()
+        .responseTimeLessThan(800) // SLA: Less than 800ms
+        .jsonSchema(productSchema);
+
+    return res;
+}
+```
+
+### 3. The Flow (src/flows/product/product.flow.ts)
+```typescript
+import { ps } from "@pulse/core";
+import { getProduct } from "@src/use-cases/product/getProduct.useCase";
+
+export interface FlowParams { baseUrl: string; token: string; }
+
+export function productFlow({ baseUrl, token }: FlowParams): void {
+    // Wrap inside transaction group for aggregated telemetry
+    ps.group("Browse Product Flow", () => {
+        getProduct({ baseUrl, token, productId: 101 });
+        
+        // Pacing think-time
+        ps.sleep(1);
+    });
+}
+```
+
+### 4. The Profile (src/profiles/product/product.profiles.ts)
+```typescript
+import { Options } from "k6/options";
+
+export const productProfiles: Options["scenarios"] = {
+    "product_smoke_test": {
+        executor: "shared-iterations",
+        exec: "engine",
+        vus: 1,
+        iterations: 1,
+    },
+    "product_stress_test": {
+        executor: "ramping-vus",
+        exec: "engine",
+        startVUs: 0,
+        stages: [
+            { duration: "1m", target: 50 },  // Ramp-up
+            { duration: "3m", target: 50 },  // Steady-state
+            { duration: "1m", target: 0 }    // Ramp-down
+        ]
+    }
+};
+```
+
+### 5. The Scenario (src/scenarios/product/product.scenario.ts)
+```typescript
+import { Env, configResolver } from "@pulse/config";
+import { productFlow } from "@src/flows/product/product.flow";
+
+export function setupProduct(): { baseUrl: string; token: string; } {
+    const envSuffix = (Env.ENV || "dev").toUpperCase();
+    const baseUrl = Env[`BASE_URL_${envSuffix}`] || Env.BASE_URL || "http://localhost:3333";
+    const token = Env[`TOKEN_${envSuffix}`] || Env.TOKEN || "no-token";
+
+    return { baseUrl, token };
+}
+
+export function productScenario(data: { baseUrl: string; token: string; }): void {
+    productFlow({
+        baseUrl: data.baseUrl,
+        token: data.token
+    });
+}
+```
+
+---
+
+## 5. How to Add Custom Routes in Mock Server and Use in Load Tests
+
+To enable fast and hermetic load tests (with zero dependencies on external APIs), Pulse includes an **integrated Mock Server** running on port `3333` (powered by `json-server`).
+
+### Step 1: Creating the Custom Route in the Mock Server (`data/server.js`)
+Open the [data/server.js](file:///mnt/d/Pulse/data/server.js) file and add your endpoint using classic Express syntax. Remember to place it **before** the `server.use(router)` middleware call.
+
+```javascript
+// ==========================================
+// CUSTOM ROUTE: Payment Processing Simulation
+// ==========================================
+server.post("/payments", (req, res) => {
+    console.log("--- Mock Payment Request Received ---");
+    
+    const { amount, card_number } = req.body;
+
+    if (!amount || !card_number) {
+        return res.status(400).json({
+            error: "MISSING_REQUIRED_FIELDS",
+            message: "The 'amount' and 'card_number' fields are required."
+        });
+    }
+
+    // Simulating 200ms of network latency for realistic load testing conditions
+    setTimeout(() => {
+        res.status(201).json({
+            status: "APPROVED",
+            transaction_id: "tx_" + Math.random().toString(36).substr(2, 9),
+            processed_at: new Date().toISOString()
+        });
+    }, 200);
+});
+```
+
+### Step 2: Creating the Contract Schema (`src/schemas/payment/payment.schema.ts`)
+Structurally validates the API response payload to ensure contract stability under heavy concurrent load.
+
+```typescript
+export const paymentSchema = {
+    type: "object",
+    required: ["status", "transaction_id", "processed_at"],
+    properties: {
+        status: { type: "string", enum: ["APPROVED", "REJECTED"] },
+        transaction_id: { type: "string" },
+        processed_at: { type: "string" }
+    }
+};
+```
+
+### Step 3: Creating the Atomic Call / Use Case (`src/use-cases/payment/processPayment.useCase.ts`)
+Executes the HTTP client request and sets up functional SLA assertions using `ps.expect`.
+
+```typescript
+import { post } from "@pulse/http";
+import { ps } from "@pulse/core";
+import { paymentSchema } from "@src/schemas/payment/payment.schema";
+
+export interface PaymentParams { baseUrl: string; token: string; amount: number; cardNumber: string; }
+
+export function processPayment({ baseUrl, token, amount, cardNumber }: PaymentParams) {
+    const url = `${baseUrl}/payments`;
+    const payload = JSON.stringify({ amount, card_number: cardNumber });
+
+    const res = post(url, payload, { token }, 201, "ProcessPayment");
+
+    // Validate response SLA times and JSON contract integrity
+    ps.expect(res)
+        .status(201)
+        .bodyNotEmpty()
+        .responseTimeLessThan(500) // 500ms latency SLA
+        .jsonSchema(paymentSchema);
+
+    return res;
+}
+```
+
+### Step 4: Orchestrating the Business Journey / Flow (`src/flows/payment/payment.flow.ts`)
+Orchestrates multiple use cases into a logical user journey, injecting pacing think-time (`ps.sleep`) and enabling aggregated transaction telemetry (`ps.group`).
+
+```typescript
+import { ps } from "@pulse/core";
+import { processPayment } from "@src/use-cases/payment/processPayment.useCase";
+
+export interface FlowParams { baseUrl: string; token: string; }
+
+export function paymentFlow({ baseUrl, token }: FlowParams): void {
+    ps.group("Transação de Pagamento", () => {
+        processPayment({
+            baseUrl,
+            token,
+            amount: 150.50,
+            cardNumber: "4532111199998888"
+        });
+
+        ps.sleep(1); // Think time
+    });
+}
+```
+
+### Step 5: Creating the Scenario and Load Profile (`src/scenarios/payment/payment.scenario.ts`)
+Acts as the test entrypoint loaded by K6. It handles initialization, sharding, resolves dynamic parameters, and executes the Flow.
+
+```typescript
+import { Env } from "@pulse/config";
+import { paymentFlow } from "@src/flows/payment/payment.flow";
+
+export function setupPayment(): { baseUrl: string; token: string; } {
+    const envSuffix = (Env.ENV || "dev").toUpperCase();
+    const baseUrl = Env[`BASE_URL_${envSuffix}`] || Env.BASE_URL || "http://localhost:3333";
+    const token = Env[`TOKEN_${envSuffix}`] || Env.TOKEN || "no-token";
+
+    return { baseUrl, token };
+}
+
+export function paymentScenario(data: { baseUrl: string; token: string; }): void {
+    paymentFlow({
+        baseUrl: data.baseUrl,
+        token: data.token
+    });
+}
+```
+
+### Step 6: Running the Test E2E
+1. Start the local Mock Server:
+   ```bash
+   pulse mock
+   ```
+2. In your `.env` file, ensure `BASE_URL_DEV` points to the local mock instance:
+   ```properties
+   BASE_URL_DEV=http://localhost:3333
+   ```
+3. Run the performance test scenario targeting the `dev` environment:
+   ```bash
+   pulse run payment dev
+   ```
+
+---
+
+## Credits
+
+Developed and maintained by Augusto Reis (https://github.com/oaugustoreis).
+
+---
+
+## License
+
+This project is licensed under the ISC License.

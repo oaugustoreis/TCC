@@ -1,0 +1,15 @@
+pulse-workspace@1.0.0 /mnt/d/TCC/experimento_pulse/experiments/T1/modular-pulse
+├── @types/k6@2.3.1
+├── @types/node@25.9.9
+├── chalk@4.1.2
+├── commander@14.0.3
+├── dotenv-cli@11.1.0
+├── dotenv@17.4.2
+├── electron-builder@26.18.0
+├── electron@42.11.18
+├── esbuild@0.28.2
+├── glob@13.0.7
+├── json-server@0.17.4
+├── typescript@6.0.3
+└── xlsx@0.18.5
+

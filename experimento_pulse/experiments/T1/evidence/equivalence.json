@@ -1,0 +1,27 @@
+{
+  "equivalent": true,
+  "checks": [
+    "auth status is 200",
+    "auth token",
+    "list status is 200",
+    "list products",
+    "detail status is 200",
+    "detail product"
+  ],
+  "profile": {
+    "executor": "constant-vus",
+    "vus": 1,
+    "duration": "10s"
+  },
+  "thresholds": {
+    "checks": {
+      "rate==1": false
+    },
+    "http_req_failed": {
+      "rate==0": false
+    },
+    "http_req_duration": {
+      "p(95)<1500": false
+    }
+  }
+}

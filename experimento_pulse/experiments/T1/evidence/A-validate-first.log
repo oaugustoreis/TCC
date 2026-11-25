@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/mnt/d/TCC/experimento_pulse/experiments/T1/evidence/validate.py", line 7, in <module>
+    assert all(m[name]['thresholds'].values()),(name,m[name])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('checks', {'passes': 60, 'fails': 0, 'thresholds': {'rate==1': False}, 'value': 1})

@@ -1,0 +1,103 @@
+Start a test. This also exposes a REST API to interact with it. Various k6 subcommands offer
+a commandline interface for interacting with it.
+
+Usage:
+  k6 run [flags]
+
+Examples:
+  # Run a single VU, once.
+  k6 run script.js
+
+  # Run a single VU, 10 times.
+  k6 run -i 10 script.js
+
+  # Run 5 VUs, splitting 10 iterations between them.
+  k6 run -u 5 -i 10 script.js
+
+  # Run 5 VUs for 10s.
+  k6 run -u 5 -d 10s script.js
+
+  # Ramp VUs from 0 to 100 over 10s, stay there for 60s, then 10s down to 0.
+  k6 run -u 0 -s 10s:100 -s 60s:100 -s 10s:0
+
+  # Send metrics to a remote storage using the OpenTelemetry output.
+  k6 run -o opentelemetry
+
+Flags:
+  -u, --vus int                             number of virtual users (default 1)
+  -d, --duration duration                   test duration limit
+  -i, --iterations int                      script total iteration limit (among all VUs)
+  -s, --stage stage                         add a stage, as `[duration]:[target]`
+      --execution-segment string            limit execution to the specified segment, e.g. 10%, 1/3, 0.2:2/3
+      --execution-segment-sequence string   the execution segment sequence
+  -p, --paused                              start the test in a paused state
+      --no-setup                            don't run setup()
+      --no-teardown                         don't run teardown()
+      --max-redirects int                   follow at most n redirects (default 10)
+      --batch int                           max parallel batch reqs (default 20)
+      --batch-per-host int                  max parallel batch reqs per host (default 6)
+      --rps int                             limit requests per second
+      --user-agent string                   user agent for http requests (default "Grafana k6/2.0.0")
+      --http-debug string[="headers"]       log all HTTP requests and responses. Excludes body by default. To
+                                            include body use '--http-debug=full'
+      --insecure-skip-tls-verify            skip verification of TLS certificates
+      --no-connection-reuse                 disable keep-alive connections
+      --no-vu-connection-reuse              don't reuse connections between iterations
+      --min-iteration-duration duration     minimum amount of time k6 will take executing a single iteration
+  -w, --throw                               throw warnings (like failed http requests) as errors
+      --blacklist-ip ip range               blacklist an ip range from being called
+      --block-hostnames pattern             block a case-insensitive hostname pattern, with optional leading
+                                            wildcard, from being called
+      --summary-trend-stats stats           define stats for trend metrics (response times), one or more as
+                                            'avg,p(95),...' (default 'avg, min, med, max, p(90), p(95)')
+      --summary-time-unit string            define the time unit used to display the trend stats. Possible units
+                                            are: 's', 'ms' and 'us'
+      --system-tags strings                 only include these system tags in metrics (default "proto, subproto,
+                                            status, method, url, name, group, check, error, error_code,
+                                            tls_version, scenario, service, expected_response")
+      --tag tag                             add a tag to be applied to all samples, as `[name]=[value]`
+      --console-output string               redirects the console logging to the provided output file
+      --discard-response-bodies             Read but don't process or save HTTP response bodies
+      --local-ips string                    Client IP Ranges and/or CIDRs from which each VU will be making
+                                            requests, e.g. '192.168.220.1,192.168.0.10-192.168.0.25',
+                                            'fd:1::0/120', etc.
+      --dns string                          DNS resolver configuration. Possible ttl values are: 'inf' for a
+                                            persistent cache, '0' to disable the cache, or a positive duration,
+                                            e.g. '1s', '1m', etc. Milliseconds are assumed if no unit is provided.
+                                            Possible select values to return a single IP are: 'first', 'random' or
+                                            'roundRobin'. Possible policy values are: 'preferIPv4', 'preferIPv6',
+                                            'onlyIPv4', 'onlyIPv6' or 'any'. (default
+                                            "ttl=5m,select=random,policy=preferIPv4")
+      --include-system-env-vars             pass the real system environment variables to the runtime (default true)
+      --compatibility-mode string           JavaScript compiler compatibility mode, "extended" or "base"
+                                            base: pure Sobek - Golang JS VM supporting ES6+
+                                            extended: base + sets "global" as alias for "globalThis"
+                                             (default "extended")
+  -t, --type string                         override test type, "js" or "archive"
+  -e, --env VAR=value                       add/override environment variable with VAR=value
+      --no-thresholds                       don't run thresholds
+      --summary-mode string                 determine the summary mode, "compact", "full" or "disabled" (default
+                                            "compact")
+      --summary-export string               output the end-of-test summary report to JSON file
+      --new-machine-readable-summary        enables the new machine-readable summary, which is used for summary
+                                            exports and as handleSummary() argument
+      --traces-output string                set the output for k6 traces, possible values are
+                                            none,otel[=host:port] (default "none")
+  -o, --out uri                             uri for an external metrics database
+  -l, --linger                              keep the API server alive past test end
+      --no-usage-report                     don't send anonymous usagestats
+                                            (https://grafana.com/docs/k6/latest/set-up/usage-collection/)
+  -h, --help                                help for run
+
+Global Flags:
+  -a, --address string              address for the REST API server (e.g. localhost:6565); the server is disabled
+                                    when not set
+  -c, --config string               JSON config file (default "/home/reis/.config/k6/config.json")
+      --log-format string           log output format
+      --log-output string           change the output for k6 logs, possible values are: 'stderr', 'stdout',
+                                    'none', 'loki[=host:port]', 'file[=./path.fileformat]' (default "stderr")
+      --no-color                    disable colored output
+      --profiling-enabled           enable profiling (pprof) endpoints, requires the REST API to be enabled (--address)
+  -q, --quiet                       disable progress updates
+      --secret-source stringArray   setting secret sources for k6 file[=./path.fileformat],
+  -v, --verbose                     enable verbose logging
