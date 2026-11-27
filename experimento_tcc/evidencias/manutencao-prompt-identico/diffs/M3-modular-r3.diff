@@ -1,0 +1,19 @@
+diff -ruN /tmp/m/pristine/modular/use-cases/pedidos/getOrder.useCase.js /tmp/m/runs/M3-modular-r3/modular/use-cases/pedidos/getOrder.useCase.js
+--- /tmp/m/pristine/modular/use-cases/pedidos/getOrder.useCase.js	2026-11-27 12:31:32.107803159 -0400
++++ /tmp/m/runs/M3-modular-r3/modular/use-cases/pedidos/getOrder.useCase.js	2026-11-27 12:36:43.550014861 -0400
+@@ -70,7 +70,14 @@
+         });
+     checkResponse(r, {
+         status: resolvedStatus,
+-        fields: resolvedFields,
++        fields: {
++            ...resolvedFields,
++            createdAt: {
++                type: "string",
++                minLength: 1,
++                label: "createdAt presente",
++            },
++        },
+     });
+     return r;
+ }

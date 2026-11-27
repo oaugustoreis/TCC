@@ -1,0 +1,18 @@
+diff -ruN /tmp/m/pristine/modular/use-cases/pedidos/getOrder.useCase.js /tmp/m/runs/M3-modular-r1/modular/use-cases/pedidos/getOrder.useCase.js
+--- /tmp/m/pristine/modular/use-cases/pedidos/getOrder.useCase.js	2026-11-27 12:31:32.107803159 -0400
++++ /tmp/m/runs/M3-modular-r1/modular/use-cases/pedidos/getOrder.useCase.js	2026-11-27 12:35:30.374010512 -0400
+@@ -68,9 +68,13 @@
+             id: { expected: orderId, label: "pedido corresponde" },
+             status: { expected: expectedStatus, label: "status esperado" },
+         });
++    const createdAtLabel = stepPrefix ? bodyLabel : "pedido corresponde";
+     checkResponse(r, {
+         status: resolvedStatus,
+-        fields: resolvedFields,
++        fields: {
++            ...resolvedFields,
++            createdAt: { type: "string", minLength: 1, label: createdAtLabel },
++        },
+     });
+     return r;
+ }

@@ -1,0 +1,812 @@
+[
+ {
+  "run": "M3-modular-r1",
+  "tarefa": "M3",
+  "suite": "modular",
+  "rep": 1,
+  "arquivos": 1,
+  "linhas_add": 5,
+  "linhas_rem": 1,
+  "churn": 6,
+  "validacao": {
+   "tarefa": "M3",
+   "suite": "modular",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 7,
+   "jornadas_que_detectam_mutante": [
+    "ct04",
+    "ct05",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M2-modular-r1",
+  "tarefa": "M2",
+  "suite": "modular",
+  "rep": 1,
+  "arquivos": 1,
+  "linhas_add": 4,
+  "linhas_rem": 1,
+  "churn": 5,
+  "validacao": {
+   "tarefa": "M2",
+   "suite": "modular",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 8,
+   "jornadas_que_detectam_mutante": [
+    "ct03",
+    "ct04",
+    "ct05",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M1-tradicional-r3",
+  "tarefa": "M1",
+  "suite": "tradicional",
+  "rep": 3,
+  "arquivos": 15,
+  "linhas_add": 15,
+  "linhas_rem": 15,
+  "churn": 30,
+  "validacao": {
+   "tarefa": "M1",
+   "suite": "tradicional",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 15,
+   "jornadas_que_detectam_mutante": [
+    "ct01",
+    "ct02",
+    "ct03",
+    "ct04",
+    "ct05",
+    "ct06",
+    "ct07",
+    "ct08",
+    "ct09",
+    "ct10",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M3-tradicional-r2",
+  "tarefa": "M3",
+  "suite": "tradicional",
+  "rep": 2,
+  "arquivos": 7,
+  "linhas_add": 12,
+  "linhas_rem": 7,
+  "churn": 19,
+  "validacao": {
+   "tarefa": "M3",
+   "suite": "tradicional",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 7,
+   "jornadas_que_detectam_mutante": [
+    "ct04",
+    "ct05",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M2-modular-r3",
+  "tarefa": "M2",
+  "suite": "modular",
+  "rep": 3,
+  "arquivos": 1,
+  "linhas_add": 5,
+  "linhas_rem": 1,
+  "churn": 6,
+  "validacao": {
+   "tarefa": "M2",
+   "suite": "modular",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 8,
+   "jornadas_que_detectam_mutante": [
+    "ct03",
+    "ct04",
+    "ct05",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M3-intermediaria-r1",
+  "tarefa": "M3",
+  "suite": "intermediaria",
+  "rep": 1,
+  "arquivos": 1,
+  "linhas_add": 3,
+  "linhas_rem": 0,
+  "churn": 3,
+  "validacao": {
+   "tarefa": "M3",
+   "suite": "intermediaria",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 7,
+   "jornadas_que_detectam_mutante": [
+    "ct04",
+    "ct05",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M3-intermediaria-r3",
+  "tarefa": "M3",
+  "suite": "intermediaria",
+  "rep": 3,
+  "arquivos": 1,
+  "linhas_add": 6,
+  "linhas_rem": 0,
+  "churn": 6,
+  "validacao": {
+   "tarefa": "M3",
+   "suite": "intermediaria",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 7,
+   "jornadas_que_detectam_mutante": [
+    "ct04",
+    "ct05",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M2-intermediaria-r2",
+  "tarefa": "M2",
+  "suite": "intermediaria",
+  "rep": 2,
+  "arquivos": 1,
+  "linhas_add": 5,
+  "linhas_rem": 1,
+  "churn": 6,
+  "validacao": {
+   "tarefa": "M2",
+   "suite": "intermediaria",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 8,
+   "jornadas_que_detectam_mutante": [
+    "ct03",
+    "ct04",
+    "ct05",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M2-intermediaria-r1",
+  "tarefa": "M2",
+  "suite": "intermediaria",
+  "rep": 1,
+  "arquivos": 1,
+  "linhas_add": 5,
+  "linhas_rem": 1,
+  "churn": 6,
+  "validacao": {
+   "tarefa": "M2",
+   "suite": "intermediaria",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 8,
+   "jornadas_que_detectam_mutante": [
+    "ct03",
+    "ct04",
+    "ct05",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M1-tradicional-r2",
+  "tarefa": "M1",
+  "suite": "tradicional",
+  "rep": 2,
+  "arquivos": 15,
+  "linhas_add": 15,
+  "linhas_rem": 15,
+  "churn": 30,
+  "validacao": {
+   "tarefa": "M1",
+   "suite": "tradicional",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 15,
+   "jornadas_que_detectam_mutante": [
+    "ct01",
+    "ct02",
+    "ct03",
+    "ct04",
+    "ct05",
+    "ct06",
+    "ct07",
+    "ct08",
+    "ct09",
+    "ct10",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M2-modular-r2",
+  "tarefa": "M2",
+  "suite": "modular",
+  "rep": 2,
+  "arquivos": 1,
+  "linhas_add": 5,
+  "linhas_rem": 1,
+  "churn": 6,
+  "validacao": {
+   "tarefa": "M2",
+   "suite": "modular",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 8,
+   "jornadas_que_detectam_mutante": [
+    "ct03",
+    "ct04",
+    "ct05",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M1-tradicional-r1",
+  "tarefa": "M1",
+  "suite": "tradicional",
+  "rep": 1,
+  "arquivos": 15,
+  "linhas_add": 15,
+  "linhas_rem": 15,
+  "churn": 30,
+  "validacao": {
+   "tarefa": "M1",
+   "suite": "tradicional",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 15,
+   "jornadas_que_detectam_mutante": [
+    "ct01",
+    "ct02",
+    "ct03",
+    "ct04",
+    "ct05",
+    "ct06",
+    "ct07",
+    "ct08",
+    "ct09",
+    "ct10",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M3-modular-r2",
+  "tarefa": "M3",
+  "suite": "modular",
+  "rep": 2,
+  "arquivos": 1,
+  "linhas_add": 9,
+  "linhas_rem": 1,
+  "churn": 10,
+  "validacao": {
+   "tarefa": "M3",
+   "suite": "modular",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 7,
+   "jornadas_que_detectam_mutante": [
+    "ct04",
+    "ct05",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M2-tradicional-r3",
+  "tarefa": "M2",
+  "suite": "tradicional",
+  "rep": 3,
+  "arquivos": 8,
+  "linhas_add": 20,
+  "linhas_rem": 15,
+  "churn": 35,
+  "validacao": {
+   "tarefa": "M2",
+   "suite": "tradicional",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 8,
+   "jornadas_que_detectam_mutante": [
+    "ct03",
+    "ct04",
+    "ct05",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M3-modular-r3",
+  "tarefa": "M3",
+  "suite": "modular",
+  "rep": 3,
+  "arquivos": 1,
+  "linhas_add": 8,
+  "linhas_rem": 1,
+  "churn": 9,
+  "validacao": {
+   "tarefa": "M3",
+   "suite": "modular",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 7,
+   "jornadas_que_detectam_mutante": [
+    "ct04",
+    "ct05",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M1-intermediaria-r1",
+  "tarefa": "M1",
+  "suite": "intermediaria",
+  "rep": 1,
+  "arquivos": 1,
+  "linhas_add": 2,
+  "linhas_rem": 0,
+  "churn": 2,
+  "validacao": {
+   "tarefa": "M1",
+   "suite": "intermediaria",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 15,
+   "jornadas_que_detectam_mutante": [
+    "ct01",
+    "ct02",
+    "ct03",
+    "ct04",
+    "ct05",
+    "ct06",
+    "ct07",
+    "ct08",
+    "ct09",
+    "ct10",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M3-tradicional-r3",
+  "tarefa": "M3",
+  "suite": "tradicional",
+  "rep": 3,
+  "arquivos": 7,
+  "linhas_add": 16,
+  "linhas_rem": 6,
+  "churn": 22,
+  "validacao": {
+   "tarefa": "M3",
+   "suite": "tradicional",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 7,
+   "jornadas_que_detectam_mutante": [
+    "ct04",
+    "ct05",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M1-modular-r3",
+  "tarefa": "M1",
+  "suite": "modular",
+  "rep": 3,
+  "arquivos": 1,
+  "linhas_add": 2,
+  "linhas_rem": 0,
+  "churn": 2,
+  "validacao": {
+   "tarefa": "M1",
+   "suite": "modular",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 15,
+   "jornadas_que_detectam_mutante": [
+    "ct01",
+    "ct02",
+    "ct03",
+    "ct04",
+    "ct05",
+    "ct06",
+    "ct07",
+    "ct08",
+    "ct09",
+    "ct10",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M2-tradicional-r2",
+  "tarefa": "M2",
+  "suite": "tradicional",
+  "rep": 2,
+  "arquivos": 8,
+  "linhas_add": 20,
+  "linhas_rem": 15,
+  "churn": 35,
+  "validacao": {
+   "tarefa": "M2",
+   "suite": "tradicional",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 8,
+   "jornadas_que_detectam_mutante": [
+    "ct03",
+    "ct04",
+    "ct05",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M3-intermediaria-r2",
+  "tarefa": "M3",
+  "suite": "intermediaria",
+  "rep": 2,
+  "arquivos": 1,
+  "linhas_add": 5,
+  "linhas_rem": 0,
+  "churn": 5,
+  "validacao": {
+   "tarefa": "M3",
+   "suite": "intermediaria",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 7,
+   "jornadas_que_detectam_mutante": [
+    "ct04",
+    "ct05",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M1-intermediaria-r2",
+  "tarefa": "M1",
+  "suite": "intermediaria",
+  "rep": 2,
+  "arquivos": 1,
+  "linhas_add": 2,
+  "linhas_rem": 0,
+  "churn": 2,
+  "validacao": {
+   "tarefa": "M1",
+   "suite": "intermediaria",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 15,
+   "jornadas_que_detectam_mutante": [
+    "ct01",
+    "ct02",
+    "ct03",
+    "ct04",
+    "ct05",
+    "ct06",
+    "ct07",
+    "ct08",
+    "ct09",
+    "ct10",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M1-modular-r2",
+  "tarefa": "M1",
+  "suite": "modular",
+  "rep": 2,
+  "arquivos": 1,
+  "linhas_add": 2,
+  "linhas_rem": 0,
+  "churn": 2,
+  "validacao": {
+   "tarefa": "M1",
+   "suite": "modular",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 15,
+   "jornadas_que_detectam_mutante": [
+    "ct01",
+    "ct02",
+    "ct03",
+    "ct04",
+    "ct05",
+    "ct06",
+    "ct07",
+    "ct08",
+    "ct09",
+    "ct10",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M2-intermediaria-r3",
+  "tarefa": "M2",
+  "suite": "intermediaria",
+  "rep": 3,
+  "arquivos": 1,
+  "linhas_add": 8,
+  "linhas_rem": 1,
+  "churn": 9,
+  "validacao": {
+   "tarefa": "M2",
+   "suite": "intermediaria",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 8,
+   "jornadas_que_detectam_mutante": [
+    "ct03",
+    "ct04",
+    "ct05",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M2-tradicional-r1",
+  "tarefa": "M2",
+  "suite": "tradicional",
+  "rep": 1,
+  "arquivos": 8,
+  "linhas_add": 16,
+  "linhas_rem": 11,
+  "churn": 27,
+  "validacao": {
+   "tarefa": "M2",
+   "suite": "tradicional",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 8,
+   "jornadas_que_detectam_mutante": [
+    "ct03",
+    "ct04",
+    "ct05",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M1-intermediaria-r3",
+  "tarefa": "M1",
+  "suite": "intermediaria",
+  "rep": 3,
+  "arquivos": 1,
+  "linhas_add": 2,
+  "linhas_rem": 0,
+  "churn": 2,
+  "validacao": {
+   "tarefa": "M1",
+   "suite": "intermediaria",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 15,
+   "jornadas_que_detectam_mutante": [
+    "ct01",
+    "ct02",
+    "ct03",
+    "ct04",
+    "ct05",
+    "ct06",
+    "ct07",
+    "ct08",
+    "ct09",
+    "ct10",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M3-tradicional-r1",
+  "tarefa": "M3",
+  "suite": "tradicional",
+  "rep": 1,
+  "arquivos": 7,
+  "linhas_add": 16,
+  "linhas_rem": 6,
+  "churn": 22,
+  "validacao": {
+   "tarefa": "M3",
+   "suite": "tradicional",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 7,
+   "jornadas_que_detectam_mutante": [
+    "ct04",
+    "ct05",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ },
+ {
+  "run": "M1-modular-r1",
+  "tarefa": "M1",
+  "suite": "modular",
+  "rep": 1,
+  "arquivos": 1,
+  "linhas_add": 2,
+  "linhas_rem": 0,
+  "churn": 2,
+  "validacao": {
+   "tarefa": "M1",
+   "suite": "modular",
+   "jornadas": 15,
+   "passam_com_api_correta": 15,
+   "falham_com_api_correta": [],
+   "falham_com_api_mutante": 15,
+   "jornadas_que_detectam_mutante": [
+    "ct01",
+    "ct02",
+    "ct03",
+    "ct04",
+    "ct05",
+    "ct06",
+    "ct07",
+    "ct08",
+    "ct09",
+    "ct10",
+    "ct11",
+    "ct12",
+    "ct13",
+    "ct14",
+    "ct15"
+   ]
+  }
+ }
+]

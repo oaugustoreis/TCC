@@ -1,0 +1,176 @@
+{
+    "metrics": {
+        "iterations": {
+            "count": 1,
+            "rate": 68.81319330582502
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 2.91800975,
+            "min": 0.463725,
+            "med": 1.4151405000000001,
+            "max": 8.378033,
+            "p(90)": 6.444321200000001,
+            "p(95)": 7.411177099999998
+        },
+        "http_req_connecting": {
+            "avg": 0.11914825,
+            "min": 0,
+            "med": 0,
+            "max": 0.476593,
+            "p(90)": 0.33361510000000005,
+            "p(95)": 0.4051040499999998
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 4,
+            "value": 0
+        },
+        "data_received": {
+            "count": 996,
+            "rate": 68537.94053260173
+        },
+        "http_reqs": {
+            "count": 4,
+            "rate": 275.2527732233001
+        },
+        "http_req_duration": {
+            "med": 1.4151405000000001,
+            "max": 8.378033,
+            "p(90)": 6.444321200000001,
+            "p(95)": 7.411177099999998,
+            "avg": 2.91800975,
+            "min": 0.463725
+        },
+        "http_req_blocked": {
+            "med": 0.00345,
+            "max": 0.523982,
+            "p(90)": 0.36805250000000006,
+            "p(95)": 0.44601724999999975,
+            "avg": 0.13334225,
+            "min": 0.002487
+        },
+        "http_req_receiving": {
+            "min": 0.041497,
+            "med": 0.10950599999999999,
+            "max": 0.191695,
+            "p(90)": 0.1728667,
+            "p(95)": 0.18228085,
+            "avg": 0.113051
+        },
+        "http_req_sending": {
+            "p(90)": 0.032479900000000006,
+            "p(95)": 0.03639894999999999,
+            "avg": 0.01748625,
+            "min": 0.006619,
+            "med": 0.011504,
+            "max": 0.040318
+        },
+        "data_sent": {
+            "count": 744,
+            "rate": 51197.01581953382
+        },
+        "iteration_duration": {
+            "avg": 14.420598,
+            "min": 14.420598,
+            "med": 14.420598,
+            "max": 14.420598,
+            "p(90)": 14.420598,
+            "p(95)": 14.420598
+        },
+        "checks": {
+            "passes": 9,
+            "fails": 0,
+            "thresholds": {
+                "rate==1": false
+            },
+            "value": 1
+        },
+        "http_req_tls_handshaking": {
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0
+        },
+        "http_req_waiting": {
+            "avg": 2.7874725,
+            "min": 0.415609,
+            "med": 1.2941305,
+            "max": 8.14602,
+            "p(90)": 6.252243600000001,
+            "p(95)": 7.199131799999998
+        }
+    },
+    "root_group": {
+        "checks": {
+            "login 200": {
+                "name": "login 200",
+                "path": "::login 200",
+                "id": "48b06dc5cde7f6ebb606ad7da726a2a5",
+                "passes": 1,
+                "fails": 0
+            },
+            "token presente": {
+                "path": "::token presente",
+                "id": "53cf0e5fdc5d8c03b8b90376bfd2b403",
+                "passes": 1,
+                "fails": 0,
+                "name": "token presente"
+            },
+            "pedido 201": {
+                "name": "pedido 201",
+                "path": "::pedido 201",
+                "id": "241b9da4421b4611e1da359859585803",
+                "passes": 1,
+                "fails": 0
+            },
+            "pedido criado": {
+                "id": "fee6d724f3e2be3f1add067fef374908",
+                "passes": 1,
+                "fails": 0,
+                "name": "pedido criado",
+                "path": "::pedido criado"
+            },
+            "atualização 200": {
+                "passes": 1,
+                "fails": 0,
+                "name": "atualização 200",
+                "path": "::atualização 200",
+                "id": "98383bde00be2f6b8d8d638a22633225"
+            },
+            "status confirmado": {
+                "path": "::status confirmado",
+                "id": "0c755fd58fdab7ffc1ade48a62e1ea2c",
+                "passes": 1,
+                "fails": 0,
+                "name": "status confirmado"
+            },
+            "consulta 200": {
+                "name": "consulta 200",
+                "path": "::consulta 200",
+                "id": "e2e6b2a834c6f21c5b28a1241f1bf894",
+                "passes": 1,
+                "fails": 0
+            },
+            "pedido corresponde": {
+                "id": "07805e2c3600c23d110820b00457bd1f",
+                "passes": 1,
+                "fails": 0,
+                "name": "pedido corresponde",
+                "path": "::pedido corresponde"
+            },
+            "status esperado": {
+                "name": "status esperado",
+                "path": "::status esperado",
+                "id": "55ecf1181ed7abcfe1940bc12b453999",
+                "passes": 1,
+                "fails": 0
+            }
+        },
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {}
+    }
+}

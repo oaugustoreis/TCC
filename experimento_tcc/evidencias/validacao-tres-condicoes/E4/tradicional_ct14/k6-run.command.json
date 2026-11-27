@@ -1,0 +1,25 @@
+{
+  "command": [
+    "k6",
+    "run",
+    "--no-usage-report",
+    "--no-color",
+    "--quiet",
+    "--log-format=json",
+    "--log-output",
+    "file=/home/claude/oaugustoreis/tcc/experimento_tcc/evidencias/validacao-tres-condicoes/E4/tradicional_ct14/http-debug.jsonl",
+    "--http-debug=full",
+    "--summary-export",
+    "/home/claude/oaugustoreis/tcc/experimento_tcc/evidencias/validacao-tres-condicoes/E4/tradicional_ct14/summary.json",
+    "--out",
+    "json=/home/claude/oaugustoreis/tcc/experimento_tcc/evidencias/validacao-tres-condicoes/E4/tradicional_ct14/metrics.jsonl",
+    "-e",
+    "BASE_URL=http://127.0.0.1:36519",
+    "tradicional/ct14.js"
+  ],
+  "cwd": "/home/claude/oaugustoreis/tcc/experimento_tcc",
+  "started_utc": "2026-11-27T16:28:16.154Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

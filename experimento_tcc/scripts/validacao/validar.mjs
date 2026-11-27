@@ -18,11 +18,11 @@ function inventory(){
   const p=path.join(dir,e.name);if(e.isDirectory()&&e.name!=='__pycache__')walk(p);
   else if(/\.(?:m?js|py)$/.test(e.name))files[path.relative(ROOT,p).replaceAll('\\','/')]=hash(fs.readFileSync(p));
  }}
- for(const d of ['tradicional','modular','api','shared','scripts/validacao'])walk(path.join(ROOT,d));
+ for(const d of ['tradicional','modular','intermediaria','api','shared','scripts/validacao'])walk(path.join(ROOT,d));
  return files;
 }
 const before=inventory();write(path.join(out,'source-manifest-before.json'),before);
-const groups=suite==='both'?['tradicional','modular']:[suite];
+const groups=suite==='both'?['tradicional','modular']:suite==='tres'?['tradicional','modular','intermediaria']:[suite];
 const STATE_IDS={E0:E0_IDS,E1:E1_IDS,E2:E2_IDS,E3:E3_IDS,E4:E4_IDS};
 const ids=STATE_IDS[state];
 const env=cleanK6Environment();
@@ -32,7 +32,7 @@ write(path.join(out,'environment.json'),{utc:new Date().toISOString(),platform:o
  k6_environment_options_removed:Object.keys(process.env).filter(k=>/^K6_/i.test(k))});
 let entries;
 try{
- if(!STATE_IDS[state]||!groups.every(g=>['tradicional','modular'].includes(g)))throw Error('Estado/arquitetura inválidos');
+ if(!STATE_IDS[state]||!groups.every(g=>['tradicional','modular','intermediaria'].includes(g)))throw Error('Estado/arquitetura inválidos');
  if(args.includes('--manifest'))entries=JSON.parse(fs.readFileSync(path.resolve(arg('--manifest')),'utf8'));
  else if(state==='E0')entries=groups.flatMap(group=>E0_IDS.map(id=>({id,suite:group,script:group==='tradicional'?'tradicional/'+id+'.js':'modular/scenarios/'+SCENARIOS[id].journey+'.scenario.js'})));
  else throw Error(state+' exige --manifest com os caminhos dos cenários reais; o validador não cria entradas automaticamente');
@@ -81,18 +81,19 @@ for(const entry of entries){
  runs.push({result,received,checks});console.log(group+' '+id+': '+verdict.passed);
 }
 const comparisons=[];
-if(suite==='both')for(const id of ids){
+if(suite==='both'||suite==='tres')for(const id of ids){
  const pair=runs.filter(r=>r.result.scenario===id);
- const success=pair.length===2&&pair.every(r=>r.result.real_success);
- const requests_equal=success?JSON.stringify(canonicalTrace(pair[0].received))===JSON.stringify(canonicalTrace(pair[1].received)):null;
- const checks_equal=success?JSON.stringify(stable(pair[0].checks.map(({name,value})=>({name,value}))))===JSON.stringify(stable(pair[1].checks.map(({name,value})=>({name,value})))):null;
- const comparison={scenario:id,requests_responses_equal:requests_equal,checks_equal,equivalent:success&&requests_equal&&checks_equal};
+ const success=pair.length===groups.length&&pair.every(r=>r.result.real_success);
+ const trace=r=>JSON.stringify(canonicalTrace(r.received)),chk=r=>JSON.stringify(stable(r.checks.map(({name,value})=>({name,value}))));
+ const requests_equal=success?pair.every(r=>trace(r)===trace(pair[0])):null;
+ const checks_equal=success?pair.every(r=>chk(r)===chk(pair[0])):null;
+ const comparison={scenario:id,suites:groups,requests_responses_equal:requests_equal,checks_equal,equivalent:success&&requests_equal&&checks_equal};
  comparisons.push(comparison);write(path.join(out,id+'-comparison.json'),comparison);
 }
 const after=inventory();write(path.join(out,'source-manifest-after.json'),after);
 const preserved=JSON.stringify(stable(before))===JSON.stringify(stable(after));
-const complete=suite==='both'&&comparisons.every(c=>c.equivalent);
-const passed=preserved&&runs.every(r=>r.result.real_success)&&(suite!=='both'||complete);
+const complete=(suite==='both'||suite==='tres')&&comparisons.every(c=>c.equivalent);
+const passed=preserved&&runs.every(r=>r.result.real_success)&&(!(suite==='both'||suite==='tres')||complete);
 write(path.join(out,'result.json'),{state,suite,preflight_passed:true,validation_passed:passed,complete_functional_equivalence:passed&&complete,
  architecture_preserved:preserved,runs:runs.map(r=>r.result),comparisons,
  totals:{executions:runs.length,received_requests:runs.reduce((n,r)=>n+r.result.received_requests,0),passed_checks:runs.reduce((n,r)=>n+r.result.passed_checks,0)}});

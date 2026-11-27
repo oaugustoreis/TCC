@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "--version"
+  ],
+  "cwd": "/home/claude/oaugustoreis/tcc/experimento_tcc",
+  "started_utc": "2026-11-27T16:28:10.018Z",
+  "exit_code": 0,
+  "error": null,
+  "signal": null
+}

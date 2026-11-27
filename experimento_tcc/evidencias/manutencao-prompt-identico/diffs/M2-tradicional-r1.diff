@@ -1,0 +1,141 @@
+diff -ruN /tmp/m/pristine/tradicional/ct03.js /tmp/m/runs/M2-tradicional-r1/tradicional/ct03.js
+--- /tmp/m/pristine/tradicional/ct03.js	2026-11-27 12:31:32.105140554 -0400
++++ /tmp/m/runs/M2-tradicional-r1/tradicional/ct03.js	2026-11-27 12:36:48.422015151 -0400
+@@ -12,7 +12,7 @@
+   const product = http.get(`${BASE_URL}/products/p1`, { headers });
+   check(product, { 'produto 200': r => r.status === 200, 'produto p1': r => r.json('id') === 'p1' });
+ 
+-  const created = http.post(`${BASE_URL}/orders`, JSON.stringify({ productId: 'p1', quantity: 1 }), { headers });
+-  check(created, { 'pedido 201': r => r.status === 201, 'pedido criado': r => typeof r.json('id') === 'string' && r.json('status') === 'created' });
++  const created = http.post(`${BASE_URL}/orders`, JSON.stringify({ productId: 'p1', quantity: 1, currency: 'BRL' }), { headers });
++  check(created, { 'pedido 201': r => r.status === 201, 'pedido criado': r => typeof r.json('id') === 'string' && r.json('status') === 'created' && r.json('currency') === 'BRL' });
+   const orderId = created.json('id');
+ }
+diff -ruN /tmp/m/pristine/tradicional/ct04.js /tmp/m/runs/M2-tradicional-r1/tradicional/ct04.js
+--- /tmp/m/pristine/tradicional/ct04.js	2026-11-27 12:31:32.105166025 -0400
++++ /tmp/m/runs/M2-tradicional-r1/tradicional/ct04.js	2026-11-27 12:36:49.474015214 -0400
+@@ -9,8 +9,8 @@
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+ 
+-  const created = http.post(`${BASE_URL}/orders`, JSON.stringify({ productId: 'p1', quantity: 1 }), { headers });
+-  check(created, { 'pedido 201': r => r.status === 201, 'pedido criado': r => typeof r.json('id') === 'string' && r.json('status') === 'created' });
++  const created = http.post(`${BASE_URL}/orders`, JSON.stringify({ productId: 'p1', quantity: 1, currency: 'BRL' }), { headers });
++  check(created, { 'pedido 201': r => r.status === 201, 'pedido criado': r => typeof r.json('id') === 'string' && r.json('status') === 'created' && r.json('currency') === 'BRL' });
+   const orderId = created.json('id');
+ 
+   const order = http.get(`${BASE_URL}/orders/${orderId}`, { headers });
+diff -ruN /tmp/m/pristine/tradicional/ct05.js /tmp/m/runs/M2-tradicional-r1/tradicional/ct05.js
+--- /tmp/m/pristine/tradicional/ct05.js	2026-11-27 12:31:32.105191653 -0400
++++ /tmp/m/runs/M2-tradicional-r1/tradicional/ct05.js	2026-11-27 12:36:50.674015285 -0400
+@@ -9,8 +9,8 @@
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+ 
+-  const created = http.post(`${BASE_URL}/orders`, JSON.stringify({ productId: 'p1', quantity: 1 }), { headers });
+-  check(created, { 'pedido 201': r => r.status === 201, 'pedido criado': r => typeof r.json('id') === 'string' && r.json('status') === 'created' });
++  const created = http.post(`${BASE_URL}/orders`, JSON.stringify({ productId: 'p1', quantity: 1, currency: 'BRL' }), { headers });
++  check(created, { 'pedido 201': r => r.status === 201, 'pedido criado': r => typeof r.json('id') === 'string' && r.json('status') === 'created' && r.json('currency') === 'BRL' });
+   const orderId = created.json('id');
+ 
+   const updated = http.patch(`${BASE_URL}/orders/${orderId}/status`, JSON.stringify({ status: 'confirmed' }), { headers });
+diff -ruN /tmp/m/pristine/tradicional/ct11.js /tmp/m/runs/M2-tradicional-r1/tradicional/ct11.js
+--- /tmp/m/pristine/tradicional/ct11.js	2026-11-27 12:31:32.105344251 -0400
++++ /tmp/m/runs/M2-tradicional-r1/tradicional/ct11.js	2026-11-27 12:36:52.482015392 -0400
+@@ -11,7 +11,7 @@
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+ 
+-  const createdOrder = http.post(`${BASE_URL}/orders`, JSON.stringify({ productId: 'p1', quantity: 1 }), { headers });
++  const createdOrder = http.post(`${BASE_URL}/orders`, JSON.stringify({ productId: 'p1', quantity: 1, currency: 'BRL' }), { headers });
+   check(createdOrder, {
+     'CT-11 02 status': r => r.status === 201,
+     'CT-11 02 corpo': r => Boolean(
+@@ -19,6 +19,7 @@
+       r.json('id').length > 0 &&
+       r.json('productId') === 'p1' &&
+       r.json('quantity') === 1 &&
++      r.json('currency') === 'BRL' &&
+       r.json('status') === 'created'
+     ),
+   });
+diff -ruN /tmp/m/pristine/tradicional/ct12.js /tmp/m/runs/M2-tradicional-r1/tradicional/ct12.js
+--- /tmp/m/pristine/tradicional/ct12.js	2026-11-27 12:31:32.105372026 -0400
++++ /tmp/m/runs/M2-tradicional-r1/tradicional/ct12.js	2026-11-27 12:36:54.134015491 -0400
+@@ -11,7 +11,7 @@
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+ 
+-  const createdOrder = http.post(`${BASE_URL}/orders`, JSON.stringify({ productId: 'p1', quantity: 1 }), { headers });
++  const createdOrder = http.post(`${BASE_URL}/orders`, JSON.stringify({ productId: 'p1', quantity: 1, currency: 'BRL' }), { headers });
+   check(createdOrder, {
+     'CT-12 02 status': r => r.status === 201,
+     'CT-12 02 corpo': r => Boolean(
+@@ -19,6 +19,7 @@
+       r.json('id').length > 0 &&
+       r.json('productId') === 'p1' &&
+       r.json('quantity') === 1 &&
++      r.json('currency') === 'BRL' &&
+       r.json('status') === 'created'
+     ),
+   });
+diff -ruN /tmp/m/pristine/tradicional/ct13.js /tmp/m/runs/M2-tradicional-r1/tradicional/ct13.js
+--- /tmp/m/pristine/tradicional/ct13.js	2026-11-27 12:31:32.105399038 -0400
++++ /tmp/m/runs/M2-tradicional-r1/tradicional/ct13.js	2026-11-27 12:36:55.922015597 -0400
+@@ -11,7 +11,7 @@
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+ 
+-  const createdOrder = http.post(`${BASE_URL}/orders`, JSON.stringify({ productId: 'p1', quantity: 1 }), { headers });
++  const createdOrder = http.post(`${BASE_URL}/orders`, JSON.stringify({ productId: 'p1', quantity: 1, currency: 'BRL' }), { headers });
+   check(createdOrder, {
+     'CT-13 02 status': r => r.status === 201,
+     'CT-13 02 corpo': r => Boolean(
+@@ -19,6 +19,7 @@
+       r.json('id').length > 0 &&
+       r.json('productId') === 'p1' &&
+       r.json('quantity') === 1 &&
++      r.json('currency') === 'BRL' &&
+       r.json('status') === 'created'
+     ),
+   });
+diff -ruN /tmp/m/pristine/tradicional/ct14.js /tmp/m/runs/M2-tradicional-r1/tradicional/ct14.js
+--- /tmp/m/pristine/tradicional/ct14.js	2026-11-27 12:31:32.105423816 -0400
++++ /tmp/m/runs/M2-tradicional-r1/tradicional/ct14.js	2026-11-27 12:36:57.722015704 -0400
+@@ -11,7 +11,7 @@
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+ 
+-  const createdOrder = http.post(`${BASE_URL}/orders`, JSON.stringify({ productId: 'p1', quantity: 1 }), { headers });
++  const createdOrder = http.post(`${BASE_URL}/orders`, JSON.stringify({ productId: 'p1', quantity: 1, currency: 'BRL' }), { headers });
+   check(createdOrder, {
+     'CT-14 02 status': r => r.status === 201,
+     'CT-14 02 corpo': r => Boolean(
+@@ -19,6 +19,7 @@
+       r.json('id').length > 0 &&
+       r.json('productId') === 'p1' &&
+       r.json('quantity') === 1 &&
++      r.json('currency') === 'BRL' &&
+       r.json('status') === 'created'
+     ),
+   });
+diff -ruN /tmp/m/pristine/tradicional/ct15.js /tmp/m/runs/M2-tradicional-r1/tradicional/ct15.js
+--- /tmp/m/pristine/tradicional/ct15.js	2026-11-27 12:31:32.105448524 -0400
++++ /tmp/m/runs/M2-tradicional-r1/tradicional/ct15.js	2026-11-27 12:36:59.050015783 -0400
+@@ -77,7 +77,7 @@
+     ),
+   });
+ 
+-  const createdOrder = http.post(`${BASE_URL}/orders`, JSON.stringify({ cartId }), { headers });
++  const createdOrder = http.post(`${BASE_URL}/orders`, JSON.stringify({ cartId, currency: 'BRL' }), { headers });
+   const createdOrderItems = createdOrder.json('items');
+   const firstOrderItem = Array.isArray(createdOrderItems) && createdOrderItems.length === 1 ? createdOrderItems[0] : null;
+   check(createdOrder, {
+@@ -86,6 +86,7 @@
+       typeof r.json('id') === 'string' &&
+       r.json('id').length > 0 &&
+       r.json('cartId') === cartId &&
++      r.json('currency') === 'BRL' &&
+       r.json('status') === 'created' &&
+       firstOrderItem &&
+       firstOrderItem.productId === 'p1' &&

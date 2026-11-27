@@ -1,0 +1,182 @@
+{
+  "ct01": {
+    "esbuild/tradicional": {
+      "modulos": 1,
+      "bytesCodigo": 850,
+      "bytesTar": 9728
+    },
+    "esbuild/modular": {
+      "modulos": 1,
+      "bytesCodigo": 3874,
+      "bytesTar": 12800
+    }
+  },
+  "ct02": {
+    "esbuild/tradicional": {
+      "modulos": 1,
+      "bytesCodigo": 1247,
+      "bytesTar": 10240
+    },
+    "esbuild/modular": {
+      "modulos": 1,
+      "bytesCodigo": 4945,
+      "bytesTar": 13824
+    }
+  },
+  "ct03": {
+    "esbuild/tradicional": {
+      "modulos": 1,
+      "bytesCodigo": 1329,
+      "bytesTar": 10240
+    },
+    "esbuild/modular": {
+      "modulos": 1,
+      "bytesCodigo": 6181,
+      "bytesTar": 15360
+    }
+  },
+  "ct04": {
+    "esbuild/tradicional": {
+      "modulos": 1,
+      "bytesCodigo": 1407,
+      "bytesTar": 10240
+    },
+    "esbuild/modular": {
+      "modulos": 1,
+      "bytesCodigo": 7773,
+      "bytesTar": 16896
+    }
+  },
+  "ct05": {
+    "esbuild/tradicional": {
+      "modulos": 1,
+      "bytesCodigo": 1667,
+      "bytesTar": 10752
+    },
+    "esbuild/modular": {
+      "modulos": 1,
+      "bytesCodigo": 9863,
+      "bytesTar": 18944
+    }
+  },
+  "ct06": {
+    "esbuild/tradicional": {
+      "modulos": 1,
+      "bytesCodigo": 1838,
+      "bytesTar": 10752
+    },
+    "esbuild/modular": {
+      "modulos": 1,
+      "bytesCodigo": 6275,
+      "bytesTar": 15360
+    }
+  },
+  "ct07": {
+    "esbuild/tradicional": {
+      "modulos": 1,
+      "bytesCodigo": 1427,
+      "bytesTar": 10240
+    },
+    "esbuild/modular": {
+      "modulos": 1,
+      "bytesCodigo": 4934,
+      "bytesTar": 13824
+    }
+  },
+  "ct08": {
+    "esbuild/tradicional": {
+      "modulos": 1,
+      "bytesCodigo": 2587,
+      "bytesTar": 11776
+    },
+    "esbuild/modular": {
+      "modulos": 1,
+      "bytesCodigo": 7231,
+      "bytesTar": 16384
+    }
+  },
+  "ct09": {
+    "esbuild/tradicional": {
+      "modulos": 1,
+      "bytesCodigo": 3221,
+      "bytesTar": 12288
+    },
+    "esbuild/modular": {
+      "modulos": 1,
+      "bytesCodigo": 8575,
+      "bytesTar": 17408
+    }
+  },
+  "ct10": {
+    "esbuild/tradicional": {
+      "modulos": 1,
+      "bytesCodigo": 2798,
+      "bytesTar": 11776
+    },
+    "esbuild/modular": {
+      "modulos": 1,
+      "bytesCodigo": 8058,
+      "bytesTar": 16896
+    }
+  },
+  "ct11": {
+    "esbuild/tradicional": {
+      "modulos": 1,
+      "bytesCodigo": 2139,
+      "bytesTar": 11264
+    },
+    "esbuild/modular": {
+      "modulos": 1,
+      "bytesCodigo": 9157,
+      "bytesTar": 17920
+    }
+  },
+  "ct12": {
+    "esbuild/tradicional": {
+      "modulos": 1,
+      "bytesCodigo": 2049,
+      "bytesTar": 11264
+    },
+    "esbuild/modular": {
+      "modulos": 1,
+      "bytesCodigo": 10013,
+      "bytesTar": 18944
+    }
+  },
+  "ct13": {
+    "esbuild/tradicional": {
+      "modulos": 1,
+      "bytesCodigo": 2842,
+      "bytesTar": 11776
+    },
+    "esbuild/modular": {
+      "modulos": 1,
+      "bytesCodigo": 11991,
+      "bytesTar": 20992
+    }
+  },
+  "ct14": {
+    "esbuild/tradicional": {
+      "modulos": 1,
+      "bytesCodigo": 2847,
+      "bytesTar": 11776
+    },
+    "esbuild/modular": {
+      "modulos": 1,
+      "bytesCodigo": 11969,
+      "bytesTar": 20992
+    }
+  },
+  "ct15": {
+    "esbuild/tradicional": {
+      "modulos": 1,
+      "bytesCodigo": 6967,
+      "bytesTar": 15872
+    },
+    "esbuild/modular": {
+      "modulos": 1,
+      "bytesCodigo": 17057,
+      "bytesTar": 26112
+    }
+  }
+}

@@ -52,8 +52,8 @@ function listar(dir, acc = []) {
 const entradas = {};
 function localizar(nome) {
   const r = {};
-  if (nome === B) {
-    for (const f of listar(join(RAIZ, B, 'scenarios'))) {
+  if (nome === 'modular') {
+    for (const f of listar(join(RAIZ, 'modular', 'scenarios'))) {
       const m = readFileSync(f, 'utf8').match(/scenarios:\s*\{\s*(ct\d{2})/);
       if (m) r[m[1]] = relative(RAIZ, f).split(sep).join('/');
     }
@@ -129,7 +129,7 @@ async function pararApi(api) {
 // ---------- ambiente e integridade das fontes ----------
 function sha(p) { return createHash('sha256').update(readFileSync(p)).digest('hex'); }
 function ambiente() {
-  const fontes = [A, B, 'intermediaria', 'build-esbuild', 'shared', 'api'].filter((d) => { try { return statSync(join(RAIZ, d)).isDirectory(); } catch { return false; } }).flatMap((d) => listar(join(RAIZ, d)).filter((f) => f.endsWith('.js')))
+  const fontes = ['tradicional', 'modular', 'intermediaria', 'build-esbuild', 'shared', 'api'].filter((d) => { try { return statSync(join(RAIZ, d)).isDirectory(); } catch { return false; } }).flatMap((d) => listar(join(RAIZ, d)).filter((f) => f.endsWith('.js')))
     .map((f) => [relative(RAIZ, f).split(sep).join('/'), sha(f)]).sort();
   const git = (...a) => spawnSync('git', ['-C', RAIZ, ...a], { encoding: 'utf8' }).stdout?.trim();
   return {

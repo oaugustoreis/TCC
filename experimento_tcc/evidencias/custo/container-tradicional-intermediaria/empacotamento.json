@@ -1,0 +1,182 @@
+{
+  "ct01": {
+    "tradicional": {
+      "modulos": 2,
+      "bytesCodigo": 838,
+      "bytesTar": 10752
+    },
+    "intermediaria": {
+      "modulos": 5,
+      "bytesCodigo": 3880,
+      "bytesTar": 18944
+    }
+  },
+  "ct02": {
+    "tradicional": {
+      "modulos": 2,
+      "bytesCodigo": 1227,
+      "bytesTar": 10752
+    },
+    "intermediaria": {
+      "modulos": 7,
+      "bytesCodigo": 5259,
+      "bytesTar": 22528
+    }
+  },
+  "ct03": {
+    "tradicional": {
+      "modulos": 2,
+      "bytesCodigo": 1311,
+      "bytesTar": 11264
+    },
+    "intermediaria": {
+      "modulos": 7,
+      "bytesCodigo": 7170,
+      "bytesTar": 24576
+    }
+  },
+  "ct04": {
+    "tradicional": {
+      "modulos": 2,
+      "bytesCodigo": 1387,
+      "bytesTar": 11264
+    },
+    "intermediaria": {
+      "modulos": 7,
+      "bytesCodigo": 9512,
+      "bytesTar": 26624
+    }
+  },
+  "ct05": {
+    "tradicional": {
+      "modulos": 2,
+      "bytesCodigo": 1640,
+      "bytesTar": 11264
+    },
+    "intermediaria": {
+      "modulos": 8,
+      "bytesCodigo": 12417,
+      "bytesTar": 30208
+    }
+  },
+  "ct06": {
+    "tradicional": {
+      "modulos": 2,
+      "bytesCodigo": 1897,
+      "bytesTar": 11776
+    },
+    "intermediaria": {
+      "modulos": 7,
+      "bytesCodigo": 6947,
+      "bytesTar": 24064
+    }
+  },
+  "ct07": {
+    "tradicional": {
+      "modulos": 2,
+      "bytesCodigo": 1412,
+      "bytesTar": 11264
+    },
+    "intermediaria": {
+      "modulos": 6,
+      "bytesCodigo": 5085,
+      "bytesTar": 21504
+    }
+  },
+  "ct08": {
+    "tradicional": {
+      "modulos": 2,
+      "bytesCodigo": 2684,
+      "bytesTar": 12288
+    },
+    "intermediaria": {
+      "modulos": 8,
+      "bytesCodigo": 8334,
+      "bytesTar": 26112
+    }
+  },
+  "ct09": {
+    "tradicional": {
+      "modulos": 2,
+      "bytesCodigo": 3358,
+      "bytesTar": 13312
+    },
+    "intermediaria": {
+      "modulos": 9,
+      "bytesCodigo": 9991,
+      "bytesTar": 28672
+    }
+  },
+  "ct10": {
+    "tradicional": {
+      "modulos": 2,
+      "bytesCodigo": 2899,
+      "bytesTar": 12800
+    },
+    "intermediaria": {
+      "modulos": 9,
+      "bytesCodigo": 9314,
+      "bytesTar": 27648
+    }
+  },
+  "ct11": {
+    "tradicional": {
+      "modulos": 2,
+      "bytesCodigo": 2190,
+      "bytesTar": 11776
+    },
+    "intermediaria": {
+      "modulos": 8,
+      "bytesCodigo": 11225,
+      "bytesTar": 29184
+    }
+  },
+  "ct12": {
+    "tradicional": {
+      "modulos": 2,
+      "bytesCodigo": 2092,
+      "bytesTar": 11776
+    },
+    "intermediaria": {
+      "modulos": 8,
+      "bytesCodigo": 12611,
+      "bytesTar": 30720
+    }
+  },
+  "ct13": {
+    "tradicional": {
+      "modulos": 2,
+      "bytesCodigo": 2923,
+      "bytesTar": 12800
+    },
+    "intermediaria": {
+      "modulos": 10,
+      "bytesCodigo": 15120,
+      "bytesTar": 34816
+    }
+  },
+  "ct14": {
+    "tradicional": {
+      "modulos": 2,
+      "bytesCodigo": 2928,
+      "bytesTar": 12800
+    },
+    "intermediaria": {
+      "modulos": 10,
+      "bytesCodigo": 15125,
+      "bytesTar": 34816
+    }
+  },
+  "ct15": {
+    "tradicional": {
+      "modulos": 2,
+      "bytesCodigo": 7300,
+      "bytesTar": 16896
+    },
+    "intermediaria": {
+      "modulos": 15,
+      "bytesCodigo": 21899,
+      "bytesTar": 46080
+    }
+  }
+}

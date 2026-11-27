@@ -1,0 +1,22 @@
+{
+  "scenario": "ct12",
+  "suite": "modular",
+  "script": "modular/scenarios/pedidos/cancelamento.scenario.js",
+  "exit_code": 0,
+  "api_ready": true,
+  "received_requests": 4,
+  "passed_checks": 8,
+  "observed_checks": 8,
+  "metrics": {
+    "iterations": 1,
+    "http_reqs": 4,
+    "http_req_failed": 0
+  },
+  "real_success": true,
+  "oracle": {
+    "passed": true,
+    "errors": [],
+    "expected_requests": 4,
+    "expected_checks": 8
+  }
+}

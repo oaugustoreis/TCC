@@ -1,0 +1,13 @@
+{
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "npm.cmd --version"
+  ],
+  "cwd": "/home/claude/oaugustoreis/tcc/experimento_tcc",
+  "started_utc": "2026-11-27T16:28:10.039Z",
+  "exit_code": null,
+  "error": "spawnSync cmd.exe ENOENT",
+  "signal": null
+}

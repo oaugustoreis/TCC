@@ -1,0 +1,180 @@
+diff -ruN /tmp/m/pristine/tradicional/ct01.js /tmp/m/runs/M1-tradicional-r1/tradicional/ct01.js
+--- /tmp/m/pristine/tradicional/ct01.js	2026-11-27 12:31:32.105067865 -0400
++++ /tmp/m/runs/M1-tradicional-r1/tradicional/ct01.js	2026-11-27 12:36:58.746015765 -0400
+@@ -5,7 +5,7 @@
+ export default function () {
+   const EXPECTED_STATUS = 'created';
+   const login = http.post(`${BASE_URL}/auth/login`, JSON.stringify(CREDENTIALS), { headers: { 'Content-Type': 'application/json' } });
+-  check(login, { 'login 200': r => r.status === 200, 'token presente': r => typeof r.json('token') === 'string' });
++  check(login, { 'login 200': r => r.status === 200, 'token presente': r => typeof r.json('token') === 'string' && r.json('expiresIn') === 3600 });
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+ }
+diff -ruN /tmp/m/pristine/tradicional/ct02.js /tmp/m/runs/M1-tradicional-r1/tradicional/ct02.js
+--- /tmp/m/pristine/tradicional/ct02.js	2026-11-27 12:31:32.105113355 -0400
++++ /tmp/m/runs/M1-tradicional-r1/tradicional/ct02.js	2026-11-27 12:37:15.794016778 -0400
+@@ -5,7 +5,7 @@
+ export default function () {
+   const EXPECTED_STATUS = 'created';
+   const login = http.post(`${BASE_URL}/auth/login`, JSON.stringify(CREDENTIALS), { headers: { 'Content-Type': 'application/json' } });
+-  check(login, { 'login 200': r => r.status === 200, 'token presente': r => typeof r.json('token') === 'string' });
++  check(login, { 'login 200': r => r.status === 200, 'token presente': r => typeof r.json('token') === 'string' && r.json('expiresIn') === 3600 });
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+ 
+diff -ruN /tmp/m/pristine/tradicional/ct03.js /tmp/m/runs/M1-tradicional-r1/tradicional/ct03.js
+--- /tmp/m/pristine/tradicional/ct03.js	2026-11-27 12:31:32.105140554 -0400
++++ /tmp/m/runs/M1-tradicional-r1/tradicional/ct03.js	2026-11-27 12:37:16.390016814 -0400
+@@ -5,7 +5,7 @@
+ export default function () {
+   const EXPECTED_STATUS = 'created';
+   const login = http.post(`${BASE_URL}/auth/login`, JSON.stringify(CREDENTIALS), { headers: { 'Content-Type': 'application/json' } });
+-  check(login, { 'login 200': r => r.status === 200, 'token presente': r => typeof r.json('token') === 'string' });
++  check(login, { 'login 200': r => r.status === 200, 'token presente': r => typeof r.json('token') === 'string' && r.json('expiresIn') === 3600 });
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+ 
+diff -ruN /tmp/m/pristine/tradicional/ct04.js /tmp/m/runs/M1-tradicional-r1/tradicional/ct04.js
+--- /tmp/m/pristine/tradicional/ct04.js	2026-11-27 12:31:32.105166025 -0400
++++ /tmp/m/runs/M1-tradicional-r1/tradicional/ct04.js	2026-11-27 12:37:16.982016849 -0400
+@@ -5,7 +5,7 @@
+ export default function () {
+   const EXPECTED_STATUS = 'created';
+   const login = http.post(`${BASE_URL}/auth/login`, JSON.stringify(CREDENTIALS), { headers: { 'Content-Type': 'application/json' } });
+-  check(login, { 'login 200': r => r.status === 200, 'token presente': r => typeof r.json('token') === 'string' });
++  check(login, { 'login 200': r => r.status === 200, 'token presente': r => typeof r.json('token') === 'string' && r.json('expiresIn') === 3600 });
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+ 
+diff -ruN /tmp/m/pristine/tradicional/ct05.js /tmp/m/runs/M1-tradicional-r1/tradicional/ct05.js
+--- /tmp/m/pristine/tradicional/ct05.js	2026-11-27 12:31:32.105191653 -0400
++++ /tmp/m/runs/M1-tradicional-r1/tradicional/ct05.js	2026-11-27 12:37:17.742016894 -0400
+@@ -5,7 +5,7 @@
+ export default function () {
+   const EXPECTED_STATUS = 'confirmed';
+   const login = http.post(`${BASE_URL}/auth/login`, JSON.stringify(CREDENTIALS), { headers: { 'Content-Type': 'application/json' } });
+-  check(login, { 'login 200': r => r.status === 200, 'token presente': r => typeof r.json('token') === 'string' });
++  check(login, { 'login 200': r => r.status === 200, 'token presente': r => typeof r.json('token') === 'string' && r.json('expiresIn') === 3600 });
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+ 
+diff -ruN /tmp/m/pristine/tradicional/ct06.js /tmp/m/runs/M1-tradicional-r1/tradicional/ct06.js
+--- /tmp/m/pristine/tradicional/ct06.js	2026-11-27 12:31:32.105217202 -0400
++++ /tmp/m/runs/M1-tradicional-r1/tradicional/ct06.js	2026-11-27 12:37:02.034015960 -0400
+@@ -6,7 +6,7 @@
+   const login = http.post(`${BASE_URL}/auth/login`, JSON.stringify(CREDENTIALS), { headers: { 'Content-Type': 'application/json' } });
+   check(login, {
+     'CT-06 01 status': r => r.status === 200,
+-    'CT-06 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer',
++    'CT-06 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer' && r.json('expiresIn') === 3600,
+   });
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+diff -ruN /tmp/m/pristine/tradicional/ct07.js /tmp/m/runs/M1-tradicional-r1/tradicional/ct07.js
+--- /tmp/m/pristine/tradicional/ct07.js	2026-11-27 12:31:32.105241324 -0400
++++ /tmp/m/runs/M1-tradicional-r1/tradicional/ct07.js	2026-11-27 12:37:18.338016929 -0400
+@@ -6,7 +6,7 @@
+   const login = http.post(`${BASE_URL}/auth/login`, JSON.stringify(CREDENTIALS), { headers: { 'Content-Type': 'application/json' } });
+   check(login, {
+     'CT-07 01 status': r => r.status === 200,
+-    'CT-07 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer',
++    'CT-07 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer' && r.json('expiresIn') === 3600,
+   });
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+diff -ruN /tmp/m/pristine/tradicional/ct08.js /tmp/m/runs/M1-tradicional-r1/tradicional/ct08.js
+--- /tmp/m/pristine/tradicional/ct08.js	2026-11-27 12:31:32.105267010 -0400
++++ /tmp/m/runs/M1-tradicional-r1/tradicional/ct08.js	2026-11-27 12:37:19.086016974 -0400
+@@ -6,7 +6,7 @@
+   const login = http.post(`${BASE_URL}/auth/login`, JSON.stringify(CREDENTIALS), { headers: { 'Content-Type': 'application/json' } });
+   check(login, {
+     'CT-08 01 status': r => r.status === 200,
+-    'CT-08 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer',
++    'CT-08 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer' && r.json('expiresIn') === 3600,
+   });
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+diff -ruN /tmp/m/pristine/tradicional/ct09.js /tmp/m/runs/M1-tradicional-r1/tradicional/ct09.js
+--- /tmp/m/pristine/tradicional/ct09.js	2026-11-27 12:31:32.105292222 -0400
++++ /tmp/m/runs/M1-tradicional-r1/tradicional/ct09.js	2026-11-27 12:37:19.846017019 -0400
+@@ -6,7 +6,7 @@
+   const login = http.post(`${BASE_URL}/auth/login`, JSON.stringify(CREDENTIALS), { headers: { 'Content-Type': 'application/json' } });
+   check(login, {
+     'CT-09 01 status': r => r.status === 200,
+-    'CT-09 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer',
++    'CT-09 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer' && r.json('expiresIn') === 3600,
+   });
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+diff -ruN /tmp/m/pristine/tradicional/ct10.js /tmp/m/runs/M1-tradicional-r1/tradicional/ct10.js
+--- /tmp/m/pristine/tradicional/ct10.js	2026-11-27 12:31:32.105318480 -0400
++++ /tmp/m/runs/M1-tradicional-r1/tradicional/ct10.js	2026-11-27 12:37:20.586017063 -0400
+@@ -6,7 +6,7 @@
+   const login = http.post(`${BASE_URL}/auth/login`, JSON.stringify(CREDENTIALS), { headers: { 'Content-Type': 'application/json' } });
+   check(login, {
+     'CT-10 01 status': r => r.status === 200,
+-    'CT-10 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer',
++    'CT-10 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer' && r.json('expiresIn') === 3600,
+   });
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+diff -ruN /tmp/m/pristine/tradicional/ct11.js /tmp/m/runs/M1-tradicional-r1/tradicional/ct11.js
+--- /tmp/m/pristine/tradicional/ct11.js	2026-11-27 12:31:32.105344251 -0400
++++ /tmp/m/runs/M1-tradicional-r1/tradicional/ct11.js	2026-11-27 12:37:21.194017099 -0400
+@@ -6,7 +6,7 @@
+   const login = http.post(`${BASE_URL}/auth/login`, JSON.stringify(CREDENTIALS), { headers: { 'Content-Type': 'application/json' } });
+   check(login, {
+     'CT-11 01 status': r => r.status === 200,
+-    'CT-11 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer',
++    'CT-11 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer' && r.json('expiresIn') === 3600,
+   });
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+diff -ruN /tmp/m/pristine/tradicional/ct12.js /tmp/m/runs/M1-tradicional-r1/tradicional/ct12.js
+--- /tmp/m/pristine/tradicional/ct12.js	2026-11-27 12:31:32.105372026 -0400
++++ /tmp/m/runs/M1-tradicional-r1/tradicional/ct12.js	2026-11-27 12:37:21.934017143 -0400
+@@ -6,7 +6,7 @@
+   const login = http.post(`${BASE_URL}/auth/login`, JSON.stringify(CREDENTIALS), { headers: { 'Content-Type': 'application/json' } });
+   check(login, {
+     'CT-12 01 status': r => r.status === 200,
+-    'CT-12 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer',
++    'CT-12 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer' && r.json('expiresIn') === 3600,
+   });
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+diff -ruN /tmp/m/pristine/tradicional/ct13.js /tmp/m/runs/M1-tradicional-r1/tradicional/ct13.js
+--- /tmp/m/pristine/tradicional/ct13.js	2026-11-27 12:31:32.105399038 -0400
++++ /tmp/m/runs/M1-tradicional-r1/tradicional/ct13.js	2026-11-27 12:37:22.694017188 -0400
+@@ -6,7 +6,7 @@
+   const login = http.post(`${BASE_URL}/auth/login`, JSON.stringify(CREDENTIALS), { headers: { 'Content-Type': 'application/json' } });
+   check(login, {
+     'CT-13 01 status': r => r.status === 200,
+-    'CT-13 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer',
++    'CT-13 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer' && r.json('expiresIn') === 3600,
+   });
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+diff -ruN /tmp/m/pristine/tradicional/ct14.js /tmp/m/runs/M1-tradicional-r1/tradicional/ct14.js
+--- /tmp/m/pristine/tradicional/ct14.js	2026-11-27 12:31:32.105423816 -0400
++++ /tmp/m/runs/M1-tradicional-r1/tradicional/ct14.js	2026-11-27 12:37:23.438017232 -0400
+@@ -6,7 +6,7 @@
+   const login = http.post(`${BASE_URL}/auth/login`, JSON.stringify(CREDENTIALS), { headers: { 'Content-Type': 'application/json' } });
+   check(login, {
+     'CT-14 01 status': r => r.status === 200,
+-    'CT-14 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer',
++    'CT-14 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer' && r.json('expiresIn') === 3600,
+   });
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+diff -ruN /tmp/m/pristine/tradicional/ct15.js /tmp/m/runs/M1-tradicional-r1/tradicional/ct15.js
+--- /tmp/m/pristine/tradicional/ct15.js	2026-11-27 12:31:32.105448524 -0400
++++ /tmp/m/runs/M1-tradicional-r1/tradicional/ct15.js	2026-11-27 12:37:23.942017262 -0400
+@@ -6,7 +6,7 @@
+   const login = http.post(`${BASE_URL}/auth/login`, JSON.stringify(CREDENTIALS), { headers: { 'Content-Type': 'application/json' } });
+   check(login, {
+     'CT-15 01 status': r => r.status === 200,
+-    'CT-15 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer',
++    'CT-15 01 corpo': r => typeof r.json('token') === 'string' && r.json('token').length > 0 && r.json('tokenType') === 'Bearer' && r.json('expiresIn') === 3600,
+   });
+   const token = login.json('token');
+   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };

@@ -1,0 +1,22 @@
+{
+  "scenario": "ct14",
+  "suite": "modular",
+  "script": "modular/scenarios/pagamentos/recusa.scenario.js",
+  "exit_code": 0,
+  "api_ready": true,
+  "received_requests": 6,
+  "passed_checks": 12,
+  "observed_checks": 12,
+  "metrics": {
+    "iterations": 1,
+    "http_reqs": 6,
+    "http_req_failed": 0
+  },
+  "real_success": true,
+  "oracle": {
+    "passed": true,
+    "errors": [],
+    "expected_requests": 6,
+    "expected_checks": 12
+  }
+}

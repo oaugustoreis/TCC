@@ -1,0 +1,33 @@
+diff -ruN /tmp/m/pristine/intermediaria/lib/use-cases/pedidos/getOrder.useCase.js /tmp/m/runs/M3-intermediaria-r2/intermediaria/lib/use-cases/pedidos/getOrder.useCase.js
+--- /tmp/m/pristine/intermediaria/lib/use-cases/pedidos/getOrder.useCase.js	2026-11-27 12:31:32.108142723 -0400
++++ /tmp/m/runs/M3-intermediaria-r2/intermediaria/lib/use-cases/pedidos/getOrder.useCase.js	2026-11-27 12:36:47.482015095 -0400
+@@ -1,6 +1,8 @@
+ import { get } from "../../helpers/http/http.js";
+ import { checkResponse } from "../../helpers/checks/checks.js";
+ 
++const hasCreatedAt = (value) => typeof value === "string" && value.length > 0;
++
+ export function getOrder({
+     baseUrl,
+     token,
+@@ -52,6 +54,7 @@
+                 },
+                 total: { expected: expectedTotal, label: bodyLabel },
+                 status: { expected: expectedStatus, label: bodyLabel },
++                createdAt: { predicate: hasCreatedAt, label: bodyLabel },
+             }
+             : {
+                 id: {
+@@ -63,10 +66,12 @@
+                 productId: { expected: expectedProductId, label: bodyLabel },
+                 quantity: { expected: expectedQuantity, label: bodyLabel },
+                 status: { expected: expectedStatus, label: bodyLabel },
++                createdAt: { predicate: hasCreatedAt, label: bodyLabel },
+             })
+         : {
+             id: { expected: orderId, label: "pedido corresponde" },
+             status: { expected: expectedStatus, label: "status esperado" },
++            createdAt: { predicate: hasCreatedAt, label: "createdAt presente" },
+         });
+     checkResponse(r, {
+         status: resolvedStatus,

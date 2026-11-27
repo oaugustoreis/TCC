@@ -1,0 +1,218 @@
+[
+ {
+  "dir": "/tmp/m/runs/M3-modular-r1",
+  "tarefa": "M3",
+  "suite": "modular",
+  "rep": 1,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M3-modular-r1/modular/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M3-modular-r1/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M3-modular-r1/shared/`). Não altere nada fora de `/tmp/m/runs/M3-modular-r1/modular/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M3-modular-r1`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM3: A API passa a incluir `createdAt` (string ISO não vazia) nos pedidos, e todas as consultas individuais `GET /orders/:id` devem verificar `typeof createdAt === \"string\" && createdAt.length > 0`.",
+  "idx": 0
+ },
+ {
+  "dir": "/tmp/m/runs/M2-modular-r1",
+  "tarefa": "M2",
+  "suite": "modular",
+  "rep": 1,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M2-modular-r1/modular/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M2-modular-r1/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M2-modular-r1/shared/`). Não altere nada fora de `/tmp/m/runs/M2-modular-r1/modular/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M2-modular-r1`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM2: A API passa a exigir `currency: \"BRL\"` no payload de `POST /orders` e a retornar `currency: \"BRL\"` no pedido criado. Todas as jornadas que criam pedidos devem enviar e validar `currency === \"BRL\"`.",
+  "idx": 1
+ },
+ {
+  "dir": "/tmp/m/runs/M1-tradicional-r3",
+  "tarefa": "M1",
+  "suite": "tradicional",
+  "rep": 3,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M1-tradicional-r3/tradicional/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M1-tradicional-r3/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M1-tradicional-r3/shared/`). Não altere nada fora de `/tmp/m/runs/M1-tradicional-r3/tradicional/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M1-tradicional-r3`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM1: A API passa a retornar `expiresIn: 3600` junto ao `token` e `tokenType` em `POST /auth/login`. Todas as autenticações da suíte devem validar também `expiresIn === 3600` no check de corpo do login.",
+  "idx": 2
+ },
+ {
+  "dir": "/tmp/m/runs/M3-tradicional-r2",
+  "tarefa": "M3",
+  "suite": "tradicional",
+  "rep": 2,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M3-tradicional-r2/tradicional/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M3-tradicional-r2/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M3-tradicional-r2/shared/`). Não altere nada fora de `/tmp/m/runs/M3-tradicional-r2/tradicional/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M3-tradicional-r2`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM3: A API passa a incluir `createdAt` (string ISO não vazia) nos pedidos, e todas as consultas individuais `GET /orders/:id` devem verificar `typeof createdAt === \"string\" && createdAt.length > 0`.",
+  "idx": 3
+ },
+ {
+  "dir": "/tmp/m/runs/M2-modular-r3",
+  "tarefa": "M2",
+  "suite": "modular",
+  "rep": 3,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M2-modular-r3/modular/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M2-modular-r3/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M2-modular-r3/shared/`). Não altere nada fora de `/tmp/m/runs/M2-modular-r3/modular/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M2-modular-r3`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM2: A API passa a exigir `currency: \"BRL\"` no payload de `POST /orders` e a retornar `currency: \"BRL\"` no pedido criado. Todas as jornadas que criam pedidos devem enviar e validar `currency === \"BRL\"`.",
+  "idx": 4
+ },
+ {
+  "dir": "/tmp/m/runs/M3-intermediaria-r1",
+  "tarefa": "M3",
+  "suite": "intermediaria",
+  "rep": 1,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M3-intermediaria-r1/intermediaria/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M3-intermediaria-r1/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M3-intermediaria-r1/shared/`). Não altere nada fora de `/tmp/m/runs/M3-intermediaria-r1/intermediaria/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M3-intermediaria-r1`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM3: A API passa a incluir `createdAt` (string ISO não vazia) nos pedidos, e todas as consultas individuais `GET /orders/:id` devem verificar `typeof createdAt === \"string\" && createdAt.length > 0`.",
+  "idx": 5
+ },
+ {
+  "dir": "/tmp/m/runs/M3-intermediaria-r3",
+  "tarefa": "M3",
+  "suite": "intermediaria",
+  "rep": 3,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M3-intermediaria-r3/intermediaria/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M3-intermediaria-r3/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M3-intermediaria-r3/shared/`). Não altere nada fora de `/tmp/m/runs/M3-intermediaria-r3/intermediaria/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M3-intermediaria-r3`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM3: A API passa a incluir `createdAt` (string ISO não vazia) nos pedidos, e todas as consultas individuais `GET /orders/:id` devem verificar `typeof createdAt === \"string\" && createdAt.length > 0`.",
+  "idx": 6
+ },
+ {
+  "dir": "/tmp/m/runs/M2-intermediaria-r2",
+  "tarefa": "M2",
+  "suite": "intermediaria",
+  "rep": 2,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M2-intermediaria-r2/intermediaria/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M2-intermediaria-r2/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M2-intermediaria-r2/shared/`). Não altere nada fora de `/tmp/m/runs/M2-intermediaria-r2/intermediaria/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M2-intermediaria-r2`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM2: A API passa a exigir `currency: \"BRL\"` no payload de `POST /orders` e a retornar `currency: \"BRL\"` no pedido criado. Todas as jornadas que criam pedidos devem enviar e validar `currency === \"BRL\"`.",
+  "idx": 7
+ },
+ {
+  "dir": "/tmp/m/runs/M2-intermediaria-r1",
+  "tarefa": "M2",
+  "suite": "intermediaria",
+  "rep": 1,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M2-intermediaria-r1/intermediaria/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M2-intermediaria-r1/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M2-intermediaria-r1/shared/`). Não altere nada fora de `/tmp/m/runs/M2-intermediaria-r1/intermediaria/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M2-intermediaria-r1`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM2: A API passa a exigir `currency: \"BRL\"` no payload de `POST /orders` e a retornar `currency: \"BRL\"` no pedido criado. Todas as jornadas que criam pedidos devem enviar e validar `currency === \"BRL\"`.",
+  "idx": 8
+ },
+ {
+  "dir": "/tmp/m/runs/M1-tradicional-r2",
+  "tarefa": "M1",
+  "suite": "tradicional",
+  "rep": 2,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M1-tradicional-r2/tradicional/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M1-tradicional-r2/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M1-tradicional-r2/shared/`). Não altere nada fora de `/tmp/m/runs/M1-tradicional-r2/tradicional/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M1-tradicional-r2`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM1: A API passa a retornar `expiresIn: 3600` junto ao `token` e `tokenType` em `POST /auth/login`. Todas as autenticações da suíte devem validar também `expiresIn === 3600` no check de corpo do login.",
+  "idx": 9
+ },
+ {
+  "dir": "/tmp/m/runs/M2-modular-r2",
+  "tarefa": "M2",
+  "suite": "modular",
+  "rep": 2,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M2-modular-r2/modular/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M2-modular-r2/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M2-modular-r2/shared/`). Não altere nada fora de `/tmp/m/runs/M2-modular-r2/modular/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M2-modular-r2`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM2: A API passa a exigir `currency: \"BRL\"` no payload de `POST /orders` e a retornar `currency: \"BRL\"` no pedido criado. Todas as jornadas que criam pedidos devem enviar e validar `currency === \"BRL\"`.",
+  "idx": 10
+ },
+ {
+  "dir": "/tmp/m/runs/M1-tradicional-r1",
+  "tarefa": "M1",
+  "suite": "tradicional",
+  "rep": 1,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M1-tradicional-r1/tradicional/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M1-tradicional-r1/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M1-tradicional-r1/shared/`). Não altere nada fora de `/tmp/m/runs/M1-tradicional-r1/tradicional/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M1-tradicional-r1`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM1: A API passa a retornar `expiresIn: 3600` junto ao `token` e `tokenType` em `POST /auth/login`. Todas as autenticações da suíte devem validar também `expiresIn === 3600` no check de corpo do login.",
+  "idx": 11
+ },
+ {
+  "dir": "/tmp/m/runs/M3-modular-r2",
+  "tarefa": "M3",
+  "suite": "modular",
+  "rep": 2,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M3-modular-r2/modular/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M3-modular-r2/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M3-modular-r2/shared/`). Não altere nada fora de `/tmp/m/runs/M3-modular-r2/modular/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M3-modular-r2`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM3: A API passa a incluir `createdAt` (string ISO não vazia) nos pedidos, e todas as consultas individuais `GET /orders/:id` devem verificar `typeof createdAt === \"string\" && createdAt.length > 0`.",
+  "idx": 12
+ },
+ {
+  "dir": "/tmp/m/runs/M2-tradicional-r3",
+  "tarefa": "M2",
+  "suite": "tradicional",
+  "rep": 3,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M2-tradicional-r3/tradicional/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M2-tradicional-r3/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M2-tradicional-r3/shared/`). Não altere nada fora de `/tmp/m/runs/M2-tradicional-r3/tradicional/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M2-tradicional-r3`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM2: A API passa a exigir `currency: \"BRL\"` no payload de `POST /orders` e a retornar `currency: \"BRL\"` no pedido criado. Todas as jornadas que criam pedidos devem enviar e validar `currency === \"BRL\"`.",
+  "idx": 13
+ },
+ {
+  "dir": "/tmp/m/runs/M3-modular-r3",
+  "tarefa": "M3",
+  "suite": "modular",
+  "rep": 3,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M3-modular-r3/modular/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M3-modular-r3/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M3-modular-r3/shared/`). Não altere nada fora de `/tmp/m/runs/M3-modular-r3/modular/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M3-modular-r3`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM3: A API passa a incluir `createdAt` (string ISO não vazia) nos pedidos, e todas as consultas individuais `GET /orders/:id` devem verificar `typeof createdAt === \"string\" && createdAt.length > 0`.",
+  "idx": 14
+ },
+ {
+  "dir": "/tmp/m/runs/M1-intermediaria-r1",
+  "tarefa": "M1",
+  "suite": "intermediaria",
+  "rep": 1,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M1-intermediaria-r1/intermediaria/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M1-intermediaria-r1/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M1-intermediaria-r1/shared/`). Não altere nada fora de `/tmp/m/runs/M1-intermediaria-r1/intermediaria/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M1-intermediaria-r1`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM1: A API passa a retornar `expiresIn: 3600` junto ao `token` e `tokenType` em `POST /auth/login`. Todas as autenticações da suíte devem validar também `expiresIn === 3600` no check de corpo do login.",
+  "idx": 15
+ },
+ {
+  "dir": "/tmp/m/runs/M3-tradicional-r3",
+  "tarefa": "M3",
+  "suite": "tradicional",
+  "rep": 3,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M3-tradicional-r3/tradicional/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M3-tradicional-r3/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M3-tradicional-r3/shared/`). Não altere nada fora de `/tmp/m/runs/M3-tradicional-r3/tradicional/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M3-tradicional-r3`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM3: A API passa a incluir `createdAt` (string ISO não vazia) nos pedidos, e todas as consultas individuais `GET /orders/:id` devem verificar `typeof createdAt === \"string\" && createdAt.length > 0`.",
+  "idx": 16
+ },
+ {
+  "dir": "/tmp/m/runs/M1-modular-r3",
+  "tarefa": "M1",
+  "suite": "modular",
+  "rep": 3,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M1-modular-r3/modular/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M1-modular-r3/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M1-modular-r3/shared/`). Não altere nada fora de `/tmp/m/runs/M1-modular-r3/modular/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M1-modular-r3`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM1: A API passa a retornar `expiresIn: 3600` junto ao `token` e `tokenType` em `POST /auth/login`. Todas as autenticações da suíte devem validar também `expiresIn === 3600` no check de corpo do login.",
+  "idx": 17
+ },
+ {
+  "dir": "/tmp/m/runs/M2-tradicional-r2",
+  "tarefa": "M2",
+  "suite": "tradicional",
+  "rep": 2,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M2-tradicional-r2/tradicional/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M2-tradicional-r2/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M2-tradicional-r2/shared/`). Não altere nada fora de `/tmp/m/runs/M2-tradicional-r2/tradicional/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M2-tradicional-r2`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM2: A API passa a exigir `currency: \"BRL\"` no payload de `POST /orders` e a retornar `currency: \"BRL\"` no pedido criado. Todas as jornadas que criam pedidos devem enviar e validar `currency === \"BRL\"`.",
+  "idx": 18
+ },
+ {
+  "dir": "/tmp/m/runs/M3-intermediaria-r2",
+  "tarefa": "M3",
+  "suite": "intermediaria",
+  "rep": 2,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M3-intermediaria-r2/intermediaria/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M3-intermediaria-r2/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M3-intermediaria-r2/shared/`). Não altere nada fora de `/tmp/m/runs/M3-intermediaria-r2/intermediaria/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M3-intermediaria-r2`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM3: A API passa a incluir `createdAt` (string ISO não vazia) nos pedidos, e todas as consultas individuais `GET /orders/:id` devem verificar `typeof createdAt === \"string\" && createdAt.length > 0`.",
+  "idx": 19
+ },
+ {
+  "dir": "/tmp/m/runs/M1-intermediaria-r2",
+  "tarefa": "M1",
+  "suite": "intermediaria",
+  "rep": 2,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M1-intermediaria-r2/intermediaria/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M1-intermediaria-r2/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M1-intermediaria-r2/shared/`). Não altere nada fora de `/tmp/m/runs/M1-intermediaria-r2/intermediaria/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M1-intermediaria-r2`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM1: A API passa a retornar `expiresIn: 3600` junto ao `token` e `tokenType` em `POST /auth/login`. Todas as autenticações da suíte devem validar também `expiresIn === 3600` no check de corpo do login.",
+  "idx": 20
+ },
+ {
+  "dir": "/tmp/m/runs/M1-modular-r2",
+  "tarefa": "M1",
+  "suite": "modular",
+  "rep": 2,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M1-modular-r2/modular/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M1-modular-r2/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M1-modular-r2/shared/`). Não altere nada fora de `/tmp/m/runs/M1-modular-r2/modular/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M1-modular-r2`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM1: A API passa a retornar `expiresIn: 3600` junto ao `token` e `tokenType` em `POST /auth/login`. Todas as autenticações da suíte devem validar também `expiresIn === 3600` no check de corpo do login.",
+  "idx": 21
+ },
+ {
+  "dir": "/tmp/m/runs/M2-intermediaria-r3",
+  "tarefa": "M2",
+  "suite": "intermediaria",
+  "rep": 3,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M2-intermediaria-r3/intermediaria/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M2-intermediaria-r3/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M2-intermediaria-r3/shared/`). Não altere nada fora de `/tmp/m/runs/M2-intermediaria-r3/intermediaria/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M2-intermediaria-r3`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM2: A API passa a exigir `currency: \"BRL\"` no payload de `POST /orders` e a retornar `currency: \"BRL\"` no pedido criado. Todas as jornadas que criam pedidos devem enviar e validar `currency === \"BRL\"`.",
+  "idx": 22
+ },
+ {
+  "dir": "/tmp/m/runs/M2-tradicional-r1",
+  "tarefa": "M2",
+  "suite": "tradicional",
+  "rep": 1,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M2-tradicional-r1/tradicional/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M2-tradicional-r1/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M2-tradicional-r1/shared/`). Não altere nada fora de `/tmp/m/runs/M2-tradicional-r1/tradicional/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M2-tradicional-r1`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM2: A API passa a exigir `currency: \"BRL\"` no payload de `POST /orders` e a retornar `currency: \"BRL\"` no pedido criado. Todas as jornadas que criam pedidos devem enviar e validar `currency === \"BRL\"`.",
+  "idx": 23
+ },
+ {
+  "dir": "/tmp/m/runs/M1-intermediaria-r3",
+  "tarefa": "M1",
+  "suite": "intermediaria",
+  "rep": 3,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M1-intermediaria-r3/intermediaria/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M1-intermediaria-r3/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M1-intermediaria-r3/shared/`). Não altere nada fora de `/tmp/m/runs/M1-intermediaria-r3/intermediaria/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M1-intermediaria-r3`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM1: A API passa a retornar `expiresIn: 3600` junto ao `token` e `tokenType` em `POST /auth/login`. Todas as autenticações da suíte devem validar também `expiresIn === 3600` no check de corpo do login.",
+  "idx": 24
+ },
+ {
+  "dir": "/tmp/m/runs/M3-tradicional-r1",
+  "tarefa": "M3",
+  "suite": "tradicional",
+  "rep": 1,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M3-tradicional-r1/tradicional/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M3-tradicional-r1/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M3-tradicional-r1/shared/`). Não altere nada fora de `/tmp/m/runs/M3-tradicional-r1/tradicional/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M3-tradicional-r1`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM3: A API passa a incluir `createdAt` (string ISO não vazia) nos pedidos, e todas as consultas individuais `GET /orders/:id` devem verificar `typeof createdAt === \"string\" && createdAt.length > 0`.",
+  "idx": 25
+ },
+ {
+  "dir": "/tmp/m/runs/M1-modular-r1",
+  "tarefa": "M1",
+  "suite": "modular",
+  "rep": 1,
+  "prompt": "Você trabalha em uma suíte de testes de carga em k6 localizada em `/tmp/m/runs/M1-modular-r1/modular/`. A suíte testa uma API REST local (código em `/tmp/m/runs/M1-modular-r1/api/`; módulo compartilhado de configuração em `/tmp/m/runs/M1-modular-r1/shared/`). Não altere nada fora de `/tmp/m/runs/M1-modular-r1/modular/`. Implemente a mudança abaixo na suíte, mantendo todas as jornadas funcionando e com os mesmos checks que já possuem. Descubra por conta própria quais arquivos precisam mudar. Você só pode ler e editar arquivos dentro de `/tmp/m/runs/M1-modular-r1`; não execute comandos. Ao terminar, descreva em poucas linhas o que alterou.\n\nM1: A API passa a retornar `expiresIn: 3600` junto ao `token` e `tokenType` em `POST /auth/login`. Todas as autenticações da suíte devem validar também `expiresIn === 3600` no check de corpo do login.",
+  "idx": 26
+ }
+]

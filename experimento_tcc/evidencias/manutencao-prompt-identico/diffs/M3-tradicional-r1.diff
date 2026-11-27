@@ -1,0 +1,88 @@
+diff -ruN /tmp/m/pristine/tradicional/ct04.js /tmp/m/runs/M3-tradicional-r1/tradicional/ct04.js
+--- /tmp/m/pristine/tradicional/ct04.js	2026-11-27 12:31:32.105166025 -0400
++++ /tmp/m/runs/M3-tradicional-r1/tradicional/ct04.js	2026-11-27 12:36:43.058014832 -0400
+@@ -14,5 +14,5 @@
+   const orderId = created.json('id');
+ 
+   const order = http.get(`${BASE_URL}/orders/${orderId}`, { headers });
+-  check(order, { 'consulta 200': r => r.status === 200, 'pedido corresponde': r => r.json('id') === orderId, 'status esperado': r => r.json('status') === EXPECTED_STATUS });
++  check(order, { 'consulta 200': r => r.status === 200, 'pedido corresponde': r => r.json('id') === orderId, 'status esperado': r => r.json('status') === EXPECTED_STATUS, 'createdAt presente': r => typeof r.json('createdAt') === 'string' && r.json('createdAt').length > 0 });
+ }
+diff -ruN /tmp/m/pristine/tradicional/ct05.js /tmp/m/runs/M3-tradicional-r1/tradicional/ct05.js
+--- /tmp/m/pristine/tradicional/ct05.js	2026-11-27 12:31:32.105191653 -0400
++++ /tmp/m/runs/M3-tradicional-r1/tradicional/ct05.js	2026-11-27 12:36:43.966014886 -0400
+@@ -17,5 +17,5 @@
+   check(updated, { 'atualização 200': r => r.status === 200, 'status confirmado': r => r.json('status') === 'confirmed' });
+ 
+   const order = http.get(`${BASE_URL}/orders/${orderId}`, { headers });
+-  check(order, { 'consulta 200': r => r.status === 200, 'pedido corresponde': r => r.json('id') === orderId, 'status esperado': r => r.json('status') === EXPECTED_STATUS });
++  check(order, { 'consulta 200': r => r.status === 200, 'pedido corresponde': r => r.json('id') === orderId, 'status esperado': r => r.json('status') === EXPECTED_STATUS, 'createdAt presente': r => typeof r.json('createdAt') === 'string' && r.json('createdAt').length > 0 });
+ }
+diff -ruN /tmp/m/pristine/tradicional/ct11.js /tmp/m/runs/M3-tradicional-r1/tradicional/ct11.js
+--- /tmp/m/pristine/tradicional/ct11.js	2026-11-27 12:31:32.105344251 -0400
++++ /tmp/m/runs/M3-tradicional-r1/tradicional/ct11.js	2026-11-27 12:36:44.878014940 -0400
+@@ -31,7 +31,9 @@
+       r.json('id') === orderId &&
+       r.json('productId') === 'p1' &&
+       r.json('quantity') === 1 &&
+-      r.json('status') === 'created'
++      r.json('status') === 'created' &&
++      typeof r.json('createdAt') === 'string' &&
++      r.json('createdAt').length > 0
+     ),
+   });
+ 
+diff -ruN /tmp/m/pristine/tradicional/ct12.js /tmp/m/runs/M3-tradicional-r1/tradicional/ct12.js
+--- /tmp/m/pristine/tradicional/ct12.js	2026-11-27 12:31:32.105372026 -0400
++++ /tmp/m/runs/M3-tradicional-r1/tradicional/ct12.js	2026-11-27 12:36:45.758014993 -0400
+@@ -42,7 +42,9 @@
+       r.json('id') === orderId &&
+       r.json('productId') === 'p1' &&
+       r.json('quantity') === 1 &&
+-      r.json('status') === 'cancelled'
++      r.json('status') === 'cancelled' &&
++      typeof r.json('createdAt') === 'string' &&
++      r.json('createdAt').length > 0
+     ),
+   });
+ }
+diff -ruN /tmp/m/pristine/tradicional/ct13.js /tmp/m/runs/M3-tradicional-r1/tradicional/ct13.js
+--- /tmp/m/pristine/tradicional/ct13.js	2026-11-27 12:31:32.105399038 -0400
++++ /tmp/m/runs/M3-tradicional-r1/tradicional/ct13.js	2026-11-27 12:36:46.750015052 -0400
+@@ -66,7 +66,9 @@
+       r.json('id') === orderId &&
+       r.json('productId') === 'p1' &&
+       r.json('quantity') === 1 &&
+-      r.json('status') === 'paid'
++      r.json('status') === 'paid' &&
++      typeof r.json('createdAt') === 'string' &&
++      r.json('createdAt').length > 0
+     ),
+   });
+ }
+diff -ruN /tmp/m/pristine/tradicional/ct14.js /tmp/m/runs/M3-tradicional-r1/tradicional/ct14.js
+--- /tmp/m/pristine/tradicional/ct14.js	2026-11-27 12:31:32.105423816 -0400
++++ /tmp/m/runs/M3-tradicional-r1/tradicional/ct14.js	2026-11-27 12:36:48.010015127 -0400
+@@ -66,7 +66,9 @@
+       r.json('id') === orderId &&
+       r.json('productId') === 'p1' &&
+       r.json('quantity') === 1 &&
+-      r.json('status') === 'confirmed'
++      r.json('status') === 'confirmed' &&
++      typeof r.json('createdAt') === 'string' &&
++      r.json('createdAt').length > 0
+     ),
+   });
+ }
+diff -ruN /tmp/m/pristine/tradicional/ct15.js /tmp/m/runs/M3-tradicional-r1/tradicional/ct15.js
+--- /tmp/m/pristine/tradicional/ct15.js	2026-11-27 12:31:32.105448524 -0400
++++ /tmp/m/runs/M3-tradicional-r1/tradicional/ct15.js	2026-11-27 12:36:48.766015171 -0400
+@@ -148,6 +148,8 @@
+       r.json('id') === orderId &&
+       r.json('cartId') === cartId &&
+       r.json('status') === 'paid' &&
++      typeof r.json('createdAt') === 'string' &&
++      r.json('createdAt').length > 0 &&
+       firstPaidOrderItem &&
+       firstPaidOrderItem.productId === 'p1' &&
+       firstPaidOrderItem.quantity === 1 &&

@@ -1,0 +1,155 @@
+{
+    "metrics": {
+        "http_req_duration": {
+            "avg": 2.929623,
+            "min": 0.72883,
+            "med": 0.752546,
+            "max": 7.307493,
+            "p(90)": 5.9965036000000005,
+            "p(95)": 6.6519983
+        },
+        "http_req_connecting": {
+            "avg": 0.04681866666666667,
+            "min": 0,
+            "med": 0,
+            "max": 0.140456,
+            "p(90)": 0.1123648,
+            "p(95)": 0.12641039999999998
+        },
+        "checks": {
+            "fails": 0,
+            "passes": 6,
+            "thresholds": {
+                "rate==1": false
+            },
+            "value": 1
+        },
+        "data_sent": {
+            "count": 541,
+            "rate": 48353.41430072338
+        },
+        "http_reqs": {
+            "count": 3,
+            "rate": 268.13353586353077
+        },
+        "http_req_tls_handshaking": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "iterations": {
+            "rate": 89.37784528784358,
+            "count": 1
+        },
+        "http_req_sending": {
+            "max": 0.028475,
+            "p(90)": 0.024679,
+            "p(95)": 0.026577,
+            "avg": 0.014406666666666665,
+            "min": 0.00525,
+            "med": 0.009495
+        },
+        "http_req_duration{expected_response:true}": {
+            "p(95)": 6.6519983,
+            "avg": 2.929623,
+            "min": 0.72883,
+            "med": 0.752546,
+            "max": 7.307493,
+            "p(90)": 5.9965036000000005
+        },
+        "http_req_blocked": {
+            "avg": 0.076513,
+            "min": 0.001885,
+            "med": 0.003434,
+            "max": 0.22422,
+            "p(90)": 0.18006280000000002,
+            "p(95)": 0.20214139999999997
+        },
+        "http_req_failed": {
+            "fails": 3,
+            "passes": 0,
+            "value": 0
+        },
+        "iteration_duration": {
+            "p(90)": 10.9996,
+            "p(95)": 10.9996,
+            "avg": 10.9996,
+            "min": 10.9996,
+            "med": 10.9996,
+            "max": 10.9996
+        },
+        "data_received": {
+            "count": 748,
+            "rate": 66854.628275307
+        },
+        "http_req_receiving": {
+            "avg": 0.11642133333333332,
+            "min": 0.06368,
+            "med": 0.132316,
+            "max": 0.153268,
+            "p(90)": 0.14907759999999998,
+            "p(95)": 0.1511728
+        },
+        "http_req_waiting": {
+            "avg": 2.798795,
+            "min": 0.594028,
+            "med": 0.655655,
+            "max": 7.146702,
+            "p(90)": 5.848492600000001,
+            "p(95)": 6.4975973
+        }
+    },
+    "root_group": {
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "login 200": {
+                    "path": "::login 200",
+                    "id": "48b06dc5cde7f6ebb606ad7da726a2a5",
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "login 200"
+                },
+                "token presente": {
+                    "name": "token presente",
+                    "path": "::token presente",
+                    "id": "53cf0e5fdc5d8c03b8b90376bfd2b403",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "produto 200": {
+                    "name": "produto 200",
+                    "path": "::produto 200",
+                    "id": "e7bc77b978e2c9f81a36df65f76417bf",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "produto p1": {
+                    "id": "b7507a0a473a0a6b744d89975a765763",
+                    "passes": 1,
+                    "fails": 0,
+                    "name": "produto p1",
+                    "path": "::produto p1"
+                },
+                "pedido 201": {
+                    "name": "pedido 201",
+                    "path": "::pedido 201",
+                    "id": "241b9da4421b4611e1da359859585803",
+                    "passes": 1,
+                    "fails": 0
+                },
+                "pedido criado": {
+                    "name": "pedido criado",
+                    "path": "::pedido criado",
+                    "id": "fee6d724f3e2be3f1add067fef374908",
+                    "passes": 1,
+                    "fails": 0
+                }
+            }
+    }
+}

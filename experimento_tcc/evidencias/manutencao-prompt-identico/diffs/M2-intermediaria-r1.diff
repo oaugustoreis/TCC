@@ -1,0 +1,34 @@
+diff -ruN /tmp/m/pristine/intermediaria/lib/use-cases/pedidos/createOrder.useCase.js /tmp/m/runs/M2-intermediaria-r1/intermediaria/lib/use-cases/pedidos/createOrder.useCase.js
+--- /tmp/m/pristine/intermediaria/lib/use-cases/pedidos/createOrder.useCase.js	2026-11-27 12:31:32.108170591 -0400
++++ /tmp/m/runs/M2-intermediaria-r1/intermediaria/lib/use-cases/pedidos/createOrder.useCase.js	2026-11-27 12:35:43.471325524 -0400
+@@ -11,7 +11,8 @@
+     status,
+     fields,
+ }) {
+-    const r = post(`${baseUrl}/orders`, orderPayload, { token });
++    const payload = { ...orderPayload, currency: "BRL" };
++    const r = post(`${baseUrl}/orders`, payload, { token });
+     const bodyLabel = stepPrefix ? `${stepPrefix} corpo` : "pedido criado";
+     const resolvedStatus = status || (stepPrefix
+         ? { expected: 201, label: `${stepPrefix} status` }
+@@ -27,6 +28,7 @@
+                     label: bodyLabel,
+                 },
+                 status: { expected: "created", label: bodyLabel },
++                currency: { expected: "BRL", label: bodyLabel },
+                 items: {
+                     type: "array",
+                     label: bodyLabel,
+@@ -49,10 +51,12 @@
+                 productId: { expected: orderPayload.productId, label: bodyLabel },
+                 quantity: { expected: orderPayload.quantity, label: bodyLabel },
+                 status: { expected: "created", label: bodyLabel },
++                currency: { expected: "BRL", label: bodyLabel },
+             })
+         : {
+             id: { type: "string", label: "pedido criado" },
+             status: { expected: "created", label: "pedido criado" },
++            currency: { expected: "BRL", label: "pedido criado" },
+         });
+     checkResponse(r, {
+         status: resolvedStatus,

@@ -1,0 +1,66 @@
+{
+  "utc": "2026-11-27T16:28:10.044Z",
+  "platform": "linux",
+  "release": "6.18.44-fc-v880",
+  "arch": "x64",
+  "tools": {
+    "node": {
+      "command": [
+        "node",
+        "--version"
+      ],
+      "cwd": "/home/claude/oaugustoreis/tcc/experimento_tcc",
+      "started_utc": "2026-11-27T16:28:10.018Z",
+      "exit_code": 0,
+      "error": null,
+      "signal": null,
+      "stdout": "v22.23.5\n",
+      "stderr": ""
+    },
+    "k6": {
+      "command": [
+        "k6",
+        "version"
+      ],
+      "cwd": "/home/claude/oaugustoreis/tcc/experimento_tcc",
+      "started_utc": "2026-11-27T16:28:10.024Z",
+      "exit_code": 0,
+      "error": null,
+      "signal": null,
+      "stdout": "k6 v2.0.0 (commit/8c3be52cc1, go1.26.3, linux/amd64)\n",
+      "stderr": ""
+    },
+    "npm": {
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "npm.cmd --version"
+      ],
+      "cwd": "/home/claude/oaugustoreis/tcc/experimento_tcc",
+      "started_utc": "2026-11-27T16:28:10.039Z",
+      "exit_code": null,
+      "error": "spawnSync cmd.exe ENOENT",
+      "signal": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    "git": {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=/home/claude/oaugustoreis/tcc/experimento_tcc",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/claude/oaugustoreis/tcc/experimento_tcc",
+      "started_utc": "2026-11-27T16:28:10.041Z",
+      "exit_code": 0,
+      "error": null,
+      "signal": null,
+      "stdout": "9728f5e87eb3e9073f42bcc406d7b72d1c736625\n",
+      "stderr": ""
+    }
+  },
+  "k6_environment_options_removed": []
+}

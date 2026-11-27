@@ -1,0 +1,12 @@
+{
+  "command": [
+    "node",
+    "scripts/validacao/api-observada.mjs"
+  ],
+  "cwd": "/home/claude/oaugustoreis/tcc/experimento_tcc",
+  "environment": {
+    "PORT": "0",
+    "TRACE_FILE": "/home/claude/oaugustoreis/tcc/experimento_tcc/evidencias/validacao-tres-condicoes/E4/tradicional_ct01/server-requests.jsonl",
+    "READY_FILE": "/home/claude/oaugustoreis/tcc/experimento_tcc/evidencias/validacao-tres-condicoes/E4/tradicional_ct01/api-ready.json"
+  }
+}

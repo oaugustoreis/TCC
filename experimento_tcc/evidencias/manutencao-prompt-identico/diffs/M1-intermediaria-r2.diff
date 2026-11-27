@@ -1,0 +1,19 @@
+diff -ruN /tmp/m/pristine/intermediaria/lib/use-cases/autenticacao/login.useCase.js /tmp/m/runs/M1-intermediaria-r2/intermediaria/lib/use-cases/autenticacao/login.useCase.js
+--- /tmp/m/pristine/intermediaria/lib/use-cases/autenticacao/login.useCase.js	2026-11-27 12:31:32.108224123 -0400
++++ /tmp/m/runs/M1-intermediaria-r2/intermediaria/lib/use-cases/autenticacao/login.useCase.js	2026-11-27 12:36:42.962014826 -0400
+@@ -9,6 +9,7 @@
+             fields: {
+                 token: { type: "string", minLength: 1, label: `${stepPrefix} corpo` },
+                 tokenType: { expected: "Bearer", label: `${stepPrefix} corpo` },
++                expiresIn: { expected: 3600, label: `${stepPrefix} corpo` },
+             },
+         });
+     } else {
+@@ -16,6 +17,7 @@
+             status: { expected: 200, label: "login 200" },
+             fields: {
+                 token: { type: "string", label: "token presente" },
++                expiresIn: { expected: 3600, label: "token presente" },
+             },
+         });
+     }

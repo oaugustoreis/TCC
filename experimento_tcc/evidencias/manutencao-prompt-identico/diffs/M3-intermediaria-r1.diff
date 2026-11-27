@@ -1,0 +1,24 @@
+diff -ruN /tmp/m/pristine/intermediaria/lib/use-cases/pedidos/getOrder.useCase.js /tmp/m/runs/M3-intermediaria-r1/intermediaria/lib/use-cases/pedidos/getOrder.useCase.js
+--- /tmp/m/pristine/intermediaria/lib/use-cases/pedidos/getOrder.useCase.js	2026-11-27 12:31:32.108142723 -0400
++++ /tmp/m/runs/M3-intermediaria-r1/intermediaria/lib/use-cases/pedidos/getOrder.useCase.js	2026-11-27 12:35:32.378010631 -0400
+@@ -52,6 +52,7 @@
+                 },
+                 total: { expected: expectedTotal, label: bodyLabel },
+                 status: { expected: expectedStatus, label: bodyLabel },
++                createdAt: { type: "string", minLength: 1, label: bodyLabel },
+             }
+             : {
+                 id: {
+@@ -63,10 +64,12 @@
+                 productId: { expected: expectedProductId, label: bodyLabel },
+                 quantity: { expected: expectedQuantity, label: bodyLabel },
+                 status: { expected: expectedStatus, label: bodyLabel },
++                createdAt: { type: "string", minLength: 1, label: bodyLabel },
+             })
+         : {
+             id: { expected: orderId, label: "pedido corresponde" },
+             status: { expected: expectedStatus, label: "status esperado" },
++            createdAt: { type: "string", minLength: 1, label: "pedido corresponde" },
+         });
+     checkResponse(r, {
+         status: resolvedStatus,

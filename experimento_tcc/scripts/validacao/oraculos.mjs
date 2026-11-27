@@ -143,7 +143,7 @@ export function validateRun(id,{received,checks,options,suite,scenarioKey=id,met
  const scenarios=options?.scenarios;
  const named=scenarios&&Object.keys(scenarios).length>0;
  const effective=named?scenarios[scenarioKey]:options;
- check(suite==='tradicional'||suite==='modular','arquitetura');
+ check(suite==='tradicional'||suite==='modular'||suite==='intermediaria','arquitetura');
  check(!named||Object.keys(scenarios).length===1,'apenas um cenário na entrada');
  check(suite!=='modular'||!!named,'profile modular nomeado');
  check(effective?.vus===1&&effective?.iterations===1,'1 VU e 1 iteração');
