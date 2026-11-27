@@ -36,11 +36,10 @@ Para validar todos os cenários, executar `ct01.js` a `ct05.js` em `tradicional/
 - `docs/`: contratos, matriz de equivalência e protocolo experimental.
 
 ## Observações
-A suíte modular **não depende do pacote Pulse**: implementa somente a arquitetura isolada. A suíte tradicional usa funções locais e configuração comum, mas não as quatro camadas. Os dois grupos têm os mesmos checks e a mesma ordem de chamadas. Os cinco cenários são a baseline; R1/R2 são mudanças futuras.
+A suíte modular implementa somente a arquitetura isolada, sem depender de framework externo. A suíte tradicional usa funções locais e configuração comum, mas não as quatro camadas. Os dois grupos têm os mesmos checks e a mesma ordem de chamadas. Os cinco cenários são a baseline; R1/R2 são mudanças futuras.
 
 A API e seus testes automatizados foram verificados com Node.js. A execução k6 depende de instalação local e ainda precisa ser verificada antes de declarar equivalência funcional.
 
-A revisão das cinco camadas e as adaptações em relação ao Pulse estão em [docs/arquitetura-pulse.md](arquitetura-pulse.md).
 
 O estado atual da suíte, a estrutura por domínio e os exemplos de uso estão no [relatório modular](RELATORIO_MODULAR_ATUAL.md).
 

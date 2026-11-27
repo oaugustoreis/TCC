@@ -13,7 +13,7 @@ Documentos relacionados:
 
 ## 1. Síntese do Delineamento e Rastreabilidade de Commits
 
-O experimento comparou longitudinalmente duas arquiteturas de testes de carga em Grafana k6 — **Tradicional** (scripts monolíticos autocontidos por cenário em `tradicional/`) vs. **Modular** (arquitetura em 4 camadas inspirada no Pulse: `profiles/`, `use-cases/`, `flows/`, `scenarios/` + `helpers/` compartilhados em `modular/`) — ao longo de **Baseline `E0` + 7 etapas pareadas (14 unidades experimentais)**:
+O experimento comparou longitudinalmente duas arquiteturas de testes de carga em Grafana k6 — **Tradicional** (scripts monolíticos autocontidos por cenário em `tradicional/`) vs. **Modular** (arquitetura em 4 camadas: `profiles/`, `use-cases/`, `flows/`, `scenarios/` + `helpers/` compartilhados em `modular/`) — ao longo de **Baseline `E0` + 7 etapas pareadas (14 unidades experimentais)**:
 
 - **Bloco 1 — Fase 1: Evolução Incremental (`E0 → E1 → E2 → E3 → E4`, 8 unidades experimentais)**: Expansão cumulativa de 5 para 15 cenários (`CT-01` a `CT-15`), saltando de 14 requisições e 30 checks por suíte em `E0` para 66 requisições e 134 checks por suíte em `E4`.
 - **Bloco 2 — Fase 2: Manutenção Transversal (`M1`, `M2`, `M3` sobre `estado-e4`, 6 unidades experimentais)**: Três tarefas independentes de evolução de contrato e verificação executadas em branches separadas (`manutencao/m1`, `manutencao/m2`, `manutencao/m3`), cada qual partindo exatamente do commit/tag `estado-e4` (`a84091f780bd745af4e22e6d787a9dd2124e7224`).

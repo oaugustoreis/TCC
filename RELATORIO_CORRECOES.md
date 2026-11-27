@@ -2,13 +2,13 @@
 
 **Documentos confrontados.** O parecer localizado chama-se [Analise_Critica_TCC.md](Analise_Critica_TCC.md). O nome com `(1)` não existe no projeto. O parecer descreve um DOCX com sufixo semelhante. A revisão tomou como fonte a [monografia fornecida nesta sessão](TCC_Figura_4_Posicionamento_Corrigido.docx), incluindo pré-textuais, corpo, legendas, tabelas e referências. A cópia de trabalho é [TCC_Revisado.docx](TCC_Revisado.docx). Os títulos de seção abaixo correspondem à numeração da monografia, não à numeração própria do parecer.
 
-**Escopo da auditoria.** O conjunto correspondente a E0–M3 é `experimento_tcc/` e as árvores Git indicadas na Tabela 7 da revisão. `experimento_pulse/experiments/T1/` é outro conjunto, com outras condições e resultados. As métricas abaixo provêm exclusivamente do primeiro experimento. A auditoria histórica é de 10/11/2026. A presente revisão fez conferências documentais e decomposições estáticas adicionais, sem executar tarefas de IA ou ensaios de carga.
+**Escopo da auditoria.** O conjunto correspondente a E0–M3 é `experimento_tcc/` e as árvores Git indicadas na Tabela 7 da revisão. A auditoria histórica é de 10/11/2026. A presente revisão fez conferências documentais e decomposições estáticas adicionais, sem executar tarefas de IA ou ensaios de carga.
 
 ## Chave das evidências
 
 | Chave | Fonte e uso |
 |---|---|
-| AR | [Origem e decisões de projeto](experimento_tcc/docs/arquitetura-pulse.md), [implementação modular](experimento_tcc/modular), [scripts diretos](experimento_tcc/tradicional) e [configuração comum](experimento_tcc/shared/config.js). |
+| AR | [implementação modular](experimento_tcc/modular), [scripts diretos](experimento_tcc/tradicional) e [configuração comum](experimento_tcc/shared/config.js). |
 | PR | [Protocolo v2.1](experimento_tcc/docs/PROTOCOLO_EVOLUCAO_INCREMENTAL.md), [plano de medição](experimento_tcc/docs/PLANO_MEDICAO_ESFORCO.md) e [baseline](experimento_tcc/docs/BASELINE_E0.md). O texto prospectivo descreve intenções. |
 | CT | [Matriz de requisitos](experimento_tcc/docs/MATRIZ_REQUISITOS_EXPANSAO.md), [API e testes de contrato](experimento_tcc/api) e [rastros pareados de E4](experimento_tcc/evidencias/evolucao/E4/validacao_both). |
 | VA | [Validador, captura e oráculos](experimento_tcc/scripts/validacao), com versões próprias nos commits de cada etapa. [Resultado individual de CT-15](experimento_tcc/evidencias/evolucao/E4/validacao_both/tradicional_ct15/result.json). |
@@ -25,7 +25,7 @@ A classificação se refere ao diagnóstico da recomendação no original. A col
 |---|---|---|---|---|
 | R01 | Título poderia sugerir comparação de latência. | Título, resumo, §§ 1 e 3.1 | Mantido o título autorizado. Resumo e objetivo já delimitam a organização do código. O título alternativo é uma decisão editorial facultativa. | P |
 | R02 | Resumo aparentava comparar duas APIs e empregava termos opacos. | Resumo, abstract, impacto em inglês, CT | Corrigido o objeto nos três trechos afetados. Explicados tokens e volume de linhas alteradas no resumo. E0–E4 e M1–M3 já eram apresentados com a descrição das etapas. | A |
-| R03 | § 1 carecia de motivação concreta e origem da proposta. | AR, diff E4→M1 | Introduzido exemplo do contrato de login usado em quinze jornadas. § 4.5 identifica Pulse 1.3.9, referência documental de cinco camadas e adaptação local dos checks. A contribuição é a avaliação da adaptação. | A |
+| R03 | § 1 carecia de motivação concreta e origem da proposta. | AR, diff E4→M1 | Introduzido exemplo do contrato de login usado em quinze jornadas. A contribuição é a avaliação da organização modular. | A |
 | R04 | § 1 introduzia IA na pergunta sem justificar e sugeria-se encurtar a pergunta. | PR, §§ 1 e 3.1 | Antecipada a razão registrada no plano para usar agentes. Pergunta mantida por delimitar executor, indicadores e condições. A motivação para a medida também se aplica a testes como código em outras ferramentas, mas a evidência cobre k6. | P |
 | R05 | § 2 apresentava justificativa genérica, lacuna, público e contribuição pouco específicos. | §§ 2, 4.2–4.5, 7.2; AR, CT | Explicitada a lacuna empírica contextual, o contraste entre expansão e manutenção e a decisão enfrentada por quem mantém suítes. Não se declara ausência de estudos em toda a literatura. | A |
 | R06 | § 3.2 repetia validação e descrevia padronização como fato. | Objetivos b/e, PR, IA, AU | b trata da construção e identifica executores e protocolo; e mantém a verificação funcional. Preservados objetivo geral, domínios de medição e finalidade dos objetivos. Reuso e arquitetura foram demonstrados em §§ 5.4 e 6.2 e no apêndice. | A |

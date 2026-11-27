@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Gera uma versão empacotada (um único módulo por entrada, k6 e k6/* como externos) de cada suíte,
-// em build-esbuild/<suite>/ctNN.js, para medir o custo de execução com bundling (como faz o Pulse).
+// em build-esbuild/<suite>/ctNN.js, para medir o custo de execução com bundling.
 // Requer esbuild:  npm install --no-save esbuild   (ou ESBUILD_DIR=/caminho/node_modules/..)
 // Uso: node scripts/custo/empacotar-esbuild.mjs [--minify]
 import { createRequire } from 'node:module';

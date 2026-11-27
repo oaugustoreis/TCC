@@ -6,7 +6,7 @@ Data da revisão: 05/11/2026. Escopo: implementação atual em `modular/`, confi
 
 A suíte organiza cinco jornadas de teste da API de produtos e pedidos em quatro camadas: **Scenarios, Profiles, Flows e Use Cases**. Dois helpers compartilhados centralizam transporte HTTP e checks. A linguagem é JavaScript com módulos ESM, e os cenários são executados diretamente pelo k6.
 
-A organização foi inspirada no Pulse. A suíte não importa o runtime do framework: não utiliza descoberta automática, registro virtual, aliases TypeScript, plugins ou relatório HTML do Pulse. O exemplo documental inclui uma camada de schemas; nesta implementação, ela foi removida por decisão do projeto. As regras de validação são declaradas nos use cases.
+A suíte não utiliza descoberta automática, registro virtual, aliases TypeScript, plugins ou relatório HTML. Não há camada de schemas, por decisão do projeto. As regras de validação são declaradas nos use cases.
 
 ## 2. Estrutura de arquivos
 

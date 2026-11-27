@@ -9,7 +9,7 @@ Vínculos: [Matriz de Requisitos da Expansão](MATRIZ_REQUISITOS_EXPANSAO.md), [
 ## 1. Pergunta de Pesquisa e Delineamento
 
 **Pergunta central**:
-> *Como a organização arquitetural de testes de carga em k6 — **Tradicional** (scripts diretos por cenário) vs. **Modular** (4 camadas inspiradas no Pulse + helpers compartilhados) — impacta a adição/modificação de código, a superfície de impacto, a taxa de duplicação, a reutilização efetiva de componentes e o esforço operacional quando os testes são evoluídos e mantidos por um agente de IA?*
+> *Como a organização arquitetural de testes de carga em k6 — **Tradicional** (scripts diretos por cenário) vs. **Modular** (4 camadas + helpers compartilhados) — impacta a adição/modificação de código, a superfície de impacto, a taxa de duplicação, a reutilização efetiva de componentes e o esforço operacional quando os testes são evoluídos e mantidos por um agente de IA?*
 
 **Delineamento**:
 Estudo experimental controlado, longitudinal e pareado, composto por **Baseline `E0` + 7 etapas pareadas (14 unidades experimentais)**, dividido em dois blocos analíticos:

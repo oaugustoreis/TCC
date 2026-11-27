@@ -6,7 +6,7 @@
 
 C = Comprovado. P = Parcialmente comprovado. I = Inferência. NV = Não verificável. X = Contraditório. T e M identificam as condições tradicional e modular. Cada link de unidade abre o JSONL primário. Os índices são step_index, não números de linha.
 
-A unidade de análise é uma condição em uma etapa, com duas condições por etapa e E0 como referência. A auditoria consultou o corpus principal no checkout e os objetos Git históricos por leitura. Não houve checkout de estado, commit, reexecução de agente ou de k6. O experimento T1 do Pulse ficou fora do corpus. O antigo ensaio neutro do controlador em d26daa8 descreve outro procedimento, anterior à emenda de novembro. Seus metadados de modelo e sessão não foram transferidos para as unidades.
+A unidade de análise é uma condição em uma etapa, com duas condições por etapa e E0 como referência. A auditoria consultou o corpus principal no checkout e os objetos Git históricos por leitura. Não houve checkout de estado, commit, reexecução de agente ou de k6. O antigo ensaio neutro do controlador em d26daa8 descreve outro procedimento, anterior à emenda de novembro. Seus metadados de modelo e sessão não foram transferidos para as unidades.
 
 | Fonte e localização | Uso e limite |
 |---|---|
