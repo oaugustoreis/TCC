@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-// Custo de execução das suítes k6 (tradicional x modular).
+// Custo de execução de duas suítes k6 (padrão: tradicional x modular; --a e --b escolhem outras condições).
 // Mede, SEM alterar as suítes: (A) código empacotado pelo k6, (B) tempo de inicialização
 // (k6 inspect), (C) tempo, CPU e memória de pico do processo k6 sob níveis de carga.
 // Requer Linux ou WSL (lê /proc). Não mede o consumo da API sob teste.
 //
 // Uso (na raiz do experimento, experimento_tcc/):
 //   node scripts/custo/medir-custo.mjs --k6 /caminho/k6 --reps 5 --saida evidencias/custo/rodada-01
-// Opções: --entradas ct01,ct04  --niveis 1x1,10x100,50x200  --reps N  --porta 3350  --saida dir
+// Opções: --a tradicional --b modular (também: intermediaria, esbuild/tradicional, esbuild/modular)  --entradas ct01,ct04  --niveis 1x1,10x100,50x200  --reps N  --porta 3350  --saida dir
 import { spawn, spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { mkdirSync, readFileSync, readdirSync, statSync, writeFileSync, rmSync, mkdtempSync } from 'node:fs';
@@ -15,6 +15,8 @@ import { dirname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
+const A = (() => { const i = process.argv.indexOf('--a'); return i > 0 ? process.argv[i + 1] : 'tradicional'; })();
+const B = (() => { const i = process.argv.indexOf('--b'); return i > 0 ? process.argv[i + 1] : 'modular'; })();
 
 // ---------- argumentos ----------
 function arg(nome, padrao) {
@@ -48,16 +50,26 @@ function listar(dir, acc = []) {
   return acc;
 }
 const entradas = {};
-for (const f of listar(join(RAIZ, 'tradicional'))) {
-  const m = f.match(/(ct\d{2})\.js$/);
-  if (m) (entradas[m[1]] ??= {}).tradicional = relative(RAIZ, f).split(sep).join('/');
+function localizar(nome) {
+  const r = {};
+  if (nome === B) {
+    for (const f of listar(join(RAIZ, B, 'scenarios'))) {
+      const m = readFileSync(f, 'utf8').match(/scenarios:\s*\{\s*(ct\d{2})/);
+      if (m) r[m[1]] = relative(RAIZ, f).split(sep).join('/');
+    }
+  } else {
+    const dir = nome.startsWith('esbuild/') ? join(RAIZ, 'build-esbuild', nome.slice(8)) : join(RAIZ, nome);
+    for (const f of listar(dir)) {
+      const m = f.match(/(ct\d{2})\.js$/);
+      if (m && !f.includes(`${sep}lib${sep}`)) r[m[1]] = relative(RAIZ, f).split(sep).join('/');
+    }
+  }
+  return r;
 }
-for (const f of listar(join(RAIZ, 'modular', 'scenarios'))) {
-  const m = readFileSync(f, 'utf8').match(/scenarios:\s*\{\s*(ct\d{2})/);
-  if (m) (entradas[m[1]] ??= {}).modular = relative(RAIZ, f).split(sep).join('/');
-}
+for (const [id, f] of Object.entries(localizar(A))) (entradas[id] ??= {})[A] = f;
+for (const [id, f] of Object.entries(localizar(B))) (entradas[id] ??= {})[B] = f;
 const filtro = arg('entradas', '');
-const ids = Object.keys(entradas).filter((id) => entradas[id].tradicional && entradas[id].modular)
+const ids = Object.keys(entradas).filter((id) => entradas[id][A] && entradas[id][B])
   .filter((id) => !filtro || filtro.split(',').includes(id)).sort();
 if (!ids.length) { console.error('Nenhuma entrada encontrada.'); process.exit(2); }
 
@@ -117,7 +129,7 @@ async function pararApi(api) {
 // ---------- ambiente e integridade das fontes ----------
 function sha(p) { return createHash('sha256').update(readFileSync(p)).digest('hex'); }
 function ambiente() {
-  const fontes = ['tradicional', 'modular', 'shared', 'api'].flatMap((d) => listar(join(RAIZ, d)).filter((f) => f.endsWith('.js')))
+  const fontes = [A, B, 'intermediaria', 'build-esbuild', 'shared', 'api'].filter((d) => { try { return statSync(join(RAIZ, d)).isDirectory(); } catch { return false; } }).flatMap((d) => listar(join(RAIZ, d)).filter((f) => f.endsWith('.js')))
     .map((f) => [relative(RAIZ, f).split(sep).join('/'), sha(f)]).sort();
   const git = (...a) => spawnSync('git', ['-C', RAIZ, ...a], { encoding: 'utf8' }).stdout?.trim();
   return {
@@ -129,7 +141,7 @@ function ambiente() {
     sistemaDeArquivos: spawnSync('stat', ['-f', '-c', '%T', RAIZ], { encoding: 'utf8' }).stdout?.trim() || null,
     k6: spawnSync(K6, ['version'], { encoding: 'utf8' }).stdout?.trim(),
     git: { commit: git('rev-parse', 'HEAD') || null, alteracoesNaoCommitadas: (git('status', '--porcelain') || '').split('\n').filter(Boolean).length },
-    parametros: { reps: REPS, niveis: NIVEIS, entradas: ids, porta: PORTA, ticksPorSegundo: TICKS },
+    parametros: { condicoes: [A, B], reps: REPS, niveis: NIVEIS, entradas: ids, porta: PORTA, ticksPorSegundo: TICKS },
     hashFontes: createHash('sha256').update(fontes.map((x) => x.join(' ')).join('\n')).digest('hex'),
     fontes: Object.fromEntries(fontes),
   };
@@ -163,18 +175,18 @@ if (amb.git.alteracoesNaoCommitadas) console.warn('AVISO: há alterações não 
 
 // A
 const estaticas = {};
-for (const id of ids) for (const s of ['tradicional', 'modular']) (estaticas[id] ??= {})[s] = empacotado(entradas[id][s]);
+for (const id of ids) for (const s of [A, B]) (estaticas[id] ??= {})[s] = empacotado(entradas[id][s]);
 writeFileSync(join(SAIDA, 'empacotamento.json'), JSON.stringify(estaticas, null, 2));
 
 // aquecimento (descartado): coloca binário e fontes no cache do SO
-for (const s of ['tradicional', 'modular']) for (let i = 0; i < 2; i++) await medir(K6, ['inspect', entradas[ids[0]][s]], ambienteLimpo());
+for (const s of [A, B]) for (let i = 0; i < 2; i++) await medir(K6, ['inspect', entradas[ids[0]][s]], ambienteLimpo());
 
 // B
 const linhasInit = ['suite,entrada,rep,inspect_ms'];
 const init = [];
 for (let r = 1; r <= REPS * 3; r++) {
   for (const id of ids) {
-    const ordem = r % 2 ? ['tradicional', 'modular'] : ['modular', 'tradicional'];
+    const ordem = r % 2 ? [A, B] : [B, A];
     for (const s of ordem) {
       const m = await medir(K6, ['inspect', entradas[id][s]], ambienteLimpo());
       if (m.codigo === 0) { init.push({ s, id, r, ms: m.wallMs }); linhasInit.push(`${s},${id},${r},${f2(m.wallMs)}`); }
@@ -192,7 +204,7 @@ const total = REPS * NIVEIS.reduce((a, nv) => a + idsDoNivel(nv).length, 0) * 2;
 for (let rep = 1; rep <= REPS; rep++) {
   for (const nv of NIVEIS) {
     for (const id of idsDoNivel(nv)) {
-      const ordem = rep % 2 ? ['tradicional', 'modular'] : ['modular', 'tradicional'];
+      const ordem = rep % 2 ? [A, B] : [B, A];
       for (const [pos, s] of ordem.entries()) {
         const api = await iniciarApi();
         const arq = join(mkdtempSync(join(tmpdir(), 'k6sum-')), 'sum.json');
@@ -219,23 +231,23 @@ const por = (arr, f) => arr.reduce((acc, x) => { const k = f(x); (acc[k] ??= [])
 const validas = runs.filter((r) => r.valida);
 let md = `# Custo de execução — resumo\n\nGerado em ${new Date().toISOString()}. Ambiente em ambiente.json (hash das fontes ${amb.hashFontes.slice(0, 12)}…).\n\n`;
 md += `Execuções: ${runs.length}; válidas: ${validas.length}; inválidas: ${runs.length - validas.length} (excluídas dos resumos).\n`;
-md += `\nMétodo: mediana de ${REPS} repetições por célula; ordem tradicional/modular alternada entre repetições; API reiniciada a cada execução; CPU e RSS por amostragem de /proc a cada 5 ms (o pico de RSS é VmHWM da última amostra; CPU tem resolução de ${1000 / TICKS} ms). Análise exploratória, sem testes inferenciais.\n`;
+md += `\nMétodo: mediana de ${REPS} repetições por célula; ordem ${A}/${B} alternada entre repetições; API reiniciada a cada execução; CPU e RSS por amostragem de /proc a cada 5 ms (o pico de RSS é VmHWM da última amostra; CPU tem resolução de ${1000 / TICKS} ms). Análise exploratória, sem testes inferenciais.\n`;
 
-md += `\n## A. Código empacotado pelo k6 (por entrada)\n\n| Entrada | Módulos trad. | Módulos mod. | Bytes trad. | Bytes mod. | Razão bytes M/T |\n|---|---:|---:|---:|---:|---:|\n`;
-for (const id of ids) { const t = estaticas[id].tradicional, m = estaticas[id].modular; md += `| ${id} | ${t.modulos} | ${m.modulos} | ${t.bytesCodigo} | ${m.bytesCodigo} | ${f2(m.bytesCodigo / t.bytesCodigo)} |\n`; }
+md += `\n## A. Código empacotado pelo k6 (por entrada)\n\n| Entrada | Módulos ${A} | Módulos ${B} | Bytes ${A} | Bytes ${B} | Razão bytes ${B}/${A} |\n|---|---:|---:|---:|---:|---:|\n`;
+for (const id of ids) { const t = estaticas[id][A], m = estaticas[id][B]; md += `| ${id} | ${t.modulos} | ${m.modulos} | ${t.bytesCodigo} | ${m.bytesCodigo} | ${f2(m.bytesCodigo / t.bytesCodigo)} |\n`; }
 
 const medInit = (s, id) => mediana(init.filter((x) => x.s === s && x.id === id).map((x) => x.ms));
-md += `\n## B. Inicialização (k6 inspect, mediana em ms)\n\n| Entrada | Tradicional | Modular | Razão M/T |\n|---|---:|---:|---:|\n`;
+md += `\n## B. Inicialização (k6 inspect, mediana em ms)\n\n| Entrada | ${A} | ${B} | Razão ${B}/${A} |\n|---|---:|---:|---:|\n`;
 const razInit = [];
-for (const id of ids) { const t = medInit('tradicional', id), m = medInit('modular', id); razInit.push(m / t); md += `| ${id} | ${f2(t)} | ${f2(m)} | ${f2(m / t)} |\n`; }
-md += `\nMediana das razões M/T entre entradas: **${f2(mediana(razInit))}** (mín ${f2(Math.min(...razInit))}, máx ${f2(Math.max(...razInit))}).\n`;
+for (const id of ids) { const t = medInit(A, id), m = medInit(B, id); razInit.push(m / t); md += `| ${id} | ${f2(t)} | ${f2(m)} | ${f2(m / t)} |\n`; }
+md += `\nMediana das razões ${B}/${A} entre entradas: **${f2(mediana(razInit))}** (mín ${f2(Math.min(...razInit))}, máx ${f2(Math.max(...razInit))}).\n`;
 
 for (const nv of NIVEIS) {
-  md += `\n## C. Carga ${nv.rotulo} (${nv.vus} VUs, ${nv.iter} iterações) — mediana [Q1–Q3]\n\n| Entrada | Tempo trad. (ms) | Tempo mod. (ms) | CPU trad. (s) | CPU mod. (s) | RSS pico trad. (MB) | RSS pico mod. (MB) |\n|---|---:|---:|---:|---:|---:|---:|\n`;
+  md += `\n## C. Carga ${nv.rotulo} (${nv.vus} VUs, ${nv.iter} iterações) — mediana [Q1–Q3]\n\n| Entrada | Tempo ${A} (ms) | Tempo ${B} (ms) | CPU ${A} (s) | CPU ${B} (s) | RSS pico ${A} (MB) | RSS pico ${B} (MB) |\n|---|---:|---:|---:|---:|---:|---:|\n`;
   const rz = { tempo: [], cpu: [], rss: [] };
   for (const id of idsDoNivel(nv)) {
     const cel = (s) => validas.filter((r) => r.s === s && r.id === id && r.nv.rotulo === nv.rotulo);
-    const T = cel('tradicional'), M = cel('modular');
+    const T = cel(A), M = cel(B);
     const est = (xs, f) => { const v = xs.map(f); return `${f2(mediana(v))} [${f2(quantil(v, 0.25))}–${f2(quantil(v, 0.75))}]`; };
     const tempo = (r) => r.m.wallMs, cpu = (r) => r.m.cpuUser + r.m.cpuSys, rss = (r) => r.m.rssKb / 1024;
     md += `| ${id} | ${est(T, tempo)} | ${est(M, tempo)} | ${est(T, cpu)} | ${est(M, cpu)} | ${est(T, rss)} | ${est(M, rss)} |\n`;
@@ -244,23 +256,23 @@ for (const nv of NIVEIS) {
     rz.rss.push(mediana(M.map(rss)) / mediana(T.map(rss)));
   }
   const lin = (n, a) => `- ${n}: mediana ${f2(mediana(a))} (mín ${f2(Math.min(...a))}, máx ${f2(Math.max(...a))})`;
-  md += `\nRazões modular/tradicional entre entradas:\n${lin('tempo', rz.tempo)}\n${lin('CPU', rz.cpu)}\n${lin('RSS de pico', rz.rss)}\n`;
+  md += `\nRazões ${B}/${A} entre entradas:\n${lin('tempo', rz.tempo)}\n${lin('CPU', rz.cpu)}\n${lin('RSS de pico', rz.rss)}\n`;
 }
 
 // Memória incremental por VU entre o menor e o maior nível
 if (NIVEIS.length > 1) {
   const lo = NIVEIS[0], hi = NIVEIS[NIVEIS.length - 1];
-  md += `\n## D. Memória incremental por VU (${lo.rotulo} → ${hi.rotulo}), em MB/VU\n\n| Entrada | Tradicional | Modular |\n|---|---:|---:|\n`;
-  const acc = { tradicional: [], modular: [] };
+  md += `\n## D. Memória incremental por VU (${lo.rotulo} → ${hi.rotulo}), em MB/VU\n\n| Entrada | ${A} | ${B} |\n|---|---:|---:|\n`;
+  const acc = { [A]: [], [B]: [] };
   for (const id of idsDoNivel(hi)) {
     const v = (s) => {
       const g = (n) => mediana(validas.filter((r) => r.s === s && r.id === id && r.nv.rotulo === n.rotulo).map((r) => r.m.rssKb / 1024));
       return (g(hi) - g(lo)) / (hi.vus - lo.vus);
     };
-    const t = v('tradicional'), m = v('modular'); acc.tradicional.push(t); acc.modular.push(m);
+    const t = v(A), m = v(B); acc[A].push(t); acc[B].push(m);
     md += `| ${id} | ${f2(t)} | ${f2(m)} |\n`;
   }
-  md += `\nMediana entre entradas: tradicional ${f2(mediana(acc.tradicional))}; modular ${f2(mediana(acc.modular))}.\n`;
+  md += `\nMediana entre entradas: ${A} ${f2(mediana(acc[A]))}; ${B} ${f2(mediana(acc[B]))}.\n`;
 }
 
 md += `\n## Limitações\n\n- Entradas excluídas dos níveis com mais de 1 iteração: ${[...EXCLUIR_CARGA].join(', ') || 'nenhuma'}. O CT-11 verifica que a listagem de pedidos \`created\` tem exatamente um item, o que só vale com a API em estado vazio (1 iteração); nas duas suítes ele falha em todas as iterações extras. Isso decorre do oráculo do CT-11, não da arquitetura.\n- Com \`--vus\`/\`--iterations\` na linha de comando, o k6 ignora a configuração de \`scenarios\` das entradas modulares (aviso "overrode scenarios"). A camada Profile fica fora da execução sob carga, mas todos os módulos continuam carregados e executados; as suítes não foram alteradas.\n- Os níveis de carga apenas escalam o mesmo trabalho; não representam tráfego real. A API roda na mesma máquina e compete por CPU.\n- Uma máquina, um sistema operacional, ${REPS} repetições por célula: resultados descritivos, sem generalização.\n`;

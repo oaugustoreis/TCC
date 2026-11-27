@@ -13,3 +13,4 @@ __pycache__/
 
 # Evidências de preparação funcional comum de E1.
 !evidencias/preparacao_e1/**/*.log
+build-esbuild/
