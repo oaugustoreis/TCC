@@ -125,6 +125,8 @@ function ambiente() {
     so: `${platform()} ${release()}`,
     cpu: cpus()[0]?.model, nucleos: cpus().length, memoriaTotalMb: Math.round(totalmem() / 1048576),
     node: process.version,
+    diretorioRaiz: RAIZ,
+    sistemaDeArquivos: spawnSync('stat', ['-f', '-c', '%T', RAIZ], { encoding: 'utf8' }).stdout?.trim() || null,
     k6: spawnSync(K6, ['version'], { encoding: 'utf8' }).stdout?.trim(),
     git: { commit: git('rev-parse', 'HEAD') || null, alteracoesNaoCommitadas: (git('status', '--porcelain') || '').split('\n').filter(Boolean).length },
     parametros: { reps: REPS, niveis: NIVEIS, entradas: ids, porta: PORTA, ticksPorSegundo: TICKS },
@@ -261,6 +263,6 @@ if (NIVEIS.length > 1) {
   md += `\nMediana entre entradas: tradicional ${f2(mediana(acc.tradicional))}; modular ${f2(mediana(acc.modular))}.\n`;
 }
 
-md += `\n## Limitações\n\n- Com \`--vus\`/\`--iterations\` na linha de comando, o k6 ignora a configuração de \`scenarios\` das entradas modulares (aviso "overrode scenarios"). A camada Profile fica fora da execução sob carga, mas todos os módulos continuam carregados e executados; as suítes não foram alteradas.\n- Os níveis de carga apenas escalam o mesmo trabalho; não representam tráfego real. A API roda na mesma máquina e compete por CPU.\n- Uma máquina, um sistema operacional, ${REPS} repetições por célula: resultados descritivos, sem generalização.\n`;
+md += `\n## Limitações\n\n- Entradas excluídas dos níveis com mais de 1 iteração: ${[...EXCLUIR_CARGA].join(', ') || 'nenhuma'}. O CT-11 verifica que a listagem de pedidos \`created\` tem exatamente um item, o que só vale com a API em estado vazio (1 iteração); nas duas suítes ele falha em todas as iterações extras. Isso decorre do oráculo do CT-11, não da arquitetura.\n- Com \`--vus\`/\`--iterations\` na linha de comando, o k6 ignora a configuração de \`scenarios\` das entradas modulares (aviso "overrode scenarios"). A camada Profile fica fora da execução sob carga, mas todos os módulos continuam carregados e executados; as suítes não foram alteradas.\n- Os níveis de carga apenas escalam o mesmo trabalho; não representam tráfego real. A API roda na mesma máquina e compete por CPU.\n- Uma máquina, um sistema operacional, ${REPS} repetições por célula: resultados descritivos, sem generalização.\n`;
 writeFileSync(join(SAIDA, 'resumo.md'), md);
 console.log(`Resumo em ${join(SAIDA, 'resumo.md')}`);
