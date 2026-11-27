@@ -56,7 +56,7 @@ somente pela transcrição.
 - 27 execuções (M1–M3 × tradicional, intermediaria, modular × 3 repetições), cada uma em cópia própria de E4
   (`runs/<tarefa>-<suite>-r<N>/`, com `api/`, `shared/` e a suíte), em ordem embaralhada (semente 20261127, `runs.json`).
 - Prompt: o texto acima, com `<RUN>/<SUITE>/` e menção a `<RUN>/api/` e `<RUN>/shared/`; leitura e edição restritas à cópia,
-  sem execução de comandos. Modelo: Sonnet, tentativa única. Tokens e tempo não foram extraídos.
+  sem execução de comandos. Modelo: Claude Sonnet 5.5 (informado pelo autor), tentativa única. Tokens e tempo não foram extraídos.
 - Desvio: dois agentes usaram `python3` pelo Bash apesar da instrução; os resultados foram mantidos.
 - Validação: `node scripts/validacao/validar-manutencao.mjs --raiz <copia> --tarefa Mx --suite <suite> --k6 <k6>` roda as 15 jornadas
   contra a API correta (todas devem passar) e contra uma API mutante (as jornadas que verificam o contrato devem falhar).
